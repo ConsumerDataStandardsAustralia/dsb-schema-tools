@@ -16,7 +16,7 @@
       "x-cds-type": "URIString"
     },
     "first": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "URI to the first page of this set. Mandatory if this response is not the first page",
       "x-cds-type": "URIString"
     },
