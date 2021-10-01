@@ -14,7 +14,7 @@
       "x-cds-type": "ASCIIString"
     },
     "creationDate": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Date that the account was created (if known)",
       "x-cds-type": "DateString"
     },
@@ -23,11 +23,11 @@
       "description": "The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type."
     },
     "nickname": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "A customer supplied nick name for the account"
     },
     "openStatus": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Open or closed status for the account. If not present then OPEN is assumed",
       "enum": [
         "CLOSED",
@@ -36,7 +36,7 @@
       "default": "OPEN"
     },
     "isOwned": {
-      "type": "boolean",
+      "type": ["boolean", "null"],
       "description": "Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed",
       "x-cds-type": "Boolean",
       "default": true
