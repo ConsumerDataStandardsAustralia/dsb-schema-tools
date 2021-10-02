@@ -12,7 +12,7 @@
   ],
   "properties": {
     "nextPaymentDate": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The date of the next payment under the recurrence schedule",
       "x-cds-type": "DateString"
     },

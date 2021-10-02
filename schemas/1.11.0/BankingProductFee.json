@@ -53,12 +53,12 @@
       "x-cds-type": "RateString"
     },
     "accrualFrequency": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
       "x-cds-type": "ExternalRef"
     },
     "currency": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The currency the fee will be charged in. Assumes AUD if absent",
       "x-cds-type": "CurrencyString"
     },
@@ -67,17 +67,17 @@
       "description": "Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)"
     },
     "additionalInfo": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Display text providing more information on the fee"
     },
     "additionalInfoUri": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Link to a web page with more information on this fee",
       "x-cds-type": "URIString"
     },
     "discounts": {
       "description": "An optional list of discounts to this fee that may be available",
-      "type": "array",
+      "type": ["array","null"],
       "items": {
         "$ref": "BankingProductDiscount"
       }

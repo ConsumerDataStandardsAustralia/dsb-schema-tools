@@ -62,12 +62,12 @@
       "x-cds-type": "DateTimeString"
     },
     "valueDateTime": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry",
       "x-cds-type": "DateTimeString"
     },
     "executionDateTime": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The time the transaction was executed by the originating customer, if available",
       "x-cds-type": "DateTimeString"
     },
@@ -77,7 +77,7 @@
       "x-cds-type": "AmountString"
     },
     "currency": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The currency for the transaction amount. AUD assumed if not present",
       "x-cds-type": "CurrencyString"
     },
@@ -86,15 +86,15 @@
       "description": "The reference for the transaction provided by the originating institution. Empty string if no data provided"
     },
     "merchantName": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Name of the merchant for an outgoing payment to a merchant"
     },
     "merchantCategoryCode": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The merchant category code (or MCC) for an outgoing payment to a merchant"
     },
     "billerCode": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "BPAY Biller Code for the transaction (if available)"
     },
     "billerName": {
@@ -102,7 +102,7 @@
       "description": "Name of the BPAY biller for the transaction (if available)"
     },
     "crn": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
     },
     "apcaNumber": {

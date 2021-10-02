@@ -31,22 +31,22 @@
       "x-cds-type": "RateString"
     },
     "comparisonRate": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "A comparison rate equivalent for this rate",
       "x-cds-type": "RateString"
     },
     "calculationFrequency": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
       "x-cds-type": "ExternalRef"
     },
     "applicationFrequency": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
       "x-cds-type": "ExternalRef"
     },
     "interestPaymentDue": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered",
       "enum": [
         "IN_ADVANCE",
@@ -54,7 +54,7 @@
       ]
     },
     "repaymentType": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Options in place for repayments. If absent, the lending rate is applicable to all repayment types",
       "enum": [
         "INTEREST_ONLY",
@@ -62,7 +62,7 @@
       ]
     },
     "loanPurpose": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes",
       "enum": [
         "INVESTMENT",
@@ -70,7 +70,7 @@
       ]
     },
     "tiers": {
-      "type": "array",
+      "type": ["array","null"],
       "description": "Rate tiers applicable for this rate",
       "items": {
         "$ref": "BankingProductRateTierV3"
@@ -81,11 +81,11 @@
       "description": "Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)"
     },
     "additionalInfo": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Display text providing more information on the rate."
     },
     "additionalInfoUri": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Link to a web page with more information on this rate",
       "x-cds-type": "URIString"
     }

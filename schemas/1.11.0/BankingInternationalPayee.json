@@ -12,7 +12,7 @@
       ],
       "properties": {
         "name": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "Name of the beneficiary"
         },
         "country": {
@@ -21,7 +21,7 @@
           "x-cds-type": "ExternalRef"
         },
         "message": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "Response message for the payment"
         }
       }
@@ -43,7 +43,7 @@
           "description": "Account Targeted for payment"
         },
         "bankAddress": {
-          "type": "object",
+          "type": ["object","null"],
           "required": [
             "name",
             "address"
@@ -60,28 +60,28 @@
           }
         },
         "beneficiaryBankBIC": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)",
           "x-cds-type": "ExternalRef"
         },
         "fedWireNumber": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "Number for Fedwire payment (Federal Reserve Wire Network)"
         },
         "sortCode": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "Sort code used for account identification in some jurisdictions"
         },
         "chipNumber": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "Number for the Clearing House Interbank Payments System"
         },
         "routingNumber": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "International bank routing number"
         },
         "legalEntityIdentifier": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)",
           "x-cds-type": "ExternalRef"
         }

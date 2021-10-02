@@ -29,7 +29,7 @@
               "description": "Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)"
             },
             "extensionUType": {
-              "type": "string",
+              "type": ["string","null"],
               "description": "Optional extended data provided specific to transaction originated via NPP",
               "enum": [
                 "x2p101Payload"
@@ -45,11 +45,11 @@
                   "description": "An extended string description. Only present if specified by the extensionUType field"
                 },
                 "endToEndId": {
-                  "type": "string",
+                  "type": ["string","null"],
                   "description": "An end to end ID for the payment created at initiation"
                 },
                 "purposeCode": {
-                  "type": "string",
+                  "type": ["string","null"],
                   "description": "Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service"
                 }
               }
