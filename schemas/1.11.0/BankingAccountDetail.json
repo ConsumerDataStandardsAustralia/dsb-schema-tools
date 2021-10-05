@@ -33,16 +33,16 @@
           ]
         },
         "termDeposit": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
-            "$ref": "BankingTermDepositAccount"
+            "$ref": "BankingTermDepositAccount.json"
           }
         },
         "creditCard": {
-          "$ref": "BankingCreditCardAccount"
+          "$ref": "BankingCreditCardAccount.json"
         },
         "loan": {
-          "$ref": "BankingLoanAccount"
+          "$ref": "BankingLoanAccount.json"
         },
         "depositRate": {
           "type": ["string", "null"],

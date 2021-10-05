@@ -9,7 +9,7 @@
       "description": "Description of the authorised entity derived from previously executed direct debits"
     },
     "financialInstitution": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme"
     },
     "abn": {
