@@ -19,13 +19,13 @@
       ]
     },
     "account": {
-      "oneOf": [{"$ref": "BankingDomesticPayeeAccount.json"}, "null"] 
+      "$ref": "BankingDomesticPayeeAccount.json"
     },
     "card": {
-      "oneOf" : [{"$ref": "BankingDomesticPayeeCard.json"}, "null"] 
+      "$ref": "BankingDomesticPayeeCard.json"
     },
     "payId": {
-      "oneOf" : [{"$ref": "BankingDomesticPayeePayId.json"},"null"]
+      "$ref": "BankingDomesticPayeePayId.json"
     }
   }
 }

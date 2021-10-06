@@ -31,7 +31,7 @@
       "x-cds-type": "DateTimeString"
     },
     "productCategory": {
-      "$ref": "BankingProductCategory"
+      "$ref": "BankingProductCategory.json"
     },
     "name": {
       "type": "string",

@@ -40,7 +40,7 @@
       ]
     },
     "applicabilityConditions": {
-      "$ref": "BankingProductRateCondition"
+      "$ref": "BankingProductRateCondition.json"
     },
     "additionalInfo": {
       "type": ["string","null"],

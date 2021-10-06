@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "BankingTransaction"
+      "$ref": "BankingTransaction.json"
     },
     {
       "type": "object",
@@ -21,11 +21,11 @@
           ],
           "properties": {
             "payer": {
-              "type": "string",
+              "type": ["string", "null"],
               "description": "Label of the originating payer. Mandatory for inbound payment"
             },
             "payee": {
-              "type": "string",
+              "type": ["string", "null"],
               "description": "Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)"
             },
             "extensionUType": {
@@ -36,6 +36,7 @@
               ]
             },
             "x2p101Payload": {
+              "type": ["object", "null"],
               "required": [
                 "extendedDescription"
               ],

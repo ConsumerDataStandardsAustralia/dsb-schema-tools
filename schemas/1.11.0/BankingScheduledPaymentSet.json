@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
   "required": [
     "to"
@@ -8,7 +9,7 @@
   ],
   "properties": {
     "to": {
-      "$ref": "BankingScheduledPaymentTo"
+      "$ref": "BankingScheduledPaymentTo.json"
     },
     "isAmountCalculated": {
       "type": ["boolean", "null"],

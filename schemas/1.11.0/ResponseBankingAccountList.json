@@ -16,16 +16,16 @@
           "type": "array",
           "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records",
           "items": {
-            "$ref": "BankingAccount"
+            "$ref": "BankingAccount.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "MetaPaginated.json"
     }
   }
 }

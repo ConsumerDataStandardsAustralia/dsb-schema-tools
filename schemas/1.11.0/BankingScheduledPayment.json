@@ -39,16 +39,16 @@
       ]
     },
     "from": {
-      "$ref": "BankingScheduledPaymentFrom"
+      "$ref": "BankingScheduledPaymentFrom.json"
     },
     "paymentSet": {
       "type": "array",
       "items": {
-        "$ref": "BankingScheduledPaymentSet"
+        "$ref": "BankingScheduledPaymentSet.json"
       }
     },
     "recurrence": {
-      "$ref": "BankingScheduledPaymentRecurrence"
+      "$ref": "BankingScheduledPaymentRecurrence.json"
     }
   }
 }

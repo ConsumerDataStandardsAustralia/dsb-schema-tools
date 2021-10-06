@@ -16,16 +16,16 @@
           "description": "The list of balances returned",
           "type": "array",
           "items": {
-            "$ref": "BankingBalance"
+            "$ref": "BankingBalance.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "MetaPaginated.json"
     }
   }
 }

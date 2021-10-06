@@ -25,19 +25,19 @@
         },
         "person": {
           "description": "Mandatory if `customerUType` is `person`",
-          "$ref": "CommonPerson"
+          "$ref": "CommonPerson.json"
         },
         "organisation": {
           "description": "Mandatory if `customerUType` is `organisation`",
-          "$ref": "CommonOrganisation"
+          "$ref": "CommonOrganisation.json"
         }
       }
     },
     "links": {
-      "$ref": "Links"
+      "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "Meta"
+      "$ref": "Meta.json"
     }
   }
 }
