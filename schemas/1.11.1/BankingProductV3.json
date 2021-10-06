@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "required": [
+    "productId",
+    "lastUpdated",
+    "productCategory",
+    "name",
+    "description",
+    "brand",
+    "isTailored"
+  ],
+  "properties": {
+    "productId": {
+      "type": "string",
+      "description": "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+      "x-cds-type": "ASCIIString"
+    },
+    "effectiveFrom": {
+      "type": "string",
+      "description": "The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate",
+      "x-cds-type": "DateTimeString"
+    },
+    "effectiveTo": {
+      "type": "string",
+      "description": "The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products",
+      "x-cds-type": "DateTimeString"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)",
+      "x-cds-type": "DateTimeString"
+    },
+    "productCategory": {
+      "$ref": "BankingProductCategory"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the product"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the product"
+    },
+    "brand": {
+      "type": "string",
+      "description": "A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required"
+    },
+    "brandName": {
+      "type": "string",
+      "description": "An optional display name of the brand"
+    },
+    "applicationUri": {
+      "type": "string",
+      "description": "A link to an application web page where this product can be applied for.",
+      "x-cds-type": "URIString"
+    },
+    "isTailored": {
+      "type": "boolean",
+      "description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable",
+      "x-cds-type": "Boolean"
+    },
+    "additionalInformation": {
+      "description": "Object that contains links to additional information on specific topics",
+      "type": "object",
+      "properties": {
+        "overviewUri": {
+          "type": "string",
+          "description": "General overview of the product",
+          "x-cds-type": "URIString"
+        },
+        "termsUri": {
+          "type": "string",
+          "description": "Terms and conditions for the product",
+          "x-cds-type": "URIString"
+        },
+        "eligibilityUri": {
+          "type": "string",
+          "description": "Eligibility rules and criteria for the product",
+          "x-cds-type": "URIString"
+        },
+        "feesAndPricingUri": {
+          "type": "string",
+          "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product",
+          "x-cds-type": "URIString"
+        },
+        "bundleUri": {
+          "type": "string",
+          "description": "Description of a bundle that this product can be part of",
+          "x-cds-type": "URIString"
+        }
+      }
+    },
+    "cardArt": {
+      "description": "An array of card art images",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "imageUri"
+        ],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Display label for the specific image"
+          },
+          "imageUri": {
+            "type": "string",
+            "description": "URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)",
+            "x-cds-type": "URIString"
+          }
+        }
+      }
+    }
+  }
+}

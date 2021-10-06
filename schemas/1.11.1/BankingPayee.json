@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "required": [
+    "payeeId",
+    "nickname",
+    "type"
+  ],
+  "properties": {
+    "payeeId": {
+      "type": "string",
+      "description": "ID of the payee adhering to the rules of ID permanence",
+      "x-cds-type": "ASCIIString"
+    },
+    "nickname": {
+      "type": "string",
+      "description": "The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the payee provided by the customer"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
+      "enum": [
+        "BILLER",
+        "DOMESTIC",
+        "INTERNATIONAL"
+      ]
+    },
+    "creationDate": {
+      "type": "string",
+      "description": "The date the payee was created by the customer",
+      "x-cds-type": "DateString"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "payees"
+      ],
+      "properties": {
+        "payees": {
+          "type": "array",
+          "description": "The list of payees returned",
+          "items": {
+            "$ref": "BankingPayee"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  }
+}

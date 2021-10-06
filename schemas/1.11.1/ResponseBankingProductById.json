@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links"
+  ],
+  "properties": {
+    "data": {
+      "$ref": "BankingProductDetailV3"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  }
+}
