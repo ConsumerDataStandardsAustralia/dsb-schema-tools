@@ -33,8 +33,9 @@ fs.readdir(directoryPath, function (err, files) {
         var ajv = new Ajv({strictSchema: false}); 
         var validate = ajv.addSchema(dsbSchemas)
         validate.compile(data);
-        console.log("All done!")
+        
       });
+      console.log("All done!")
     });
   }
   catch(error) {
