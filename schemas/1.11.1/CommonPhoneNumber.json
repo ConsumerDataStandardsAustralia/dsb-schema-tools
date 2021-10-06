@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "required": [
+    "purpose",
+    "number",
+    "fullNumber"
+  ],
+  "x-conditional": [
+    "areaCode"
+  ],
+  "properties": {
+    "isPreferred": {
+      "type": "boolean",
+      "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
+      "x-cds-type": "Boolean"
+    },
+    "purpose": {
+      "type": "string",
+      "description": "The purpose of the number as specified by the customer",
+      "enum": [
+        "HOME",
+        "INTERNATIONAL",
+        "MOBILE",
+        "OTHER",
+        "UNSPECIFIED",
+        "WORK"
+      ]
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "If absent, assumed to be Australia (+61). The + should be included"
+    },
+    "areaCode": {
+      "type": "string",
+      "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
+    },
+    "number": {
+      "type": "string",
+      "description": "The actual phone number, with leading zeros as appropriate"
+    },
+    "extension": {
+      "type": "string",
+      "description": "An extension number (if applicable)"
+    },
+    "fullNumber": {
+      "type": "string",
+      "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of [RFC 3966](https://www.ietf.org/rfc/rfc3966.txt)",
+      "x-cds-type": "ExternalRef"
+    }
+  }
+}

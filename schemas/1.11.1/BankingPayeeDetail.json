@@ -1,0 +1,38 @@
+{
+  "allOf": [
+    {
+      "$ref": "#/definitions/BankingPayee"
+    },
+    {
+      "type": "object",
+      "required": [
+        "payeeUType"
+      ],
+      "x-conditional": [
+        "domestic",
+        "biller",
+        "international"
+      ],
+      "properties": {
+        "payeeUType": {
+          "type": "string",
+          "description": "Type of object included that describes the payee in detail",
+          "enum": [
+            "biller",
+            "domestic",
+            "international"
+          ]
+        },
+        "domestic": {
+          "$ref": "#/definitions/BankingDomesticPayee"
+        },
+        "biller": {
+          "$ref": "#/definitions/BankingBillerPayee"
+        },
+        "international": {
+          "$ref": "#/definitions/BankingInternationalPayee"
+        }
+      }
+    }
+  ]
+}

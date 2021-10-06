@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "description": "Object containing the detail of the schedule for the payment",
+  "required": [
+    "recurrenceUType"
+  ],
+  "x-conditional": [
+    "onceOff",
+    "intervalSchedule",
+    "lastWeekDay",
+    "eventBased"
+  ],
+  "properties": {
+    "nextPaymentDate": {
+      "type": "string",
+      "description": "The date of the next payment under the recurrence schedule",
+      "x-cds-type": "DateString"
+    },
+    "recurrenceUType": {
+      "type": "string",
+      "description": "The type of recurrence used to define the schedule",
+      "enum": [
+        "eventBased",
+        "intervalSchedule",
+        "lastWeekDay",
+        "onceOff"
+      ]
+    },
+    "onceOff": {
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
+    },
+    "intervalSchedule": {
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
+    },
+    "lastWeekDay": {
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceLastWeekday"
+    },
+    "eventBased": {
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceEventBased"
+    }
+  }
+}

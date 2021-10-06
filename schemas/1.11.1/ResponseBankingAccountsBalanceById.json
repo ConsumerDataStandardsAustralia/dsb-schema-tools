@@ -1,0 +1,17 @@
+{
+  "required": [
+    "data",
+    "links"
+  ],
+  "properties": {
+    "data": {
+      "$ref": "#/definitions/BankingBalance"
+    },
+    "links": {
+      "$ref": "#/definitions/Links"
+    },
+    "meta": {
+      "$ref": "#/definitions/Meta"
+    }
+  }
+}
