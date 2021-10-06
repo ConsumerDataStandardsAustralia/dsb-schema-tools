@@ -59,7 +59,7 @@
         },
         "depositRates": {
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
-          "type": "number",
+          "type": ["array", "null"],
           "items": {
             "$ref": "BankingProductDepositRate.json"
           }
