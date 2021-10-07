@@ -8,7 +8,7 @@
   ],
   "properties": {
     "to": {
-      "$ref": "#/definitions/BankingScheduledPaymentTo"
+      "$ref": "BankingScheduledPaymentTo"
     },
     "isAmountCalculated": {
       "type": "boolean",

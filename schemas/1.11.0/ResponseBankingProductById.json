@@ -6,13 +6,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "#/definitions/BankingProductDetailV3"
+      "$ref": "BankingProductDetailV3"
     },
     "links": {
-      "$ref": "#/definitions/Links"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "#/definitions/Meta"
+      "$ref": "Meta"
     }
   }
 }

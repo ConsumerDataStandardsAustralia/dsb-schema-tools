@@ -79,7 +79,7 @@
       "description": "An optional list of discounts to this fee that may be available",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/BankingProductDiscount"
+        "$ref": "BankingProductDiscount"
       }
     }
   }

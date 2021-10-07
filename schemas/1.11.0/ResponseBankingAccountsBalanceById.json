@@ -5,13 +5,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "#/definitions/BankingBalance"
+      "$ref": "BankingBalance"
     },
     "links": {
-      "$ref": "#/definitions/Links"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "#/definitions/Meta"
+      "$ref": "Meta"
     }
   }
 }

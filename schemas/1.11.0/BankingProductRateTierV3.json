@@ -40,7 +40,7 @@
       ]
     },
     "applicabilityConditions": {
-      "$ref": "#/definitions/BankingProductRateCondition"
+      "$ref": "BankingProductRateCondition"
     },
     "additionalInfo": {
       "type": "string",

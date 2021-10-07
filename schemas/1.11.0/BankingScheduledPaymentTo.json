@@ -44,13 +44,13 @@
       "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
     },
     "domestic": {
-      "$ref": "#/definitions/BankingDomesticPayee"
+      "$ref": "BankingDomesticPayee"
     },
     "biller": {
-      "$ref": "#/definitions/BankingBillerPayee"
+      "$ref": "BankingBillerPayee"
     },
     "international": {
-      "$ref": "#/definitions/BankingInternationalPayee"
+      "$ref": "BankingInternationalPayee"
     }
   }
 }

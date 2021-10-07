@@ -11,7 +11,7 @@
       "x-cds-type": "ASCIIString"
     },
     "authorisedEntity": {
-      "$ref": "#/definitions/BankingAuthorisedEntity"
+      "$ref": "BankingAuthorisedEntity"
     },
     "lastDebitDateTime": {
       "type": "string",

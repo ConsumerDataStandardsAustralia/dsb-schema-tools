@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "#/definitions/BankingPayee"
+      "$ref": "BankingPayee"
     },
     {
       "type": "object",
@@ -24,13 +24,13 @@
           ]
         },
         "domestic": {
-          "$ref": "#/definitions/BankingDomesticPayee"
+          "$ref": "BankingDomesticPayee"
         },
         "biller": {
-          "$ref": "#/definitions/BankingBillerPayee"
+          "$ref": "BankingBillerPayee"
         },
         "international": {
-          "$ref": "#/definitions/BankingInternationalPayee"
+          "$ref": "BankingInternationalPayee"
         }
       }
     }

@@ -15,16 +15,16 @@
         "transactions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingTransaction"
+            "$ref": "BankingTransaction"
           }
         }
       }
     },
     "links": {
-      "$ref": "#/definitions/LinksPaginated"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "#/definitions/MetaPaginated"
+      "$ref": "MetaPaginated"
     }
   }
 }

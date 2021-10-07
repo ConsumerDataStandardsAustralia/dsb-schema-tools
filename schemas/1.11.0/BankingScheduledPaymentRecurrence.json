@@ -27,16 +27,16 @@
       ]
     },
     "onceOff": {
-      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
+      "$ref": "BankingScheduledPaymentRecurrenceOnceOff"
     },
     "intervalSchedule": {
-      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
+      "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule"
     },
     "lastWeekDay": {
-      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceLastWeekday"
+      "$ref": "BankingScheduledPaymentRecurrenceLastWeekday"
     },
     "eventBased": {
-      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceEventBased"
+      "$ref": "BankingScheduledPaymentRecurrenceEventBased"
     }
   }
 }

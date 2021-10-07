@@ -47,7 +47,7 @@
       "x-cds-type": "MaskedAccountString"
     },
     "productCategory": {
-      "$ref": "#/definitions/BankingProductCategory"
+      "$ref": "BankingProductCategory"
     },
     "productName": {
       "type": "string",

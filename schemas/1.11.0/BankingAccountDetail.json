@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "#/definitions/BankingAccount"
+      "$ref": "BankingAccount"
     },
     {
       "type": "object",
@@ -35,14 +35,14 @@
         "termDeposit": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingTermDepositAccount"
+            "$ref": "BankingTermDepositAccount"
           }
         },
         "creditCard": {
-          "$ref": "#/definitions/BankingCreditCardAccount"
+          "$ref": "BankingCreditCardAccount"
         },
         "loan": {
-          "$ref": "#/definitions/BankingLoanAccount"
+          "$ref": "BankingLoanAccount"
         },
         "depositRate": {
           "type": "string",
@@ -58,14 +58,14 @@
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingProductDepositRate"
+            "$ref": "BankingProductDepositRate"
           }
         },
         "lendingRates": {
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingProductLendingRateV2"
+            "$ref": "BankingProductLendingRateV2"
           }
         },
         "features": {
@@ -74,7 +74,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "#/definitions/BankingProductFeature"
+                "$ref": "BankingProductFeature"
               },
               {
                 "type": "object",
@@ -94,14 +94,14 @@
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingProductFee"
+            "$ref": "BankingProductFee"
           }
         },
         "addresses": {
           "description": "The addresses for the account to be used for correspondence",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/CommonPhysicalAddress"
+            "$ref": "CommonPhysicalAddress"
           }
         }
       }

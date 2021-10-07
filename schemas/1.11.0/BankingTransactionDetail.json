@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "#/definitions/BankingTransaction"
+      "$ref": "BankingTransaction"
     },
     {
       "type": "object",

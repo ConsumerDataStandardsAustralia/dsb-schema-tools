@@ -16,16 +16,16 @@
           "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingProductV3"
+            "$ref": "BankingProductV3"
           }
         }
       }
     },
     "links": {
-      "$ref": "#/definitions/LinksPaginated"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "#/definitions/MetaPaginated"
+      "$ref": "MetaPaginated"
     }
   }
 }

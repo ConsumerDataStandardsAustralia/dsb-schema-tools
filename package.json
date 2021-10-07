@@ -1,31 +1,10 @@
 {
   "name": "consumer-data-standards",
   "version": "1.10.0",
-  "description": "API sets created by the Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
-  "main": "index.js",
-  "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
-  },
+  "description": "Schema files cerated Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
   "keywords": [
-    "swagger"
+    "schema", "consumer data standards"
   ],
-  "license": "Unlicense",
-  "private": true,
-  "dependencies": {
-    "connect": "^3.2.0",
-    "dummy-json": "^3.0.4",
-    "express": "^4.17.1",
-    "js-yaml": "^3.3.0",
-    "oas3-tools": "^2.2.3",
-    "request": "^2.88.2",
-    "swagger-tools": "^0.10.4",
-    "swagger-ui-dist": "^3.51.0",
-    "swagger-ui-express": "^4.1.6",
-    "yamljs": "^0.3.0"
-  },
-  "devDependencies": {
-    "g": "^2.0.1",
-    "swagger-to-mock": "^0.1.12"
-  }
+  "license": "MIT"
+
 }

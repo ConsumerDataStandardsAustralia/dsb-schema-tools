@@ -16,16 +16,16 @@
           "description": "The list of balances returned",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BankingBalance"
+            "$ref": "BankingBalance"
           }
         }
       }
     },
     "links": {
-      "$ref": "#/definitions/LinksPaginated"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "#/definitions/MetaPaginated"
+      "$ref": "MetaPaginated"
     }
   }
 }

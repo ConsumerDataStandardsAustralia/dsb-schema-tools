@@ -19,13 +19,13 @@
       ]
     },
     "account": {
-      "$ref": "#/definitions/BankingDomesticPayeeAccount"
+      "$ref": "BankingDomesticPayeeAccount"
     },
     "card": {
-      "$ref": "#/definitions/BankingDomesticPayeeCard"
+      "$ref": "BankingDomesticPayeeCard"
     },
     "payId": {
-      "$ref": "#/definitions/BankingDomesticPayeePayId"
+      "$ref": "BankingDomesticPayeePayId"
     }
   }
 }

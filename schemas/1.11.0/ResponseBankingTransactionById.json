@@ -6,13 +6,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "#/definitions/BankingTransactionDetail"
+      "$ref": "BankingTransactionDetail"
     },
     "links": {
-      "$ref": "#/definitions/Links"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "#/definitions/Meta"
+      "$ref": "Meta"
     }
   }
 }
