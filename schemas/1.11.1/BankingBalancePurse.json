@@ -10,7 +10,7 @@
       "x-cds-type": "AmountString"
     },
     "currency": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "The currency for the purse",
       "x-cds-type": "CurrencyString"
     }

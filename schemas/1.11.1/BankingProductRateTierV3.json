@@ -27,12 +27,12 @@
       "x-cds-type": "Number"
     },
     "maximumValue": {
-      "type": "number",
+      "type": ["number","null"],
       "description": "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
       "x-cds-type": "Number"
     },
     "rateApplicationMethod": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')",
       "enum": [
         "PER_TIER",
@@ -40,14 +40,14 @@
       ]
     },
     "applicabilityConditions": {
-      "$ref": "BankingProductRateCondition"
+      "$ref": "./BankingProductRateCondition.json"
     },
     "additionalInfo": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Display text providing more information on the rate tier."
     },
     "additionalInfoUri": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Link to a web page with more information on this rate tier",
       "x-cds-type": "URIString"
     }

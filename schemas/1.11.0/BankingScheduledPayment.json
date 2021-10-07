@@ -18,7 +18,7 @@
       "x-cds-type": "ASCIIString"
     },
     "nickname": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels"
     },
     "payerReference": {
@@ -39,16 +39,16 @@
       ]
     },
     "from": {
-      "$ref": "BankingScheduledPaymentFrom"
+      "$ref": "./BankingScheduledPaymentFrom.json"
     },
     "paymentSet": {
       "type": "array",
       "items": {
-        "$ref": "BankingScheduledPaymentSet"
+        "$ref": "./BankingScheduledPaymentSet.json"
       }
     },
     "recurrence": {
-      "$ref": "BankingScheduledPaymentRecurrence"
+      "$ref": "./BankingScheduledPaymentRecurrence.json"
     }
   }
 }

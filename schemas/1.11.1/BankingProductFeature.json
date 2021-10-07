@@ -46,7 +46,7 @@
       "description": "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER"
     },
     "additionalInfoUri": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Link to a web page with more information on this feature",
       "x-cds-type": "URIString"
     }

@@ -20,7 +20,7 @@
       "description": "A description of the payee provided by the customer"
     },
     "type": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
       "enum": [
         "BILLER",
@@ -29,7 +29,7 @@
       ]
     },
     "creationDate": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The date the payee was created by the customer",
       "x-cds-type": "DateString"
     }

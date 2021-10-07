@@ -9,13 +9,13 @@
   ],
   "properties": {
     "lastUpdateTime": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
       "x-cds-type": "DateTimeString"
     },
     "firstName": {
-      "type": "string",
-      "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided."
+      "type": ["string","null"],
+      "description": "For people with single names this field need not be present.  The single name should be in the lastName field"
     },
     "lastName": {
       "type": "string",
@@ -29,15 +29,15 @@
       }
     },
     "prefix": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
     },
     "suffix": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Used for a trailing suffix to the name (e.g. Jr)"
     },
     "occupationCode": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.",
       "x-cds-type": "ExternalRef"
     },

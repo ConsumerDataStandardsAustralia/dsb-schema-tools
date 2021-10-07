@@ -10,7 +10,7 @@
   ],
   "properties": {
     "isPreferred": {
-      "type": "boolean",
+      "type": ["boolean","null"],
       "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
       "x-cds-type": "Boolean"
     },
@@ -27,7 +27,7 @@
       ]
     },
     "countryCode": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "If absent, assumed to be Australia (+61). The + should be included"
     },
     "areaCode": {
@@ -39,7 +39,7 @@
       "description": "The actual phone number, with leading zeros as appropriate"
     },
     "extension": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "An extension number (if applicable)"
     },
     "fullNumber": {

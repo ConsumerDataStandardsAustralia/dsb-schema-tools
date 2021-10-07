@@ -3,8 +3,11 @@
   "version": "1.10.0",
   "description": "Schema files cerated Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
   "keywords": [
-    "schema", "consumer data standards"
+    "schema",
+    "consumer data standards"
   ],
-  "license": "MIT"
-
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "^8.6.3"
+  }
 }

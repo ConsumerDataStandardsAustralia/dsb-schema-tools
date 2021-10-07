@@ -17,10 +17,10 @@
       ]
     },
     "simple": {
-      "$ref": "CommonSimpleAddress"
+      "$ref": "./CommonSimpleAddress.json"
     },
     "paf": {
-      "$ref": "CommonPAFAddress"
+      "$ref": "./CommonPAFAddress.json"
     }
   }
 }

@@ -35,7 +35,7 @@
       "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER"
     },
     "additionalInfoUri": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "Link to a web page with more information on this eligibility criteria",
       "x-cds-type": "URIString"
     }

@@ -47,10 +47,10 @@
       }
     },
     "links": {
-      "$ref": "Links"
+      "$ref": "./Links.json"
     },
     "meta": {
-      "$ref": "Meta"
+      "$ref": "./Meta.json"
     }
   }
 }
