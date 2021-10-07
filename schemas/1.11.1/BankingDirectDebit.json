@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "accountId",
+    "authorisedEntity"
+  ],
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "description": "A unique ID of the account adhering to the standards for ID permanence.",
+      "x-cds-type": "ASCIIString"
+    },
+    "authorisedEntity": {
+      "$ref": "BankingAuthorisedEntity.json"
+    },
+    "lastDebitDateTime": {
+      "type": "string",
+      "description": "The date and time of the last debit executed under this authorisation",
+      "x-cds-type": "DateTimeString"
+    },
+    "lastDebitAmount": {
+      "type": "string",
+      "description": "The amount of the last debit executed under this authorisation",
+      "x-cds-type": "AmountString"
+    }
+  }
+}

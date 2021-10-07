@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "required": [
+    "discountEligibilityType"
+  ],
+  "x-conditional": [
+    "additionalInfo",
+    "additionalValue"
+  ],
+  "properties": {
+    "discountEligibilityType": {
+      "type": "string",
+      "description": "The type of the specific eligibility constraint for a discount",
+      "enum": [
+        "BUSINESS",
+        "EMPLOYMENT_STATUS",
+        "INTRODUCTORY",
+        "MAX_AGE",
+        "MIN_AGE",
+        "MIN_INCOME",
+        "MIN_TURNOVER",
+        "NATURAL_PERSON",
+        "OTHER",
+        "PENSION_RECIPIENT",
+        "RESIDENCY_STATUS",
+        "STAFF",
+        "STUDENT"
+      ]
+    },
+    "additionalValue": {
+      "type": "string",
+      "description": "Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
+    },
+    "additionalInfo": {
+      "type": "string",
+      "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
+    },
+    "additionalInfoUri": {
+      "type": ["string","null"],
+      "description": "Link to a web page with more information on this eligibility constraint",
+      "x-cds-type": "URIString"
+    }
+  }
+}

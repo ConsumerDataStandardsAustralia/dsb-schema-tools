@@ -40,11 +40,9 @@
           }
         },
         "creditCard": {
-          "type": ["object", "null"],
           "$ref": "BankingCreditCardAccount.json"
         },
         "loan": {
-          "type": ["object", "null"],
           "$ref": "BankingLoanAccount.json"
         },
         "depositRate": {
@@ -59,7 +57,7 @@
         },
         "depositRates": {
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
-          "type": ["string", "null"],
+          "type": ["array", "null"],
           "items": {
             "$ref": "BankingProductDepositRate.json"
           }

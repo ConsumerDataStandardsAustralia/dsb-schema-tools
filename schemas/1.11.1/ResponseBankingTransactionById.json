@@ -6,7 +6,7 @@
   ],
   "properties": {
     "data": {
-      "$ref": "./BankingAccountDetail.json"
+      "$ref": "BankingTransactionDetail.json"
     },
     "links": {
       "$ref": "Links.json"

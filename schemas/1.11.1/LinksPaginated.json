@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "required": [
+    "self"
+  ],
+  "x-conditional": [
+    "prev",
+    "next",
+    "first",
+    "last"
+  ],
+  "properties": {
+    "self": {
+      "type": "string",
+      "description": "Fully qualified link that generated the current response document",
+      "x-cds-type": "URIString"
+    },
+    "first": {
+      "type": ["string","null"],
+      "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+      "x-cds-type": "URIString"
+    },
+    "prev": {
+      "type": ["string","null"],
+      "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
+      "x-cds-type": "URIString"
+    },
+    "next": {
+      "type": ["string","null"],
+      "description": "URI to the next page of this set. Mandatory if this response is not the last page",
+      "x-cds-type": "URIString"
+    },
+    "last": {
+      "type": ["string","null"],
+      "description": "URI to the last page of this set. Mandatory if this response is not the last page",
+      "x-cds-type": "URIString"
+    }
+  }
+}
