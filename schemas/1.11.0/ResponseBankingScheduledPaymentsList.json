@@ -16,16 +16,16 @@
           "type": "array",
           "description": "The list of scheduled payments to return",
           "items": {
-            "$ref": "BankingScheduledPayment.json"
+            "$ref": "./BankingScheduledPayment.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "./LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "./MetaPaginated.json"
     }
   }
 }

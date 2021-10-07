@@ -2,7 +2,7 @@
   "type": "object",
   "allOf": [
     {
-      "$ref": "BankingAccount.json"
+      "$ref": "./BankingAccount.json"
     },
     {
       "type": "object",
@@ -36,14 +36,16 @@
         "termDeposit": {
           "type": ["array", "null"],
           "items": {
-            "$ref": "BankingTermDepositAccount.json"
+            "$ref": "./BankingTermDepositAccount.json"
           }
         },
         "creditCard": {
-          "$ref": "BankingCreditCardAccount.json"
+          "type": ["object", "null"],
+          "$ref": "./BankingCreditCardAccount.json"
         },
         "loan": {
-          "$ref": "BankingLoanAccount.json"
+          "type": ["object", "null"],
+          "$ref": "./BankingLoanAccount.json"
         },
         "depositRate": {
           "type": ["string", "null"],
@@ -59,14 +61,14 @@
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "type": ["array", "null"],
           "items": {
-            "$ref": "BankingProductDepositRate.json"
+            "$ref": "./BankingProductDepositRate.json"
           }
         },
         "lendingRates": {
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "type": ["array", "null"],
           "items": {
-            "$ref": "BankingProductLendingRateV2.json"
+            "$ref": "./BankingProductLendingRateV2.json"
           }
         },
         "features": {
@@ -75,7 +77,7 @@
           "items": {
             "allOf": [
               {
-                "$ref": "BankingProductFeature.json"
+                "$ref": "./BankingProductFeature.json"
               },
               {
                 "type": "object",
@@ -95,14 +97,14 @@
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
           "type": ["array", "null"],
           "items": {
-            "$ref": "BankingProductFee.json"
+            "$ref": "./BankingProductFee.json"
           }
         },
         "addresses": {
           "description": "The addresses for the account to be used for correspondence",
           "type": ["array", "null"],
           "items": {
-            "$ref": "CommonPhysicalAddress.json"
+            "$ref": "./CommonPhysicalAddress.json"
           }
         }
       }
