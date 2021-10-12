@@ -125,17 +125,9 @@
                         }
                     },
                     "creditCard": {
-                        "type": [
-                            "object",
-                            "null"
-                        ],
                         "$ref": "./BankingCreditCardAccount"
                     },
                     "loan": {
-                        "type": [
-                            "object",
-                            "null"
-                        ],
                         "$ref": "./BankingLoanAccount"
                     },
                     "depositRate": {
@@ -320,7 +312,7 @@
                     "null"
                 ],
                 "items": {
-                    "$ref": "././BankingBalancePurse"
+                    "$ref": "./BankingBalancePurse"
                 }
             }
         }
@@ -3215,7 +3207,7 @@
         ],
         "properties": {
             "data": {
-                "$ref": "././BankingAccountDetail"
+                "$ref": "./BankingAccountDetail"
             },
             "links": {
                 "$ref": "./Links"
