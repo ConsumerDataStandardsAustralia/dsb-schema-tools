@@ -7308,7 +7308,7 @@
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
 					"",
-					"    var urlSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/postman/postman-validation-\" + version + \".json\";",
+					"    var urlSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/postman-validation-\" + version + \".json\";",
 					"    //var urlSchemaValidationFileDirectory = \"http://localhost:8080/postman-validation-1.11.0.json\";",
 					"",
 					"        pm.sendRequest(urlSchemaValidationFileDirectory, (error, response) => {",
@@ -7393,10 +7393,6 @@
 		{
 			"key": "interactionId",
 			"value": "37e3194e-c1f3-4685-8b8d-6cea463f37f4"
-		},
-		{
-			"key": "urlSchemaValidationFile",
-			"value": "https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/standards/master/swagger-gen/api/cds_full.json"
 		},
 		{
 			"key": "cdsClientHeader",
