@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2d86bf15-9eee-4e25-a89e-b87f2fbaecdd",
+		"_postman_id": "e505d3c0-a486-4b00-986f-6191ab3848ff",
 		"name": "CDR Banking Sector Conformance",
 		"description": "# CDR Conformance Tests\nThis collection contains a series of conformance tests for the Consumer Data Right standards applicable to the designation for the Banking sector in Australia.\n\nThese tests do not constitute a full functional test of an implementation compliant with CDR standards. It is the obligation of data holders and data recipients to functionally test their implementations fully using whatever mechanism they choose.\n\nThese tests do contain comprehensive coverage of the requirements of the standards.  A data holder implementation that is able to pass all of the tests in this collection could be reasonably described as conformant to the CDR standards for the Banking sector.\n\n# Conformance Scope\nThis collection complies with v1.11.0 of the CDR standards.\n\nIt includes support for the following API end points:\n\n### Banking APIs\n\n* Get Accounts\n* Get Bulk Balances\n* Get Balances For Specific Accounts\n* Get Account Balance\n* Get Account Details\n* Get Transactions For Account\n* Get Transaction Detail\n* Get Direct Debits For Accounts\n* Get Bulk Direct Debits\n* Get Direct Debits For Specific Accounts\n* Get Scheduled Payments For Accounts\n* Get Scheduled Payments Bulk\n* Get Scheduled Payments For Specific Accounts\n* Get Payees\n* Get Payee Details\n* Get Products\n* Get Product Detail\n\n### Common APIs\n* Get Customer\n* Get Customer Detail\n* Get Status\n* Get Outages\n\n\n# Scope Exclusions\nThis collections does not cover:\n* CDR API end points not listed above\n* Negative scenarios that are not specifically addressed in the standards for individual end points\n* Non-functional requirements\n* Information Security Profile and associated end points\n* MA-SSL configuration\n\n# Change Log\n| Change Date | Change Description |\n|-------------|--------------------|\n|1st November 2019|Initial creation of the collection|\n|1st August 2021  |Updated documentation|\n\n\n# Contact Support: \n{\n\nName : Consumer Data Standards\n\nEmail : cdr-data61@csiro.au\n\n}",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -184,9 +184,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/direct-debits?product-category=CRED_AND_CHRG_CARDS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/direct-debits?product-category=CRED_AND_CHRG_CARDS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -408,9 +408,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/direct-debits?product-category=BUSINESS_LOANS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/direct-debits?product-category=BUSINESS_LOANS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -601,9 +601,9 @@
 													"raw": "{\r\n    \"data\": {\r\n        \"accountIds\": [\r\n            \"{{testAccountId1}}\",\r\n            \"{{testAccountId2}}\"\r\n        ]\r\n    },\r\n    \"meta\": {}\r\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -807,9 +807,9 @@
 													"raw": "{\r\n    \"data\": {\r\n        \"accountIds\": [\r\n            \"{{testAccountId1}}\",\r\n            \"{{testAccountId2}}\"\r\n        ]\r\n    },\r\n    \"meta\": {}\r\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -995,9 +995,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -1198,9 +1198,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -1379,9 +1379,9 @@
 													"raw": ""
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/balances",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/balances",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -1553,9 +1553,9 @@
 													"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{testAccountId1}}\",\n            \"{{testAccountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -1763,9 +1763,9 @@
 													"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{testAccountId1}}\",\n            \"{{testAccountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/balances?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -1890,9 +1890,9 @@
 													"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{invalidId}}\"\n        ]\n    },\n    \"meta\": {}\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/balances",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/balances",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -2023,9 +2023,9 @@
 													"raw": ""
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/:accountId/balance",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/balance",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -2213,9 +2213,9 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/banking/accounts/:accountId/transactions?page={{currentPage}}&page-size={{pageSize}}",
+															"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/transactions?page={{currentPage}}&page-size={{pageSize}}",
 															"host": [
-																"{{baseUrl}}"
+																"{{authenticatedResourceUrl}}"
 															],
 															"path": [
 																"banking",
@@ -2428,9 +2428,9 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/banking/accounts/:accountId/transactions?page={{currentPage}}&page-size={{pageSize}}",
+															"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/transactions?page={{currentPage}}&page-size={{pageSize}}",
 															"host": [
-																"{{baseUrl}}"
+																"{{authenticatedResourceUrl}}"
 															],
 															"path": [
 																"banking",
@@ -2563,9 +2563,9 @@
 															}
 														],
 														"url": {
-															"raw": "{{baseUrl}}/banking/accounts/:accountId/transactions/:transactionId",
+															"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/transactions/:transactionId",
 															"host": [
-																"{{baseUrl}}"
+																"{{authenticatedResourceUrl}}"
 															],
 															"path": [
 																"banking",
@@ -2845,9 +2845,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/:accountId/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -3144,9 +3144,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/:accountId/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/direct-debits?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -3423,9 +3423,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/:accountId/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -3718,9 +3718,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/accounts/:accountId/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -4002,9 +4002,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/accounts?open-status=ALL&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{authenticatedResourceUrl}}/banking/accounts?open-status=ALL&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -4210,9 +4210,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/accounts?open-status=ALL&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{authenticatedResourceUrl}}/banking/accounts?open-status=ALL&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -4367,9 +4367,9 @@
 											"raw": ""
 										},
 										"url": {
-											"raw": "{{baseUrl}}/banking/accounts/:accountId",
+											"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -4495,9 +4495,9 @@
 											"raw": ""
 										},
 										"url": {
-											"raw": "{{baseUrl}}/banking/accounts/:accountId",
+											"raw": "{{authenticatedResourceUrl}}/banking/accounts/:accountId",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -4625,9 +4625,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/accounts?open-status=ALL&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{authenticatedResourceUrl}}/banking/accounts?open-status=ALL&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -4823,9 +4823,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/payments/scheduled?product-category=CRED_AND_CHRG_CARDS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/payments/scheduled?product-category=CRED_AND_CHRG_CARDS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -5045,9 +5045,9 @@
 													}
 												],
 												"url": {
-													"raw": "{{baseUrl}}/banking/payments/scheduled?product-category=CRED_AND_CHRG_CARDS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/payments/scheduled?product-category=CRED_AND_CHRG_CARDS&open-status=ALL&is-owned=true&page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -5249,9 +5249,9 @@
 													"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{testAccountId1}}\",\n            \"{{testAccountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -5459,9 +5459,9 @@
 													"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{testAccountId1}}\",\n            \"{{testAccountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}"
 												},
 												"url": {
-													"raw": "{{baseUrl}}/banking/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
+													"raw": "{{authenticatedResourceUrl}}/banking/payments/scheduled?page={{currentPage}}&page-size={{pageSize}}",
 													"host": [
-														"{{baseUrl}}"
+														"{{authenticatedResourceUrl}}"
 													],
 													"path": [
 														"banking",
@@ -5653,9 +5653,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/payees?type=ALL&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{authenticatedResourceUrl}}/banking/payees?type=ALL&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -5867,9 +5867,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/payees?type=ALL&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{authenticatedResourceUrl}}/banking/payees?type=ALL&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6002,9 +6002,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/payees/:payeeId",
+											"raw": "{{authenticatedResourceUrl}}/banking/payees/:payeeId",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6105,9 +6105,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/payees/:payeeId",
+											"raw": "{{authenticatedResourceUrl}}/banking/payees/:payeeId",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6279,9 +6279,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/products?effective={{effective}}&product-category={{productCategory}}&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{unauthenticatedResourceUrl}}/banking/products?effective={{effective}}&product-category={{productCategory}}&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{unauthenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6503,9 +6503,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/products?effective={{effective}}&product-category={{productCategory}}&page={{currentPage}}&page-size={{pageSize}}",
+											"raw": "{{unauthenticatedResourceUrl}}/banking/products?effective={{effective}}&product-category={{productCategory}}&page={{currentPage}}&page-size={{pageSize}}",
 											"host": [
-												"{{baseUrl}}"
+												"{{unauthenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6608,9 +6608,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/products/:productId",
+											"raw": "{{unauthenticatedResourceUrl}}/banking/products/:productId",
 											"host": [
-												"{{baseUrl}}"
+												"{{unauthenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6693,9 +6693,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/banking/products/:productId",
+											"raw": "{{unauthenticatedResourceUrl}}/banking/products/:productId",
 											"host": [
-												"{{baseUrl}}"
+												"{{unauthenticatedResourceUrl}}"
 											],
 											"path": [
 												"banking",
@@ -6829,9 +6829,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/common/customer",
+											"raw": "{{authenticatedCommonUrl}}/common/customer",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedCommonUrl}}"
 											],
 											"path": [
 												"common",
@@ -6949,9 +6949,9 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/common/customer/detail",
+											"raw": "{{authenticatedCommonUrl}}/common/customer/detail",
 											"host": [
-												"{{baseUrl}}"
+												"{{authenticatedCommonUrl}}"
 											],
 											"path": [
 												"common",
@@ -7049,9 +7049,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/discovery/status",
+									"raw": "{{unauthenticatedCommonUrl}}/discovery/status",
 									"host": [
-										"{{baseUrl}}"
+										"{{unauthenticatedCommonUrl}}"
 									],
 									"path": [
 										"discovery",
@@ -7140,9 +7140,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/discovery/outages",
+									"raw": "{{unauthenticatedCommonUrl}}/discovery/outages",
 									"host": [
-										"{{baseUrl}}"
+										"{{unauthenticatedCommonUrl}}"
 									],
 									"path": [
 										"discovery",
@@ -7184,6 +7184,19 @@
 					"",
 					"if (pm.iterationData.get(\"baseUrl\") != undefined)",
 					"    pm.collectionVariables.set(\"baseUrl\", pm.iterationData.get(\"baseUrl\"));",
+					"",
+					"if (pm.iterationData.get(\"authenticatedResourceUrl\") != undefined)",
+					"    pm.collectionVariables.set(\"authenticatedResourceUrl\", pm.iterationData.get(\"authenticatedResourceUrl\"));",
+					"",
+					"if (pm.iterationData.get(\"unauthenticatedResourceUrl\") != undefined)",
+					"    pm.collectionVariables.set(\"unauthenticatedResourceUrl\", pm.iterationData.get(\"unauthenticatedResourceUrl\"));",
+					"",
+					"if (pm.iterationData.get(\"authenticatedCommonUrl\") != undefined)",
+					"    pm.collectionVariables.set(\"authenticatedCommonUrl\", pm.iterationData.get(\"authenticatedCommonUrl\"));",
+					"",
+					"if (pm.iterationData.get(\"unauthenticatedCommonUrl\") != undefined)",
+					"    pm.collectionVariables.set(\"unauthenticatedCommonUrl\", pm.iterationData.get(\"unauthenticatedCommonUrl\"));",
+					"",
 					"",
 					"if (pm.iterationData.get(\"version\") != undefined)",
 					"    pm.collectionVariables.set(\"version\", pm.iterationData.get(\"version\"));    ",
@@ -7571,6 +7584,22 @@
 		},
 		{
 			"key": "GlobalSchema",
+			"value": ""
+		},
+		{
+			"key": "unauthenticatedCommonUrl",
+			"value": ""
+		},
+		{
+			"key": "authenticatedCommonUrl",
+			"value": ""
+		},
+		{
+			"key": "unauthenticatedResourceUrl",
+			"value": ""
+		},
+		{
+			"key": "authenticatedResourceUrl",
 			"value": ""
 		}
 	]
