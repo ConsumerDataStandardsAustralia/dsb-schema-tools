@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "plans"
+      ],
+      "properties": {
+        "plans": {
+          "description": "Array of plans",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnergyPlan"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "#/components/schemas/LinksPaginated"
+    },
+    "meta": {
+      "$ref": "#/components/schemas/MetaPaginated"
+    }
+  }
+}

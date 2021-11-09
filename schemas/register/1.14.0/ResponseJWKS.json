@@ -1,0 +1,16 @@
+{
+  "description": "Response containing the JSON Web Key Set",
+  "required": [
+    "keys"
+  ],
+  "type": "object",
+  "properties": {
+    "keys": {
+      "type": "array",
+      "description": "The value of the \"keys\" parameter is an array of JWK values",
+      "items": {
+        "$ref": "#/definitions/JWK"
+      }
+    }
+  }
+}

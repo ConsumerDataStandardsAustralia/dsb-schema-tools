@@ -1,0 +1,80 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "requestTime",
+        "availability",
+        "performance",
+        "invocations",
+        "averageResponse",
+        "sessionCount",
+        "averageTps",
+        "peakTps",
+        "errors",
+        "rejections",
+        "customerCount",
+        "recipientCount"
+      ],
+      "x-conditional": [
+        "secondaryHolder"
+      ],
+      "properties": {
+        "requestTime": {
+          "type": "string",
+          "description": "The date and time that the metrics in this payload were requested.",
+          "x-cds-type": "DateTimeString"
+        },
+        "availability": {
+          "$ref": "#/definitions/AvailabilityMetrics"
+        },
+        "performance": {
+          "$ref": "#/definitions/PerformanceMetrics"
+        },
+        "invocations": {
+          "$ref": "#/definitions/InvocationMetricsV2"
+        },
+        "averageResponse": {
+          "$ref": "#/definitions/AverageResponseMetricsV2"
+        },
+        "sessionCount": {
+          "$ref": "#/definitions/SessionCountMetrics"
+        },
+        "averageTps": {
+          "$ref": "#/definitions/AverageTPSMetrics"
+        },
+        "peakTps": {
+          "$ref": "#/definitions/PeakTPSMetrics"
+        },
+        "errors": {
+          "$ref": "#/definitions/ErrorMetrics"
+        },
+        "rejections": {
+          "$ref": "#/definitions/RejectionMetricsV2"
+        },
+        "customerCount": {
+          "type": "integer",
+          "description": "Number of customers with active authorisations at the time of the call"
+        },
+        "recipientCount": {
+          "type": "integer",
+          "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
+        },
+        "secondaryHolder": {
+          "$ref": "#/definitions/SecondaryHolderMetrics"
+        }
+      }
+    },
+    "links": {
+      "$ref": "#/definitions/Links"
+    },
+    "meta": {
+      "$ref": "#/definitions/Meta"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "allOf": [
+    {
+      "$ref": "#/definitions/BankingAccount"
+    },
+    {
+      "type": "object",
+      "x-conditional": [
+        "termDeposit",
+        "creditCard",
+        "loan"
+      ],
+      "properties": {
+        "bsb": {
+          "type": "string",
+          "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "bundleName": {
+          "type": "string",
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
+        },
+        "specificAccountUType": {
+          "type": "string",
+          "description": "The type of structure to present account specific fields.",
+          "enum": [
+            "creditCard",
+            "loan",
+            "termDeposit"
+          ]
+        },
+        "termDeposit": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingTermDepositAccount"
+          }
+        },
+        "creditCard": {
+          "$ref": "#/definitions/BankingCreditCardAccount"
+        },
+        "loan": {
+          "$ref": "#/definitions/BankingLoanAccount"
+        },
+        "depositRate": {
+          "type": "string",
+          "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "lendingRate": {
+          "type": "string",
+          "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "depositRates": {
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingProductDepositRate"
+          }
+        },
+        "lendingRates": {
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingProductLendingRateV2"
+          }
+        },
+        "features": {
+          "description": "Array of features of the account based on the equivalent structure in Product Reference with the following additional field",
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "#/definitions/BankingProductFeature"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "isActivated": {
+                    "type": "boolean",
+                    "description": "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
+                    "x-cds-type": "Boolean",
+                    "default": true
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "fees": {
+          "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BankingProductFee"
+          }
+        },
+        "addresses": {
+          "description": "The addresses for the account to be used for correspondence",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonPhysicalAddress"
+          }
+        }
+      }
+    }
+  ]
+}

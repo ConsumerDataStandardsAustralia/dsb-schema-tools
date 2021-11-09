@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "directDebitAuthorisations"
+      ],
+      "properties": {
+        "directDebitAuthorisations": {
+          "type": "array",
+          "description": "The list of authorisations returned",
+          "items": {
+            "$ref": "#/definitions/BankingDirectDebit"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "#/definitions/LinksPaginated"
+    },
+    "meta": {
+      "$ref": "#/definitions/MetaPaginated"
+    }
+  }
+}

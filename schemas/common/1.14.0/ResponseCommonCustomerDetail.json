@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "customerUType"
+      ],
+      "x-conditional": [
+        "person",
+        "organisation"
+      ],
+      "properties": {
+        "customerUType": {
+          "type": "string",
+          "description": "The type of customer object that is present",
+          "enum": [
+            "organisation",
+            "person"
+          ]
+        },
+        "person": {
+          "description": "Mandatory if `customerUType` is `person`",
+          "$ref": "#/definitions/CommonPersonDetail"
+        },
+        "organisation": {
+          "description": "Mandatory if `customerUType` is `organisation`",
+          "$ref": "#/definitions/CommonOrganisationDetail"
+        }
+      }
+    },
+    "links": {
+      "$ref": "#/definitions/Links"
+    },
+    "meta": {
+      "$ref": "#/definitions/Meta"
+    }
+  }
+}

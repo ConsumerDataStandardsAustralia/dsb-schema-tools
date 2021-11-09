@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "totalPages",
+    "totalRecords"
+  ],
+  "properties": {
+    "totalRecords": {
+      "type": "integer",
+      "description": "The total number of records in the full set. See [pagination](#pagination).",
+      "x-cds-type": "NaturalNumber"
+    },
+    "totalPages": {
+      "type": "integer",
+      "description": "The total number of pages in the full set. See [pagination](#pagination).",
+      "x-cds-type": "NaturalNumber"
+    }
+  }
+}

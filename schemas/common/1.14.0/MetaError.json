@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "x-conditional": [
+    "urn"
+  ],
+  "description": "Additional data for customised error codes",
+  "properties": {
+    "urn": {
+      "type": "string",
+      "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+    }
+  }
+}

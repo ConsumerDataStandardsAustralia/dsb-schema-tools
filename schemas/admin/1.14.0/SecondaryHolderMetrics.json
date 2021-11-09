@@ -1,0 +1,49 @@
+{
+  "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a secondary responsibility request data cluster",
+  "required": [
+    "errors",
+    "rejections"
+  ],
+  "properties": {
+    "errors": {
+      "description": "Number of calls resulting in error due to server execution over time",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ],
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Number of errors for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "rejections": {
+      "description": "Number of calls resulting in a rejection due to server execution over time",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ],
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Number of rejections for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

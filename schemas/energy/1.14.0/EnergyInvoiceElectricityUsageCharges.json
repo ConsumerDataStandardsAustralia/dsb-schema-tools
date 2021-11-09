@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "required": [
+    "totalUsageCharges",
+    "totalGenerationCredits",
+    "totalOnceOffCharges",
+    "totalOnceOffDiscounts"
+  ],
+  "properties": {
+    "totalUsageCharges": {
+      "description": "The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "totalGenerationCredits": {
+      "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "totalOnceOffCharges": {
+      "description": "The aggregate total of any once off charges arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "totalOnceOffDiscounts": {
+      "description": "The aggregate total of any once off discounts or credits arising from electricity usage for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "otherCharges": {
+      "description": "Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "amount",
+          "description"
+        ],
+        "properties": {
+          "amount": {
+            "description": "The aggregate total of charges for this item (exclusive of GST)",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "description": {
+            "description": "A free text description of the type of charge",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "totalGst": {
+      "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    }
+  }
+}
