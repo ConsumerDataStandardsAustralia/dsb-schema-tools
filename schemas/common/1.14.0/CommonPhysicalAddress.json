@@ -17,10 +17,10 @@
       ]
     },
     "simple": {
-      "$ref": "#/definitions/CommonSimpleAddress"
+      "$ref": "./CommonSimpleAddress"
     },
     "paf": {
-      "$ref": "#/definitions/CommonPAFAddress"
+      "$ref": "./CommonPAFAddress"
     }
   }
 }
