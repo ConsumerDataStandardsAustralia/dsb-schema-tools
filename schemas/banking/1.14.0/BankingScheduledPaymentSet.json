@@ -9,7 +9,7 @@
   ],
   "properties": {
     "to": {
-      "$ref": "./BankingScheduledPaymentTo.json"
+      "$ref": "BankingScheduledPaymentTo.json"
     },
     "isAmountCalculated": {
       "type": ["boolean", "null"],

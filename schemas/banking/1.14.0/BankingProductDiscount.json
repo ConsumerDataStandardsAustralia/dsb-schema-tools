@@ -71,7 +71,7 @@
       "description": "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
       "type": "array",
       "items": {
-        "$ref": "./BankingProductDiscountEligibility.json"
+        "$ref": "BankingProductDiscountEligibility.json"
       }
     }
   }
