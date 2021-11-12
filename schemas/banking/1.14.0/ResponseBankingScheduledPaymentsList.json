@@ -11,21 +11,21 @@
       "required": [
         "scheduledPayments"
       ],
-      "properties": {
+      "properties": {      
         "scheduledPayments": {
           "type": "array",
           "description": "The list of scheduled payments to return",
           "items": {
-            "$ref": "#/definitions/BankingScheduledPayment"
+            "$ref": "./BankingScheduledPayment.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "#/definitions/LinksPaginated"
+      "$ref": "./LinksPaginated.json"
     },
     "meta": {
-      "$ref": "#/definitions/MetaPaginated"
+      "$ref": "./MetaPaginated.json"
     }
   }
 }

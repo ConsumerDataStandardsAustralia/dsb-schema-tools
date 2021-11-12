@@ -104,7 +104,7 @@
           "description": "The addresses for the account to be used for correspondence",
           "type": ["array", "null"],
           "items": {
-            "$ref": "./CommonPhysicalAddress.json"
+            "$ref": "../../common/1.14.0/CommonPhysicalAddress.json"
           }
         }
       }

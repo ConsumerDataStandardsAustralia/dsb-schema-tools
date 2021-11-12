@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
   "required": [
     "to"
@@ -8,10 +9,10 @@
   ],
   "properties": {
     "to": {
-      "$ref": "#/definitions/BankingScheduledPaymentTo"
+      "$ref": "./BankingScheduledPaymentTo.json"
     },
     "isAmountCalculated": {
-      "type": "boolean",
+      "type": ["boolean", "null"],
       "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
       "x-cds-type": "Boolean"
     },
@@ -21,7 +22,7 @@
       "x-cds-type": "AmountString"
     },
     "currency": {
-      "type": "string",
+      "type": ["string","null"],
       "description": "The currency for the payment. AUD assumed if not present",
       "x-cds-type": "CurrencyString"
     }

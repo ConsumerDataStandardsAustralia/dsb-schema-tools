@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "#/definitions/CommonPerson"
+      "$ref": "./CommonPerson.json"
     },
     {
       "type": "object",
