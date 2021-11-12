@@ -37,10 +37,10 @@
       }
     },
     "links": {
-      "$ref": "#/components/schemas/LinksPaginated"
+      "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "#/components/schemas/MetaPaginated"
+      "$ref": "MetaPaginated.json"
     }
   }
 }

@@ -7,13 +7,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "#/components/schemas/EnergyAccountDetail"
+      "$ref": "EnergyAccountDetail.json"
     },
     "links": {
-      "$ref": "#/components/schemas/Links"
+      "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "#/components/schemas/Meta"
+      "$ref": "Meta.json"
     }
   }
 }

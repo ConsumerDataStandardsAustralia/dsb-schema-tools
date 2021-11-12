@@ -16,16 +16,16 @@
           "description": "Array of meter reads",
           "type": "array",
           "items": {
-            "$ref": "#/components/schemas/EnergyUsageRead"
+            "$ref": "EnergyUsageRead.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "#/components/schemas/LinksPaginated"
+      "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "#/components/schemas/MetaPaginated"
+      "$ref": "MetaPaginated.json"
     }
   }
 }

@@ -16,16 +16,16 @@
           "description": "Array of invoices sorted by date in descending order",
           "type": "array",
           "items": {
-            "$ref": "#/components/schemas/EnergyInvoice"
+            "$ref": "EnergyInvoice.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "#/components/schemas/LinksPaginated"
+      "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "#/components/schemas/MetaPaginated"
+      "$ref": "MetaPaginated.json"
     }
   }
 }

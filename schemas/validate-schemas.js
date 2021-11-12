@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 
 
-const directoryPath = path.join(__dirname, 'banking/1.14.0');
+const directoryPath = path.join(__dirname, 'energy/1.14.0');
 const commonDirectoryPath = path.join(__dirname, 'common/1.14.0');
 
 var dsbSchemas = [];
@@ -49,6 +49,7 @@ fs.readdir(directoryPath, function (err, files) {
         console.log('Processing file: ' + filePath);
         var data = JSON.parse(fs.readFileSync(filePath));
         var ajv = new Ajv({strictSchema: false}); 
+        
         var validate = ajv.addSchema(dsbSchemas)
         validate.compile(data);      
       });
