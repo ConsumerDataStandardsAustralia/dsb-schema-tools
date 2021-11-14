@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "Maximum record transactions per second over time",
   "x-conditional": [
     "currentDay",

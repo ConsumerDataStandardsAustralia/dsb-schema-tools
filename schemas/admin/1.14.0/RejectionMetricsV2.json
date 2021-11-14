@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "Number of calls rejected due to traffic thresholds over time",
   "required": [
     "authenticated",
@@ -6,6 +7,7 @@
   ],
   "properties": {
     "authenticated": {
+      "type": "object",
       "description": "Rejection counts for all authenticated end points",
       "x-conditional": [
         "currentDay",
@@ -26,7 +28,8 @@
       }
     },
     "unauthenticated": {
-      "description": "Rejection counts for all uauthenticated end points",
+      "type": "object",
+      "description": "Rejection counts for all unauthenticated end points",
       "x-conditional": [
         "currentDay",
         "previousDays"

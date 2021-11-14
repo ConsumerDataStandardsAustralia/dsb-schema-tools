@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "Transactions per second over time",
   "x-conditional": [
     "currentDay",

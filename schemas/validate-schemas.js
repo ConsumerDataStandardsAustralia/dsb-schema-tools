@@ -2,9 +2,11 @@ const Ajv = require("ajv")
 var fs = require('fs');
 var path = require('path');
 
+const sector = 'admin';
+const version = '1.14.0';
 
-const directoryPath = path.join(__dirname, 'energy/1.14.0');
-const commonDirectoryPath = path.join(__dirname, 'common/1.14.0');
+const directoryPath = path.join(__dirname, sector + '/' + version);
+const commonDirectoryPath = path.join(__dirname, 'common/'+ version);
 
 var dsbSchemas = [];
 fs.readdir(directoryPath, function (err, files) {

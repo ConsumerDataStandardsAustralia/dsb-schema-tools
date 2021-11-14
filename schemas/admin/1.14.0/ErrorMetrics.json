@@ -1,4 +1,5 @@
 {
+  "type": "object",
   "description": "Number of calls resulting in error due to server execution over time",
   "x-conditional": [
     "currentDay",
