@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 const addFormats = require("ajv-formats")
 
-const sector = 'dcr';
+const sector = 'banking';
 const version = '1.14.0';
 
 const directoryPath = path.join(__dirname, sector + '/' + version);
