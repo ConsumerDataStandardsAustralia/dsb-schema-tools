@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "BankingPayee.json"
+      "$ref": "BankingPayee"
     },
     {
       "type": "object",
@@ -24,13 +24,13 @@
           ]
         },
         "domestic": {
-          "$ref": "BankingDomesticPayee.json"
+          "$ref": "BankingDomesticPayee"
         },
         "biller": {
-          "$ref": "BankingBillerPayee.json"
+          "$ref": "BankingBillerPayee"
         },
         "international": {
-          "$ref": "BankingInternationalPayee.json"
+          "$ref": "BankingInternationalPayee"
         }
       }
     }

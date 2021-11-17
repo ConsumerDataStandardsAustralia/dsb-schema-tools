@@ -6,13 +6,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "BankingTransactionDetail.json"
+      "$ref": "BankingTransactionDetail"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   }
 }

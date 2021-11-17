@@ -6,6 +6,8 @@ const addFormats = require("ajv-formats")
 const sector = 'banking';
 const version = '1.14.0';
 
+
+
 const directoryPath = path.join(__dirname, sector + '/' + version);
 const commonDirectoryPath = path.join(__dirname, 'common/'+ version);
 

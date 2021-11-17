@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "BankingTransaction.json"
+      "$ref": "BankingTransaction"
     },
     {
       "type": "object",

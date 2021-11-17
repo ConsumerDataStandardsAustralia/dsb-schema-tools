@@ -15,16 +15,16 @@
         "transactions": {
           "type": "array",
           "items": {
-            "$ref": "BankingTransaction.json"
+            "$ref": "BankingTransaction"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   }
 }

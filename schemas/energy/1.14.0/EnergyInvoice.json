@@ -102,14 +102,14 @@
     },
     "gas": {
       "description": "Object containing charges and credits related to gas usage",
-      "$ref": "EnergyInvoiceGasUsageCharges.json"
+      "$ref": "EnergyInvoiceGasUsageCharges"
     },
     "electricity": {
       "description": "Object containing charges and credits related to electricity usage",
-      "$ref": "EnergyInvoiceElectricityUsageCharges.json"
+      "$ref": "EnergyInvoiceElectricityUsageCharges"
     },
     "accountCharges": {
-      "$ref": "EnergyInvoiceAccountCharges.json"
+      "$ref": "EnergyInvoiceAccountCharges"
     },
     "paymentStatus": {
       "description": "Indicator of the payment status for the invoice",

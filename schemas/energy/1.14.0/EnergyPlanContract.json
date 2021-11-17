@@ -78,28 +78,28 @@
       }
     },
     "controlledLoad": {
-      "$ref": "EnergyPlanControlledLoad.json"
+      "$ref": "EnergyPlanControlledLoad"
     },
     "incentives": {
-      "$ref": "EnergyPlanIncentives.json"
+      "$ref": "EnergyPlanIncentives"
     },
     "discounts": {
-      "$ref": "EnergyPlanDiscounts.json"
+      "$ref": "EnergyPlanDiscounts"
     },
     "greenPowerCharges": {
-      "$ref": "EnergyPlanGreenPowerCharges.json"
+      "$ref": "EnergyPlanGreenPowerCharges"
     },
     "eligibility": {
-      "$ref": "EnergyPlanEligibility.json"
+      "$ref": "EnergyPlanEligibility"
     },
     "fees": {
-      "$ref": "EnergyPlanFees.json"
+      "$ref": "EnergyPlanFees"
     },
     "solarFeedInTariff": {
-      "$ref": "EnergyPlanSolarFeedInTariff.json"
+      "$ref": "EnergyPlanSolarFeedInTariff"
     },
     "tariffPeriod": {
-      "$ref": "EnergyPlanTariffPeriod.json"
+      "$ref": "EnergyPlanTariffPeriod"
     }
   }
 }

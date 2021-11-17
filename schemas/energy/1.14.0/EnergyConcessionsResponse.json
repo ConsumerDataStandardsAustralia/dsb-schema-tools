@@ -16,16 +16,16 @@
           "description": "Array may be empty if no concessions exist",
           "type": "array",
           "items": {
-            "$ref": "EnergyConcession.json"
+            "$ref": "EnergyConcession"
           }
         }
       }
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   }
 }

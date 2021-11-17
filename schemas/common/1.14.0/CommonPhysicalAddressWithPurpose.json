@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "CommonPhysicalAddressWithPurpose.json"
+      "$ref": "CommonPhysicalAddress"
     },
     {
       "type": "object",

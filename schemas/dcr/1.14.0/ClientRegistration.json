@@ -40,7 +40,7 @@
       }
     },
     {
-      "$ref": "RegistrationProperties.json"
+      "$ref": "RegistrationProperties"
     }
   ]
 }

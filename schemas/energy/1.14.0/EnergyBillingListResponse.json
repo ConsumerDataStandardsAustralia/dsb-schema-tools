@@ -16,16 +16,16 @@
           "description": "Array of transactions sorted by date and time in descending order",
           "type": "array",
           "items": {
-            "$ref": "EnergyBillingTransaction.json"
+            "$ref": "EnergyBillingTransaction"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   }
 }

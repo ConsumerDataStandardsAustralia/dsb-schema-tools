@@ -38,23 +38,23 @@
     },
     "usage": {
       "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
-      "$ref": "EnergyBillingUsageTransaction.json"
+      "$ref": "EnergyBillingUsageTransaction"
     },
     "demand": {
       "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand",
-      "$ref": "EnergyBillingDemandTransaction.json"
+      "$ref": "EnergyBillingDemandTransaction"
     },
     "onceOff": {
       "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
-      "$ref": "EnergyBillingOnceOffTransaction.json"
+      "$ref": "EnergyBillingOnceOffTransaction"
     },
     "otherCharges": {
       "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge",
-      "$ref": "EnergyBillingOtherTransaction.json"
+      "$ref": "EnergyBillingOtherTransaction"
     },
     "payment": {
       "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment",
-      "$ref": "EnergyBillingPaymentTransaction.json"
+      "$ref": "EnergyBillingPaymentTransaction"
     }
   }
 }

@@ -27,16 +27,16 @@
       ]
     },
     "onceOff": {
-      "$ref": "BankingScheduledPaymentRecurrenceOnceOff.json"
+      "$ref": "BankingScheduledPaymentRecurrenceOnceOff"
     },
     "intervalSchedule": {
-      "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule.json"
+      "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule"
     },
     "lastWeekDay": {
-      "$ref": "BankingScheduledPaymentRecurrenceLastWeekday.json"
+      "$ref": "BankingScheduledPaymentRecurrenceLastWeekday"
     },
     "eventBased": {
-      "$ref": "BankingScheduledPaymentRecurrenceEventBased.json"
+      "$ref": "BankingScheduledPaymentRecurrenceEventBased"
     }
   }
 }

@@ -31,31 +31,31 @@
           "x-cds-type": "DateTimeString"
         },
         "availability": {
-          "$ref": "AvailabilityMetrics.json"
+          "$ref": "AvailabilityMetrics"
         },
         "performance": {
-          "$ref": "PerformanceMetrics.json"
+          "$ref": "PerformanceMetrics"
         },
         "invocations": {
-          "$ref": "InvocationMetricsV2.json"
+          "$ref": "InvocationMetricsV2"
         },
         "averageResponse": {
-          "$ref": "AverageResponseMetricsV2.json"
+          "$ref": "AverageResponseMetricsV2"
         },
         "sessionCount": {
-          "$ref": "SessionCountMetrics.json"
+          "$ref": "SessionCountMetrics"
         },
         "averageTps": {
-          "$ref": "AverageTPSMetrics.json"
+          "$ref": "AverageTPSMetrics"
         },
         "peakTps": {
-          "$ref": "PeakTPSMetrics.json"
+          "$ref": "PeakTPSMetrics"
         },
         "errors": {
-          "$ref": "ErrorMetrics.json"
+          "$ref": "ErrorMetrics"
         },
         "rejections": {
-          "$ref": "RejectionMetricsV2.json"
+          "$ref": "RejectionMetricsV2"
         },
         "customerCount": {
           "type": "integer",
@@ -66,15 +66,15 @@
           "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
         },
         "secondaryHolder": {
-          "$ref": "SecondaryHolderMetrics.json"
+          "$ref": "SecondaryHolderMetrics"
         }
       }
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   }
 }

@@ -40,7 +40,7 @@
       "description": "Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards",
       "type": ["array", "null"],
       "items": {
-        "$ref": "BankingBalancePurse.json"
+        "$ref": "BankingBalancePurse"
       }
     }
   }

@@ -2,20 +2,27 @@
 var fs = require('fs');
 var path = require('path');
 
-const sector = 'admin';
+const sectors = ['banking', 'energy', 'admin', 'dcr', 'common'];
 const version = '1.14.0';
 
-const directoryPath = path.join(__dirname,  'schemas/' +  sector + "/" +  version);
-const commonDirectoryPath = path.join(__dirname, 'schemas/common/'+ version);
+//var directories = [];
+// sectors.forEach(sector => {
+  
+//   directories.push(element);
+// });
 
+//const commonDirectoryPath = path.join(__dirname, 'schemas/common/'+ version);
 
-var stream = fs.createWriteStream(__dirname + "/postman/" + sector + "/postman-" + sector + "-" + version + ".json");
+//var stream = fs.createWriteStream(__dirname + "/postman/" + sector + "/postman-validation-" + sector + "-" + version + ".json");
 
-var directories = [directoryPath, commonDirectoryPath];
-var cnt = 0;
-var isFirst = true;
-var dirCnt = 0;
-directories.forEach(directoryPath => {
+//var directories = [directoryPath, commonDirectoryPath];
+const baseUrl = "https://fancyPancy/";
+sectors.forEach(sector => {
+  const directoryPath = path.join(__dirname,  'schemas/' +  sector + "/" +  version);
+  var stream = fs.createWriteStream(__dirname + "/postman/" + sector + "/postman-validation-" + sector + "-" + version + ".json");
+  var cnt = 0;
+  var isFirst = true;
+  var dirCnt = 0;
   fs.readdir(directoryPath, function (err, files) {
     //handling error
     if (err) {
@@ -32,19 +39,21 @@ directories.forEach(directoryPath => {
         isFirst = false;
         stream.write('{');
       }
+            
       var data = JSON.parse(fs.readFileSync(filePath));
-      // var objToWrite = { file: data };
       var fileName = file.substr(0, file.indexOf('.'));
+     // data.$id =  fileName;
       stream.write('"' + fileName + '" :')
       stream.write(JSON.stringify(data));
-      console.log("Processed " + file);   
+      console.log("Processed " + file);  
+    
+      if (cnt == files.length) {
+        stream.write('}');
+        stream.end();
+        console.log("All done");
+      } 
     });
-    dirCnt++;
-    if (dirCnt == directories.length) {
-      stream.write('}');
-      stream.end();
-      console.log("All done");
-    }
+
   });
 })
 

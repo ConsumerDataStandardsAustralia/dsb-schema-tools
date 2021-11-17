@@ -16,16 +16,16 @@
           "description": "Array of plans",
           "type": "array",
           "items": {
-            "$ref": "EnergyPlan.json"
+            "$ref": "EnergyPlan"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   }
 }
