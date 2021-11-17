@@ -5,18 +5,6 @@ var path = require('path');
 const sectors = ['banking', 'energy', 'admin', 'dcr', 'common'];
 const version = '1.14.0';
 
-//var directories = [];
-// sectors.forEach(sector => {
-  
-//   directories.push(element);
-// });
-
-//const commonDirectoryPath = path.join(__dirname, 'schemas/common/'+ version);
-
-//var stream = fs.createWriteStream(__dirname + "/postman/" + sector + "/postman-validation-" + sector + "-" + version + ".json");
-
-//var directories = [directoryPath, commonDirectoryPath];
-const baseUrl = "https://fancyPancy/";
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname,  'schemas/' +  sector + "/" +  version);
   var stream = fs.createWriteStream(__dirname + "/postman/" + sector + "/postman-validation-" + sector + "-" + version + ".json");
@@ -42,7 +30,7 @@ sectors.forEach(sector => {
             
       var data = JSON.parse(fs.readFileSync(filePath));
       var fileName = file.substr(0, file.indexOf('.'));
-     // data.$id =  fileName;
+      data.$id =  fileName;
       stream.write('"' + fileName + '" :')
       stream.write(JSON.stringify(data));
       console.log("Processed " + file);  
@@ -53,7 +41,6 @@ sectors.forEach(sector => {
         console.log("All done");
       } 
     });
-
   });
 })
 
