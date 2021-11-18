@@ -1,10 +1,11 @@
+// This routine is used to validate the set set files
+// Author: Tomas Schier
+
 const Ajv = require("ajv")
 var fs = require('fs');
 var path = require('path');
 const addFormats = require("ajv-formats")
 
-// const sector = 'energy';
-// const version = '1.14.0';
 
 const sectors = ['banking', 'energy', 'admin', 'dcr'];
 const version = '1.14.0';
@@ -55,6 +56,6 @@ sectors.forEach(sector => {
     });
     console.log("Validated " + sector);
   });
-  console.log("All done!")
+  console.log("All done for " + sector)
 });
 
