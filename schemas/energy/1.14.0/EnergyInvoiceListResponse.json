@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "invoices"
+      ],
+      "properties": {
+        "invoices": {
+          "description": "Array of invoices sorted by date in descending order",
+          "type": "array",
+          "items": {
+            "$ref": "EnergyInvoice"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  }
+}

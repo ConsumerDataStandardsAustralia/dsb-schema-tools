@@ -1,0 +1,15 @@
+{
+  "required": [
+    "softwareProducts"
+  ],
+  "type": "object",
+  "properties": {
+    "softwareProducts": {
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "SoftwareProductStatus"
+      }
+    }
+  }
+}

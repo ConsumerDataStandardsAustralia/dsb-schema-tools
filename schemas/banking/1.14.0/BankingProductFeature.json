@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "required": [
+    "featureType"
+  ],
+  "x-conditional": [
+    "additionalValue",
+    "additionalInfo"
+  ],
+  "properties": {
+    "featureType": {
+      "type": "string",
+      "description": "The type of feature described",
+      "enum": [
+        "ADDITIONAL_CARDS",
+        "BALANCE_TRANSFERS",
+        "BILL_PAYMENT",
+        "BONUS_REWARDS",
+        "CARD_ACCESS",
+        "COMPLEMENTARY_PRODUCT_DISCOUNTS",
+        "DIGITAL_BANKING",
+        "DIGITAL_WALLET",
+        "DONATE_INTEREST",
+        "FREE_TXNS",
+        "FREE_TXNS_ALLOWANCE",
+        "INSURANCE",
+        "INTEREST_FREE",
+        "INTEREST_FREE_TRANSFERS",
+        "LOYALTY_PROGRAM",
+        "NOTIFICATIONS",
+        "NPP_ENABLED",
+        "NPP_PAYID",
+        "OFFSET",
+        "OTHER",
+        "OVERDRAFT",
+        "REDRAW",
+        "UNLIMITED_TXNS"
+      ]
+    },
+    "additionalValue": {
+      "type": "string",
+      "description": "Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)"
+    },
+    "additionalInfo": {
+      "type": "string",
+      "description": "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER"
+    },
+    "additionalInfoUri": {
+      "type": ["string","null"],
+      "description": "Link to a web page with more information on this feature",
+      "x-cds-type": "URIString"
+    }
+  }
+}

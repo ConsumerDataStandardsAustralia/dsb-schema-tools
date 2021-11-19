@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "required": [
+    "displayName"
+  ],
+  "x-conditional": [
+    "dailyDiscount",
+    "monthlyDiscount",
+    "yearlyDiscount",
+    "percentageDiscount"
+  ],
+  "properties": {
+    "displayName": {
+      "description": "The display name of the concession",
+      "type": "string"
+    },
+    "additionalInfo": {
+      "description": "Display text providing more information on the concession",
+      "type": "string"
+    },
+    "additionalInfoUri": {
+      "description": "Optional link to additional information regarding the concession",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "startDate": {
+      "description": "Optional start date for the application of the concession",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "endDate": {
+      "description": "Optional end date for the application of the concession",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "dailyDiscount": {
+      "description": "Daily discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "monthlyDiscount": {
+      "description": "Monthly discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "yearlyDiscount": {
+      "description": "Annual discount value due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "percentageDiscount": {
+      "description": "Percentage of each invoice to be discounted due to the concession.  At least one dailyDiscount, monthlyDiscount, yearlyDiscount and percentageDiscount must be provided",
+      "type": "string",
+      "x-cds-type": "RateString"
+    }
+  }
+}

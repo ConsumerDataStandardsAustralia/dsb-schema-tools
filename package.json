@@ -9,5 +9,8 @@
   "license": "MIT",
   "devDependencies": {
     "ajv": "^8.6.3"
+  },
+  "dependencies": {
+    "ajv-formats": "^2.1.1"
   }
 }
