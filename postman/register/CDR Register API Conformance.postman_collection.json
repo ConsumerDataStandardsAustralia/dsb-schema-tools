@@ -1589,13 +1589,13 @@
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
 					"",
-					"    // var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/register/postman-validation-register-\" + version + \".json\";",
-					"    // var urlCommonSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/common/postman-validation-common-\" + version + \".json\";    ",
-					"    var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/postman/register/postman-validation-register-1.14.0.json\";",
-					"    var urlCommonSchemaValidationFileDirectory = \"http://localhost:8080/postman/common/postman-validation-common-1.14.0.json\";",
+					"    var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/postman/register/postman-validation-register-\" + version + \".json\";",
+					"    var urlCommonSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/postman/common/postman-validation-common-\" + version + \".json\";    ",
+					"    // var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/postman/register/postman-validation-register-1.14.0.json\";",
+					"    // var urlCommonSchemaValidationFileDirectory = \"http://localhost:8080/postman/common/postman-validation-common-1.14.0.json\";",
 					"",
 					"    pm.sendRequest(urlRegisterSchemaValidationFileDirectory, (error, responseRegister) => {",
-					"        console.log(\"Reading schema files for register....\"); ",
+					"        //console.log(\"Reading schema files for register....\"); ",
 					"        if (error) {",
 					"            console.log('Getting schema returned: ' + error);",
 					"        } else {",
@@ -1618,8 +1618,8 @@
 					"                        ",
 					"                    }",
 					"                }",
-					"                console.log(\"Register schema contains \" + registerSchemaCount + \" entries\") ;",
-					"                console.log(\"Added \" + registerSchemaAdded + \" schemas from Register\"); ",
+					"                //console.log(\"Register schema contains \" + registerSchemaCount + \" entries\") ;",
+					"                //console.log(\"Added \" + registerSchemaAdded + \" schemas from Register\"); ",
 					"            } catch(e) {",
 					"                console.log(\"Exception :\" + JSON.stringify(e));",
 					"            }",
@@ -1628,7 +1628,7 @@
 					"    }); ",
 					"",
 					"    pm.sendRequest(urlCommonSchemaValidationFileDirectory, (error, responseCommon) => {",
-					"        console.log(\"Reading schema files for Common....\"); ",
+					"        //console.log(\"Reading schema files for Common....\"); ",
 					"        if (error) {",
 					"            console.log('Getting schema returned: ' + error);",
 					"        } else {",
@@ -1651,8 +1651,8 @@
 					"                        ",
 					"                    }",
 					"                }",
-					"                console.log(\"Common schema contains \" + commonSchemaCount + \" entries\") ;",
-					"                console.log(\"Added \" + commonSchemaAdded + \" schemas from Common\"); ",
+					"                //console.log(\"Common schema contains \" + commonSchemaCount + \" entries\") ;",
+					"                //console.log(\"Added \" + commonSchemaAdded + \" schemas from Common\"); ",
 					"            } catch(e) {}",
 					"            pm.collectionVariables.set(\"GlobalCommonSchema\", schemaCommon);        ",
 					"        }",
@@ -1747,6 +1747,10 @@
 		{
 			"key": "GlobalCommonSchema",
 			"value": ""
+		},
+		{
+			"key": "version",
+			"value": "1.14.0"
 		}
 	]
 }
