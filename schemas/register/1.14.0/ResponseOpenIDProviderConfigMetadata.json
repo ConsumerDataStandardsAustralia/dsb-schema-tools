@@ -12,8 +12,7 @@
     "response_types_supported",
     "grant_types_supported",
     "token_endpoint_auth_methods_supported",
-    "tls_client_certificate_bound_access_tokens",
-    "request_object_signing_alg_values_supported"
+    "tls_client_certificate_bound_access_tokens"
   ],
   "type": "object",
   "properties": {
