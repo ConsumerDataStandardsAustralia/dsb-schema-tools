@@ -22,7 +22,7 @@
 											"bearer": [
 												{
 													"key": "token",
-													"value": "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",
+													"value": "{{accessToken}}",
 													"type": "string"
 												}
 											]
@@ -1051,7 +1051,14 @@
 					"name": "Get Data Holder Brands",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJQUzI1NiIsImtpZCI6IjczQUVGQ0FGODA3NjUyQTQ2RTMzMTZEQjQ3RTkwNUU3QjcyNjUyQjIiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJjNjc4cjRCMlVxUnVNeGJiUi1rRjU3Y21VckkifQ.eyJuYmYiOjE2MzgzMDIzMTgsImV4cCI6MTYzODMzMjMxOCwiaXNzIjoiaHR0cHM6Ly9tb2NrLWRhdGEtaG9sZGVyOjgwMDEiLCJhdWQiOiJjZHMtYXUiLCJjbGllbnRfaWQiOiJiMzYyMTE1MC1jZGYyLTQzY2QtOTNkMC03ZjE1ZTZlNzc1M2YiLCJhdXRoX3RpbWUiOjE2MzgzMDIzMTcsImlkcCI6ImxvY2FsIiwic2hhcmluZ19leHBpcmVzX2F0IjowLCJjZHJfYXJyYW5nZW1lbnRfaWQiOiI5MzcwZjI0Yy04OGYxLTQ0MWMtYTViNi1kYWE0YTkyMzhkNGMiLCJqdGkiOiJYWHVmSk1QdGtoNzcyWERFand0anJBIiwic29mdHdhcmVfaWQiOiJjNjMyN2Y4Ny02ODdhLTQzNjktOTlhNC1lYWFjZDNiYjgyMTAiLCJzZWN0b3JfaWRlbnRpZmllcl91cmkiOiJtb2NrLWRhdGEtcmVjaXBpZW50IiwiYWNjb3VudF9pZCI6ImFwOTYyWDdSNllmQkFJTGVBbWViVzV6SFNYT2xOJTJGUmV5NkVGUHAwd2lpSjl0K2tkSFBNNVlCSmRLS1UyZjUraiIsInN1YiI6InBCYVNVMEJsekpQNS85MjVwdFdkcjJ3dHYzdWNBQ3RqcTFFVW9oejR1VFdteGxtUlpTWXIrcEkzdjV2OXJ4d3kiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYmFuazphY2NvdW50cy5iYXNpYzpyZWFkIiwiYmFuazp0cmFuc2FjdGlvbnM6cmVhZCIsImNvbW1vbjpjdXN0b21lci5iYXNpYzpyZWFkIiwiYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCJdLCJhbXIiOlsicHdkIl0sImNuZiI6eyJ4NXQjUzI1NiI6IjU4RDc2RjdBNjFDRDcyNkRBMUM1NEY2ODk4RThFNjlFQTRDODgwNjAifX0.BYWBxjXb2Ise1juOQprJvLfLjRiRMH_vLn_O4pFpzf7-HVlSVydONmvNm72m_JyyR2yINXVgvg1MvYf8eEHX7SGc-cK31KQd3TpwGKQGCZc-CIDntJQ4_C3l1ccnyJQflc1RjYu_A1QyBzU_T9IZ_2jYDYkVsHoQxUzFcswa2xNDziukhyQfLcEuDIa3OvM9lCeZ_6wKCC3JR4MbOerU2cuFC3vQOhI1x7WEzOJpEz-sDQp13EImW3a8dEMlKycMxLBAxZgB37fFGOwC8L8IHuWBLUIS2d49EuThgQ3CrFr0tmtQXWlAKdtDOjGNMFgaa9vNg91DZGGlnjyo-2ObAg",
+									"type": "string"
+								}
+							]
 						},
 						"method": "GET",
 						"header": [
@@ -1351,15 +1358,6 @@
 							"            pm.response.to.have.status(200);\r",
 							"        });\r",
 							"\r",
-							"        pm.test(\"Content-Type header specifies json\", function () {\r",
-							"            pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-							"        });\r",
-							"\r",
-							"        pm.test(\"x-v header is present and has correct value\", function () {\r",
-							"            var responseXv = parseInt(pm.response.headers.get(\"x-v\"));\r",
-							"            pm.expect(responseXv).gte(0);\r",
-							"        });\r",
-							"\r",
 							"        // Schema payload check\r",
 							"        pm.test('Response payload conforms to standards schema', function() {\r",
 							"            const valid = ajv.validate(\"ResponseOpenIDProviderConfigMetadata\", jsonData)\r",
@@ -1442,15 +1440,6 @@
 							"            pm.response.to.have.status(200);\r",
 							"        });\r",
 							"\r",
-							"        pm.test(\"Content-Type header specifies json\", function () {\r",
-							"            pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-							"        });\r",
-							"\r",
-							"        pm.test(\"x-v header is present and has correct value\", function () {\r",
-							"            var responseXv = parseInt(pm.response.headers.get(\"x-v\"));\r",
-							"            pm.expect(responseXv).gte(0);\r",
-							"        });\r",
-							"\r",
 							"        // Schema payload check\r",
 							"        pm.test('Response payload conforms to standards schema', function() {\r",
 							"            const valid = ajv.validate(\"ResponseJWKS\", jsonData)\r",
@@ -1516,6 +1505,16 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJQUzI1NiIsImtpZCI6IjczQUVGQ0FGODA3NjUyQTQ2RTMzMTZEQjQ3RTkwNUU3QjcyNjUyQjIiLCJ0eXAiOiJhdCtqd3QiLCJ4NXQiOiJjNjc4cjRCMlVxUnVNeGJiUi1rRjU3Y21VckkifQ.eyJuYmYiOjE2Mzc4MjIyNTgsImV4cCI6MTYzNzgyMjU1OCwiaXNzIjoiaHR0cHM6Ly9tb2NrLWRhdGEtaG9sZGVyOjgwMDEiLCJhdWQiOiJjZHMtYXUiLCJjbGllbnRfaWQiOiJmNjlhYWIxMC00YmVlLTQ5MjAtYWMzNC1iNjBkZTBiMTlkODgiLCJhdXRoX3RpbWUiOjE2Mzc4MjIyNDksImlkcCI6ImxvY2FsIiwic2hhcmluZ19leHBpcmVzX2F0IjowLCJjZHJfYXJyYW5nZW1lbnRfaWQiOiJlNTNhZTM3Zi04NDllLTQ4NDYtODVkOC1kZDg5NjY1MmRjMDYiLCJqdGkiOiJjVEk2VEtsT211a05yM0tjRVlGWXZnIiwic29mdHdhcmVfaWQiOiJjNjMyN2Y4Ny02ODdhLTQzNjktOTlhNC1lYWFjZDNiYjgyMTAiLCJzZWN0b3JfaWRlbnRpZmllcl91cmkiOiJtb2NrLWRhdGEtcmVjaXBpZW50IiwiYWNjb3VudF9pZCI6ImFwOTYyWDdSNllmQkFJTGVBbWViVzV6SFNYT2xOJTJGUmV5NkVGUHAwd2lpSjl0K2tkSFBNNVlCSmRLS1UyZjUraiIsInN1YiI6InBCYVNVMEJsekpQNS85MjVwdFdkcjJ3dHYzdWNBQ3RqcTFFVW9oejR1VFdteGxtUlpTWXIrcEkzdjV2OXJ4d3kiLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwiYmFuazphY2NvdW50cy5iYXNpYzpyZWFkIiwiYmFuazp0cmFuc2FjdGlvbnM6cmVhZCIsImNvbW1vbjpjdXN0b21lci5iYXNpYzpyZWFkIiwiYmFuazphY2NvdW50cy5kZXRhaWw6cmVhZCJdLCJhbXIiOlsicHdkIl0sImNuZiI6eyJ4NXQjUzI1NiI6IjU4RDc2RjdBNjFDRDcyNkRBMUM1NEY2ODk4RThFNjlFQTRDODgwNjAifX0.R_YPRigpn-aI-jrjHYWVkwz4xxnJ0ntL6g2l3l7J_JvBYnt1T_WqR-e4Ft5e7LAqUBIGfeIvDlZVZX9ecM-8_POGDDyuZi0QwyFPHpk-2LtQSr-1_yPrJgwcZvM9EfXtAMq3fN15FYJOp9e9o5Vs3UtdgLUUkhevX36elDsm5ZYHNZMzFV7egpJyYAjQ3f9GzhOJfhSP8mYvEq03MJ7LCTCpMa3B2rndVJ-h8YVRMmpNfIFVg7nyUD6Se4ojY_Rh5QI2ckI9Q8SL6bNSJt9YSUZn1UOk-80HGMHMwLQsx__H5GzXqE7NEm8CdLgJVBI8emHmCMVYrzreCQuMvrr9rg",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
