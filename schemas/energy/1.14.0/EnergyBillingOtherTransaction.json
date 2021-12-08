@@ -7,11 +7,11 @@
   "properties": {
     "servicePointId": {
       "description": "The ID of the service point to which this transaction applies if any",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "invoiceNumber": {
       "description": "The number of the invoice in which this transaction is included if it has been issued",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "amount": {
       "description": "The amount of the charge",
