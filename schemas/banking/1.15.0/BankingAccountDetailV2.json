@@ -1,0 +1,113 @@
+{
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "BankingAccount"
+    },
+    {
+      "type": "object",
+      "x-conditional": [
+        "termDeposit",
+        "creditCard",
+        "loan"
+      ],
+      "properties": {
+        "bsb": {
+          "type": ["string", "null"],
+          "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "accountNumber": {
+          "type": ["string", "null"],
+          "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "bundleName": {
+          "type": ["string", "null"],
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
+        },
+        "specificAccountUType": {
+          "type": ["string", "null"],
+          "description": "The type of structure to present account specific fields.",
+          "enum": [
+            "creditCard",
+            "loan",
+            "termDeposit"
+          ]
+        },
+        "termDeposit": {
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "BankingTermDepositAccount"
+          }
+        },
+        "creditCard": {
+          "type": ["object", "null"],
+          "$ref": "BankingCreditCardAccount"
+        },
+        "loan": {
+          "type": ["object", "null"],
+          "$ref": "BankingLoanAccountV2"
+        },
+        "depositRate": {
+          "type": ["string", "null"],
+          "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "lendingRate": {
+          "type": ["string", "null"],
+          "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "depositRates": {
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "BankingProductDepositRate"
+          }
+        },
+        "lendingRates": {
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "BankingProductLendingRateV2"
+          }
+        },
+        "features": {
+          "description": "Array of features of the account based on the equivalent structure in Product Reference with the following additional field",
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "BankingProductFeatureV2"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "isActivated": {
+                    "type": ["boolean", "null"],
+                    "description": "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
+                    "x-cds-type": "Boolean",
+                    "default": true
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "fees": {
+          "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "BankingProductFee"
+          }
+        },
+        "addresses": {
+          "description": "The addresses for the account to be used for correspondence",
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "CommonPhysicalAddress"
+          }
+        }
+      }
+    }
+  ]
+}

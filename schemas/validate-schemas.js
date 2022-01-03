@@ -7,8 +7,8 @@ var path = require('path');
 const addFormats = require("ajv-formats")
 
 
-const sectors = ['banking', 'energy', 'admin', 'dcr'];
-const version = '1.14.0';
+const sectors = ['banking'];
+const version = '1.15.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, sector + '/' + version);
