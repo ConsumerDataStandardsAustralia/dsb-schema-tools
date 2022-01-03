@@ -1,0 +1,26 @@
+{
+  "required": [
+    "code",
+    "title",
+    "detail"
+  ],
+  "type": "object",
+  "properties": {
+    "code": {
+      "description": "Error code",
+      "type": "string"
+    },
+    "title": {
+      "description": "Error title",
+      "type": "string"
+    },
+    "detail": {
+      "description": "Error detail",
+      "type": "string"
+    },
+    "meta": {
+      "description": "Optional additional data for specific error types",
+      "type": "object"
+    }
+  }
+}

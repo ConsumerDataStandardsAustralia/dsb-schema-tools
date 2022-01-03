@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "balance"
+      ],
+      "properties": {
+        "balance": {
+          "description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
+          "type": "string",
+          "x-cds-type": "AmountString"
+        }
+      }
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  }
+}

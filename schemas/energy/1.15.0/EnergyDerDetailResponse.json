@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "$ref": "EnergyDerRecord"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  }
+}

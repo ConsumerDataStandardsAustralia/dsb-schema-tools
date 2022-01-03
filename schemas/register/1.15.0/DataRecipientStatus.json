@@ -1,0 +1,23 @@
+{
+  "required": [
+    "dataRecipientId",
+    "dataRecipientStatus"
+  ],
+  "type": "object",
+  "properties": {
+    "dataRecipientId": {
+      "description": "Unique id of the Data Recipient issued by the CDR Register",
+      "type": "string"
+    },
+    "dataRecipientStatus": {
+      "description": "Data Recipient status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED",
+        "SURRENDERED"
+      ],
+      "type": "string"
+    }
+  }
+}

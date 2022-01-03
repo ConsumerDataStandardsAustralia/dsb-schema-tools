@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "transactions"
+      ],
+      "properties": {
+        "transactions": {
+          "description": "Array of transactions sorted by date and time in descending order",
+          "type": "array",
+          "items": {
+            "$ref": "EnergyBillingTransaction"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  }
+}

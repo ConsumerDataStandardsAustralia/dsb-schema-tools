@@ -1,0 +1,15 @@
+{
+  "required": [
+    "errors"
+  ],
+  "type": "object",
+  "properties": {
+    "errors": {
+      "uniqueItems": false,
+      "type": "array",
+      "items": {
+        "$ref": "Error"
+      }
+    }
+  }
+}
