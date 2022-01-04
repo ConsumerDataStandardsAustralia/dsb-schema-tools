@@ -7,7 +7,7 @@ var path = require('path');
 const addFormats = require("ajv-formats")
 
 
-const sectors = ['banking'];
+const sectors = ['banking', 'energy','register', 'admin', 'dcr'];
 const version = '1.15.0';
 
 sectors.forEach(sector => {

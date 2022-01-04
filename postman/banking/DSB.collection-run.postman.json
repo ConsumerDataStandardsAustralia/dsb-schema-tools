@@ -22,6 +22,6 @@
         "pageSizePayees": 2,
         "pageSizeScheduledPayments": 2,
         "pageSizeProducts": 2,
-        "version": "1.11.0"
+        "version": "1.15.0"
     }
 ]
