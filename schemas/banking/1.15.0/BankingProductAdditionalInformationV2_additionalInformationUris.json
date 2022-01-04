@@ -5,7 +5,7 @@
   ],
   "properties": {
     "description": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Display text providing more information about the document URI"
     },
     "additionalInfoUri": {
