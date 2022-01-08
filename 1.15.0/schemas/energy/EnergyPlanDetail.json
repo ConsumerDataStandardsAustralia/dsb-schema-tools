@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "#/components/schemas/EnergyPlan"
+      "$ref": "EnergyPlan.json"
     },
     {
       "type": "object",
@@ -48,11 +48,11 @@
         },
         "gasContract": {
           "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-          "$ref": "#/components/schemas/EnergyPlanContractFull"
+          "$ref": "EnergyPlanContractFull.json"
         },
         "electricityContract": {
           "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-          "$ref": "#/components/schemas/EnergyPlanContractFull"
+          "$ref": "EnergyPlanContractFull.json"
         }
       }
     }

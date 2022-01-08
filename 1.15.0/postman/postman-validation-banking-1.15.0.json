@@ -927,7 +927,6 @@
             },
             {
                 "type": "object",
-                "required": ["bsb"],
                 "x-conditional": [
                     "termDeposit",
                     "creditCard",
@@ -935,7 +934,10 @@
                 ],
                 "properties": {
                     "bsb": {
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
                     },
                     "accountNumber": {

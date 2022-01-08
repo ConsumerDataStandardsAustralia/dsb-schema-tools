@@ -20,10 +20,10 @@
       }
     },
     "links": {
-      "$ref": "#/components/schemas/Links"
+      "$ref": "../common/Links.json"
     },
     "meta": {
-      "$ref": "#/components/schemas/Meta"
+      "$ref": "../common/Meta.json"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "#/components/schemas/EnergyPlanContract"
+      "$ref": "EnergyPlanContract.json"
     },
     {
       "type": "object",
