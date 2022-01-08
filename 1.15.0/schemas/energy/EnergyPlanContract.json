@@ -13,7 +13,7 @@
   ],
   "properties": {
     "additionalFeeInformation": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Free text field containing additional information of the fees for this contract"
     },
     "pricingModel": {
@@ -30,7 +30,7 @@
       ]
     },
     "timeZone": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds",
       "enum": [
         "LOCAL",
@@ -42,11 +42,11 @@
       "description": "Flag indicating whether prices are fixed or variable"
     },
     "variation": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true"
     },
     "onExpiryDescription": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period"
     },
     "paymentOption": {
@@ -65,7 +65,7 @@
     },
     "intrinsicGreenPower": {
       "description": "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
-      "type": "object",
+      "type": ["object", "null"],
       "required": [
         "greenPercentage"
       ],
@@ -78,27 +78,35 @@
       }
     },
     "controlledLoad": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanControlledLoad.json"
     },
     "incentives": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanIncentives.json"
     },
     "discounts": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanDiscounts.json"
     },
     "greenPowerCharges": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanGreenPowerCharges.json"
     },
     "eligibility": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanEligibility.json"
     },
     "fees": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanFees.json"
     },
     "solarFeedInTariff": {
+      "type": ["object", "null"],
       "$ref": "EnergyPlanSolarFeedInTariff.json"
     },
     "tariffPeriod": {
+      "type": "object",
       "$ref": "EnergyPlanTariffPeriod.json"
     }
   }

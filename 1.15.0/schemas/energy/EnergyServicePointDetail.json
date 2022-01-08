@@ -61,7 +61,7 @@
       ]
     },
     "isGenerator": {
-      "type": "boolean",
+      "type": ["boolean", "null"],
       "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer"
     },
     "validFromDate": {
@@ -75,7 +75,7 @@
       "description": "The date and time that the information for this service point was modified"
     },
     "consumerProfile": {
-      "type": "object",
+      "type": ["object", "null"],
       "properties": {
         "classification": {
           "type": "string",

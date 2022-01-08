@@ -10,11 +10,11 @@
   "properties": {
     "servicePointId": {
       "description": "The ID of the service point to which this transaction applies if any",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "invoiceNumber": {
       "description": "The number of the invoice in which this transaction is included if it has been issued",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "timeOfUseType": {
       "description": "The time of use type that the transaction applies to",
@@ -33,11 +33,11 @@
     },
     "description": {
       "description": "Optional description of the transaction that can be used for display purposes",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "isEstimate": {
       "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
-      "type": "boolean"
+      "type": ["boolean", "null"]
     },
     "startDate": {
       "description": "Date and time when the demand period starts",
@@ -60,7 +60,7 @@
     },
     "calculationFactors": {
       "description": "Additional calculation factors that inform the transaction",
-      "type": "array",
+      "type": ["array", "null"],
       "items": {
         "type": "object",
         "required": [
@@ -85,7 +85,7 @@
     },
     "adjustments": {
       "description": "Optional array of adjustments arising for this transaction",
-      "type": "array",
+      "type": ["array", "null"],
       "items": {
         "type": "object",
         "required": [

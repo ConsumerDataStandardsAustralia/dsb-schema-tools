@@ -13,7 +13,7 @@
       "description": "A display name for the controlled load tier"
     },
     "description": {
-      "type": "string",
+      "type": ["string", "null"],
       "description": "A description of the controlled load tier"
     },
     "dailyCharge": {
@@ -41,7 +41,7 @@
             "description": "Unit price of usage per kWh (exclusive of GST)"
           },
           "volume": {
-            "type": "number",
+            "type": ["number", "null"],
             "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period"
           }
         }

@@ -40,7 +40,7 @@
         "description": "Information of the eligibility restriction specific to the type of the restriction"
       },
       "description": {
-        "type": "string",
+        "type": ["string", "null"],
         "description": "A description of the eligibility restriction"
       }
     }

@@ -22,7 +22,7 @@
     },
     "gst": {
       "description": "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
-      "type": "string",
+      "type": ["string", "null"],
       "x-cds-type": "AmountString"
     },
     "transactionUType": {
@@ -37,22 +37,27 @@
       ]
     },
     "usage": {
+      "type": ["object", "null"],
       "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
       "$ref": "EnergyBillingUsageTransaction.json"
     },
     "demand": {
+      "type": ["object", "null"],
       "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand",
       "$ref": "EnergyBillingDemandTransaction.json"
     },
     "onceOff": {
+      "type": ["object", "null"],
       "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
       "$ref": "EnergyBillingOnceOffTransaction.json"
     },
     "otherCharges": {
+      "type": ["object", "null"],
       "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge",
       "$ref": "EnergyBillingOtherTransaction.json"
     },
     "payment": {
+      "type": ["object", "null"],
       "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment",
       "$ref": "EnergyBillingPaymentTransaction.json"
     }

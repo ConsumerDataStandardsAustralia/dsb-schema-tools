@@ -17,7 +17,7 @@
     "properties": {
       "type": {
         "description": "Type of charge. Assumed to be other if absent",
-        "type": "string",
+        "type": ["string", "null"],
         "enum": [
           "ENVIRONMENTAL",
           "REGULATED",
@@ -41,7 +41,7 @@
         "description": "The end date of the tariff period in a calendar year.  Formatted in mm-dd format"
       },
       "dailySupplyCharges": {
-        "type": "string",
+        "type": ["string", "null"],
         "x-cds-type": "AmountString",
         "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST."
       },
@@ -55,7 +55,7 @@
         ]
       },
       "singleRate": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
         "required": [
           "displayName",
@@ -70,11 +70,11 @@
             "description": "Display name of the rate"
           },
           "description": {
-            "type": "string",
+            "type": ["string", "null"],
             "description": "Description of the rate"
           },
           "generalUnitPrice": {
-            "type": "string",
+            "type": ["string", "null"],
             "x-cds-type": "AmountString",
             "description": "The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’"
           },
@@ -114,7 +114,7 @@
             }
           },
           "period": {
-            "type": "string",
+            "type": ["string", "null"],
             "x-cds-type": "ExternalRef",
             "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
           }
@@ -122,7 +122,7 @@
       },
       "timeOfUseRates": {
         "description": "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-        "type": "array",
+        "type": ["array", "null"],
         "items": {
           "type": "object",
           "required": [
@@ -137,7 +137,7 @@
               "description": "Display name of the rate"
             },
             "description": {
-              "type": "string",
+              "type": ["string", "null"],
               "description": "Description of the rate"
             },
             "rates": {
@@ -230,7 +230,7 @@
       },
       "demandCharges": {
         "description": "Array of demand charges.  Required if rateBlockUType is demandCharges",
-        "type": "array",
+        "type": ["array", "null"],
         "items": {
           "type": "object",
           "required": [
@@ -247,7 +247,7 @@
               "description": "Display name of the charge"
             },
             "description": {
-              "type": "string",
+              "type": ["string", "null"],
               "description": "Description of the charge"
             },
             "amount": {
@@ -256,7 +256,7 @@
               "description": "The charge amount per  measure unit exclusive of GST"
             },
             "measureUnit": {
-              "type": "string",
+              "type": ["string", "null"],
               "description": "The measurement unit of charge amount. Assumed to be KWH if absent",
               "enum": [
                 "KWH",
@@ -279,7 +279,7 @@
             },
             "days": {
               "description": "Object containing demand tariff by day of week",
-              "type": "object",
+              "type": ["object", "null"],
               "required": [
                 "weekdays",
                 "saturday",
@@ -301,12 +301,12 @@
               }
             },
             "minDemand": {
-              "type": "string",
+              "type": ["string", "null"],
               "x-cds-type": "AmountString",
               "description": "Minimum demand for this demand tariff in kW.  If absent then 0 is assumed"
             },
             "maxDemand": {
-              "type": "string",
+              "type": ["string", "null"],
               "x-cds-type": "AmountString",
               "description": "Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field"
             },

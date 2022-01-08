@@ -27,7 +27,7 @@
         ]
       },
       "eligibility": {
-        "type": "string",
+        "type": ["string", "null"],
         "description": "A display message outlining an eligibility criteria that may apply"
       }
     }

@@ -19,7 +19,7 @@
         "description": "The name of the tariff"
       },
       "description": {
-        "type": "string",
+        "type": ["string", "null"],
         "description": "A description of the tariff"
       },
       "scheme": {
@@ -47,7 +47,7 @@
         ]
       },
       "singleTariff": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff",
         "required": [
           "amount"
@@ -61,7 +61,7 @@
         }
       },
       "timeVaryingTariffs": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
         "required": [
           "amount",
@@ -69,7 +69,7 @@
         ],
         "properties": {
           "type": {
-            "type": "string",
+            "type": ["string", "null"],
             "description": "The type of the charging time period. If absent applies to all periods",
             "enum": [
               "PEAK",

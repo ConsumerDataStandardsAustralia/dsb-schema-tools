@@ -15,7 +15,7 @@
       ],
       "properties": {
         "termType": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "The term for the contract.  If absent assumes no specified term",
           "enum": [
             "1_YEAR",
@@ -28,22 +28,22 @@
           ]
         },
         "benefitPeriod": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "Description of the benefit period.  Should only be present if termType has the value ONGOING"
         },
         "terms": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "Free text description of the terms for the contract"
         },
         "meterTypes": {
           "description": "An array of the meter types that this contract is available for",
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "string"
           }
         },
         "coolingOffDays": {
-          "type": "string",
+          "type": ["string", "null"],
           "x-cds-type": "PositiveInteger",
           "description": "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET "
         },

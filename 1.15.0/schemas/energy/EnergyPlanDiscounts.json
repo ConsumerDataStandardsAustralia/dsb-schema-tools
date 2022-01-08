@@ -14,7 +14,7 @@
         "description": "The display name of the discount"
       },
       "description": {
-        "type": "string",
+        "type": ["string", "null"],
         "description": "The description of the discount"
       },
       "type": {
@@ -27,7 +27,7 @@
         ]
       },
       "category": {
-        "type": "string",
+        "type": ["string", "null"],
         "description": "The type of the discount.  Mandatory if the discount type is CONDITIONAL",
         "enum": [
           "PAY_ON_TIME",
@@ -37,7 +37,7 @@
         ]
       },
       "endDate": {
-        "type": "string",
+        "type": ["string", "null"],
         "x-cds-type": "DateString",
         "description": "Optional end date for the discount after which the discount is no longer available"
       },
@@ -52,7 +52,7 @@
         ]
       },
       "percentOfBill": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Required if methodUType is percentOfBill",
         "required": [
           "rate"
@@ -66,7 +66,7 @@
         }
       },
       "percentOfUse": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Required if methodUType is percentOfUse",
         "required": [
           "rate"
@@ -80,7 +80,7 @@
         }
       },
       "fixedAmount": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Required if methodUType is fixedAmount",
         "required": [
           "amount"
@@ -94,7 +94,7 @@
         }
       },
       "percentOverThreshold": {
-        "type": "object",
+        "type": ["object", "null"],
         "description": "Required if methodUType is percentOverThreshold",
         "required": [
           "rate",
