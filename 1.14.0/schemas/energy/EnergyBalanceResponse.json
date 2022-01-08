@@ -20,10 +20,10 @@
       }
     },
     "links": {
-      "$ref": "../../common/1.15.0/Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "../../common/1.15.0/Meta.json"
+      "$ref": "Meta"
     }
   }
 }

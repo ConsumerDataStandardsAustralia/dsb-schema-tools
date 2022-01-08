@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "EnergyAccountBase.json"
+      "$ref": "EnergyAccountBase"
     },
     {
       "description": "The array of plans containing service points and associated plan details",
@@ -22,7 +22,7 @@
             "properties": {
               "nickname": {
                 "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
-                "type": "string"
+                "type": ["string", "null"]
               },
               "servicePointIds": {
                 "description": "An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected",
@@ -39,7 +39,7 @@
                 "properties": {
                   "displayName": {
                     "description": "The name of the plan if one exists",
-                    "type": "string"
+                    "type": ["string", "null"]
                   },
                   "startDate": {
                     "description": "The start date of the applicability of this plan",
@@ -48,7 +48,7 @@
                   },
                   "endDate": {
                     "description": "The end date of the applicability of this plan",
-                    "type": "string",
+                    "type": ["string", "null"],
                     "x-cds-type": "DateString"
                   }
                 }

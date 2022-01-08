@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "EnergyAccountBase.json"
+      "$ref": "EnergyAccountBase"
     },
     {
       "description": "The array of plans containing service points and associated plan details",
@@ -23,7 +23,7 @@
             "properties": {
               "nickname": {
                 "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
-                "type": "string"
+                "type": ["string", "null"]
               },
               "servicePointIds": {
                 "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
@@ -40,7 +40,7 @@
                 "properties": {
                   "displayName": {
                     "description": "The name of the plan if one exists",
-                    "type": "string"
+                    "type": ["string", "null"]
                   },
                   "startDate": {
                     "description": "The start date of the applicability of this plan",
@@ -49,7 +49,7 @@
                   },
                   "endDate": {
                     "description": "The end date of the applicability of this plan",
-                    "type": "string",
+                    "type": ["string", "null"],
                     "x-cds-type": "DateString"
                   }
                 }
@@ -94,7 +94,7 @@
                           "description": "Display name of the charge"
                         },
                         "description": {
-                          "type": "string",
+                          "type": ["string", "null"],
                           "description": "Description of the charge"
                         },
                         "minimumValue": {
@@ -103,12 +103,12 @@
                           "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
                         },
                         "maximumValue": {
-                          "type": "string",
+                          "type": ["string", "null"],
                           "x-cds-type": "AmountString",
                           "description": "The upper limit of the charge if the charge could occur in a range"
                         },
                         "period": {
-                          "type": "string",
+                          "type": ["string", "null"],
                           "x-cds-type": "ExternalRef",
                           "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
                         }
@@ -117,11 +117,11 @@
                   },
                   "gasContract": {
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                    "$ref": "EnergyPlanContract.json"
+                    "$ref": "EnergyPlanContract"
                   },
                   "electricityContract": {
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                    "$ref": "EnergyPlanContract.json"
+                    "$ref": "EnergyPlanContract"
                   }
                 }
               },

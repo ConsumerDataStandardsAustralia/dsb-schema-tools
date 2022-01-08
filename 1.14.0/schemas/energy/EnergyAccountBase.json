@@ -11,11 +11,11 @@
     },
     "accountNumber": {
       "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "displayName": {
       "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
-      "type": "string"
+      "type": ["string", "null"]
     },
     "creationDate": {
       "description": "The date that the account was created or opened",
