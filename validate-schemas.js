@@ -1,5 +1,7 @@
 // This routine is used to validate the set set files
+// It utilises the ajv validator and will pick up most inconsistencies
 // Author: Tomas Schier
+
 
 const Ajv = require("ajv")
 var fs = require('fs');

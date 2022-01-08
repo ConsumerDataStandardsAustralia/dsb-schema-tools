@@ -1,3 +1,14 @@
+// This will create a single schema definition file which the postman collection
+// will read in.
+// Author: Tomas Schier
+
+// This will generate a file (or files) in the /<VERSION>/postman directory.
+// One for each sector listed in the "const sectors" array
+// Some manual processing is required of running this.
+// This is to ensure that the Postman collection runner can consume the generated files
+// In the generated output files do the following:
+// 1. remove all .json and set blank
+// 2. change all "$ref": "../common/<FILENAME> to "$ref": "<FILENAME>
 
 var fs = require('fs');
 var path = require('path');
@@ -58,7 +69,3 @@ sectors.forEach(sector => {
 
 })
 
-
-// post file creation processing
-// 1. remove all .json and set blank
-// 2. change all "$ref": "../common/<FILENAME> to "$ref": "<FILENAME>
