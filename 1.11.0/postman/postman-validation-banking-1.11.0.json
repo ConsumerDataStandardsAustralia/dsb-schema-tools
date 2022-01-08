@@ -60,7 +60,7 @@
                 "x-cds-type": "MaskedAccountString"
             },
             "productCategory": {
-                "$ref": "./BankingProductCategory"
+                "$ref": "BankingProductCategory"
             },
             "productName": {
                 "type": "string",
@@ -72,7 +72,7 @@
         "type": "object",
         "allOf": [
             {
-                "$ref": "./BankingAccount"
+                "$ref": "BankingAccount"
             },
             {
                 "type": "object",
@@ -121,14 +121,14 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingTermDepositAccount"
+                            "$ref": "BankingTermDepositAccount"
                         }
                     },
                     "creditCard": {
-                        "$ref": "./BankingCreditCardAccount"
+                        "$ref": "BankingCreditCardAccount"
                     },
                     "loan": {
-                        "$ref": "./BankingLoanAccount"
+                        "$ref": "BankingLoanAccount"
                     },
                     "depositRate": {
                         "type": [
@@ -153,7 +153,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductDepositRate"
+                            "$ref": "BankingProductDepositRate"
                         }
                     },
                     "lendingRates": {
@@ -163,7 +163,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductLendingRateV2"
+                            "$ref": "BankingProductLendingRateV2"
                         }
                     },
                     "features": {
@@ -172,7 +172,7 @@
                         "items": {
                             "allOf": [
                                 {
-                                    "$ref": "./BankingProductFeature"
+                                    "$ref": "BankingProductFeature"
                                 },
                                 {
                                     "type": "object",
@@ -198,7 +198,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductFee"
+                            "$ref": "BankingProductFee"
                         }
                     },
                     "addresses": {
@@ -208,7 +208,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./CommonPhysicalAddress"
+                            "$ref": "CommonPhysicalAddress"
                         }
                     }
                 }
@@ -312,7 +312,7 @@
                     "null"
                 ],
                 "items": {
-                    "$ref": "./BankingBalancePurse"
+                    "$ref": "BankingBalancePurse"
                 }
             }
         }
@@ -408,7 +408,7 @@
                 "x-cds-type": "ASCIIString"
             },
             "authorisedEntity": {
-                "$ref": "./BankingAuthorisedEntity"
+                "$ref": "BankingAuthorisedEntity"
             },
             "lastDebitDateTime": {
                 "type": "string",
@@ -443,13 +443,13 @@
                 ]
             },
             "account": {
-                "$ref": "./BankingDomesticPayeeAccount"
+                "$ref": "BankingDomesticPayeeAccount"
             },
             "card": {
-                "$ref": "./BankingDomesticPayeeCard"
+                "$ref": "BankingDomesticPayeeCard"
             },
             "payId": {
-                "$ref": "./BankingDomesticPayeePayId"
+                "$ref": "BankingDomesticPayeePayId"
             }
         }
     },
@@ -812,7 +812,7 @@
     "BankingPayeeDetail": {
         "allOf": [
             {
-                "$ref": "./BankingPayee"
+                "$ref": "BankingPayee"
             },
             {
                 "type": "object",
@@ -835,13 +835,13 @@
                         ]
                     },
                     "domestic": {
-                        "$ref": "./BankingDomesticPayee"
+                        "$ref": "BankingDomesticPayee"
                     },
                     "biller": {
-                        "$ref": "./BankingBillerPayee"
+                        "$ref": "BankingBillerPayee"
                     },
                     "international": {
-                        "$ref": "./BankingInternationalPayee"
+                        "$ref": "BankingInternationalPayee"
                     }
                 }
             }
@@ -994,7 +994,7 @@
                 ],
                 "description": "Rate tiers applicable for this rate",
                 "items": {
-                    "$ref": "./BankingProductRateTierV3"
+                    "$ref": "BankingProductRateTierV3"
                 }
             },
             "additionalValue": {
@@ -1021,7 +1021,7 @@
     "BankingProductDetailV3": {
         "allOf": [
             {
-                "$ref": "./BankingProductV3"
+                "$ref": "BankingProductV3"
             },
             {
                 "type": "object",
@@ -1033,7 +1033,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductBundle"
+                            "$ref": "BankingProductBundle"
                         }
                     },
                     "features": {
@@ -1043,7 +1043,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductFeature"
+                            "$ref": "BankingProductFeature"
                         }
                     },
                     "constraints": {
@@ -1053,7 +1053,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductConstraint"
+                            "$ref": "BankingProductConstraint"
                         }
                     },
                     "eligibility": {
@@ -1063,7 +1063,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductEligibility"
+                            "$ref": "BankingProductEligibility"
                         }
                     },
                     "fees": {
@@ -1073,7 +1073,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductFee"
+                            "$ref": "BankingProductFee"
                         }
                     },
                     "depositRates": {
@@ -1083,7 +1083,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductDepositRate"
+                            "$ref": "BankingProductDepositRate"
                         }
                     },
                     "lendingRates": {
@@ -1093,7 +1093,7 @@
                             "null"
                         ],
                         "items": {
-                            "$ref": "./BankingProductLendingRateV2"
+                            "$ref": "BankingProductLendingRateV2"
                         }
                     }
                 }
@@ -1179,7 +1179,7 @@
                 "description": "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
                 "type": "array",
                 "items": {
-                    "$ref": "./BankingProductDiscountEligibility"
+                    "$ref": "BankingProductDiscountEligibility"
                 }
             }
         }
@@ -1430,7 +1430,7 @@
                     "null"
                 ],
                 "items": {
-                    "$ref": "./BankingProductDiscount"
+                    "$ref": "BankingProductDiscount"
                 }
             }
         }
@@ -1531,7 +1531,7 @@
                 ],
                 "description": "Rate tiers applicable for this rate",
                 "items": {
-                    "$ref": "./BankingProductRateTierV3"
+                    "$ref": "BankingProductRateTierV3"
                 }
             },
             "additionalValue": {
@@ -1624,7 +1624,7 @@
                 ]
             },
             "applicabilityConditions": {
-                "$ref": "./BankingProductRateCondition"
+                "$ref": "BankingProductRateCondition"
             },
             "additionalInfo": {
                 "type": [
@@ -1682,7 +1682,7 @@
                 "x-cds-type": "DateTimeString"
             },
             "productCategory": {
-                "$ref": "./BankingProductCategory"
+                "$ref": "BankingProductCategory"
             },
             "name": {
                 "type": "string",
@@ -1838,16 +1838,16 @@
                 ]
             },
             "from": {
-                "$ref": "./BankingScheduledPaymentFrom"
+                "$ref": "BankingScheduledPaymentFrom"
             },
             "paymentSet": {
                 "type": "array",
                 "items": {
-                    "$ref": "./BankingScheduledPaymentSet"
+                    "$ref": "BankingScheduledPaymentSet"
                 }
             },
             "recurrence": {
-                "$ref": "./BankingScheduledPaymentRecurrence"
+                "$ref": "BankingScheduledPaymentRecurrence"
             }
         }
     },
@@ -1918,16 +1918,16 @@
                 ]
             },
             "onceOff": {
-                "$ref": "./BankingScheduledPaymentRecurrenceOnceOff"
+                "$ref": "BankingScheduledPaymentRecurrenceOnceOff"
             },
             "intervalSchedule": {
-                "$ref": "./BankingScheduledPaymentRecurrenceIntervalSchedule"
+                "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule"
             },
             "lastWeekDay": {
-                "$ref": "./BankingScheduledPaymentRecurrenceLastWeekday"
+                "$ref": "BankingScheduledPaymentRecurrenceLastWeekday"
             },
             "eventBased": {
-                "$ref": "./BankingScheduledPaymentRecurrenceEventBased"
+                "$ref": "BankingScheduledPaymentRecurrenceEventBased"
             }
         }
     },
@@ -1986,7 +1986,7 @@
                 "type": "array",
                 "description": "An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry",
                 "items": {
-                    "$ref": "./BankingScheduledPaymentInterval"
+                    "$ref": "BankingScheduledPaymentInterval"
                 }
             }
         }
@@ -2075,7 +2075,7 @@
         ],
         "properties": {
             "to": {
-                "$ref": "./BankingScheduledPaymentTo"
+                "$ref": "BankingScheduledPaymentTo"
             },
             "isAmountCalculated": {
                 "type": [
@@ -2146,13 +2146,13 @@
                 "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
             },
             "domestic": {
-                "$ref": "./BankingDomesticPayee"
+                "$ref": "BankingDomesticPayee"
             },
             "biller": {
-                "$ref": "./BankingBillerPayee"
+                "$ref": "BankingBillerPayee"
             },
             "international": {
-                "$ref": "./BankingInternationalPayee"
+                "$ref": "BankingInternationalPayee"
             }
         }
     },
@@ -2341,7 +2341,7 @@
     "BankingTransactionDetail": {
         "allOf": [
             {
-                "$ref": "./BankingTransaction"
+                "$ref": "BankingTransaction"
             },
             {
                 "type": "object",
@@ -2583,7 +2583,7 @@
     "CommonOrganisationDetail": {
         "allOf": [
             {
-                "$ref": "./CommonOrganisation"
+                "$ref": "CommonOrganisation"
             },
             {
                 "type": "object",
@@ -2595,7 +2595,7 @@
                         "type": "array",
                         "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                         "items": {
-                            "$ref": "./CommonPhysicalAddressWithPurpose"
+                            "$ref": "CommonPhysicalAddressWithPurpose"
                         }
                     }
                 }
@@ -2835,7 +2835,7 @@
     "CommonPersonDetail": {
         "allOf": [
             {
-                "$ref": "./CommonPerson"
+                "$ref": "CommonPerson"
             },
             {
                 "type": "object",
@@ -2849,21 +2849,21 @@
                         "type": "array",
                         "description": "Array is mandatory but may be empty if no phone numbers are held",
                         "items": {
-                            "$ref": "./CommonPhoneNumber"
+                            "$ref": "CommonPhoneNumber"
                         }
                     },
                     "emailAddresses": {
                         "type": "array",
                         "description": "May be empty",
                         "items": {
-                            "$ref": "./CommonEmailAddress"
+                            "$ref": "CommonEmailAddress"
                         }
                     },
                     "physicalAddresses": {
                         "type": "array",
                         "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                         "items": {
-                            "$ref": "./CommonPhysicalAddressWithPurpose"
+                            "$ref": "CommonPhysicalAddressWithPurpose"
                         }
                     }
                 }
@@ -2949,17 +2949,17 @@
                 ]
             },
             "simple": {
-                "$ref": "./CommonSimpleAddress"
+                "$ref": "CommonSimpleAddress"
             },
             "paf": {
-                "$ref": "./CommonPAFAddress"
+                "$ref": "CommonPAFAddress"
             }
         }
     },
     "CommonPhysicalAddressWithPurpose": {
         "allOf": [
             {
-                "$ref": "./CommonPhysicalAddress"
+                "$ref": "CommonPhysicalAddress"
             },
             {
                 "type": "object",
@@ -3195,7 +3195,7 @@
                 }
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3207,13 +3207,13 @@
         ],
         "properties": {
             "data": {
-                "$ref": "./BankingAccountDetail"
+                "$ref": "BankingAccountDetail"
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3235,16 +3235,16 @@
                         "type": "array",
                         "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records",
                         "items": {
-                            "$ref": "./BankingAccount"
+                            "$ref": "BankingAccount"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3256,13 +3256,13 @@
         ],
         "properties": {
             "data": {
-                "$ref": "./BankingBalance"
+                "$ref": "BankingBalance"
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3284,16 +3284,16 @@
                         "description": "The list of balances returned",
                         "type": "array",
                         "items": {
-                            "$ref": "./BankingBalance"
+                            "$ref": "BankingBalance"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3315,16 +3315,16 @@
                         "type": "array",
                         "description": "The list of authorisations returned",
                         "items": {
-                            "$ref": "./BankingDirectDebit"
+                            "$ref": "BankingDirectDebit"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3336,13 +3336,13 @@
         ],
         "properties": {
             "data": {
-                "$ref": "./BankingPayeeDetail"
+                "$ref": "BankingPayeeDetail"
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3364,16 +3364,16 @@
                         "type": "array",
                         "description": "The list of payees returned",
                         "items": {
-                            "$ref": "./BankingPayee"
+                            "$ref": "BankingPayee"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3385,13 +3385,13 @@
         ],
         "properties": {
             "data": {
-                "$ref": "./BankingProductDetailV3"
+                "$ref": "BankingProductDetailV3"
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3413,16 +3413,16 @@
                         "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
                         "type": "array",
                         "items": {
-                            "$ref": "./BankingProductV3"
+                            "$ref": "BankingProductV3"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3444,16 +3444,16 @@
                         "type": "array",
                         "description": "The list of scheduled payments to return",
                         "items": {
-                            "$ref": "./BankingScheduledPayment"
+                            "$ref": "BankingScheduledPayment"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3465,13 +3465,13 @@
         ],
         "properties": {
             "data": {
-                "$ref": "./BankingTransactionDetail"
+                "$ref": "BankingTransactionDetail"
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3492,16 +3492,16 @@
                     "transactions": {
                         "type": "array",
                         "items": {
-                            "$ref": "./BankingTransaction"
+                            "$ref": "BankingTransaction"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./LinksPaginated"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "./MetaPaginated"
+                "$ref": "MetaPaginated"
             }
         }
     },
@@ -3532,19 +3532,19 @@
                     },
                     "person": {
                         "description": "Mandatory if `customerUType` is `person`",
-                        "$ref": "./CommonPerson"
+                        "$ref": "CommonPerson"
                     },
                     "organisation": {
                         "description": "Mandatory if `customerUType` is `organisation`",
-                        "$ref": "./CommonOrganisation"
+                        "$ref": "CommonOrganisation"
                     }
                 }
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3575,19 +3575,19 @@
                     },
                     "person": {
                         "description": "Mandatory if `customerUType` is `person`",
-                        "$ref": "./CommonPersonDetail"
+                        "$ref": "CommonPersonDetail"
                     },
                     "organisation": {
                         "description": "Mandatory if `customerUType` is `organisation`",
-                        "$ref": "./CommonOrganisationDetail"
+                        "$ref": "CommonOrganisationDetail"
                     }
                 }
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3640,10 +3640,10 @@
                 }
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3664,16 +3664,16 @@
                         "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
                         "type": "array",
                         "items": {
-                            "$ref": "./DiscoveryOutage"
+                            "$ref": "DiscoveryOutage"
                         }
                     }
                 }
             },
             "links": {
-                "$ref": "./Links"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "./Meta"
+                "$ref": "Meta"
             }
         }
     },
@@ -3710,7 +3710,7 @@
                             "description": "A human-readable explanation specific to this occurrence of the problem."
                         },
                         "meta": {
-                            "$ref": "./MetaError"
+                            "$ref": "MetaError"
                         }
                     }
                 }
