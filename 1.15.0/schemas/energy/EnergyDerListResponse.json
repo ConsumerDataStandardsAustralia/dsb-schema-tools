@@ -22,10 +22,10 @@
       }
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "../common/LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "../common/MetaPaginated.json"
     }
   }
 }

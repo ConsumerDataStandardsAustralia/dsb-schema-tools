@@ -8,7 +8,7 @@ const addFormats = require("ajv-formats");
 const { Console } = require("console");
 
 
-const sectors = ['banking', 'energy', 'register', 'admin', 'dcr'];
+const sectors = ['banking', 'register', 'energy', 'dcr', 'admin'];
 const version = '1.15.0';
 
 sectors.forEach(sector => {

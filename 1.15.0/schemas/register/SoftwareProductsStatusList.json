@@ -8,7 +8,7 @@
       "uniqueItems": true,
       "type": "array",
       "items": {
-        "$ref": "SoftwareProductStatus"
+        "$ref": "SoftwareProductStatus.json"
       }
     }
   }

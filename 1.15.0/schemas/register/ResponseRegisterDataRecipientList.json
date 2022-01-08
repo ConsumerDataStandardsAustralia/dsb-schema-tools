@@ -12,7 +12,7 @@
       "uniqueItems": false,
       "type": "array",
       "items": {
-        "$ref": "RegisterDataRecipient"
+        "$ref": "RegisterDataRecipient.json"
       }
     }
   }
