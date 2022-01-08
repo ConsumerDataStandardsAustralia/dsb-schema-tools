@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "reads"
+      ],
+      "properties": {
+        "reads": {
+          "description": "Array of meter reads",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnergyUsageRead"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "#/components/schemas/LinksPaginated"
+    },
+    "meta": {
+      "$ref": "#/components/schemas/MetaPaginated"
+    }
+  }
+}

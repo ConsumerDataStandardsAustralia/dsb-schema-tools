@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "$ref": "EnergyAccountDetail.json"
+    },
+    "links": {
+      "$ref": "../../common/1.15.0/Links.json"
+    },
+    "meta": {
+      "$ref": "../../common/1.15.0/Meta.json"
+    }
+  }
+}

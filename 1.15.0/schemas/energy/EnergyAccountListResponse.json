@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "accounts"
+      ],
+      "properties": {
+        "accounts": {
+          "description": "Array of accounts",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/EnergyAccount"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "#/components/schemas/LinksPaginated"
+    },
+    "meta": {
+      "$ref": "#/components/schemas/MetaPaginated"
+    }
+  }
+}

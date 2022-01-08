@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "products"
+      ],
+      "properties": {
+        "products": {
+          "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
+          "type": "array",
+          "items": {
+            "$ref": "BankingProductV4.json"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "../common/LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "../common/MetaPaginated.json"
+    }
+  }
+}
