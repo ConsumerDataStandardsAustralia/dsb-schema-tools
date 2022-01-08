@@ -7,7 +7,7 @@ const version = '1.11.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, '/schemas/'  +  sector  );
-  var stream = fs.createWriteStream(__dirname + '/postman/postman-legacy-validation-' + sector + '-' + version + '.json');
+  var stream = fs.createWriteStream(__dirname + '/postman/postman-validation-' + sector + '-' + version + '.json');
   var cnt = 0;
   var isFirst = true;
   var dirCnt = 0;

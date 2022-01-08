@@ -15,10 +15,7 @@
             "x-cds-type": "ASCIIString"
         },
         "creationDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Date that the account was created (if known)",
             "x-cds-type": "DateString"
         },
@@ -27,17 +24,11 @@
             "description": "The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type."
         },
         "nickname": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "A customer supplied nick name for the account"
         },
         "openStatus": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Open or closed status for the account. If not present then OPEN is assumed",
             "enum": [
                 "CLOSED",
@@ -46,10 +37,7 @@
             "default": "OPEN"
         },
         "isOwned": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed",
             "x-cds-type": "Boolean",
             "default": true
@@ -60,7 +48,7 @@
             "x-cds-type": "MaskedAccountString"
         },
         "productCategory": {
-            "$ref": "./BankingProductCategory"
+            "$ref": "BankingProductCategory"
         },
         "productName": {
             "type": "string",
@@ -70,10 +58,9 @@
     "$id": "BankingAccount"
 },
 "BankingAccountDetail": {
-    "type": "object",
     "allOf": [
         {
-            "$ref": "./BankingAccount"
+            "$ref": "BankingAccount"
         },
         {
             "type": "object",
@@ -84,31 +71,19 @@
             ],
             "properties": {
                 "bsb": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
                 },
                 "accountNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
                 },
                 "bundleName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
                 },
                 "specificAccountUType": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "The type of structure to present account specific fields.",
                     "enum": [
                         "creditCard",
@@ -117,62 +92,39 @@
                     ]
                 },
                 "termDeposit": {
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingTermDepositAccount"
+                        "$ref": "BankingTermDepositAccount"
                     }
                 },
                 "creditCard": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "$ref": "./BankingCreditCardAccount"
+                    "$ref": "BankingCreditCardAccount"
                 },
                 "loan": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "$ref": "./BankingLoanAccount"
+                    "$ref": "BankingLoanAccount"
                 },
                 "depositRate": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call",
                     "x-cds-type": "RateString"
                 },
                 "lendingRate": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call",
                     "x-cds-type": "RateString"
                 },
                 "depositRates": {
                     "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductDepositRate"
+                        "$ref": "BankingProductDepositRate"
                     }
                 },
                 "lendingRates": {
                     "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductLendingRateV2"
+                        "$ref": "BankingProductLendingRateV2"
                     }
                 },
                 "features": {
@@ -181,16 +133,13 @@
                     "items": {
                         "allOf": [
                             {
-                                "$ref": "./BankingProductFeature"
+                                "$ref": "BankingProductFeature"
                             },
                             {
                                 "type": "object",
                                 "properties": {
                                     "isActivated": {
-                                        "type": [
-                                            "boolean",
-                                            "null"
-                                        ],
+                                        "type": "boolean",
                                         "description": "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
                                         "x-cds-type": "Boolean",
                                         "default": true
@@ -202,22 +151,16 @@
                 },
                 "fees": {
                     "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductFee"
+                        "$ref": "BankingProductFee"
                     }
                 },
                 "addresses": {
                     "description": "The addresses for the account to be used for correspondence",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "../../common/1.14.0/CommonPhysicalAddress"
+                        "$ref": "CommonPhysicalAddress"
                     }
                 }
             }
@@ -232,38 +175,23 @@
     ],
     "properties": {
         "description": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Description of the authorised entity derived from previously executed direct debits"
         },
         "financialInstitution": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Name of the financial institution through which the direct debit will be executed. Is required unless the payment is made via a credit card scheme"
         },
         "abn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Australian Business Number for the authorised entity"
         },
         "acn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Australian Company Number for the authorised entity"
         },
         "arbn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Australian Registered Body Number for the authorised entity"
         }
     },
@@ -293,37 +221,25 @@
             "x-cds-type": "AmountString"
         },
         "creditLimit": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent",
             "x-cds-type": "AmountString"
         },
         "amortisedLimit": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent",
             "x-cds-type": "AmountString"
         },
         "currency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The currency for the balance amounts. If absent assumed to be AUD",
             "x-cds-type": "CurrencyString"
         },
         "purses": {
             "description": "Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards",
-            "type": [
-                "array",
-                "null"
-            ],
+            "type": "array",
             "items": {
-                "$ref": "././BankingBalancePurse"
+                "$ref": "BankingBalancePurse"
             }
         }
     },
@@ -341,10 +257,7 @@
             "x-cds-type": "AmountString"
         },
         "currency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The currency for the purse",
             "x-cds-type": "CurrencyString"
         }
@@ -366,10 +279,7 @@
             "description": "BPAY Biller Code of the Biller"
         },
         "crn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "BPAY CRN of the Biller (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
         },
         "billerName": {
@@ -423,7 +333,7 @@
             "x-cds-type": "ASCIIString"
         },
         "authorisedEntity": {
-            "$ref": "./BankingAuthorisedEntity"
+            "$ref": "BankingAuthorisedEntity"
         },
         "lastDebitDateTime": {
             "type": "string",
@@ -459,13 +369,13 @@
             ]
         },
         "account": {
-            "$ref": "./BankingDomesticPayeeAccount"
+            "$ref": "BankingDomesticPayeeAccount"
         },
         "card": {
-            "$ref": "./BankingDomesticPayeeCard"
+            "$ref": "BankingDomesticPayeeCard"
         },
         "payId": {
-            "$ref": "./BankingDomesticPayeePayId"
+            "$ref": "BankingDomesticPayeePayId"
         }
     },
     "$id": "BankingDomesticPayee"
@@ -478,10 +388,7 @@
     ],
     "properties": {
         "accountName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Name of the account to pay to"
         },
         "bsb": {
@@ -517,10 +424,7 @@
     ],
     "properties": {
         "name": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The name assigned to the PayID by the owner of the PayID"
         },
         "identifier": {
@@ -554,10 +458,7 @@
             ],
             "properties": {
                 "name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Name of the beneficiary"
                 },
                 "country": {
@@ -566,10 +467,7 @@
                     "x-cds-type": "ExternalRef"
                 },
                 "message": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Response message for the payment"
                 }
             }
@@ -591,10 +489,7 @@
                     "description": "Account Targeted for payment"
                 },
                 "bankAddress": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "type": "object",
                     "required": [
                         "name",
                         "address"
@@ -611,46 +506,28 @@
                     }
                 },
                 "beneficiaryBankBIC": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)",
                     "x-cds-type": "ExternalRef"
                 },
                 "fedWireNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Number for Fedwire payment (Federal Reserve Wire Network)"
                 },
                 "sortCode": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Sort code used for account identification in some jurisdictions"
                 },
                 "chipNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "Number for the Clearing House Interbank Payments System"
                 },
                 "routingNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "International bank routing number"
                 },
                 "legalEntityIdentifier": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "type": "string",
                     "description": "The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)",
                     "x-cds-type": "ExternalRef"
                 }
@@ -668,26 +545,17 @@
     ],
     "properties": {
         "originalStartDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Optional original start date for the loan",
             "x-cds-type": "DateString"
         },
         "originalLoanAmount": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Optional original loan value",
             "x-cds-type": "AmountString"
         },
         "originalLoanCurrency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "If absent assumes AUD",
             "x-cds-type": "CurrencyString"
         },
@@ -702,66 +570,42 @@
             "x-cds-type": "DateString"
         },
         "minInstalmentAmount": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Minimum amount of next instalment",
             "x-cds-type": "AmountString"
         },
         "minInstalmentCurrency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "If absent assumes AUD",
             "x-cds-type": "CurrencyString"
         },
         "maxRedraw": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account",
             "x-cds-type": "AmountString"
         },
         "maxRedrawCurrency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "If absent assumes AUD",
             "x-cds-type": "CurrencyString"
         },
         "minRedraw": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Minimum redraw amount",
             "x-cds-type": "AmountString"
         },
         "minRedrawCurrency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "If absent assumes AUD",
             "x-cds-type": "CurrencyString"
         },
         "offsetAccountEnabled": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "Set to true if one or more offset accounts are configured for this loan account",
             "x-cds-type": "Boolean"
         },
         "offsetAccountIds": {
-            "type": [
-                "array",
-                "null"
-            ],
+            "type": "array",
             "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that offsetAccountEnabled is set to true but the offsetAccountIds field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation",
             "items": {
                 "type": "string",
@@ -769,10 +613,7 @@
             }
         },
         "repaymentType": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Options in place for repayments. If absent defaults to PRINCIPAL_AND_INTEREST",
             "enum": [
                 "INTEREST_ONLY",
@@ -810,10 +651,7 @@
             "description": "A description of the payee provided by the customer"
         },
         "type": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The type of payee. DOMESTIC means a registered payee for domestic payments including NPP. INTERNATIONAL means a registered payee for international payments. BILLER means a registered payee for BPAY",
             "enum": [
                 "BILLER",
@@ -822,10 +660,7 @@
             ]
         },
         "creationDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The date the payee was created by the customer",
             "x-cds-type": "DateString"
         }
@@ -835,7 +670,7 @@
 "BankingPayeeDetail": {
     "allOf": [
         {
-            "$ref": "./BankingPayee"
+            "$ref": "BankingPayee"
         },
         {
             "type": "object",
@@ -858,13 +693,13 @@
                     ]
                 },
                 "domestic": {
-                    "$ref": "./BankingDomesticPayee"
+                    "$ref": "BankingDomesticPayee"
                 },
                 "biller": {
-                    "$ref": "./BankingBillerPayee"
+                    "$ref": "BankingBillerPayee"
                 },
                 "international": {
-                    "$ref": "./BankingInternationalPayee"
+                    "$ref": "BankingInternationalPayee"
                 }
             }
         }
@@ -887,25 +722,16 @@
             "description": "Description of the bundle"
         },
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the bundle"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on the bundle criteria and benefits",
             "x-cds-type": "URIString"
         },
         "productIds": {
-            "type": [
-                "array",
-                "null"
-            ],
+            "type": "array",
             "description": "Array of product IDs for products included in the bundle that are available via the product end points.  Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference end points",
             "items": {
                 "type": "string",
@@ -999,29 +825,20 @@
             "x-cds-type": "RateString"
         },
         "calculationFrequency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "x-cds-type": "ExternalRef"
         },
         "applicationFrequency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "x-cds-type": "ExternalRef"
         },
         "tiers": {
-            "type": [
-                "array",
-                "null"
-            ],
+            "type": "array",
             "description": "Rate tiers applicable for this rate",
             "items": {
-                "$ref": "./BankingProductRateTierV3"
+                "$ref": "BankingProductRateTierV3"
             }
         },
         "additionalValue": {
@@ -1029,17 +846,11 @@
             "description": "Generic field containing additional information relevant to the [depositRateType](#tocSproductdepositratetypedoc) specified. Whether mandatory or not is dependent on the value of [depositRateType](#tocSproductdepositratetypedoc)"
         },
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the rate"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this rate",
             "x-cds-type": "URIString"
         }
@@ -1049,79 +860,58 @@
 "BankingProductDetailV3": {
     "allOf": [
         {
-            "$ref": "./BankingProductV3"
+            "$ref": "BankingProductV3"
         },
         {
             "type": "object",
             "properties": {
                 "bundles": {
                     "description": "An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductBundle"
+                        "$ref": "BankingProductBundle"
                     }
                 },
                 "features": {
                     "description": "Array of features available for the product",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductFeature"
+                        "$ref": "BankingProductFeature"
                     }
                 },
                 "constraints": {
                     "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductConstraint"
+                        "$ref": "BankingProductConstraint"
                     }
                 },
                 "eligibility": {
                     "description": "Eligibility criteria for the product",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductEligibility"
+                        "$ref": "BankingProductEligibility"
                     }
                 },
                 "fees": {
                     "description": "Fees applicable for the product",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductFee"
+                        "$ref": "BankingProductFee"
                     }
                 },
                 "depositRates": {
                     "description": "Interest rates available for deposits",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductDepositRate"
+                        "$ref": "BankingProductDepositRate"
                     }
                 },
                 "lendingRates": {
                     "description": "Interest rates charged against lending balances",
-                    "type": [
-                        "array",
-                        "null"
-                    ],
+                    "type": "array",
                     "items": {
-                        "$ref": "./BankingProductLendingRateV2"
+                        "$ref": "BankingProductLendingRateV2"
                     }
                 }
             }
@@ -1190,17 +980,11 @@
             "description": "Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)"
         },
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the discount"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this discount",
             "x-cds-type": "URIString"
         },
@@ -1208,7 +992,7 @@
             "description": "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
             "type": "array",
             "items": {
-                "$ref": "./BankingProductDiscountEligibility"
+                "$ref": "BankingProductDiscountEligibility"
             }
         }
     },
@@ -1252,10 +1036,7 @@
             "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this eligibility constraint",
             "x-cds-type": "URIString"
         }
@@ -1299,10 +1080,7 @@
             "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this eligibility criteria",
             "x-cds-type": "URIString"
         }
@@ -1357,10 +1135,7 @@
             "description": "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this feature",
             "x-cds-type": "URIString"
         }
@@ -1422,18 +1197,12 @@
             "x-cds-type": "RateString"
         },
         "accrualFrequency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "x-cds-type": "ExternalRef"
         },
         "currency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The currency the fee will be charged in. Assumes AUD if absent",
             "x-cds-type": "CurrencyString"
         },
@@ -1442,28 +1211,19 @@
             "description": "Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)"
         },
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the fee"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this fee",
             "x-cds-type": "URIString"
         },
         "discounts": {
             "description": "An optional list of discounts to this fee that may be available",
-            "type": [
-                "array",
-                "null"
-            ],
+            "type": "array",
             "items": {
-                "$ref": "./BankingProductDiscount"
+                "$ref": "BankingProductDiscount"
             }
         }
     },
@@ -1502,34 +1262,22 @@
             "x-cds-type": "RateString"
         },
         "comparisonRate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "A comparison rate equivalent for this rate",
             "x-cds-type": "RateString"
         },
         "calculationFrequency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see applicationFrequency). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "x-cds-type": "ExternalRef"
         },
         "applicationFrequency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The period after which the calculated amount(s) (see calculationFrequency) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
             "x-cds-type": "ExternalRef"
         },
         "interestPaymentDue": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered",
             "enum": [
                 "IN_ADVANCE",
@@ -1537,10 +1285,7 @@
             ]
         },
         "repaymentType": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Options in place for repayments. If absent, the lending rate is applicable to all repayment types",
             "enum": [
                 "INTEREST_ONLY",
@@ -1548,10 +1293,7 @@
             ]
         },
         "loanPurpose": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes",
             "enum": [
                 "INVESTMENT",
@@ -1559,13 +1301,10 @@
             ]
         },
         "tiers": {
-            "type": [
-                "array",
-                "null"
-            ],
+            "type": "array",
             "description": "Rate tiers applicable for this rate",
             "items": {
-                "$ref": "./BankingProductRateTierV3"
+                "$ref": "BankingProductRateTierV3"
             }
         },
         "additionalValue": {
@@ -1573,17 +1312,11 @@
             "description": "Generic field containing additional information relevant to the [lendingRateType](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [lendingRateType](#tocSproductlendingratetypedoc)"
         },
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the rate."
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this rate",
             "x-cds-type": "URIString"
         }
@@ -1595,17 +1328,11 @@
     "description": "Defines a condition for the applicability of a tiered rate",
     "properties": {
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the condition"
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this condition",
             "x-cds-type": "URIString"
         }
@@ -1641,18 +1368,12 @@
             "x-cds-type": "Number"
         },
         "maximumValue": {
-            "type": [
-                "number",
-                "null"
-            ],
+            "type": "number",
             "description": "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
             "x-cds-type": "Number"
         },
         "rateApplicationMethod": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')",
             "enum": [
                 "PER_TIER",
@@ -1660,177 +1381,19 @@
             ]
         },
         "applicabilityConditions": {
-            "$ref": "./BankingProductRateCondition"
+            "$ref": "BankingProductRateCondition"
         },
         "additionalInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Display text providing more information on the rate tier."
         },
         "additionalInfoUri": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Link to a web page with more information on this rate tier",
             "x-cds-type": "URIString"
         }
     },
     "$id": "BankingProductRateTierV3"
-},
-"BankingProductV3": {
-    "type": "object",
-    "required": [
-        "productId",
-        "lastUpdated",
-        "productCategory",
-        "name",
-        "description",
-        "brand",
-        "isTailored"
-    ],
-    "properties": {
-        "productId": {
-            "type": "string",
-            "description": "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
-            "x-cds-type": "ASCIIString"
-        },
-        "effectiveFrom": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate",
-            "x-cds-type": "DateTimeString"
-        },
-        "effectiveTo": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products",
-            "x-cds-type": "DateTimeString"
-        },
-        "lastUpdated": {
-            "type": "string",
-            "description": "The last date and time that the information for this product was changed (or the creation date for the product if it has never been altered)",
-            "x-cds-type": "DateTimeString"
-        },
-        "productCategory": {
-            "$ref": "./BankingProductCategory"
-        },
-        "name": {
-            "type": "string",
-            "description": "The display name of the product"
-        },
-        "description": {
-            "type": "string",
-            "description": "A description of the product"
-        },
-        "brand": {
-            "type": "string",
-            "description": "A label of the brand for the product. Able to be used for filtering. For data holders with single brands this value is still required"
-        },
-        "brandName": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "An optional display name of the brand"
-        },
-        "applicationUri": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "A link to an application web page where this product can be applied for.",
-            "x-cds-type": "URIString"
-        },
-        "isTailored": {
-            "type": "boolean",
-            "description": "Indicates whether the product is specifically tailored to a circumstance.  In this case fees and prices are significantly negotiated depending on context. While all products are open to a degree of tailoring this flag indicates that tailoring is expected and thus that the provision of specific fees and rates is not applicable",
-            "x-cds-type": "Boolean"
-        },
-        "additionalInformation": {
-            "description": "Object that contains links to additional information on specific topics",
-            "type": [
-                "object",
-                "null"
-            ],
-            "properties": {
-                "overviewUri": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "General overview of the product",
-                    "x-cds-type": "URIString"
-                },
-                "termsUri": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "Terms and conditions for the product",
-                    "x-cds-type": "URIString"
-                },
-                "eligibilityUri": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "Eligibility rules and criteria for the product",
-                    "x-cds-type": "URIString"
-                },
-                "feesAndPricingUri": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product",
-                    "x-cds-type": "URIString"
-                },
-                "bundleUri": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "Description of a bundle that this product can be part of",
-                    "x-cds-type": "URIString"
-                }
-            }
-        },
-        "cardArt": {
-            "description": "An array of card art images",
-            "type": [
-                "array",
-                "null"
-            ],
-            "items": {
-                "type": "object",
-                "required": [
-                    "imageUri"
-                ],
-                "properties": {
-                    "title": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "description": "Display label for the specific image"
-                    },
-                    "imageUri": {
-                        "type": "string",
-                        "description": "URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI [RFC 2397](https://tools.ietf.org/html/rfc2397)",
-                        "x-cds-type": "URIString"
-                    }
-                }
-            }
-        }
-    },
-    "$id": "BankingProductV3"
 },
 "BankingScheduledPayment": {
     "type": "object",
@@ -1852,10 +1415,7 @@
             "x-cds-type": "ASCIIString"
         },
         "nickname": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels"
         },
         "payerReference": {
@@ -1876,16 +1436,16 @@
             ]
         },
         "from": {
-            "$ref": "./BankingScheduledPaymentFrom"
+            "$ref": "BankingScheduledPaymentFrom"
         },
         "paymentSet": {
             "type": "array",
             "items": {
-                "$ref": "./BankingScheduledPaymentSet"
+                "$ref": "BankingScheduledPaymentSet"
             }
         },
         "recurrence": {
-            "$ref": "./BankingScheduledPaymentRecurrence"
+            "$ref": "BankingScheduledPaymentRecurrence"
         }
     },
     "$id": "BankingScheduledPayment"
@@ -1917,10 +1477,7 @@
             "x-cds-type": "ExternalRef"
         },
         "dayInInterval": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Uses an interval to define the ordinal day within the interval defined by the interval field on which the payment occurs. If the resulting duration is 0 days in length or larger than the number of days in the interval then the payment will occur on the last day of the interval. A duration of 1 day indicates the first day of the interval. If absent the assumed value is P1D. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax) with components less than a day in length ignored. The first day of a week is considered to be Monday.",
             "x-cds-type": "ExternalRef"
         }
@@ -1941,10 +1498,7 @@
     ],
     "properties": {
         "nextPaymentDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The date of the next payment under the recurrence schedule",
             "x-cds-type": "DateString"
         },
@@ -1959,16 +1513,16 @@
             ]
         },
         "onceOff": {
-            "$ref": "./BankingScheduledPaymentRecurrenceOnceOff"
+            "$ref": "BankingScheduledPaymentRecurrenceOnceOff"
         },
         "intervalSchedule": {
-            "$ref": "./BankingScheduledPaymentRecurrenceIntervalSchedule"
+            "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule"
         },
         "lastWeekDay": {
-            "$ref": "./BankingScheduledPaymentRecurrenceLastWeekday"
+            "$ref": "BankingScheduledPaymentRecurrenceLastWeekday"
         },
         "eventBased": {
-            "$ref": "./BankingScheduledPaymentRecurrenceEventBased"
+            "$ref": "BankingScheduledPaymentRecurrenceEventBased"
         }
     },
     "$id": "BankingScheduledPaymentRecurrence"
@@ -1995,27 +1549,18 @@
     ],
     "properties": {
         "finalPaymentDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
             "x-cds-type": "DateString"
         },
         "paymentsRemaining": {
-            "type": [
-                "integer",
-                "null"
-            ],
+            "type": "integer",
             "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely",
             "x-cds-type": "PositiveInteger",
             "example": 1
         },
         "nonBusinessDayTreatment": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
             "enum": [
                 "AFTER",
@@ -2029,7 +1574,7 @@
             "type": "array",
             "description": "An array of interval objects defining the payment schedule.  Each entry in the array is additive, in that it adds payments to the overall payment schedule.  If multiple intervals result in a payment on the same day then only one payment will be made. Must have at least one entry",
             "items": {
-                "$ref": "./BankingScheduledPaymentInterval"
+                "$ref": "BankingScheduledPaymentInterval"
             }
         }
     },
@@ -2044,18 +1589,12 @@
     ],
     "properties": {
         "finalPaymentDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
             "x-cds-type": "DateString"
         },
         "paymentsRemaining": {
-            "type": [
-                "integer",
-                "null"
-            ],
+            "type": "integer",
             "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
             "x-cds-type": "PositiveInteger",
             "example": 1
@@ -2079,10 +1618,7 @@
             ]
         },
         "nonBusinessDayTreatment": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored",
             "enum": [
                 "AFTER",
@@ -2111,7 +1647,6 @@
     "$id": "BankingScheduledPaymentRecurrenceOnceOff"
 },
 "BankingScheduledPaymentSet": {
-    "type": "object",
     "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
     "required": [
         "to"
@@ -2121,13 +1656,10 @@
     ],
     "properties": {
         "to": {
-            "$ref": "./BankingScheduledPaymentTo"
+            "$ref": "BankingScheduledPaymentTo"
         },
         "isAmountCalculated": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
             "x-cds-type": "Boolean"
         },
@@ -2137,10 +1669,7 @@
             "x-cds-type": "AmountString"
         },
         "currency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The currency for the payment. AUD assumed if not present",
             "x-cds-type": "CurrencyString"
         }
@@ -2193,13 +1722,13 @@
             "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level."
         },
         "domestic": {
-            "$ref": "./BankingDomesticPayee"
+            "$ref": "BankingDomesticPayee"
         },
         "biller": {
-            "$ref": "./BankingBillerPayee"
+            "$ref": "BankingBillerPayee"
         },
         "international": {
-            "$ref": "./BankingInternationalPayee"
+            "$ref": "BankingInternationalPayee"
         }
     },
     "$id": "BankingScheduledPaymentTo"
@@ -2223,18 +1752,12 @@
             "x-cds-type": "DateString"
         },
         "maturityAmount": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
             "x-cds-type": "AmountString"
         },
         "maturityCurrency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "If absent assumes AUD",
             "x-cds-type": "CurrencyString"
         },
@@ -2273,10 +1796,7 @@
             "x-cds-type": "ASCIIString"
         },
         "transactionId": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.",
             "x-cds-type": "ASCIIString"
         },
@@ -2317,18 +1837,12 @@
             "x-cds-type": "DateTimeString"
         },
         "valueDateTime": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry",
             "x-cds-type": "DateTimeString"
         },
         "executionDateTime": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The time the transaction was executed by the originating customer, if available",
             "x-cds-type": "DateTimeString"
         },
@@ -2338,10 +1852,7 @@
             "x-cds-type": "AmountString"
         },
         "currency": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The currency for the transaction amount. AUD assumed if not present",
             "x-cds-type": "CurrencyString"
         },
@@ -2350,24 +1861,15 @@
             "description": "The reference for the transaction provided by the originating institution. Empty string if no data provided"
         },
         "merchantName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Name of the merchant for an outgoing payment to a merchant"
         },
         "merchantCategoryCode": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The merchant category code (or MCC) for an outgoing payment to a merchant"
         },
         "billerCode": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "BPAY Biller Code for the transaction (if available)"
         },
         "billerName": {
@@ -2375,10 +1877,7 @@
             "description": "Name of the BPAY biller for the transaction (if available)"
         },
         "crn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type."
         },
         "apcaNumber": {
@@ -2391,7 +1890,7 @@
 "BankingTransactionDetail": {
     "allOf": [
         {
-            "$ref": "./BankingTransaction"
+            "$ref": "BankingTransaction"
         },
         {
             "type": "object",
@@ -2411,34 +1910,21 @@
                     ],
                     "properties": {
                         "payer": {
-                            "type": [
-                                "string",
-                                "null"
-                            ],
+                            "type": "string",
                             "description": "Label of the originating payer. Mandatory for inbound payment"
                         },
                         "payee": {
-                            "type": [
-                                "string",
-                                "null"
-                            ],
+                            "type": "string",
                             "description": "Label of the target PayID.  Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)"
                         },
                         "extensionUType": {
-                            "type": [
-                                "string",
-                                "null"
-                            ],
+                            "type": "string",
                             "description": "Optional extended data provided specific to transaction originated via NPP",
                             "enum": [
                                 "x2p101Payload"
                             ]
                         },
                         "x2p101Payload": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
                             "required": [
                                 "extendedDescription"
                             ],
@@ -2448,17 +1934,11 @@
                                     "description": "An extended string description. Only present if specified by the extensionUType field"
                                 },
                                 "endToEndId": {
-                                    "type": [
-                                        "string",
-                                        "null"
-                                    ],
+                                    "type": "string",
                                     "description": "An end to end ID for the payment created at initiation"
                                 },
                                 "purposeCode": {
-                                    "type": [
-                                        "string",
-                                        "null"
-                                    ],
+                                    "type": "string",
                                     "description": "Purpose of the payment.  Format is defined by NPP standards for the x2p1.01 overlay service"
                                 }
                             }
@@ -2485,10 +1965,7 @@
     ],
     "properties": {
         "isPreferred": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "May be true for one and only one email record in the collection. Denotes the default email address",
             "x-cds-type": "Boolean"
         },
@@ -2523,18 +2000,12 @@
     ],
     "properties": {
         "lastUpdateTime": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
             "x-cds-type": "DateTimeString"
         },
         "agentFirstName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
         },
         "agentLastName": {
@@ -2550,46 +2021,28 @@
             "description": "Name of the organisation"
         },
         "legalName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Legal name, if different to the business name"
         },
         "shortName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Short name used for communication, if different to the business name"
         },
         "abn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Australian Business Number for the organisation"
         },
         "acn": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
         },
         "isACNCRegistered": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
             "x-cds-type": "Boolean"
         },
         "industryCode": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
             "x-cds-type": "ExternalRef"
         },
@@ -2615,18 +2068,12 @@
             ]
         },
         "registeredCountry": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
             "x-cds-type": "ExternalRef"
         },
         "establishmentDate": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The date the organisation described was established",
             "x-cds-type": "DateString"
         }
@@ -2636,7 +2083,7 @@
 "CommonOrganisationDetail": {
     "allOf": [
         {
-            "$ref": "./CommonOrganisation"
+            "$ref": "CommonOrganisation"
         },
         {
             "type": "object",
@@ -2648,7 +2095,7 @@
                     "type": "array",
                     "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                     "items": {
-                        "$ref": "./CommonPhysicalAddressWithPurpose"
+                        "$ref": "CommonPhysicalAddressWithPurpose"
                     }
                 }
             }
@@ -2666,139 +2113,82 @@
     ],
     "properties": {
         "dpid": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
         },
         "thoroughfareNumber1": {
-            "type": [
-                "integer",
-                "null"
-            ],
+            "type": "integer",
             "description": "Thoroughfare number for a property (first number in a property ranged address)",
             "x-cds-type": "PositiveInteger"
         },
         "thoroughfareNumber1Suffix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
         },
         "thoroughfareNumber2": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "integer",
             "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
             "x-cds-type": "PositiveInteger"
         },
         "thoroughfareNumber2Suffix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
         },
         "flatUnitType": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Type of flat or unit for the address"
         },
         "flatUnitNumber": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Unit number (including suffix, if applicable)"
         },
         "floorLevelType": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Type of floor or level for the address"
         },
         "floorLevelNumber": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Floor or level number (including alpha characters)"
         },
         "lotNumber": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Allotment number for the address"
         },
         "buildingName1": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Building/Property name 1"
         },
         "buildingName2": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Building/Property name 2"
         },
         "streetName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The name of the street"
         },
         "streetType": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
         },
         "streetSuffix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
         },
         "postalDeliveryType": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
         },
         "postalDeliveryNumber": {
-            "type": [
-                "integer",
-                "null"
-            ],
+            "type": "integer",
             "description": "Postal delivery number if the address is a postal delivery type",
             "x-cds-type": "PositiveInteger"
         },
         "postalDeliveryNumberPrefix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Postal delivery number prefix related to the postal delivery number"
         },
         "postalDeliveryNumberSuffix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Postal delivery number suffix related to the postal delivery number"
         },
         "localityName": {
@@ -2827,18 +2217,12 @@
     ],
     "properties": {
         "lastUpdateTime": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
             "x-cds-type": "DateTimeString"
         },
         "firstName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "For people with single names this field need not be present.  The single name should be in the lastName field"
         },
         "lastName": {
@@ -2853,24 +2237,15 @@
             }
         },
         "prefix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
         },
         "suffix": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Used for a trailing suffix to the name (e.g. Jr)"
         },
         "occupationCode": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Value is a valid [ANZSCO](http://www.abs.gov.au/ANZSCO) Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported [ANZSCO](http://www.abs.gov.au/ANZSCO) versions, then it must not be supplied.",
             "x-cds-type": "ExternalRef"
         },
@@ -2891,7 +2266,7 @@
 "CommonPersonDetail": {
     "allOf": [
         {
-            "$ref": "./CommonPerson"
+            "$ref": "CommonPerson"
         },
         {
             "type": "object",
@@ -2905,21 +2280,21 @@
                     "type": "array",
                     "description": "Array is mandatory but may be empty if no phone numbers are held",
                     "items": {
-                        "$ref": "./CommonPhoneNumber"
+                        "$ref": "CommonPhoneNumber"
                     }
                 },
                 "emailAddresses": {
                     "type": "array",
                     "description": "May be empty",
                     "items": {
-                        "$ref": "./CommonEmailAddress"
+                        "$ref": "CommonEmailAddress"
                     }
                 },
                 "physicalAddresses": {
                     "type": "array",
                     "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                     "items": {
-                        "$ref": "./CommonPhysicalAddressWithPurpose"
+                        "$ref": "CommonPhysicalAddressWithPurpose"
                     }
                 }
             }
@@ -2939,10 +2314,7 @@
     ],
     "properties": {
         "isPreferred": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
             "x-cds-type": "Boolean"
         },
@@ -2959,10 +2331,7 @@
             ]
         },
         "countryCode": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "If absent, assumed to be Australia (+61). The + should be included"
         },
         "areaCode": {
@@ -2974,10 +2343,7 @@
             "description": "The actual phone number, with leading zeros as appropriate"
         },
         "extension": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "An extension number (if applicable)"
         },
         "fullNumber": {
@@ -3007,10 +2373,10 @@
             ]
         },
         "simple": {
-            "$ref": "./CommonSimpleAddress"
+            "$ref": "CommonSimpleAddress"
         },
         "paf": {
-            "$ref": "./CommonPAFAddress"
+            "$ref": "CommonPAFAddress"
         }
     },
     "$id": "CommonPhysicalAddress"
@@ -3018,7 +2384,7 @@
 "CommonPhysicalAddressWithPurpose": {
     "allOf": [
         {
-            "$ref": "./CommonPhysicalAddress"
+            "$ref": "CommonPhysicalAddress"
         },
         {
             "type": "object",
@@ -3054,10 +2420,7 @@
     ],
     "properties": {
         "mailingName": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
         },
         "addressLine1": {
@@ -3065,17 +2428,11 @@
             "description": "First line of the standard address object"
         },
         "addressLine2": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Second line of the standard address object"
         },
         "addressLine3": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "Third line of the standard address object"
         },
         "postcode": {
@@ -3091,10 +2448,7 @@
             "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
         },
         "country": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
             "x-cds-type": "ExternalRef",
             "default": "AUS"
@@ -3121,10 +2475,7 @@
             "x-cds-type": "ExternalRef"
         },
         "isPartial": {
-            "type": [
-                "boolean",
-                "null"
-            ],
+            "type": "boolean",
             "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
             "x-cds-type": "Boolean"
         },
@@ -3167,34 +2518,22 @@
             "x-cds-type": "URIString"
         },
         "first": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "URI to the first page of this set. Mandatory if this response is not the first page",
             "x-cds-type": "URIString"
         },
         "prev": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
             "x-cds-type": "URIString"
         },
         "next": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "URI to the next page of this set. Mandatory if this response is not the last page",
             "x-cds-type": "URIString"
         },
         "last": {
-            "type": [
-                "string",
-                "null"
-            ],
+            "type": "string",
             "description": "URI to the last page of this set. Mandatory if this response is not the last page",
             "x-cds-type": "URIString"
         }
@@ -3239,34 +2578,6 @@
     },
     "$id": "MetaPaginated"
 },
-"RequestAccountIds": {
-    "type": "object",
-    "required": [
-        "data"
-    ],
-    "properties": {
-        "data": {
-            "type": "object",
-            "required": [
-                "accountIds"
-            ],
-            "properties": {
-                "accountIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "description": "Array of specific accountIds to obtain authorisations for",
-                        "x-cds-type": "ASCIIString"
-                    }
-                }
-            }
-        },
-        "meta": {
-            "$ref": "./Meta"
-        }
-    },
-    "$id": "RequestAccountIds"
-},
 "ResponseBankingAccountById": {
     "type": "object",
     "required": [
@@ -3275,13 +2586,13 @@
     ],
     "properties": {
         "data": {
-            "$ref": "././BankingAccountDetail"
+            "$ref": "BankingAccountDetail"
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseBankingAccountById"
@@ -3304,35 +2615,34 @@
                     "type": "array",
                     "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records",
                     "items": {
-                        "$ref": "./BankingAccount"
+                        "$ref": "BankingAccount"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./LinksPaginated"
+            "$ref": "LinksPaginated"
         },
         "meta": {
-            "$ref": "./MetaPaginated"
+            "$ref": "MetaPaginated"
         }
     },
     "$id": "ResponseBankingAccountList"
 },
 "ResponseBankingAccountsBalanceById": {
-    "type": "object",
     "required": [
         "data",
         "links"
     ],
     "properties": {
         "data": {
-            "$ref": "./BankingBalance"
+            "$ref": "BankingBalance"
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseBankingAccountsBalanceById"
@@ -3355,16 +2665,16 @@
                     "description": "The list of balances returned",
                     "type": "array",
                     "items": {
-                        "$ref": "./BankingBalance"
+                        "$ref": "BankingBalance"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./LinksPaginated"
+            "$ref": "LinksPaginated"
         },
         "meta": {
-            "$ref": "./MetaPaginated"
+            "$ref": "MetaPaginated"
         }
     },
     "$id": "ResponseBankingAccountsBalanceList"
@@ -3387,16 +2697,16 @@
                     "type": "array",
                     "description": "The list of authorisations returned",
                     "items": {
-                        "$ref": "./BankingDirectDebit"
+                        "$ref": "BankingDirectDebit"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./LinksPaginated"
+            "$ref": "LinksPaginated"
         },
         "meta": {
-            "$ref": "./MetaPaginated"
+            "$ref": "MetaPaginated"
         }
     },
     "$id": "ResponseBankingDirectDebitAuthorisationList"
@@ -3409,13 +2719,13 @@
     ],
     "properties": {
         "data": {
-            "$ref": "./BankingPayeeDetail"
+            "$ref": "BankingPayeeDetail"
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseBankingPayeeById"
@@ -3438,16 +2748,16 @@
                     "type": "array",
                     "description": "The list of payees returned",
                     "items": {
-                        "$ref": "./BankingPayee"
+                        "$ref": "BankingPayee"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./LinksPaginated"
+            "$ref": "LinksPaginated"
         },
         "meta": {
-            "$ref": "./MetaPaginated"
+            "$ref": "MetaPaginated"
         }
     },
     "$id": "ResponseBankingPayeeList"
@@ -3460,48 +2770,16 @@
     ],
     "properties": {
         "data": {
-            "$ref": "./BankingProductDetailV3"
+            "$ref": "BankingProductDetailV3"
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseBankingProductById"
-},
-"ResponseBankingProductList": {
-    "type": "object",
-    "required": [
-        "data",
-        "links",
-        "meta"
-    ],
-    "properties": {
-        "data": {
-            "type": "object",
-            "required": [
-                "products"
-            ],
-            "properties": {
-                "products": {
-                    "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
-                    "type": "array",
-                    "items": {
-                        "$ref": "./BankingProductV3"
-                    }
-                }
-            }
-        },
-        "links": {
-            "$ref": "./LinksPaginated"
-        },
-        "meta": {
-            "$ref": "./MetaPaginated"
-        }
-    },
-    "$id": "ResponseBankingProductList"
 },
 "ResponseBankingScheduledPaymentsList": {
     "type": "object",
@@ -3521,16 +2799,16 @@
                     "type": "array",
                     "description": "The list of scheduled payments to return",
                     "items": {
-                        "$ref": "./BankingScheduledPayment"
+                        "$ref": "BankingScheduledPayment"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./LinksPaginated"
+            "$ref": "LinksPaginated"
         },
         "meta": {
-            "$ref": "./MetaPaginated"
+            "$ref": "MetaPaginated"
         }
     },
     "$id": "ResponseBankingScheduledPaymentsList"
@@ -3543,13 +2821,13 @@
     ],
     "properties": {
         "data": {
-            "$ref": "./BankingTransactionDetail"
+            "$ref": "BankingTransactionDetail"
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseBankingTransactionById"
@@ -3571,16 +2849,16 @@
                 "transactions": {
                     "type": "array",
                     "items": {
-                        "$ref": "./BankingTransaction"
+                        "$ref": "BankingTransaction"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./LinksPaginated"
+            "$ref": "LinksPaginated"
         },
         "meta": {
-            "$ref": "./MetaPaginated"
+            "$ref": "MetaPaginated"
         }
     },
     "$id": "ResponseBankingTransactionList"
@@ -3612,19 +2890,19 @@
                 },
                 "person": {
                     "description": "Mandatory if `customerUType` is `person`",
-                    "$ref": "./CommonPerson"
+                    "$ref": "CommonPerson"
                 },
                 "organisation": {
                     "description": "Mandatory if `customerUType` is `organisation`",
-                    "$ref": "./CommonOrganisation"
+                    "$ref": "CommonOrganisation"
                 }
             }
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseCommonCustomer"
@@ -3656,19 +2934,19 @@
                 },
                 "person": {
                     "description": "Mandatory if `customerUType` is `person`",
-                    "$ref": "./CommonPersonDetail"
+                    "$ref": "CommonPersonDetail"
                 },
                 "organisation": {
                     "description": "Mandatory if `customerUType` is `organisation`",
-                    "$ref": "./CommonOrganisationDetail"
+                    "$ref": "CommonOrganisationDetail"
                 }
             }
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseCommonCustomerDetail"
@@ -3722,10 +3000,10 @@
             }
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseCommonDiscoveryStatus"
@@ -3747,16 +3025,16 @@
                     "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
                     "type": "array",
                     "items": {
-                        "$ref": "./DiscoveryOutage"
+                        "$ref": "DiscoveryOutage"
                     }
                 }
             }
         },
         "links": {
-            "$ref": "./Links"
+            "$ref": "Links"
         },
         "meta": {
-            "$ref": "./Meta"
+            "$ref": "Meta"
         }
     },
     "$id": "ResponseDiscoveryOutagesList"
@@ -3794,7 +3072,7 @@
                         "description": "A human-readable explanation specific to this occurrence of the problem."
                     },
                     "meta": {
-                        "$ref": "./MetaError"
+                        "$ref": "MetaError"
                     }
                 }
             }

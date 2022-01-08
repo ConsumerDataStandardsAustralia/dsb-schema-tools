@@ -11,12 +11,12 @@
   ],
   "properties": {
     "lastUpdateTime": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
       "x-cds-type": "DateTimeString"
     },
     "agentFirstName": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
     },
     "agentLastName": {
@@ -32,28 +32,28 @@
       "description": "Name of the organisation"
     },
     "legalName": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Legal name, if different to the business name"
     },
     "shortName": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Short name used for communication, if different to the business name"
     },
     "abn": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Australian Business Number for the organisation"
     },
     "acn": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
     },
     "isACNCRegistered": {
-      "type": ["boolean","null"],
+      "type": "boolean",
       "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
       "x-cds-type": "Boolean"
     },
     "industryCode": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
       "x-cds-type": "ExternalRef"
     },
@@ -79,12 +79,12 @@
       ]
     },
     "registeredCountry": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
       "x-cds-type": "ExternalRef"
     },
     "establishmentDate": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "The date the organisation described was established",
       "x-cds-type": "DateString"
     }

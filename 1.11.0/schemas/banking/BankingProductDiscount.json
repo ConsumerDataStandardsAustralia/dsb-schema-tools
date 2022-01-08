@@ -59,11 +59,11 @@
       "description": "Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)"
     },
     "additionalInfo": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Display text providing more information on the discount"
     },
     "additionalInfoUri": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Link to a web page with more information on this discount",
       "x-cds-type": "URIString"
     },
@@ -71,7 +71,7 @@
       "description": "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
       "type": "array",
       "items": {
-        "$ref": "./BankingProductDiscountEligibility.json"
+        "$ref": "#/definitions/BankingProductDiscountEligibility"
       }
     }
   }

@@ -36,7 +36,7 @@
       "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)"
     },
     "additionalInfoUri": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Link to a web page with more information on this eligibility constraint",
       "x-cds-type": "URIString"
     }

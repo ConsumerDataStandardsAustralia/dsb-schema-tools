@@ -10,7 +10,7 @@
   ],
   "properties": {
     "mailingName": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
     },
     "addressLine1": {
@@ -18,11 +18,11 @@
       "description": "First line of the standard address object"
     },
     "addressLine2": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Second line of the standard address object"
     },
     "addressLine3": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "Third line of the standard address object"
     },
     "postcode": {
@@ -38,7 +38,7 @@
       "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
     },
     "country": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
       "x-cds-type": "ExternalRef",
       "default": "AUS"

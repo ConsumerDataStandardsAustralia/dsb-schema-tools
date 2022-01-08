@@ -1,8 +1,7 @@
 {
-  "type": "object",
   "allOf": [
     {
-      "$ref": "./BankingAccount.json"
+      "$ref": "#/definitions/BankingAccount"
     },
     {
       "type": "object",
@@ -13,19 +12,19 @@
       ],
       "properties": {
         "bsb": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
         },
         "accountNumber": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
         },
         "bundleName": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
         },
         "specificAccountUType": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "The type of structure to present account specific fields.",
           "enum": [
             "creditCard",
@@ -34,41 +33,39 @@
           ]
         },
         "termDeposit": {
-          "type": ["array", "null"],
+          "type": "array",
           "items": {
-            "$ref": "./BankingTermDepositAccount.json"
+            "$ref": "#/definitions/BankingTermDepositAccount"
           }
         },
         "creditCard": {
-          "type": ["object", "null"],
-          "$ref": "./BankingCreditCardAccount.json"
+          "$ref": "#/definitions/BankingCreditCardAccount"
         },
         "loan": {
-          "type": ["object", "null"],
-          "$ref": "./BankingLoanAccount.json"
+          "$ref": "#/definitions/BankingLoanAccount"
         },
         "depositRate": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call",
           "x-cds-type": "RateString"
         },
         "lendingRate": {
-          "type": ["string", "null"],
+          "type": "string",
           "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call",
           "x-cds-type": "RateString"
         },
         "depositRates": {
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
-          "type": ["array", "null"],
+          "type": "array",
           "items": {
-            "$ref": "./BankingProductDepositRate.json"
+            "$ref": "#/definitions/BankingProductDepositRate"
           }
         },
         "lendingRates": {
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
-          "type": ["array", "null"],
+          "type": "array",
           "items": {
-            "$ref": "./BankingProductLendingRateV2.json"
+            "$ref": "#/definitions/BankingProductLendingRateV2"
           }
         },
         "features": {
@@ -77,13 +74,13 @@
           "items": {
             "allOf": [
               {
-                "$ref": "./BankingProductFeature.json"
+                "$ref": "#/definitions/BankingProductFeature"
               },
               {
                 "type": "object",
                 "properties": {
                   "isActivated": {
-                    "type": ["boolean", "null"],
+                    "type": "boolean",
                     "description": "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
                     "x-cds-type": "Boolean",
                     "default": true
@@ -95,16 +92,16 @@
         },
         "fees": {
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
-          "type": ["array", "null"],
+          "type": "array",
           "items": {
-            "$ref": "./BankingProductFee.json"
+            "$ref": "#/definitions/BankingProductFee"
           }
         },
         "addresses": {
           "description": "The addresses for the account to be used for correspondence",
-          "type": ["array", "null"],
+          "type": "array",
           "items": {
-            "$ref": "../../common/1.14.0/CommonPhysicalAddress.json"
+            "$ref": "#/definitions/CommonPhysicalAddress"
           }
         }
       }

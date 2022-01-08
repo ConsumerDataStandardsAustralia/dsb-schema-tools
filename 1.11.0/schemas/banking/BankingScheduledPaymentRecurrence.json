@@ -12,7 +12,7 @@
   ],
   "properties": {
     "nextPaymentDate": {
-      "type": ["string","null"],
+      "type": "string",
       "description": "The date of the next payment under the recurrence schedule",
       "x-cds-type": "DateString"
     },
@@ -27,16 +27,16 @@
       ]
     },
     "onceOff": {
-      "$ref": "./BankingScheduledPaymentRecurrenceOnceOff.json"
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceOnceOff"
     },
     "intervalSchedule": {
-      "$ref": "./BankingScheduledPaymentRecurrenceIntervalSchedule.json"
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceIntervalSchedule"
     },
     "lastWeekDay": {
-      "$ref": "./BankingScheduledPaymentRecurrenceLastWeekday.json"
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceLastWeekday"
     },
     "eventBased": {
-      "$ref": "./BankingScheduledPaymentRecurrenceEventBased.json"
+      "$ref": "#/definitions/BankingScheduledPaymentRecurrenceEventBased"
     }
   }
 }

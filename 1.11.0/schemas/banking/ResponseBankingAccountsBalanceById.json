@@ -1,18 +1,17 @@
 {
-  "type": "object",
   "required": [
     "data",
     "links"
   ],
   "properties": {
     "data": {
-      "$ref": "./BankingBalance.json"
+      "$ref": "#/definitions/BankingBalance"
     },
     "links": {
-      "$ref": "./Links.json"
+      "$ref": "#/definitions/Links"
     },
     "meta": {
-      "$ref": "./Meta.json"
+      "$ref": "#/definitions/Meta"
     }
   }
 }
