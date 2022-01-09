@@ -31,7 +31,7 @@
             "description": "A human-readable explanation specific to this occurrence of the problem."
           },
           "meta": {
-            "$ref": "MetaError"
+            "$ref": "MetaError.json"
           }
         }
       }

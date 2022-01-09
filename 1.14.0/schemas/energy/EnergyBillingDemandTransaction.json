@@ -85,7 +85,7 @@
     },
     "adjustments": {
       "description": "Optional array of adjustments arising for this transaction",
-      "type": ["array", "null]"],
+      "type": ["array", "null"],
       "items": {
         "type": "object",
         "required": [

@@ -16,16 +16,16 @@
           "description": "Array of accounts",
           "type": "array",
           "items": {
-            "$ref": "EnergyAccount"
+            "$ref": "EnergyAccount.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "../common/LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "../common/MetaPaginated.json"
     }
   }
 }

@@ -47,7 +47,7 @@
       "x-cds-type": "MaskedAccountString"
     },
     "productCategory": {
-      "$ref": "BankingProductCategory"
+      "$ref": "BankingProductCategory.json"
     },
     "productName": {
       "type": "string",

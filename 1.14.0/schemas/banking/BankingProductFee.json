@@ -79,7 +79,7 @@
       "description": "An optional list of discounts to this fee that may be available",
       "type": ["array","null"],
       "items": {
-        "$ref": "BankingProductDiscount"
+        "$ref": "BankingProductDiscount.json"
       }
     }
   }

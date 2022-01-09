@@ -16,16 +16,16 @@
           "type": "array",
           "description": "The list of authorisations returned",
           "items": {
-            "$ref": "BankingDirectDebit"
+            "$ref": "BankingDirectDebit.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "../common/LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "../common/MetaPaginated.json"
     }
   }
 }

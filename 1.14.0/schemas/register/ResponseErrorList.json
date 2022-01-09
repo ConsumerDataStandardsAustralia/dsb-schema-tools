@@ -8,7 +8,7 @@
       "uniqueItems": false,
       "type": "array",
       "items": {
-        "$ref": "Error"
+        "$ref": "Error.json"
       }
     }
   }

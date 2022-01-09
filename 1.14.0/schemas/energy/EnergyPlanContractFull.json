@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "EnergyPlanContract"
+      "$ref": "EnergyPlanContract.json"
     },
     {
       "type": "object",

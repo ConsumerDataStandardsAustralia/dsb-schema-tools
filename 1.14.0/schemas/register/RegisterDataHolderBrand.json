@@ -33,7 +33,7 @@
       "x-cds-type": "URIString"
     },
     "legalEntity": {
-      "$ref": "LegalEntityDetail"
+      "$ref": "LegalEntityDetail.json"
     },
     "status": {
       "enum": [
@@ -44,13 +44,13 @@
       "type": "string"
     },
     "endpointDetail": {
-      "$ref": "RegisterDataHolderBrandServiceEndpoint"
+      "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
     },
     "authDetails": {
       "type": "array",
       "uniqueItems": false,
       "items": {
-        "$ref": "RegisterDataHolderAuth"
+        "$ref": "RegisterDataHolderAuth.json"
       }
     },
     "lastUpdated": {

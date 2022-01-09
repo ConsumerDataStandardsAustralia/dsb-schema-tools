@@ -7,13 +7,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "EnergyPlanDetail"
+      "$ref": "EnergyPlanDetail.json"
     },
     "links": {
-      "$ref": "Links"
+      "$ref": "../common/Links.json"
     },
     "meta": {
-      "$ref": "Meta"
+      "$ref": "../common/Meta.json"
     }
   }
 }

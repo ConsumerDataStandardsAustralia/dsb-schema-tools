@@ -16,16 +16,16 @@
           "type": "array",
           "description": "The list of payees returned",
           "items": {
-            "$ref": "BankingPayee"
+            "$ref": "BankingPayee.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "../common/LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "../common/MetaPaginated.json"
     }
   }
 }

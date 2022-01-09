@@ -21,7 +21,7 @@
       }
     },
     "meta": {
-      "$ref": "Meta"
+      "$ref": "../common/Meta.json"
     }
   }
 }

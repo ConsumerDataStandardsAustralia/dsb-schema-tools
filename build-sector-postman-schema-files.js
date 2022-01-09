@@ -13,7 +13,7 @@
 var fs = require('fs');
 var path = require('path');
 
-const sectors = ['energy'];
+const sectors = ['register'];
 const version = '1.15.0';
 
 sectors.forEach(sector => {

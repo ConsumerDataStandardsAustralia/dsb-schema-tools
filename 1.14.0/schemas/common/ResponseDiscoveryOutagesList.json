@@ -15,16 +15,16 @@
           "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
           "type": "array",
           "items": {
-            "$ref": "DiscoveryOutage"
+            "$ref": "DiscoveryOutage.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "Links"
+      "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "Meta"
+      "$ref": "Meta.json"
     }
   }
 }

@@ -11,7 +11,7 @@ const { Console } = require("console");
 
 
 const sectors = ['banking', 'register', 'energy', 'dcr', 'admin'];
-const version = '1.15.0';
+const version = '1.14.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' + sector);

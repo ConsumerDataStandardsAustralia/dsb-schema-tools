@@ -12,14 +12,14 @@
       "uniqueItems": false,
       "type": "array",
       "items": {
-        "$ref": "RegisterDataHolderBrand"
+        "$ref": "RegisterDataHolderBrand.json"
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "../common/LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "../common/MetaPaginated.json"
     }
   }
 }

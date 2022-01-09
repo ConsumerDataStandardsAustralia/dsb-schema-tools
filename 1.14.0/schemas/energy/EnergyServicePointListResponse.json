@@ -15,16 +15,16 @@
         "servicePoints": {
           "type": "array",
           "items": {
-            "$ref": "EnergyServicePoint"
+            "$ref": "EnergyServicePoint.json"
           }
         }
       }
     },
     "links": {
-      "$ref": "LinksPaginated"
+      "$ref": "../common/LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "$ref": "../common/MetaPaginated.json"
     }
   }
 }

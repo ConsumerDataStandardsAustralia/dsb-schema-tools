@@ -37,7 +37,7 @@
       "uniqueItems": true,
       "type": "array",
       "items": {
-        "$ref": "DataRecipientBrandMetaData"
+        "$ref": "DataRecipientBrandMetaData.json"
       }
     },
     "status": {
