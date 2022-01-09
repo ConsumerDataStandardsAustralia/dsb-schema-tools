@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "906df818-7d2a-48bd-af80-78436d2e75c0",
-		"name": "CDR Register API Conformance Tests v.15.0",
+		"name": "CDR Register API Conformance Tests v.1.15.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
