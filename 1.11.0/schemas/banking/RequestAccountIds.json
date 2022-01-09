@@ -1,30 +1,27 @@
 {
   "type": "object",
   "required": [
-    "data",
-    "links",
-    "meta"
+    "data"
   ],
   "properties": {
     "data": {
       "type": "object",
       "required": [
-        "transactions"
+        "accountIds"
       ],
       "properties": {
-        "transactions": {
+        "accountIds": {
           "type": "array",
           "items": {
-            "$ref": "BankingTransaction.json"
+            "type": "string",
+            "description": "Array of specific accountIds to obtain authorisations for",
+            "x-cds-type": "ASCIIString"
           }
         }
       }
     },
-    "links": {
-      "$ref": "LinksPaginated.json"
-    },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "Meta.json"
     }
   }
 }

@@ -40,7 +40,7 @@
       "type": "array",
       "description": "Rate tiers applicable for this rate",
       "items": {
-        "$ref": "#/definitions/BankingProductRateTierV3"
+        "$ref": "BankingProductRateTierV3.json"
       }
     },
     "additionalValue": {

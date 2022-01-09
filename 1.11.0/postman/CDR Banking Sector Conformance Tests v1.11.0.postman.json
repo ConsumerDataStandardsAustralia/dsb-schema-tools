@@ -4289,7 +4289,7 @@
 													"",
 													"        // Schema payload check",
 													"        pm.test('Response payload conforms to standards schema', function() {",
-													"            const valid = ajv.validate(\"ResponseBankingAccountByIdV2\", jsonData)",
+													"            const valid = ajv.validate(\"ResponseBankingAccountById\", jsonData)",
 													"            if (!valid){",
 													"            ajv.errors.forEach(element => {",
 													"                console.log(JSON.stringify(element));",
@@ -5574,7 +5574,7 @@
 													"\r",
 													"        // Schema payload check\r",
 													"        pm.test('Response payload conforms to standards schema', function() {\r",
-													"            const valid = ajv.validate(\"ResponseBankingPayeeListV2\", jsonData)\r",
+													"            const valid = ajv.validate(\"ResponseBankingPayeeList\", jsonData)\r",
 													"            if (!valid){\r",
 													"            ajv.errors.forEach(element => {\r",
 													"                console.log(JSON.stringify(element));\r",
@@ -5775,7 +5775,7 @@
 													"\r",
 													"        // Schema payload check\r",
 													"        pm.test('Response payload conforms to standards schema', function() {\r",
-													"            const valid = ajv.validate(\"ResponseBankingPayeeListV2\", jsonData)\r",
+													"            const valid = ajv.validate(\"ResponseBankingPayeeList\", jsonData)\r",
 													"            if (!valid){\r",
 													"            ajv.errors.forEach(element => {\r",
 													"                console.log(JSON.stringify(element));\r",
@@ -6210,7 +6210,7 @@
 													"\r",
 													"        // Schema payload check\r",
 													"        pm.test('Response payload conforms to standards schema', function() {\r",
-													"            const valid = ajv.validate(\"ResponseBankingProductListV2\", jsonData)\r",
+													"            const valid = ajv.validate(\"ResponseBankingProductList\", jsonData)\r",
 													"            if (!valid){\r",
 													"            ajv.errors.forEach(element => {\r",
 													"                console.log(JSON.stringify(element));\r",
@@ -6399,7 +6399,7 @@
 													"        });\r",
 													"        // Schema payload check\r",
 													"        pm.test('Response payload conforms to standards schema', function() {\r",
-													"            const valid = ajv.validate(\"ResponseBankingProductListV2\", jsonData)\r",
+													"            const valid = ajv.validate(\"ResponseBankingProductList\", jsonData)\r",
 													"            if (!valid){\r",
 													"            ajv.errors.forEach(element => {\r",
 													"                console.log(JSON.stringify(element));\r",
@@ -6568,7 +6568,7 @@
 													"\r",
 													"        // Schema payload check\r",
 													"        pm.test('Response payload conforms to standards schema', function() {\r",
-													"            const valid = ajv.validate(\"ResponseBankingProductByIdV4\", jsonData)\r",
+													"            const valid = ajv.validate(\"ResponseBankingProductById\", jsonData)\r",
 													"            if (!valid){\r",
 													"            ajv.errors.forEach(element => {\r",
 													"                console.log(JSON.stringify(element));\r",
@@ -7537,11 +7537,11 @@
 			"value": ""
 		},
 		{
-			"key": "ResponseBankingPayeeListV2",
+			"key": "ResponseBankingPayeeList",
 			"value": ""
 		},
 		{
-			"key": "ResponseBankingAccountByIdV2",
+			"key": "ResponseBankingAccountById",
 			"value": ""
 		},
 		{
@@ -7549,7 +7549,7 @@
 			"value": ""
 		},
 		{
-			"key": "ResponseBankingProductListV2",
+			"key": "ResponseBankingProductList",
 			"value": ""
 		},
 		{
@@ -7577,7 +7577,7 @@
 			"value": ""
 		},
 		{
-			"key": "ResponseBankingProductByIdV4",
+			"key": "ResponseBankingProductById",
 			"value": ""
 		},
 		{

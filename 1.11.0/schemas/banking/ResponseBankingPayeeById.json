@@ -6,13 +6,13 @@
   ],
   "properties": {
     "data": {
-      "$ref": "#/definitions/BankingPayeeDetail"
+      "$ref": "BankingPayeeDetail.json"
     },
     "links": {
-      "$ref": "#/definitions/Links"
+      "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "#/definitions/Meta"
+      "$ref": "Meta.json"
     }
   }
 }
