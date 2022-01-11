@@ -16,10 +16,10 @@
       }
     },
     "links": {
-      "$ref": "../common/LinksPaginated.json"
+      "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "../common/MetaPaginated.json"
+      "$ref": "MetaPaginated.json"
     }
   }
 }

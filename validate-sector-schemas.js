@@ -10,25 +10,26 @@ const addFormats = require("ajv-formats");
 const { Console } = require("console");
 
 
-const sectors = ['banking', 'register', 'energy', 'dcr', 'admin'];
+const sectors = ['banking', 'energy', 'register', 'admin', 'dcr'];
 const version = '1.14.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' + sector);
   const commonDirectoryPath = path.join(__dirname, version + '/schemas/common');
   var dsbSchemas = [];
-  // Read the common schemas
-  var commonFiles = fs.readdirSync(commonDirectoryPath);
+  // Read the common schemas unless reading the register api
+  if (sector != 'register' || sector != 'admin') {
+    var commonFiles = fs.readdirSync(commonDirectoryPath);
+    commonFiles.forEach(function (file) {
+      var filePath = path.join(commonDirectoryPath, file);
+      var data = JSON.parse(fs.readFileSync(filePath));
+      //var fileName = file.substr(0, file.indexOf('.'));
+      data.$id = 'common/' + file;
+      dsbSchemas.push(data);
+    });
+    console.log("Added Common for " + sector + " validation");
+  }
 
-
-  commonFiles.forEach(function (file) {
-    var filePath = path.join(commonDirectoryPath, file);
-    var data = JSON.parse(fs.readFileSync(filePath));
-    //var fileName = file.substr(0, file.indexOf('.'));
-    data.$id = 'common/' + file;
-    dsbSchemas.push(data);
-  });
-  console.log("Added Common for " + sector + " validation");
 
   // Read the schemas to be validated
   var files = fs.readdirSync(directoryPath);
