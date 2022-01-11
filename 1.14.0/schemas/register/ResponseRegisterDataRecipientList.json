@@ -1,9 +1,7 @@
 {
   "description": "Response containing a list of Data Recipients in the CDR Register",
   "required": [
-    "data",
-    "links",
-    "meta"
+    "data"
   ],
   "type": "object",
   "properties": {
