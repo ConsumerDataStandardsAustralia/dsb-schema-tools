@@ -14,7 +14,7 @@ var fs = require('fs');
 var path = require('path');
 
 const sectors = ['register'];
-const version = '1.15.0';
+const version = '1.14.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' +  sector );
