@@ -10,25 +10,30 @@
   "properties": {
     "dataRecipientBrandId": {
       "description": "Unique id of the Data Recipient brand issued by the CDR Register",
-      "type": "string"
+      "type": "string",
+      "maxLength": 36
     },
     "brandName": {
       "description": "Data Recipient Brand name",
-      "type": "string"
+      "type": "string",
+      "maxLength": 200
     },
     "logoUri": {
       "description": "Data Recipient Brand logo URI",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "softwareProducts": {
       "uniqueItems": true,
       "type": "array",
+      "minimum": 0,
       "items": {
         "$ref": "SoftwareProductMetaData.json"
       }
     },
     "status": {
+      "description": "Data Recipient Brand status in the CDR Register",
       "enum": [
         "ACTIVE",
         "INACTIVE",

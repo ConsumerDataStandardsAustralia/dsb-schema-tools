@@ -16,27 +16,32 @@
     "publicBaseUri": {
       "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "resourceBaseUri": {
       "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "infosecBaseUri": {
       "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "extensionBaseUri": {
       "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "websiteUri": {
       "description": "Publicly available website or web resource URI",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     }
   }
 }

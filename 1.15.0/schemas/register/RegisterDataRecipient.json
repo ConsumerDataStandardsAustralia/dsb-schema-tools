@@ -3,7 +3,7 @@
     "legalEntityId",
     "legalEntityName",
     "accreditationNumber",
-    "industry",
+    "accreditationLevel",
     "logoUri",
     "status",
     "lastUpdated"
@@ -11,36 +11,44 @@
   "type": "object",
   "properties": {
     "legalEntityId": {
-      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
-      "type": "string"
+      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register.",
+      "type": "string",
+      "maxLength": 36
     },
     "legalEntityName": {
       "description": "Legal name of the Data Recipient",
-      "type": "string"
+      "type": "string",
+      "maxLength": 200
     },
     "accreditationNumber": {
       "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation",
-      "type": "string"
+      "type": "string",
+      "maxLength": 100
     },
-    "industry": {
+    "accreditationLevel": {
+      "description": "Accreditation level of the Data Recipient in the CDR Register",
       "enum": [
-        "banking"
+        "UNRESTRICTED",
+        "SPONSORED"
       ],
       "type": "string"
     },
     "logoUri": {
       "description": "Legal Entity logo URI",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "dataRecipientBrands": {
-      "uniqueItems": true,
       "type": "array",
+      "minimum": 0,
+      "uniqueItems": true,
       "items": {
         "$ref": "DataRecipientBrandMetaData.json"
       }
     },
     "status": {
+      "description": "Data Recipient status in the CDR Register",
       "enum": [
         "ACTIVE",
         "SUSPENDED",

@@ -10,22 +10,27 @@
   "properties": {
     "softwareProductId": {
       "description": "Unique id of the Data Recipient software product issued by the CDR Register",
-      "type": "string"
+      "type": "string",
+      "maxLength": 36
     },
     "softwareProductName": {
       "description": "Name of the software product",
-      "type": "string"
+      "type": "string",
+      "maxLength": 200
     },
     "softwareProductDescription": {
       "description": "Description of the software product",
-      "type": "string"
+      "type": "string",
+      "maxLength": 4000
     },
     "logoUri": {
       "description": "Software product logo URI",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "status": {
+      "description": "Software Product status in the CDR Register",
       "enum": [
         "ACTIVE",
         "INACTIVE",

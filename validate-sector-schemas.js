@@ -18,7 +18,7 @@ sectors.forEach(sector => {
   const commonDirectoryPath = path.join(__dirname, version + '/schemas/common');
   var dsbSchemas = [];
   // Read the common schemas unless reading the register api
-  if (sector != 'register' || sector != 'admin') {
+  if (sector != 'register' || sector != 'admin' || sector != 'dcr') {
     var commonFiles = fs.readdirSync(commonDirectoryPath);
     commonFiles.forEach(function (file) {
       var filePath = path.join(commonDirectoryPath, file);

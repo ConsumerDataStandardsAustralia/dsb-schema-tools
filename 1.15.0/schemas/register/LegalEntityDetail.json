@@ -3,22 +3,26 @@
   "required": [
     "legalEntityId",
     "legalEntityName",
-    "logoUri"
+    "logoUri",
+    "status"
   ],
   "type": "object",
   "properties": {
     "legalEntityId": {
       "description": "Unique id of the organisation issued by the CDR Register",
-      "type": "string"
+      "type": "string",
+      "maxLength": 36
     },
     "legalEntityName": {
       "description": "Unique legal name of the organisation",
-      "type": "string"
+      "type": "string",
+      "maxLength": 36
     },
     "logoUri": {
       "description": "Legal Entity logo URI",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "registrationNumber": {
       "description": "Unique registration number (if the company is registered outside Australia)",
@@ -32,23 +36,28 @@
     },
     "registeredCountry": {
       "description": "Country of registeration (if the company is registered outside Australia)",
-      "type": "string"
+      "type": "string",
+      "maxLength": 100
     },
     "abn": {
       "description": "Australian Business Number for the organisation",
-      "type": "string"
+      "type": "string",
+      "maxLength": 11
     },
     "acn": {
       "description": "Australian Company Number for the organisation",
-      "type": "string"
+      "type": "string",
+      "maxLength": 9
     },
     "arbn": {
       "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
-      "type": "string"
+      "type": "string",
+      "maxLength": 9
     },
-    "industryCode": {
-      "description": "Industry Code for the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)",
-      "type": "string"
+    "anzsicDivision": {
+      "description": "ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)",
+      "type": "string",
+      "maxLength": 100
     },
     "organisationType": {
       "description": "Legal organisation type",
@@ -59,6 +68,13 @@
         "TRUST",
         "GOVERNMENT_ENTITY",
         "OTHER"
+      ],
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "REMOVED"
       ],
       "type": "string"
     }

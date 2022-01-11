@@ -25,24 +25,29 @@ sectors.forEach(sector => {
   var dirCnt = 0;
   var commonFile = fs.readdirSync(commonDirPath);
   var files = fs.readdirSync(directoryPath);
-  commonFile.forEach(function (file) {
-    var filePath = path.join(commonDirPath, file);
-    if (cnt > 0) {
-      stream.write(',');
-    }
-    cnt++;
-    if (isFirst == true) {
-      isFirst = false;
-      stream.write('{');
-    }
-    var data = JSON.parse(fs.readFileSync(filePath));
-    var fileName = file.substr(0, file.indexOf('.'));
-    data.$id =  file;
-    stream.write('"' + fileName + '" :')
-    stream.write(JSON.stringify(data));
-    console.log("Processed " + file);  
-  });
-  stream.write(',');
+
+  if (sector != 'register' || sector != 'admin' || sector != 'dcr') {
+    commonFile.forEach(function (file) {
+      var filePath = path.join(commonDirPath, file);
+      if (cnt > 0) {
+        stream.write(',');
+      }
+      cnt++;
+      if (isFirst == true) {
+        isFirst = false;
+        stream.write('{');
+      }
+      var data = JSON.parse(fs.readFileSync(filePath));
+      var fileName = file.substr(0, file.indexOf('.'));
+      data.$id =  file;
+      stream.write('"' + fileName + '" :')
+      stream.write(JSON.stringify(data));
+      console.log("Processed " + file);  
+    });
+    stream.write(',');
+  }
+
+  
   cnt = 0;
   isFirst = true;
   files.forEach(function (file) {

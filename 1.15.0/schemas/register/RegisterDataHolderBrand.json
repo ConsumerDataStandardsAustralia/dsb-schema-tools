@@ -2,7 +2,7 @@
   "required": [
     "dataHolderBrandId",
     "brandName",
-    "industry",
+    "industries",
     "logoUri",
     "legalEntity",
     "status",
@@ -14,23 +14,33 @@
   "properties": {
     "dataHolderBrandId": {
       "description": "Unique id of the Data Holder Brand issued by the CDR Register",
-      "type": "string"
+      "type": "string",
+      "maxLength": 36
     },
     "brandName": {
       "description": "The name of Data Holder Brand",
-      "type": "string"
+      "type": "string",
+      "maxLength": 200
     },
-    "industry": {
-      "description": "The industry the Data Holder brand belongs to (Banking, etc)",
-      "enum": [
-        "banking"
-      ],
-      "type": "string"
+    "industries": {
+      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+      "type": "array",
+      "minimum": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "banking",
+          "energy",
+          "telco"
+        ],
+        "type": "string"
+      }
     },
     "logoUri": {
       "description": "Brand logo URI",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     },
     "legalEntity": {
       "$ref": "LegalEntityDetail.json"
@@ -48,9 +58,10 @@
     },
     "authDetails": {
       "type": "array",
-      "uniqueItems": false,
+      "minimum": 1,
+      "uniqueItems": true,
       "items": {
-        "$ref": "RegisterDataHolderAuth.json"
+        "$ref": "RegisterDataHolderAuth"
       }
     },
     "lastUpdated": {

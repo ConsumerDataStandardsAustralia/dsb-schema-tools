@@ -1,15 +1,25 @@
 {
   "required": [
-    "softwareProducts"
+    "data",
+    "links",
+    "meta"
   ],
   "type": "object",
   "properties": {
-    "softwareProducts": {
-      "uniqueItems": true,
+    "data": {
+      "description": "Response data for the query",
       "type": "array",
+      "minimum": 0,
+      "uniqueItems": true,
       "items": {
         "$ref": "SoftwareProductStatus.json"
       }
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
     }
   }
 }

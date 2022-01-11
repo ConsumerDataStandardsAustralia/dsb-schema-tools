@@ -1,5 +1,4 @@
 {
-  "description": "Response containing a list of CDR Register Data Holder Brand objects",
   "required": [
     "data",
     "links",
@@ -13,14 +12,14 @@
       "minimum": 0,
       "uniqueItems": true,
       "items": {
-        "$ref": "RegisterDataHolderBrand.json"
+        "$ref": "DataHolderStatus.json"
       }
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "Meta.json"
     }
   }
 }

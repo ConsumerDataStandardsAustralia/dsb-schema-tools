@@ -1,20 +1,19 @@
 {
   "required": [
-    "softwareProductId",
+    "legalEntityId",
     "status"
   ],
   "type": "object",
   "properties": {
-    "softwareProductId": {
-      "description": "Unique id of the software product issued by the CDR Register",
+    "legalEntityId": {
+      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
       "type": "string",
       "maxLength": 36
     },
     "status": {
-      "description": "Software product status in the CDR Register",
+      "description": "Data Holder status in the CDR Register",
       "enum": [
         "ACTIVE",
-        "INACTIVE",
         "REMOVED"
       ],
       "type": "string"

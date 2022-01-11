@@ -1,15 +1,25 @@
 {
   "required": [
-    "dataRecipients"
+    "data",
+    "links",
+    "meta"
   ],
   "type": "object",
   "properties": {
-    "dataRecipients": {
-      "uniqueItems": true,
+    "data": {
+      "description": "Response data for the query",
       "type": "array",
+      "minimum": 0,
+      "uniqueItems": true,
       "items": {
         "$ref": "DataRecipientStatus.json"
       }
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
     }
   }
 }

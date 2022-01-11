@@ -16,7 +16,8 @@
     "jwksEndpoint": {
       "description": "JWKS endpoint for private_key_jwt client authentication with Data Recipient",
       "type": "string",
-      "x-cds-type": "URIString"
+      "x-cds-type": "URIString",
+      "maxLength": 1000
     }
   }
 }
