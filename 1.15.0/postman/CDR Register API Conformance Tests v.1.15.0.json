@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "906df818-7d2a-48bd-af80-78436d2e75c0",
+		"_postman_id": "6f149bcf-1c4d-4424-b119-3aba24c1554e",
 		"name": "CDR Register API Conformance Tests v.1.15.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1777,13 +1777,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{openidUrl}}/.well-known/openid-configuration/jwks",
+					"raw": "{{baseUrlUnAuthenticated}}/jwks",
 					"host": [
-						"{{openidUrl}}"
+						"{{baseUrlUnAuthenticated}}"
 					],
 					"path": [
-						".well-known",
-						"openid-configuration",
 						"jwks"
 					]
 				},
@@ -1875,10 +1873,9 @@
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
 					"",
-					"    var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/postman/register/postman-validation-register-\" + version + \".json\";",
-					"    var urlCommonSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/postman/common/postman-validation-common-\" + version + \".json\";    ",
-					"    // var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/postman/register/postman-validation-register-1.14.0.json\";",
-					"    // var urlCommonSchemaValidationFileDirectory = \"http://localhost:8080/postman/common/postman-validation-common-1.14.0.json\";",
+					"    var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/1.15.0/1.15.0/postman/postman-validation-register-1.15.0.json\";",
+					"    // var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/1.15.0/postman/postman-validation-register-1.15.0.json\";",
+					"",
 					"",
 					"    pm.sendRequest(urlRegisterSchemaValidationFileDirectory, (error, responseRegister) => {",
 					"        //console.log(\"Reading schema files for register....\"); ",
@@ -1908,35 +1905,6 @@
 					"                console.log(\"Exception :\" + JSON.stringify(e));",
 					"            }",
 					"            pm.collectionVariables.set(\"GlobaRegisterSchema\", schemaRegister);        ",
-					"        }",
-					"    }); ",
-					"",
-					"    pm.sendRequest(urlCommonSchemaValidationFileDirectory, (error, responseCommon) => {",
-					"        //console.log(\"Reading schema files for Common....\"); ",
-					"        if (error) {",
-					"            console.log('Getting schema returned: ' + error);",
-					"        } else {",
-					"            ",
-					"            try { ",
-					"                let commonSchemaCount = 0;",
-					"                let commonSchemaAdded = 0;",
-					"                schemaCommon = responseCommon.json();",
-					"                for (var key in schemaCommon) {",
-					"                    commonSchemaCount++;",
-					"                    if (schemaCommon.hasOwnProperty(key)) {",
-					"                        schemaCommon[key].$id = key;",
-					"                        try {",
-					"                            ajv.addSchema(schemaCommon[key]);",
-					"                            commonSchemaAdded++;",
-					"                        }",
-					"                        catch(ex){",
-					"                        console.log(\"Exception :\" + JSON.stringify(ex));",
-					"                        }",
-					"                        ",
-					"                    }",
-					"                }",
-					"            } catch(e) {}",
-					"            pm.collectionVariables.set(\"GlobalCommonSchema\", schemaCommon);        ",
 					"        }",
 					"    }); ",
 					"  }",
