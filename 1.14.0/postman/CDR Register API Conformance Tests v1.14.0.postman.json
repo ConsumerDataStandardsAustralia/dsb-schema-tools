@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "367807b0-613a-4dd1-87c6-606d145a3591",
-		"name": "CDR Register API Conformance Tests v1.14.0",
+		"_postman_id": "7cbdb9ca-db08-4220-b5ba-ab46be11c91a",
+		"name": "CDR Register API Conformance Tests v.1.14.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -1872,8 +1872,9 @@
 					"    console.log(\"Pre-request: Setting common variables\")",
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
-					"var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/1.15.0/1.14.0/postman/postman-validation-register-1.14.0.json\";",
-					"    // var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/1.14.0/postman/postman-validation-register-1.14.0.json\";",
+					"",
+					"    var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/1.15.0/1.14.0/postman/postman-validation-register-1.14.0.json\";",
+					"    //var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/1.15.0/postman/postman-validation-register-1.15.0.json\";",
 					"",
 					"",
 					"    pm.sendRequest(urlRegisterSchemaValidationFileDirectory, (error, responseRegister) => {",
