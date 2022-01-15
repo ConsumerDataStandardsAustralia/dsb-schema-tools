@@ -7290,7 +7290,7 @@
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
 					"",
-					"     var urlBankingSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/1.15.0/1.14.0/postman/postman-validation-banking-1.14.0.json\";",
+					"     var urlBankingSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/1.14.0/postman/postman-validation-banking-1.14.0.json\";",
 					"",
 					"    //var urlBankingSchemaValidationFileDirectory = \"http://localhost:8080/1.14.0/postman/postman-validation-banking-1.14.0.json\";",
 					"",

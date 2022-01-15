@@ -1873,7 +1873,7 @@
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
 					"",
-					"    var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/1.15.0/1.14.0/postman/postman-validation-register-1.14.0.json\";",
+					"    var urlRegisterSchemaValidationFileDirectory = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/1.14.0/postman/postman-validation-register-1.14.0.json\";",
 					"    //var urlRegisterSchemaValidationFileDirectory = \"http://localhost:8080/1.15.0/postman/postman-validation-register-1.15.0.json\";",
 					"",
 					"",
