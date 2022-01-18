@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "servicePoints"
+      ],
+      "properties": {
+        "servicePoints": {
+          "type": "array",
+          "items": {
+            "$ref": "EnergyServicePoint.json"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "../common/LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "../common/MetaPaginated.json"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "required": [
+    "dataRecipients"
+  ],
+  "type": "object",
+  "properties": {
+    "dataRecipients": {
+      "uniqueItems": true,
+      "type": "array",
+      "items": {
+        "$ref": "DataRecipientStatus.json"
+      }
+    }
+  }
+}

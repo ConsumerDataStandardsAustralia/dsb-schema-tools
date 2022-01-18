@@ -1,0 +1,17 @@
+{
+  "required": [
+    "data",
+    "links"
+  ],
+  "properties": {
+    "data": {
+      "$ref": "BankingBalance.json"
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  }
+}

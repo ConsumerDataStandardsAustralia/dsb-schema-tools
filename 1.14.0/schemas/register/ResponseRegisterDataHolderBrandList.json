@@ -1,0 +1,25 @@
+{
+  "description": "Response containing a list of CDR Register Data Holder Brand objects",
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "uniqueItems": false,
+      "type": "array",
+      "items": {
+        "$ref": "RegisterDataHolderBrand.json"
+      }
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  }
+}

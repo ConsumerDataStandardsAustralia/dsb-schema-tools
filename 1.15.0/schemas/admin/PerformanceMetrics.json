@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "description": "Percentage of calls within the performance thresholds",
+  "x-conditional": [
+    "currentDay",
+    "previousDays"
+  ],
+  "properties": {
+    "currentDay": {
+      "type": "number",
+      "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%"
+    },
+    "previousDays": {
+      "type": "array",
+      "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%",
+      "items": {
+        "type": "number"
+      }
+    }
+  }
+}

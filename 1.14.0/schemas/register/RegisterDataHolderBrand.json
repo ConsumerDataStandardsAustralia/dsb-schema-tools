@@ -1,0 +1,63 @@
+{
+  "required": [
+    "dataHolderBrandId",
+    "brandName",
+    "industry",
+    "logoUri",
+    "legalEntity",
+    "status",
+    "endpointDetail",
+    "authDetails",
+    "lastUpdated"
+  ],
+  "type": "object",
+  "properties": {
+    "dataHolderBrandId": {
+      "description": "Unique id of the Data Holder Brand issued by the CDR Register",
+      "type": "string"
+    },
+    "brandName": {
+      "description": "The name of Data Holder Brand",
+      "type": "string"
+    },
+    "industry": {
+      "description": "The industry the Data Holder brand belongs to (Banking, etc)",
+      "enum": [
+        "banking"
+      ],
+      "type": "string"
+    },
+    "logoUri": {
+      "description": "Brand logo URI",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "legalEntity": {
+      "$ref": "LegalEntityDetail.json"
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    },
+    "endpointDetail": {
+      "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
+    },
+    "authDetails": {
+      "type": "array",
+      "uniqueItems": false,
+      "items": {
+        "$ref": "RegisterDataHolderAuth.json"
+      }
+    },
+    "lastUpdated": {
+      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+      "type": "string",
+      "format": "date-time",
+      "x-cds-type": "DateTimeString"
+    }
+  }
+}

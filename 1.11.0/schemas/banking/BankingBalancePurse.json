@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": [
+    "amount"
+  ],
+  "properties": {
+    "amount": {
+      "type": "string",
+      "description": "The balance available for this additional currency purse",
+      "x-cds-type": "AmountString"
+    },
+    "currency": {
+      "type": "string",
+      "description": "The currency for the purse",
+      "x-cds-type": "CurrencyString"
+    }
+  }
+}

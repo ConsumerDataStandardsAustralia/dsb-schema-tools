@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "amount",
+    "method"
+  ],
+  "properties": {
+    "amount": {
+      "description": "The amount paid",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "method": {
+      "description": "The method of payment",
+      "type": "string",
+      "enum": [
+        "DIRECT_DEBIT",
+        "CARD",
+        "TRANSFER",
+        "BPAY",
+        "CASH",
+        "CHEQUE",
+        "OTHER"
+      ]
+    }
+  }
+}
