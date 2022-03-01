@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "data",
+    "links"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "outages"
+      ],
+      "properties": {
+        "outages": {
+          "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
+          "type": "array",
+          "items": {
+            "$ref": "DiscoveryOutage.json"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  }
+}
