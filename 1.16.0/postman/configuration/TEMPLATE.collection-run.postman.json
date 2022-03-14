@@ -1,0 +1,24 @@
+[
+    {
+        "baseUrl": "",
+        "authenticatedResourceUrl": "",
+        "unauthenticatedResourceUrl": "",
+        "authenticatedCommonUrl": "",
+        "unauthenticatedCommonUrl": "",
+        "x-v": 1,
+        "x-min-v": 1,
+        "cdsClientHeader": "",
+        "accessToken": "",
+        "testAccountId1": "",
+        "testAccountId2": "",
+        "testPayeeId": "",
+        "testProductId": "",
+        "pageSizeBulkDirectDebits": 2,
+        "pageSizeBulkBalances": 2,
+        "pageSizeTransactions": 3,
+        "pageSizeAccounts": 2,
+        "pageSizePayees": 2,
+        "pageSizeScheduledPayments": 2,
+        "pageSizeProducts": 2
+    }
+]

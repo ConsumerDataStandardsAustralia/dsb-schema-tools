@@ -1,0 +1,23 @@
+{
+  "required": [
+    "softwareProductId",
+    "status"
+  ],
+  "type": "object",
+  "properties": {
+    "softwareProductId": {
+      "description": "Unique id of the software product issued by the CDR Register",
+      "type": "string",
+      "maxLength": 36
+    },
+    "status": {
+      "description": "Software product status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  }
+}

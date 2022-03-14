@@ -1,6 +1,6 @@
 {
   "name": "consumer-data-standards",
-  "version": "1.10.0",
+  "version": "1.16.0",
   "description": "Schema files cerated Australian Consumer Data Standards to meet the needs of the Consumer Data Right",
   "keywords": [
     "schema",
