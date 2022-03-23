@@ -71,7 +71,7 @@ The API tests can also be run in conjunction with the *xxx.postman_environment.j
 
 To achieve this import the configured *xxx.postman_environment.json* as an Environment in Postman.
 
-<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/images/PM_Screen4.JPG?token=AETEGIINYZ5ZM634AFT6ZITBBH4Y4" width=600>
+<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/images/Pm_Screen4.JPG?token=AETEGIINYZ5ZM634AFT6ZITBBH4Y4" width=600>
 
 ---
 
