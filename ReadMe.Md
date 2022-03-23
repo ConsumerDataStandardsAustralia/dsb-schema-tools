@@ -48,16 +48,16 @@ The number of tests run will be determined by the values provided in this file. 
 
 In Postman at the collection level, click on **Run Collection**
 
-<span><img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/images/Pm_Screen1.JPG?token=AETEGILKIOYBMKKWQT2M253BBBXHW" width="300" >
+<span><img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/images/Pm_Screen1.JPG?token=AETEGILKIOYBMKKWQT2M253BBBXHW" width="300" >
 
-<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/images/Pm_Screen2.JPG?token=AETEGIJWGTT5AL4ZHY3ZSUDBBHFCO" width="600" ></span>
+<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/images/Pm_Screen2.JPG?token=AETEGIJWGTT5AL4ZHY3ZSUDBBHFCO" width="600" ></span>
 
 
 
 Click on **Select File** and read your xxx.collection-run.postman.json with the values set specifically for the data holder server this is to be run against.
    
 
-<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/images/Pm_Screen3.JPG?token=AETEGIOY7XKDOYL4TZHXQKLBBHVBE" width=600>
+<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/images/Pm_Screen3.JPG?token=AETEGIOY7XKDOYL4TZHXQKLBBHVBE" width=600>
 
 
 For more information on the Postman Collection Runner and how to use it look [here](https://learning.postman.com/docs/running-collections/intro-to-collection-runs/).
@@ -71,7 +71,7 @@ The API tests can also be run in conjunction with the *xxx.postman_environment.j
 
 To achieve this import the configured *xxx.postman_environment.json* as an Environment in Postman.
 
-<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/postman/images/PM_Screen4.JPG?token=AETEGIINYZ5ZM634AFT6ZITBBH4Y4" width=600>
+<img src="https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/dev/images/PM_Screen4.JPG?token=AETEGIINYZ5ZM634AFT6ZITBBH4Y4" width=600>
 
 ---
 
