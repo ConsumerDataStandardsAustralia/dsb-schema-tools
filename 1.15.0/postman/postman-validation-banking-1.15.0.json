@@ -122,7 +122,7 @@
         },
         "$id": "CommonOrganisation"
     },
-    "CommonOrganisationDetail": {
+    "CommonOrganisationDetailV2": {
         "allOf": [
             {
                 "$ref": "CommonOrganisation"
@@ -135,7 +135,7 @@
                 "properties": {
                     "physicalAddresses": {
                         "type": "array",
-                        "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+                        "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                         "items": {
                             "$ref": "CommonPhysicalAddressWithPurpose"
                         }
@@ -143,7 +143,7 @@
                 }
             }
         ],
-        "$id": "CommonOrganisationDetail"
+        "$id": "CommonOrganisationDetailV2"
     },
     "CommonPAFAddress": {
         "type": "object",
@@ -305,7 +305,7 @@
         },
         "$id": "CommonPerson"
     },
-    "CommonPersonDetail": {
+    "CommonPersonDetailV2": {
         "allOf": [
             {
                 "$ref": "CommonPerson"
@@ -334,7 +334,7 @@
                     },
                     "physicalAddresses": {
                         "type": "array",
-                        "description": "Must contain at least one address. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+                        "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                         "items": {
                             "$ref": "CommonPhysicalAddressWithPurpose"
                         }
@@ -342,7 +342,7 @@
                 }
             }
         ],
-        "$id": "CommonPersonDetail"
+        "$id": "CommonPersonDetailV2"
     },
     "CommonPhoneNumber": {
         "type": "object",
@@ -676,7 +676,7 @@
         },
         "$id": "ResponseCommonCustomer"
     },
-    "ResponseCommonCustomerDetail": {
+    "ResponseCommonCustomerDetailV2": {
         "type": "object",
         "required": [
             "data",
@@ -703,11 +703,11 @@
                     },
                     "person": {
                         "description": "Mandatory if `customerUType` is `person`",
-                        "$ref": "CommonPersonDetail"
+                        "$ref": "CommonPersonDetailV2"
                     },
                     "organisation": {
                         "description": "Mandatory if `customerUType` is `organisation`",
-                        "$ref": "CommonOrganisationDetail"
+                        "$ref": "CommonOrganisationDetailV2"
                     }
                 }
             },
@@ -718,64 +718,7 @@
                 "$ref": "Meta"
             }
         },
-        "$id": "ResponseCommonCustomerDetail"
-    },
-    "ResponseCommonDiscoveryStatus": {
-        "type": "object",
-        "required": [
-            "data",
-            "links"
-        ],
-        "properties": {
-            "data": {
-                "type": "object",
-                "required": [
-                    "status",
-                    "updateTime"
-                ],
-                "x-conditional": [
-                    "explanation"
-                ],
-                "properties": {
-                    "status": {
-                        "type": "string",
-                        "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
-                        "enum": [
-                            "OK",
-                            "PARTIAL_FAILURE",
-                            "SCHEDULED_OUTAGE",
-                            "UNAVAILABLE"
-                        ]
-                    },
-                    "explanation": {
-                        "type": "string",
-                        "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK"
-                    },
-                    "detectionTime": {
-                        "type": "string",
-                        "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
-                        "x-cds-type": "DateTimeString"
-                    },
-                    "expectedResolutionTime": {
-                        "type": "string",
-                        "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
-                        "x-cds-type": "DateTimeString"
-                    },
-                    "updateTime": {
-                        "type": "string",
-                        "description": "The date and time that this status was last updated by the Data Holder.",
-                        "x-cds-type": "DateTimeString"
-                    }
-                }
-            },
-            "links": {
-                "$ref": "Links"
-            },
-            "meta": {
-                "$ref": "Meta"
-            }
-        },
-        "$id": "ResponseCommonDiscoveryStatus"
+        "$id": "ResponseCommonCustomerDetailV2"
     },
     "ResponseDiscoveryOutagesList": {
         "type": "object",
@@ -1548,11 +1491,6 @@
     },
     "BankingLoanAccountV2": {
         "type": "object",
-        "required": [
-            "loanEndDate",
-            "nextInstalmentDate",
-            "repaymentFrequency"
-        ],
         "properties": {
             "originalStartDate": {
                 "type": [
