@@ -6879,7 +6879,7 @@
 													"\r",
 													"\r",
 													"        pm.test('Schema is valid', function() {\r",
-													"            const valid = ajv.validate(\"ResponseCommonCustomerDetail\", jsonData)\r",
+													"            const valid = ajv.validate(\"ResponseCommonCustomerDetailV2\", jsonData)\r",
 													"            if (!valid){\r",
 													"            ajv.errors.forEach(element => {\r",
 													"                console.log(JSON.stringify(element));\r",
@@ -7566,7 +7566,7 @@
 			"value": ""
 		},
 		{
-			"key": "ResponseCommonCustomerDetail",
+			"key": "ResponseCommonCustomerDetailV2",
 			"value": ""
 		},
 		{
