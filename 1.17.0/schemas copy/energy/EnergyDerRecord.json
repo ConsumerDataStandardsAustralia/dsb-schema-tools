@@ -1,0 +1,243 @@
+{
+  "type": "object",
+  "required": [
+    "servicePointId",
+    "approvedCapacity",
+    "availablePhasesCount",
+    "installedPhasesCount",
+    "islandableInstallation",
+    "acConnections"
+  ],
+  "x-conditional": [
+    "protectionMode"
+  ],
+  "properties": {
+    "servicePointId": {
+      "description": "Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements",
+      "type": "string"
+    },
+    "approvedCapacity": {
+      "description": "Approved small generating unit capacity as agreed with NSP in the connection agreement, expressed in kVA",
+      "type": "number"
+    },
+    "availablePhasesCount": {
+      "description": "The number of phases available for the installation of DER",
+      "type": "number"
+    },
+    "installedPhasesCount": {
+      "description": "The number of phases that DER is connected to",
+      "type": "number"
+    },
+    "islandableInstallation": {
+      "description": "For identification of small generating units designed with the ability to operate in an islanded mode",
+      "type": "string"
+    },
+    "hasCentralProtectionControl": {
+      "description": "For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false",
+      "type": ["boolean", "null"],
+      "default": false
+    },
+    "protectionMode": {
+      "description": "Required only when the hasCentralProtectionAndControl flag is set to true.  One or more of the object fields will be provided to describe the protection modes in place",
+      "type": ["object", "null"],
+      "properties": {
+        "exportLimitkva": {
+          "description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
+          "type": ["number", "null"]
+        },
+        "underFrequencyProtection": {
+          "description": "Protective function limit in Hz.",
+          "type": ["number", "null"]
+        },
+        "underFrequencyProtectionDelay": {
+          "description": "Trip delay time in seconds.",
+          "type": ["number", "null"]
+        },
+        "overFrequencyProtection": {
+          "description": "Protective function limit in Hz.",
+          "type": ["number", "null"]
+        },
+        "overFrequencyProtectionDelay": {
+          "description": "Trip delay time in seconds.",
+          "type": ["number", "null"]
+        },
+        "underVoltageProtection": {
+          "description": "Protective function limit in V.",
+          "type": ["number", "null"]
+        },
+        "underVoltageProtectionDelay": {
+          "description": "Trip delay time in seconds.",
+          "type": ["number", "null"]
+        },
+        "overVoltageProtection": {
+          "description": "Protective function limit in V.",
+          "type": ["number", "null"]
+        },
+        "overVoltageProtectionDelay": {
+          "description": "Trip delay time in seconds.",
+          "type": ["number", "null"]
+        },
+        "sustainedOverVoltage": {
+          "description": "Sustained over voltage.",
+          "type": ["number", "null"]
+        },
+        "sustainedOverVoltageDelay": {
+          "description": "Trip delay time in seconds.",
+          "type": ["number", "null"]
+        },
+        "frequencyRateOfChange": {
+          "description": "Rate of change of frequency trip point (Hz/s).",
+          "type": ["number", "null"]
+        },
+        "voltageVectorShift": {
+          "description": "Trip angle in degrees.",
+          "type": ["number", "null"]
+        },
+        "interTripScheme": {
+          "description": "Description of the form of inter-trip (e.g. 'from local substation').",
+          "type": ["string", "null"]
+        },
+        "neutralVoltageDisplacement": {
+          "description": "Trip voltage.",
+          "type": ["number", "null"]
+        }
+      }
+    },
+    "acConnections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "connectionIdentifier",
+          "count",
+          "commissioningDate",
+          "status",
+          "derDevices"
+        ],
+        "x-conditional": [
+          "manufacturerName",
+          "inverterSeries",
+          "inverterModelNumber",
+          "inverterDeviceCapacity"
+        ],
+        "properties": {
+          "connectionIdentifier": {
+            "description": "AC Connection ID as defined in the DER register.  Does not align with CDR ID permanence standards",
+            "type": "number"
+          },
+          "count": {
+            "description": "Number of AC Connections in the group. For the suite of AC Connections to be considered as a group, all of the AC Connections included must have the same attributes",
+            "type": "string",
+            "x-cds-type": "PositiveInteger"
+          },
+          "equipmentType": {
+            "description": "Indicates whether the DER device is connected via an inverter (and what category of inverter it is) or not (e.g. rotating machine). If absent, assume equipment type to be “OTHER”.",
+            "type": ["string", "null"],
+            "enum": [
+              "INVERTER",
+              "OTHER"
+            ]
+          },
+          "manufacturerName": {
+            "description": "The name of the inverter manufacturer. Mandatory if equipmentType is INVERTER",
+            "type": ["string", "null"]
+          },
+          "inverterSeries": {
+            "description": "The inverter series. Mandatory if equipmentType is INVERTER",
+            "type": ["string", "null"]
+          },
+          "inverterModelNumber": {
+            "description": "The inverter model number. Mandatory if equipmentType is INVERTER",
+            "type": ["string", "null"]
+          },
+          "commissioningDate": {
+            "description": "The date that the DER installation is commissioned",
+            "type": "string",
+            "x-cds-type": "DateString"
+          },
+          "status": {
+            "description": "Code used to indicate the status of the Inverter. This will be used to identify if an inverter is active or inactive or decommissioned",
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "DECOMMISSIONED"
+            ]
+          },
+          "inverterDeviceCapacity": {
+            "description": "The rated AC output power that is listed in the product specified by the manufacturer. Mandatory if equipmentType is INVERTER",
+            "type": ["number", "null"]
+          },
+          "derDevices": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "deviceIdentifier",
+                "count",
+                "type",
+                "nominalRatedCapacity"
+              ],
+              "x-conditional": [
+                "nominalStorageCapacity"
+              ],
+              "properties": {
+                "deviceIdentifier": {
+                  "description": "Unique identifier for a single DER device or a group of DER devices with the same attributes. Does not align with CDR ID permanence standards",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "Number of devices in the group of DER devices",
+                  "type": "number"
+                },
+                "manufacturer": {
+                  "description": "The name of the device manufacturer. If absent then assumed to be “unknown”",
+                  "type": "string"
+                },
+                "modelNumber": {
+                  "description": "The model number of the device. If absent then assumed to be “unknown”",
+                  "type": ["string", "null"]
+                },
+                "status": {
+                  "description": "Code used to indicate the status of the device. This will be used to identify if an inverter is active or inactive or decommissioned",
+                  "type": ["string", "null"],
+                  "enum": [
+                    "ACTIVE",
+                    "INACTIVE",
+                    "DECOMMISSIONED"
+                  ]
+                },
+                "type": {
+                  "description": "Used to indicate the primary technology used in the DER device",
+                  "type": "string",
+                  "enum": [
+                    "FOSSIL",
+                    "HYDRO",
+                    "WIND",
+                    "SOLAR_PV",
+                    "RENEWABLE",
+                    "GEOTHERMAL",
+                    "STORAGE",
+                    "OTHER"
+                  ]
+                },
+                "subtype": {
+                  "description": "Used to indicate the primary technology used in the DER device. This field is also used to record for example the battery chemistry, or the type of PV panel. It is also used to record if a battery is contained in an electric vehicle connected in a vehicle-to-grid arrangement. If absent then assumed to be “other”",
+                  "type": ["string", "null"]
+                },
+                "nominalRatedCapacity": {
+                  "description": "Maximum output in kVA that is listed in the product specification by the manufacturer. This refers to the capacity of each unit within the device group",
+                  "type": "number"
+                },
+                "nominalStorageCapacity": {
+                  "description": "Maximum storage capacity in kVAh. This refers to the capacity of each storage module within the device group. Mandatory if type is equal to “STORAGE”",
+                  "type": ["number", "null"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
