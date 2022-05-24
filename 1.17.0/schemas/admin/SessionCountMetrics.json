@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "currentDay": {
+      "type": "number",
+      "description": "Session count for current day"
+    },
+    "previousDays": {
+      "type": "array",
+      "description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+      "items": {
+        "type": "number"
+      }
+    }
+  },
+  "description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
+  "x-conditional": [
+    "currentDay",
+    "previousDays"
+  ]
+}

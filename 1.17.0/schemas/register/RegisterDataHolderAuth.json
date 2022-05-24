@@ -1,10 +1,9 @@
 {
-  "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication",
-  "type": "object",
   "required": [
-    "registerUType",
-    "jwksEndpoint"
+    "jwksEndpoint",
+    "registerUType"
   ],
+  "type": "object",
   "properties": {
     "registerUType": {
       "type": "string",
@@ -14,10 +13,11 @@
       ]
     },
     "jwksEndpoint": {
-      "description": "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
+      "maxLength": 1000,
       "type": "string",
-      "x-cds-type": "URIString",
-      "maxLength": 1000
+      "description": "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
+      "x-cds-type": "URIString"
     }
-  }
+  },
+  "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication"
 }

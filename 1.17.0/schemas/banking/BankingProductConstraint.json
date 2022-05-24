@@ -1,0 +1,35 @@
+{
+  "required": [
+    "constraintType"
+  ],
+  "type": "object",
+  "properties": {
+    "constraintType": {
+      "type": "string",
+      "description": "The type of constraint described.  See the next section for an overview of valid values and their meaning",
+      "enum": [
+        "MAX_BALANCE",
+        "MAX_LIMIT",
+        "MIN_BALANCE",
+        "MIN_LIMIT",
+        "OPENING_BALANCE"
+      ]
+    },
+    "additionalValue": {
+      "type": "string",
+      "description": "Generic field containing additional information relevant to the [constraintType](#tocSproductconstrainttypedoc) specified.  Whether mandatory or not is dependent on the value of [constraintType](#tocSproductconstrainttypedoc)"
+    },
+    "additionalInfo": {
+      "type": "string",
+      "description": "Display text providing more information the constraint"
+    },
+    "additionalInfoUri": {
+      "type": "string",
+      "description": "Link to a web page with more information on the constraint",
+      "x-cds-type": "URIString"
+    }
+  },
+  "x-conditional": [
+    "additionalValue"
+  ]
+}

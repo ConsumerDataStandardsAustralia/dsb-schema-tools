@@ -1,0 +1,56 @@
+{
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "required": [
+        "status",
+        "updateTime"
+      ],
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
+          "enum": [
+            "OK",
+            "PARTIAL_FAILURE",
+            "SCHEDULED_OUTAGE",
+            "UNAVAILABLE"
+          ]
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK"
+        },
+        "detectionTime": {
+          "type": "string",
+          "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
+          "x-cds-type": "DateTimeString"
+        },
+        "expectedResolutionTime": {
+          "type": "string",
+          "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
+          "x-cds-type": "DateTimeString"
+        },
+        "updateTime": {
+          "type": "string",
+          "description": "The date and time that this status was last updated by the Data Holder.",
+          "x-cds-type": "DateTimeString"
+        }
+      },
+      "x-conditional": [
+        "explanation"
+      ]
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  }
+}

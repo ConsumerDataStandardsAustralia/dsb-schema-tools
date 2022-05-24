@@ -1,0 +1,30 @@
+{
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "required": [
+        "transactions"
+      ],
+      "type": "object",
+      "properties": {
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "BankingTransaction.json"
+          }
+        }
+      }
+    },
+    "links": {
+      "$ref": "../common/LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  }
+}

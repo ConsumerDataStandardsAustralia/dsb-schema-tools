@@ -1,5 +1,4 @@
 {
-  "description": "Response containing the JSON Web Key Set",
   "required": [
     "keys"
   ],
@@ -9,8 +8,9 @@
       "type": "array",
       "description": "The value of the \"keys\" parameter is an array of JWK values",
       "items": {
-        "$ref": "JWK.json"
+        "$ref": "#/components/schemas/JWK"
       }
     }
-  }
+  },
+  "description": "Response containing the JSON Web Key Set"
 }

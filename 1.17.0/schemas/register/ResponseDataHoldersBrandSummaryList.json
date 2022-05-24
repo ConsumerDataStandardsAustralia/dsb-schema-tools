@@ -1,0 +1,24 @@
+{
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "uniqueItems": true,
+      "type": "array",
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "#/components/schemas/DataHolderBrandSummary"
+      }
+    },
+    "links": {
+      "$ref": "#/components/schemas/Links"
+    },
+    "meta": {
+      "$ref": "#/components/schemas/Meta"
+    }
+  }
+}

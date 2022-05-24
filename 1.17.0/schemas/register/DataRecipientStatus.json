@@ -6,19 +6,19 @@
   "type": "object",
   "properties": {
     "legalEntityId": {
-      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
+      "maxLength": 36,
       "type": "string",
-      "maxLength": 36
+      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register"
     },
     "status": {
+      "type": "string",
       "description": "Data Recipient status in the CDR Register",
       "enum": [
         "ACTIVE",
         "SUSPENDED",
         "REVOKED",
         "SURRENDERED"
-      ],
-      "type": "string"
+      ]
     }
   }
 }

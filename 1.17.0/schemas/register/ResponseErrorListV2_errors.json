@@ -1,10 +1,10 @@
 {
-  "type": "object",
   "required": [
     "code",
     "detail",
     "title"
   ],
+  "type": "object",
   "properties": {
     "code": {
       "type": "string",
@@ -19,7 +19,7 @@
       "description": "A human-readable explanation specific to this occurrence of the problem."
     },
     "meta": {
-      "$ref": "MetaError.json"
+      "$ref": "#/components/schemas/MetaError"
     }
   }
 }

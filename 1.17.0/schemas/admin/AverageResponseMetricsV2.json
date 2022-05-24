@@ -1,0 +1,226 @@
+{
+  "required": [
+    "highPriority",
+    "largePayload",
+    "lowPriority",
+    "unattended",
+    "unauthenticated"
+  ],
+  "type": "object",
+  "properties": {
+    "unauthenticated": {
+      "type": "object",
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Average response time for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Average response time for the unauthenticated tier",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "highPriority": {
+      "type": "object",
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Average response time for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Average response time for the high priority tier",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "lowPriority": {
+      "type": "object",
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Average response time for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Average response time for the low priority tier",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "unattended": {
+      "type": "object",
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Average response time for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Average response time for the unattended tier",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "largePayload": {
+      "type": "object",
+      "properties": {
+        "currentDay": {
+          "type": "number",
+          "description": "Average response time for current day"
+        },
+        "previousDays": {
+          "type": "array",
+          "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Average response time for the large payload tier",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "secondary": {
+      "required": [
+        "primary",
+        "secondary"
+      ],
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "object",
+          "properties": {
+            "currentDay": {
+              "type": "number",
+              "description": "Average response time for current day"
+            },
+            "previousDays": {
+              "type": "array",
+              "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "description": "Average response time as measured for the primary data holder",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "secondary": {
+          "type": "object",
+          "properties": {
+            "currentDay": {
+              "type": "number",
+              "description": "Average response time for current day"
+            },
+            "previousDays": {
+              "type": "array",
+              "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "description": "Average response time as measured for the secondary data holder",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        }
+      },
+      "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+    },
+    "largeSecondary": {
+      "required": [
+        "primary",
+        "secondary"
+      ],
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "object",
+          "properties": {
+            "currentDay": {
+              "type": "number",
+              "description": "Average response time for current day"
+            },
+            "previousDays": {
+              "type": "array",
+              "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "description": "Average response time as measured for the primary data holder",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "secondary": {
+          "type": "object",
+          "properties": {
+            "currentDay": {
+              "type": "number",
+              "description": "Average response time for current day"
+            },
+            "previousDays": {
+              "type": "array",
+              "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "description": "Average response time as measured for the secondary data holder",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        }
+      },
+      "description": "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+    }
+  },
+  "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
+  "x-conditional": [
+    "secondary",
+    "largeSecondary"
+  ]
+}

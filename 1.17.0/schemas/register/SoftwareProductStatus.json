@@ -6,18 +6,18 @@
   "type": "object",
   "properties": {
     "softwareProductId": {
-      "description": "Unique id of the software product issued by the CDR Register",
+      "maxLength": 36,
       "type": "string",
-      "maxLength": 36
+      "description": "Unique id of the software product issued by the CDR Register"
     },
     "status": {
+      "type": "string",
       "description": "Software product status in the CDR Register",
       "enum": [
         "ACTIVE",
         "INACTIVE",
         "REMOVED"
-      ],
-      "type": "string"
+      ]
     }
   }
 }

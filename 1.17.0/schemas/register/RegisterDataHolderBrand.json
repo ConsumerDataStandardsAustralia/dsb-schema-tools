@@ -1,72 +1,70 @@
 {
   "required": [
-    "dataHolderBrandId",
-    "brandName",
-    "industries",
-    "logoUri",
-    "legalEntity",
-    "status",
-    "endpointDetail",
     "authDetails",
-    "lastUpdated"
+    "brandName",
+    "dataHolderBrandId",
+    "endpointDetail",
+    "industries",
+    "lastUpdated",
+    "legalEntity",
+    "logoUri",
+    "status"
   ],
   "type": "object",
   "properties": {
     "dataHolderBrandId": {
-      "description": "Unique id of the Data Holder Brand issued by the CDR Register",
+      "maxLength": 36,
       "type": "string",
-      "maxLength": 36
+      "description": "Unique id of the Data Holder Brand issued by the CDR Register"
     },
     "brandName": {
-      "description": "The name of Data Holder Brand",
+      "maxLength": 200,
       "type": "string",
-      "maxLength": 200
+      "description": "The name of Data Holder Brand"
     },
     "industries": {
-      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
-      "type": "array",
-      "minimum": 1,
       "uniqueItems": true,
+      "type": "array",
+      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
       "items": {
+        "type": "string",
         "enum": [
           "banking",
           "energy",
           "telco"
-        ],
-        "type": "string"
+        ]
       }
     },
     "logoUri": {
-      "description": "Brand logo URI",
+      "maxLength": 1000,
       "type": "string",
-      "x-cds-type": "URIString",
-      "maxLength": 1000
+      "description": "Brand logo URI",
+      "x-cds-type": "URIString"
     },
     "legalEntity": {
-      "$ref": "LegalEntityDetail.json"
+      "$ref": "#/components/schemas/LegalEntityDetail"
     },
     "status": {
+      "type": "string",
       "enum": [
         "ACTIVE",
         "INACTIVE",
         "REMOVED"
-      ],
-      "type": "string"
+      ]
     },
     "endpointDetail": {
-      "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
+      "$ref": "#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
     },
     "authDetails": {
-      "type": "array",
-      "minimum": 1,
       "uniqueItems": true,
+      "type": "array",
       "items": {
-        "$ref": "RegisterDataHolderAuth"
+        "$ref": "#/components/schemas/RegisterDataHolderAuth"
       }
     },
     "lastUpdated": {
-      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
       "type": "string",
+      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
       "format": "date-time",
       "x-cds-type": "DateTimeString"
     }

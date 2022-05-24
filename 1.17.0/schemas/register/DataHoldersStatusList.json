@@ -7,10 +7,9 @@
   "type": "object",
   "properties": {
     "data": {
-      "description": "Response data for the query",
-      "type": "array",
-      "minimum": 0,
       "uniqueItems": true,
+      "type": "array",
+      "description": "Response data for the query",
       "items": {
         "$ref": "DataHolderStatus.json"
       }

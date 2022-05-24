@@ -1,0 +1,13 @@
+{
+  "required": [
+    "self"
+  ],
+  "type": "object",
+  "properties": {
+    "self": {
+      "type": "string",
+      "description": "Fully qualified link that generated the current response document",
+      "x-cds-type": "URIString"
+    }
+  }
+}

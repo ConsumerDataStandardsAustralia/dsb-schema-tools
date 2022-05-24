@@ -1,0 +1,27 @@
+{
+  "required": [
+    "data"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "required": [
+        "accountIds"
+      ],
+      "type": "object",
+      "properties": {
+        "accountIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Array of specific accountIds to obtain authorisations for",
+            "x-cds-type": "ASCIIString"
+          }
+        }
+      }
+    },
+    "meta": {
+      "$ref": "../common/Meta.json"
+    }
+  }
+}

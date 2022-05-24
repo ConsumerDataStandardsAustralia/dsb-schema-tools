@@ -1,0 +1,13 @@
+{
+  "required": [
+    "cardNumber"
+  ],
+  "type": "object",
+  "properties": {
+    "cardNumber": {
+      "type": "string",
+      "description": "Name of the account to pay to",
+      "x-cds-type": "MaskedPANString"
+    }
+  }
+}

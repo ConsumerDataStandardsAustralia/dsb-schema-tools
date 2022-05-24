@@ -1,0 +1,121 @@
+{
+  "type": "object",
+  "required": [
+    "accountId",
+    "invoiceNumber",
+    "issueDate",
+    "balanceAtIssue",
+    "servicePoints",
+    "paymentStatus"
+  ],
+  "x-conditional": [
+    "period"
+  ],
+  "properties": {
+    "accountId": {
+      "description": "The ID of the account for which the invoice was issued",
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "description": "The number assigned to this invoice by the energy Retailer",
+      "type": "string"
+    },
+    "issueDate": {
+      "description": "The date that the invoice was actually issued (as opposed to generated or calculated)",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "dueDate": {
+      "description": "The date that the invoice is due to be paid",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "period": {
+      "description": "Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice",
+      "type": "object",
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "properties": {
+        "startDate": {
+          "description": "The start date of the period covered by this invoice",
+          "type": "string",
+          "x-cds-type": "DateString"
+        },
+        "endDate": {
+          "description": "The end date of the period covered by this invoice",
+          "type": "string",
+          "x-cds-type": "DateString"
+        }
+      }
+    },
+    "invoiceAmount": {
+      "description": "The net amount due for this invoice regardless of previous balance",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "gstAmount": {
+      "description": "The total GST amount for this invoice.  If absent then zero is assumed",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "payOnTimeDiscount": {
+      "description": "A discount for on time payment",
+      "type": "object",
+      "required": [
+        "discountAmount",
+        "date"
+      ],
+      "properties": {
+        "discountAmount": {
+          "description": "The amount that will be discounted if the invoice is paid by the date specified",
+          "type": "string",
+          "x-cds-type": "AmountString"
+        },
+        "gstAmount": {
+          "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
+          "type": "string",
+          "x-cds-type": "AmountString"
+        },
+        "date": {
+          "description": "The date by which the invoice must be paid to receive the pay on time discount",
+          "type": "string",
+          "x-cds-type": "DateString"
+        }
+      }
+    },
+    "balanceAtIssue": {
+      "description": "The account balance at the time the invoice was issued",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "servicePoints": {
+      "description": "Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gas": {
+      "description": "Object containing charges and credits related to gas usage",
+      "$ref": "EnergyInvoiceGasUsageCharges.json"
+    },
+    "electricity": {
+      "description": "Object containing charges and credits related to electricity usage",
+      "$ref": "EnergyInvoiceElectricityUsageCharges.json"
+    },
+    "accountCharges": {
+      "$ref": "EnergyInvoiceAccountCharges.json"
+    },
+    "paymentStatus": {
+      "description": "Indicator of the payment status for the invoice",
+      "type": "string",
+      "enum": [
+        "PAID",
+        "PARTIALLY_PAID",
+        "NOT_PAID"
+      ]
+    }
+  }
+}

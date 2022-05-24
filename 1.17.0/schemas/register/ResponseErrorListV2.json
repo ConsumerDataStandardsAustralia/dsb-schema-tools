@@ -1,14 +1,14 @@
 {
-  "type": "object",
   "required": [
     "errors"
   ],
+  "type": "object",
   "properties": {
     "errors": {
       "type": "array",
       "description": "",
       "items": {
-        "$ref": "ResponseErrorListV2_errors.json"
+        "$ref": "#/components/schemas/ResponseErrorListV2_errors"
       }
     }
   },

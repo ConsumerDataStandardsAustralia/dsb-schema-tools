@@ -1,5 +1,4 @@
 {
-  "description": "Object representing a JSON Web Key",
   "required": [
     "alg",
     "e",
@@ -20,10 +19,10 @@
     },
     "key_ops": {
       "type": "array",
+      "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
       "items": {
         "type": "string"
-      },
-      "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used"
+      }
     },
     "kid": {
       "type": "string",
@@ -37,5 +36,6 @@
       "type": "string",
       "description": "The \"n\" RSA public modulus parameter"
     }
-  }
+  },
+  "description": "Object representing a JSON Web Key"
 }

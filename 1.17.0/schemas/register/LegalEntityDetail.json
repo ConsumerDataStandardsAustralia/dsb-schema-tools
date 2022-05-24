@@ -1,5 +1,4 @@
 {
-  "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
   "required": [
     "legalEntityId",
     "legalEntityName",
@@ -9,57 +8,58 @@
   "type": "object",
   "properties": {
     "legalEntityId": {
-      "description": "Unique id of the organisation issued by the CDR Register",
+      "maxLength": 36,
       "type": "string",
-      "maxLength": 36
+      "description": "Unique id of the organisation issued by the CDR Register"
     },
     "legalEntityName": {
-      "description": "Unique legal name of the organisation",
+      "maxLength": 36,
       "type": "string",
-      "maxLength": 36
+      "description": "Unique legal name of the organisation"
     },
     "logoUri": {
-      "description": "Legal Entity logo URI",
+      "maxLength": 1000,
       "type": "string",
-      "x-cds-type": "URIString",
-      "maxLength": 1000
+      "description": "Legal Entity logo URI",
+      "x-cds-type": "URIString"
     },
     "registrationNumber": {
-      "description": "Unique registration number (if the company is registered outside Australia)",
-      "type": "string"
+      "type": "string",
+      "description": "Unique registration number (if the company is registered outside Australia)"
     },
     "registrationDate": {
-      "format": "date",
-      "description": "Date of registration (if the company is registered outside Australia)",
       "type": "string",
+      "description": "Date of registration (if the company is registered outside Australia)",
+      "format": "date",
       "x-cds-type": "DateString"
     },
     "registeredCountry": {
-      "description": "Country of registeration (if the company is registered outside Australia)",
+      "maxLength": 100,
       "type": "string",
-      "maxLength": 100
+      "description": "Country of registeration (if the company is registered outside Australia)"
     },
     "abn": {
-      "description": "Australian Business Number for the organisation",
+      "maxLength": 11,
       "type": "string",
-      "maxLength": 11
+      "description": "Australian Business Number for the organisation"
     },
     "acn": {
-      "description": "Australian Company Number for the organisation",
+      "maxLength": 9,
       "type": "string",
-      "maxLength": 9
+      "description": "Australian Company Number for the organisation"
     },
     "arbn": {
-      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+      "maxLength": 9,
       "type": "string",
-      "maxLength": 9
+      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
     },
     "anzsicDivision": {
-      "description": "ANZSIC division of the organisation. [ANZSIC (2006)](http://www.abs.gov.au/anzsic)",
+      "maxLength": 100,
       "type": "string",
-      "maxLength": 100
+      "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
     },
     "organisationType": {
+      "type": "string",
       "description": "Legal organisation type",
       "enum": [
         "SOLE_TRADER",
@@ -68,15 +68,15 @@
         "TRUST",
         "GOVERNMENT_ENTITY",
         "OTHER"
-      ],
-      "type": "string"
+      ]
     },
     "status": {
+      "type": "string",
       "enum": [
         "ACTIVE",
         "REMOVED"
-      ],
-      "type": "string"
+      ]
     }
-  }
+  },
+  "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
 }

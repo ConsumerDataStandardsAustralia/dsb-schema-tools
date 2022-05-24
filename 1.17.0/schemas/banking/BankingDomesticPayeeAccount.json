@@ -1,0 +1,21 @@
+{
+  "required": [
+    "accountNumber",
+    "bsb"
+  ],
+  "type": "object",
+  "properties": {
+    "accountName": {
+      "type": "string",
+      "description": "Name of the account to pay to"
+    },
+    "bsb": {
+      "type": "string",
+      "description": "BSB of the account to pay to"
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "Number of the account to pay to"
+    }
+  }
+}

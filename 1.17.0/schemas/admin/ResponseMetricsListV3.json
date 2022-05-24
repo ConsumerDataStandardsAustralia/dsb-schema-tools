@@ -1,0 +1,80 @@
+{
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "required": [
+        "availability",
+        "averageResponse",
+        "averageTps",
+        "customerCount",
+        "errors",
+        "invocations",
+        "peakTps",
+        "performance",
+        "recipientCount",
+        "rejections",
+        "requestTime",
+        "sessionCount"
+      ],
+      "type": "object",
+      "properties": {
+        "requestTime": {
+          "type": "string",
+          "description": "The date and time that the metrics in this payload were requested.",
+          "x-cds-type": "DateTimeString"
+        },
+        "availability": {
+          "$ref": "AvailabilityMetrics.json"
+        },
+        "performance": {
+          "$ref": "PerformanceMetrics.json"
+        },
+        "invocations": {
+          "$ref": "InvocationMetricsV2.json"
+        },
+        "averageResponse": {
+          "$ref": "AverageResponseMetricsV2.json"
+        },
+        "sessionCount": {
+          "$ref": "SessionCountMetrics.json"
+        },
+        "averageTps": {
+          "$ref": "AverageTPSMetrics.json"
+        },
+        "peakTps": {
+          "$ref": "PeakTPSMetrics.json"
+        },
+        "errors": {
+          "$ref": "ErrorMetrics.json"
+        },
+        "rejections": {
+          "$ref": "RejectionMetricsV2.json"
+        },
+        "customerCount": {
+          "type": "integer",
+          "description": "Number of customers with active authorisations at the time of the call"
+        },
+        "recipientCount": {
+          "type": "integer",
+          "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
+        },
+        "secondaryHolder": {
+          "$ref": "SecondaryHolderMetrics.json"
+        }
+      },
+      "x-conditional": [
+        "secondaryHolder"
+      ]
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  }
+}

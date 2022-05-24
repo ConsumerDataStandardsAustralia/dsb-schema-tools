@@ -1,0 +1,43 @@
+{
+  "required": [
+    "eligibilityType"
+  ],
+  "type": "object",
+  "properties": {
+    "eligibilityType": {
+      "type": "string",
+      "description": "The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning",
+      "enum": [
+        "BUSINESS",
+        "EMPLOYMENT_STATUS",
+        "MAX_AGE",
+        "MIN_AGE",
+        "MIN_INCOME",
+        "MIN_TURNOVER",
+        "NATURAL_PERSON",
+        "OTHER",
+        "PENSION_RECIPIENT",
+        "RESIDENCY_STATUS",
+        "STAFF",
+        "STUDENT"
+      ]
+    },
+    "additionalValue": {
+      "type": "string",
+      "description": "Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)"
+    },
+    "additionalInfo": {
+      "type": "string",
+      "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER"
+    },
+    "additionalInfoUri": {
+      "type": "string",
+      "description": "Link to a web page with more information on this eligibility criteria",
+      "x-cds-type": "URIString"
+    }
+  },
+  "x-conditional": [
+    "additionalValue",
+    "additionalInfo"
+  ]
+}

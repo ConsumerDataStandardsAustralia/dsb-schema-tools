@@ -1,0 +1,14 @@
+{
+  "required": [
+    "paymentDate"
+  ],
+  "type": "object",
+  "properties": {
+    "paymentDate": {
+      "type": "string",
+      "description": "The scheduled date for the once off payment",
+      "x-cds-type": "DateString"
+    }
+  },
+  "description": "Indicates that the payment is a once off payment on a specific future date. Mandatory if recurrenceUType is set to onceOff"
+}

@@ -1,0 +1,18 @@
+{
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "BankingTransactionDetail.json"
+    },
+    "links": {
+      "$ref": "../common/Links.json"
+    },
+    "meta": {
+      "$ref": "../common/Meta.json"
+    }
+  }
+}

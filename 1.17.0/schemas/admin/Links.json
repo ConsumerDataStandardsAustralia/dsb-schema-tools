@@ -1,0 +1,13 @@
+{
+  "required": [
+    "self"
+  ],
+  "type": "object",
+  "properties": {
+    "self": {
+      "type": "string",
+      "description": "Fully qualified link to this API call",
+      "x-cds-type": "URIString"
+    }
+  }
+}

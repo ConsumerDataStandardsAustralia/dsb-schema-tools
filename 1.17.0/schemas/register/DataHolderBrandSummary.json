@@ -1,0 +1,75 @@
+{
+  "required": [
+    "brandName",
+    "publicBaseUri",
+    "logoUri",
+    "industries",
+    "lastUpdated"
+  ],
+  "type": "object",
+  "properties": {
+    "dataHolderBrandId": {
+      "maxLength": 36,
+      "type": "string",
+      "x-conditional": true,
+      "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+    },
+    "interimId": {
+      "maxLength": 36,
+      "type": "string",
+      "x-conditional": true,
+      "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
+    },
+    "brandName": {
+      "maxLength": 200,
+      "type": "string",
+      "description": "The name of Data Holder Brand"
+    },
+    "publicBaseUri": {
+      "maxLength": 1000,
+      "type": "string",
+      "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+      "x-cds-type": "URIString"
+    },
+    "logoUri": {
+      "maxLength": 1000,
+      "type": "string",
+      "description": "Brand logo URI",
+      "x-cds-type": "URIString"
+    },
+    "industries": {
+      "uniqueItems": true,
+      "type": "array",
+      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "banking",
+          "energy",
+          "telco"
+        ]
+      }
+    },
+    "lastUpdated": {
+      "type": "string",
+      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+      "format": "date-time",
+      "x-cds-type": "DateTimeString"
+    },
+    "abn": {
+      "maxLength": 11,
+      "type": "string",
+      "description": "Australian Business Number for the organisation"
+    },
+    "acn": {
+      "maxLength": 9,
+      "type": "string",
+      "description": "Australian Company Number for the organisation"
+    },
+    "arbn": {
+      "maxLength": 9,
+      "type": "string",
+      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+    }
+  }
+}
