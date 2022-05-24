@@ -1,0 +1,12 @@
+{
+  "required": [
+    "self"
+  ],
+  "type": "object",
+  "properties": {
+    "self": {
+      "description": "Fully qualified link to this API call",
+      "type": "string"
+    }
+  }
+}

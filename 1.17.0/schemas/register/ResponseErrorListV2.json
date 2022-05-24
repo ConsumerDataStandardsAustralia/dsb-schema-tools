@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": [
+    "errors"
+  ],
+  "properties": {
+    "errors": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "$ref": "ResponseErrorListV2_errors.json"
+      }
+    }
+  },
+  "x-conditional": [
+    "meta"
+  ]
+}
