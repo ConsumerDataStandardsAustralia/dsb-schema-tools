@@ -1,42 +1,42 @@
 {
+  "description": "Data Recipient Brand Software Products",
+  "properties": {
+    "logoUri": {
+      "description": "Software product logo URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "softwareProductDescription": {
+      "description": "Description of the software product",
+      "maxLength": 4000,
+      "type": "string"
+    },
+    "softwareProductId": {
+      "description": "Unique id of the Data Recipient software product issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "softwareProductName": {
+      "description": "Name of the software product",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "status": {
+      "description": "Software Product status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  },
   "required": [
     "logoUri",
     "softwareProductId",
     "softwareProductName",
     "status"
   ],
-  "type": "object",
-  "properties": {
-    "softwareProductId": {
-      "maxLength": 36,
-      "type": "string",
-      "description": "Unique id of the Data Recipient software product issued by the CDR Register"
-    },
-    "softwareProductName": {
-      "maxLength": 200,
-      "type": "string",
-      "description": "Name of the software product"
-    },
-    "softwareProductDescription": {
-      "maxLength": 4000,
-      "type": "string",
-      "description": "Description of the software product"
-    },
-    "logoUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Software product logo URI",
-      "x-cds-type": "URIString"
-    },
-    "status": {
-      "type": "string",
-      "description": "Software Product status in the CDR Register",
-      "enum": [
-        "ACTIVE",
-        "INACTIVE",
-        "REMOVED"
-      ]
-    }
-  },
-  "description": "Data Recipient Brand Software Products"
+  "type": "object"
 }

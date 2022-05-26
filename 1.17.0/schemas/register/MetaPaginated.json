@@ -1,19 +1,19 @@
 {
+  "properties": {
+    "totalPages": {
+      "description": "The total number of pages in the full set",
+      "format": "int32",
+      "type": "integer"
+    },
+    "totalRecords": {
+      "description": "The total number of records in the full set",
+      "format": "int32",
+      "type": "integer"
+    }
+  },
   "required": [
     "totalPages",
     "totalRecords"
   ],
-  "type": "object",
-  "properties": {
-    "totalPages": {
-      "type": "integer",
-      "description": "The total number of pages in the full set",
-      "format": "int32"
-    },
-    "totalRecords": {
-      "type": "integer",
-      "description": "The total number of records in the full set",
-      "format": "int32"
-    }
-  }
+  "type": "object"
 }

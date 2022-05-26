@@ -1,23 +1,17 @@
 {
-  "type": "object",
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ],
   "properties": {
     "data": {
-      "type": "object",
-      "required": [
-        "balance"
-      ],
       "properties": {
         "balance": {
           "description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
           "type": "string",
           "x-cds-type": "AmountString"
         }
-      }
+      },
+      "required": [
+        "balance"
+      ],
+      "type": "object"
     },
     "links": {
       "$ref": "../common/Links.json"
@@ -25,5 +19,11 @@
     "meta": {
       "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
 }

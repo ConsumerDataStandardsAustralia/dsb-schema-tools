@@ -1,29 +1,29 @@
 {
-  "required": [
-    "address",
-    "purpose"
-  ],
-  "type": "object",
   "properties": {
+    "address": {
+      "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
     "isPreferred": {
-      "type": "boolean",
       "description": "May be true for one and only one email record in the collection. Denotes the default email address",
+      "type": "boolean",
       "x-cds-type": "Boolean"
     },
     "purpose": {
-      "type": "string",
       "description": "The purpose for the email, as specified by the customer (Enumeration)",
       "enum": [
         "HOME",
         "OTHER",
         "UNSPECIFIED",
         "WORK"
-      ]
-    },
-    "address": {
-      "type": "string",
-      "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
-      "x-cds-type": "ExternalRef"
+      ],
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "address",
+    "purpose"
+  ],
+  "type": "object"
 }

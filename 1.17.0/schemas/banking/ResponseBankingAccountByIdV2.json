@@ -1,9 +1,4 @@
 {
-  "required": [
-    "data",
-    "links"
-  ],
-  "type": "object",
   "properties": {
     "data": {
       "$ref": "BankingAccountDetailV2.json"
@@ -14,5 +9,10 @@
     "meta": {
       "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
 }

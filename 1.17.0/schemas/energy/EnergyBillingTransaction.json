@@ -1,19 +1,12 @@
 {
-  "type": "object",
-  "required": [
-    "accountId",
-    "executionDateTime",
-    "transactionUType"
-  ],
-  "x-conditional": [
-    "usage",
-    "onceOff",
-    "payment"
-  ],
   "properties": {
     "accountId": {
       "description": "The ID of the account for which transaction applies",
       "type": "string"
+    },
+    "demand": {
+      "$ref": "EnergyBillingDemandTransaction.json",
+      "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand"
     },
     "executionDateTime": {
       "description": "The date and time that the transaction occurred",
@@ -25,36 +18,43 @@
       "type": "string",
       "x-cds-type": "AmountString"
     },
+    "onceOff": {
+      "$ref": "EnergyBillingOnceOffTransaction.json",
+      "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff"
+    },
+    "otherCharges": {
+      "$ref": "EnergyBillingOtherTransaction.json",
+      "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge"
+    },
+    "payment": {
+      "$ref": "EnergyBillingPaymentTransaction.json",
+      "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment"
+    },
     "transactionUType": {
       "description": "Indicator of the type of transaction object present in this record",
-      "type": "string",
       "enum": [
         "usage",
         "demand",
         "onceOff",
         "otherCharges",
         "payment"
-      ]
+      ],
+      "type": "string"
     },
     "usage": {
-      "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage",
-      "$ref": "EnergyBillingUsageTransaction.json"
-    },
-    "demand": {
-      "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand",
-      "$ref": "EnergyBillingDemandTransaction.json"
-    },
-    "onceOff": {
-      "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff",
-      "$ref": "EnergyBillingOnceOffTransaction.json"
-    },
-    "otherCharges": {
-      "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge",
-      "$ref": "EnergyBillingOtherTransaction.json"
-    },
-    "payment": {
-      "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment",
-      "$ref": "EnergyBillingPaymentTransaction.json"
+      "$ref": "EnergyBillingUsageTransaction.json",
+      "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage"
     }
-  }
+  },
+  "required": [
+    "accountId",
+    "executionDateTime",
+    "transactionUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "usage",
+    "onceOff",
+    "payment"
+  ]
 }

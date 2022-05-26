@@ -1,0 +1,1816 @@
+{
+    "CommonEmailAddress": {
+        "required": [
+            "address",
+            "purpose"
+        ],
+        "type": "object",
+        "properties": {
+            "isPreferred": {
+                "type": "boolean",
+                "description": "May be true for one and only one email record in the collection. Denotes the default email address",
+                "x-cds-type": "Boolean"
+            },
+            "purpose": {
+                "type": "string",
+                "description": "The purpose for the email, as specified by the customer (Enumeration)",
+                "enum": [
+                    "HOME",
+                    "OTHER",
+                    "UNSPECIFIED",
+                    "WORK"
+                ]
+            },
+            "address": {
+                "type": "string",
+                "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
+                "x-cds-type": "ExternalRef"
+            }
+        },
+        "$id": "CommonEmailAddress"
+    },
+    "CommonOrganisation": {
+        "required": [
+            "agentLastName",
+            "agentRole",
+            "businessName",
+            "organisationType"
+        ],
+        "type": "object",
+        "properties": {
+            "lastUpdateTime": {
+                "type": "string",
+                "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+                "x-cds-type": "DateTimeString"
+            },
+            "agentFirstName": {
+                "type": "string",
+                "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
+            },
+            "agentLastName": {
+                "type": "string",
+                "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field"
+            },
+            "agentRole": {
+                "type": "string",
+                "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
+            },
+            "businessName": {
+                "type": "string",
+                "description": "Name of the organisation"
+            },
+            "legalName": {
+                "type": "string",
+                "description": "Legal name, if different to the business name"
+            },
+            "shortName": {
+                "type": "string",
+                "description": "Short name used for communication, if different to the business name"
+            },
+            "abn": {
+                "type": "string",
+                "description": "Australian Business Number for the organisation"
+            },
+            "acn": {
+                "type": "string",
+                "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
+            },
+            "isACNCRegistered": {
+                "type": "boolean",
+                "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+                "x-cds-type": "Boolean"
+            },
+            "industryCode": {
+                "type": "string",
+                "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
+                "x-cds-type": "ExternalRef"
+            },
+            "industryCodeVersion": {
+                "type": "string",
+                "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
+                "default": "ANZSIC_1292.0_2006_V2.0",
+                "enum": [
+                    "ANZSIC_1292.0_2006_V1.0",
+                    "ANZSIC_1292.0_2006_V2.0"
+                ]
+            },
+            "organisationType": {
+                "type": "string",
+                "description": "Legal organisation type",
+                "enum": [
+                    "COMPANY",
+                    "GOVERNMENT_ENTITY",
+                    "OTHER",
+                    "PARTNERSHIP",
+                    "SOLE_TRADER",
+                    "TRUST"
+                ]
+            },
+            "registeredCountry": {
+                "type": "string",
+                "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+                "x-cds-type": "ExternalRef"
+            },
+            "establishmentDate": {
+                "type": "string",
+                "description": "The date the organisation described was established",
+                "x-cds-type": "DateString"
+            }
+        },
+        "x-conditional": [
+            "industryCodeVersion"
+        ],
+        "$id": "CommonOrganisation"
+    },
+    "CommonOrganisationDetailV2": {
+        "allOf": [
+            {
+                "$ref": "CommonOrganisation"
+            },
+            {
+                "required": [
+                    "physicalAddresses"
+                ],
+                "type": "object",
+                "properties": {
+                    "physicalAddresses": {
+                        "type": "array",
+                        "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+                        "items": {
+                            "$ref": "CommonPhysicalAddressWithPurpose"
+                        }
+                    }
+                }
+            }
+        ],
+        "$id": "CommonOrganisationDetailV2"
+    },
+    "CommonPAFAddress": {
+        "required": [
+            "localityName",
+            "postcode",
+            "state"
+        ],
+        "type": "object",
+        "properties": {
+            "dpid": {
+                "type": "string",
+                "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
+            },
+            "thoroughfareNumber1": {
+                "type": "integer",
+                "description": "Thoroughfare number for a property (first number in a property ranged address)",
+                "x-cds-type": "PositiveInteger"
+            },
+            "thoroughfareNumber1Suffix": {
+                "type": "string",
+                "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
+            },
+            "thoroughfareNumber2": {
+                "type": "integer",
+                "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+                "x-cds-type": "PositiveInteger"
+            },
+            "thoroughfareNumber2Suffix": {
+                "type": "string",
+                "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
+            },
+            "flatUnitType": {
+                "type": "string",
+                "description": "Type of flat or unit for the address"
+            },
+            "flatUnitNumber": {
+                "type": "string",
+                "description": "Unit number (including suffix, if applicable)"
+            },
+            "floorLevelType": {
+                "type": "string",
+                "description": "Type of floor or level for the address"
+            },
+            "floorLevelNumber": {
+                "type": "string",
+                "description": "Floor or level number (including alpha characters)"
+            },
+            "lotNumber": {
+                "type": "string",
+                "description": "Allotment number for the address"
+            },
+            "buildingName1": {
+                "type": "string",
+                "description": "Building/Property name 1"
+            },
+            "buildingName2": {
+                "type": "string",
+                "description": "Building/Property name 2"
+            },
+            "streetName": {
+                "type": "string",
+                "description": "The name of the street"
+            },
+            "streetType": {
+                "type": "string",
+                "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
+            },
+            "streetSuffix": {
+                "type": "string",
+                "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
+            },
+            "postalDeliveryType": {
+                "type": "string",
+                "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
+            },
+            "postalDeliveryNumber": {
+                "type": "integer",
+                "description": "Postal delivery number if the address is a postal delivery type",
+                "x-cds-type": "PositiveInteger"
+            },
+            "postalDeliveryNumberPrefix": {
+                "type": "string",
+                "description": "Postal delivery number prefix related to the postal delivery number"
+            },
+            "postalDeliveryNumberSuffix": {
+                "type": "string",
+                "description": "Postal delivery number suffix related to the postal delivery number"
+            },
+            "localityName": {
+                "type": "string",
+                "description": "Full name of locality"
+            },
+            "postcode": {
+                "type": "string",
+                "description": "Postcode for the locality"
+            },
+            "state": {
+                "type": "string",
+                "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+            }
+        },
+        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
+        "$id": "CommonPAFAddress"
+    },
+    "CommonPerson": {
+        "required": [
+            "lastName",
+            "middleNames"
+        ],
+        "type": "object",
+        "properties": {
+            "lastUpdateTime": {
+                "type": "string",
+                "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
+                "x-cds-type": "DateTimeString"
+            },
+            "firstName": {
+                "type": "string",
+                "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided."
+            },
+            "lastName": {
+                "type": "string",
+                "description": "For people with single names the single name should be in this field"
+            },
+            "middleNames": {
+                "type": "array",
+                "description": "Field is mandatory but array may be empty",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "prefix": {
+                "type": "string",
+                "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
+            },
+            "suffix": {
+                "type": "string",
+                "description": "Used for a trailing suffix to the name (e.g. Jr)"
+            },
+            "occupationCode": {
+                "type": "string",
+                "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
+                "x-cds-type": "ExternalRef"
+            },
+            "occupationCodeVersion": {
+                "type": "string",
+                "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
+                "default": "ANZSCO_1220.0_2013_V1.2",
+                "enum": [
+                    "ANZSCO_1220.0_2006_V1.0",
+                    "ANZSCO_1220.0_2006_V1.1",
+                    "ANZSCO_1220.0_2013_V1.2",
+                    "ANZSCO_1220.0_2013_V1.3"
+                ]
+            }
+        },
+        "x-conditional": [
+            "occupationCodeVersion"
+        ],
+        "$id": "CommonPerson"
+    },
+    "CommonPersonDetailV2": {
+        "allOf": [
+            {
+                "$ref": "CommonPerson"
+            },
+            {
+                "required": [
+                    "emailAddresses",
+                    "phoneNumbers",
+                    "physicalAddresses"
+                ],
+                "type": "object",
+                "properties": {
+                    "phoneNumbers": {
+                        "type": "array",
+                        "description": "Array is mandatory but may be empty if no phone numbers are held",
+                        "items": {
+                            "$ref": "CommonPhoneNumber"
+                        }
+                    },
+                    "emailAddresses": {
+                        "type": "array",
+                        "description": "May be empty",
+                        "items": {
+                            "$ref": "CommonEmailAddress"
+                        }
+                    },
+                    "physicalAddresses": {
+                        "type": "array",
+                        "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
+                        "items": {
+                            "$ref": "CommonPhysicalAddressWithPurpose"
+                        }
+                    }
+                }
+            }
+        ],
+        "$id": "CommonPersonDetailV2"
+    },
+    "CommonPhoneNumber": {
+        "required": [
+            "fullNumber",
+            "number",
+            "purpose"
+        ],
+        "type": "object",
+        "properties": {
+            "isPreferred": {
+                "type": "boolean",
+                "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
+                "x-cds-type": "Boolean"
+            },
+            "purpose": {
+                "type": "string",
+                "description": "The purpose of the number as specified by the customer",
+                "enum": [
+                    "HOME",
+                    "INTERNATIONAL",
+                    "MOBILE",
+                    "OTHER",
+                    "UNSPECIFIED",
+                    "WORK"
+                ]
+            },
+            "countryCode": {
+                "type": "string",
+                "description": "If absent, assumed to be Australia (+61). The + should be included"
+            },
+            "areaCode": {
+                "type": "string",
+                "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
+            },
+            "number": {
+                "type": "string",
+                "description": "The actual phone number, with leading zeros as appropriate"
+            },
+            "extension": {
+                "type": "string",
+                "description": "An extension number (if applicable)"
+            },
+            "fullNumber": {
+                "type": "string",
+                "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
+                "x-cds-type": "ExternalRef"
+            }
+        },
+        "x-conditional": [
+            "areaCode"
+        ],
+        "$id": "CommonPhoneNumber"
+    },
+    "CommonPhysicalAddress": {
+        "required": [
+            "addressUType"
+        ],
+        "type": "object",
+        "properties": {
+            "addressUType": {
+                "type": "string",
+                "description": "The type of address object present",
+                "enum": [
+                    "paf",
+                    "simple"
+                ]
+            },
+            "simple": {
+                "$ref": "CommonSimpleAddress"
+            },
+            "paf": {
+                "$ref": "CommonPAFAddress"
+            }
+        },
+        "x-conditional": [
+            "simple",
+            "paf"
+        ],
+        "$id": "CommonPhysicalAddress"
+    },
+    "CommonPhysicalAddressWithPurpose": {
+        "allOf": [
+            {
+                "$ref": "CommonPhysicalAddress"
+            },
+            {
+                "required": [
+                    "purpose"
+                ],
+                "type": "object",
+                "properties": {
+                    "purpose": {
+                        "type": "string",
+                        "description": "Enumeration of values indicating the purpose of the physical address",
+                        "enum": [
+                            "MAIL",
+                            "OTHER",
+                            "PHYSICAL",
+                            "REGISTERED",
+                            "WORK"
+                        ]
+                    }
+                }
+            }
+        ],
+        "$id": "CommonPhysicalAddressWithPurpose"
+    },
+    "CommonSimpleAddress": {
+        "required": [
+            "addressLine1",
+            "city",
+            "state"
+        ],
+        "type": "object",
+        "properties": {
+            "mailingName": {
+                "type": "string",
+                "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
+            },
+            "addressLine1": {
+                "type": "string",
+                "description": "First line of the standard address object"
+            },
+            "addressLine2": {
+                "type": "string",
+                "description": "Second line of the standard address object"
+            },
+            "addressLine3": {
+                "type": "string",
+                "description": "Third line of the standard address object"
+            },
+            "postcode": {
+                "type": "string",
+                "description": "Mandatory for Australian addresses"
+            },
+            "city": {
+                "type": "string",
+                "description": "Name of the city or locality"
+            },
+            "state": {
+                "type": "string",
+                "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
+            },
+            "country": {
+                "type": "string",
+                "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+                "default": "AUS",
+                "x-cds-type": "ExternalRef"
+            }
+        },
+        "x-conditional": [
+            "postcode"
+        ],
+        "$id": "CommonSimpleAddress"
+    },
+    "DiscoveryOutage": {
+        "required": [
+            "duration",
+            "explanation",
+            "outageTime"
+        ],
+        "type": "object",
+        "properties": {
+            "outageTime": {
+                "type": "string",
+                "description": "Date and time that the outage is scheduled to begin",
+                "x-cds-type": "DateTimeString"
+            },
+            "duration": {
+                "type": "string",
+                "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                "x-cds-type": "ExternalRef"
+            },
+            "isPartial": {
+                "type": "boolean",
+                "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
+                "x-cds-type": "Boolean"
+            },
+            "explanation": {
+                "type": "string",
+                "description": "Provides an explanation of the current outage that can be displayed to an end customer"
+            }
+        },
+        "$id": "DiscoveryOutage"
+    },
+    "Links": {
+        "required": [
+            "self"
+        ],
+        "type": "object",
+        "properties": {
+            "self": {
+                "type": "string",
+                "description": "Fully qualified link that generated the current response document",
+                "x-cds-type": "URIString"
+            }
+        },
+        "$id": "Links"
+    },
+    "LinksPaginated": {
+        "type": "object",
+        "required": [
+            "self"
+        ],
+        "x-conditional": [
+            "prev",
+            "next",
+            "first",
+            "last"
+        ],
+        "properties": {
+            "self": {
+                "type": "string",
+                "description": "Fully qualified link that generated the current response document",
+                "x-cds-type": "URIString"
+            },
+            "first": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+                "x-cds-type": "URIString"
+            },
+            "prev": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
+                "x-cds-type": "URIString"
+            },
+            "next": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "URI to the next page of this set. Mandatory if this response is not the last page",
+                "x-cds-type": "URIString"
+            },
+            "last": {
+                "type": [
+                    "string",
+                    "null"
+                ],
+                "description": "URI to the last page of this set. Mandatory if this response is not the last page",
+                "x-cds-type": "URIString"
+            }
+        },
+        "$id": "LinksPaginated"
+    },
+    "Meta": {
+        "type": "object",
+        "$id": "Meta"
+    },
+    "MetaError": {
+        "type": "object",
+        "properties": {
+            "urn": {
+                "type": "string",
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+            }
+        },
+        "description": "Additional data for customised error codes",
+        "x-conditional": [
+            "urn"
+        ],
+        "$id": "MetaError"
+    },
+    "MetaPaginated": {
+        "type": "object",
+        "required": [
+            "totalRecords",
+            "totalPages"
+        ],
+        "properties": {
+            "totalRecords": {
+                "type": "integer",
+                "description": "The total number of records in the full set. See [pagination](#pagination).",
+                "x-cds-type": "NaturalNumber"
+            },
+            "totalPages": {
+                "type": "integer",
+                "description": "The total number of pages in the full set. See [pagination](#pagination).",
+                "x-cds-type": "NaturalNumber"
+            }
+        },
+        "$id": "MetaPaginated"
+    },
+    "ResponseCommonCustomer": {
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "required": [
+                    "customerUType"
+                ],
+                "type": "object",
+                "properties": {
+                    "customerUType": {
+                        "type": "string",
+                        "description": "The type of customer object that is present",
+                        "enum": [
+                            "organisation",
+                            "person"
+                        ]
+                    },
+                    "person": {
+                        "$ref": "CommonPerson"
+                    },
+                    "organisation": {
+                        "$ref": "CommonOrganisation"
+                    }
+                },
+                "x-conditional": [
+                    "person",
+                    "organisation"
+                ]
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "ResponseCommonCustomer"
+    },
+    "ResponseCommonCustomerDetailV2": {
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "required": [
+                    "customerUType"
+                ],
+                "type": "object",
+                "properties": {
+                    "customerUType": {
+                        "type": "string",
+                        "description": "The type of customer object that is present",
+                        "enum": [
+                            "organisation",
+                            "person"
+                        ]
+                    },
+                    "person": {
+                        "$ref": "CommonPersonDetailV2"
+                    },
+                    "organisation": {
+                        "$ref": "CommonOrganisationDetailV2"
+                    }
+                },
+                "x-conditional": [
+                    "person",
+                    "organisation"
+                ]
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "ResponseCommonCustomerDetailV2"
+    },
+    "ResponseCommonDiscoveryStatus": {
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "required": [
+                    "status",
+                    "updateTime"
+                ],
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
+                        "enum": [
+                            "OK",
+                            "PARTIAL_FAILURE",
+                            "SCHEDULED_OUTAGE",
+                            "UNAVAILABLE"
+                        ]
+                    },
+                    "explanation": {
+                        "type": "string",
+                        "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK"
+                    },
+                    "detectionTime": {
+                        "type": "string",
+                        "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "expectedResolutionTime": {
+                        "type": "string",
+                        "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "The date and time that this status was last updated by the Data Holder.",
+                        "x-cds-type": "DateTimeString"
+                    }
+                },
+                "x-conditional": [
+                    "explanation"
+                ]
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "ResponseCommonDiscoveryStatus"
+    },
+    "ResponseDiscoveryOutagesList": {
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "required": [
+                    "outages"
+                ],
+                "type": "object",
+                "properties": {
+                    "outages": {
+                        "type": "array",
+                        "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
+                        "items": {
+                            "$ref": "DiscoveryOutage"
+                        }
+                    }
+                }
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "ResponseDiscoveryOutagesList"
+    },
+    "ResponseErrorListV2": {
+        "required": [
+            "errors"
+        ],
+        "type": "object",
+        "properties": {
+            "errors": {
+                "type": "array",
+                "description": "",
+                "items": {
+                    "required": [
+                        "code",
+                        "detail",
+                        "title"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+                        },
+                        "detail": {
+                            "type": "string",
+                            "description": "A human-readable explanation specific to this occurrence of the problem."
+                        },
+                        "meta": {
+                            "$ref": "MetaError"
+                        }
+                    }
+                }
+            }
+        },
+        "x-conditional": [
+            "meta"
+        ],
+        "$id": "ResponseErrorListV2"
+    },
+    "DataHolderBrandSummary": {
+        "required": [
+            "brandName",
+            "publicBaseUri",
+            "logoUri",
+            "industries",
+            "lastUpdated"
+        ],
+        "type": "object",
+        "properties": {
+            "dataHolderBrandId": {
+                "maxLength": 36,
+                "type": "string",
+                "x-conditional": true,
+                "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+            },
+            "interimId": {
+                "maxLength": 36,
+                "type": "string",
+                "x-conditional": true,
+                "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused"
+            },
+            "brandName": {
+                "maxLength": 200,
+                "type": "string",
+                "description": "The name of Data Holder Brand"
+            },
+            "publicBaseUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+                "x-cds-type": "URIString"
+            },
+            "logoUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Brand logo URI",
+                "x-cds-type": "URIString"
+            },
+            "industries": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "banking",
+                        "energy",
+                        "telco"
+                    ]
+                }
+            },
+            "lastUpdated": {
+                "type": "string",
+                "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+                "format": "date-time",
+                "x-cds-type": "DateTimeString"
+            },
+            "abn": {
+                "maxLength": 11,
+                "type": "string",
+                "description": "Australian Business Number for the organisation"
+            },
+            "acn": {
+                "maxLength": 9,
+                "type": "string",
+                "description": "Australian Company Number for the organisation"
+            },
+            "arbn": {
+                "maxLength": 9,
+                "type": "string",
+                "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            }
+        },
+        "$id": "DataHolderBrandSummary"
+    },
+    "DataHoldersStatusList": {
+        "required": [
+            "data",
+            "links",
+            "meta"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "Response data for the query",
+                "items": {
+                    "$ref": "DataHolderStatus"
+                }
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "DataHoldersStatusList"
+    },
+    "DataHolderStatus": {
+        "required": [
+            "legalEntityId",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "legalEntityId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register."
+            },
+            "status": {
+                "type": "string",
+                "description": "Data Holder status in the CDR Register",
+                "enum": [
+                    "ACTIVE",
+                    "REMOVED"
+                ]
+            }
+        },
+        "$id": "DataHolderStatus"
+    },
+    "DataRecipientBrandMetaData": {
+        "required": [
+            "brandName",
+            "dataRecipientBrandId",
+            "logoUri",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "dataRecipientBrandId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the Data Recipient brand issued by the CDR Register"
+            },
+            "brandName": {
+                "maxLength": 200,
+                "type": "string",
+                "description": "Data Recipient Brand name"
+            },
+            "logoUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Data Recipient Brand logo URI",
+                "x-cds-type": "URIString"
+            },
+            "softwareProducts": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                    "$ref": "SoftwareProductMetaData"
+                }
+            },
+            "status": {
+                "type": "string",
+                "description": "Data Recipient Brand status in the CDR Register",
+                "enum": [
+                    "ACTIVE",
+                    "INACTIVE",
+                    "REMOVED"
+                ]
+            }
+        },
+        "description": "Metadata related to Data Recipient Brand",
+        "$id": "DataRecipientBrandMetaData"
+    },
+    "DataRecipientsStatusList": {
+        "required": [
+            "data",
+            "links",
+            "meta"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "Response data for the query",
+                "items": {
+                    "$ref": "DataRecipientStatus"
+                }
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "DataRecipientsStatusList"
+    },
+    "DataRecipientStatus": {
+        "required": [
+            "legalEntityId",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "legalEntityId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register"
+            },
+            "status": {
+                "type": "string",
+                "description": "Data Recipient status in the CDR Register",
+                "enum": [
+                    "ACTIVE",
+                    "SUSPENDED",
+                    "REVOKED",
+                    "SURRENDERED"
+                ]
+            }
+        },
+        "$id": "DataRecipientStatus"
+    },
+    "JWK": {
+        "required": [
+            "alg",
+            "e",
+            "key_ops",
+            "kid",
+            "kty",
+            "n"
+        ],
+        "type": "object",
+        "properties": {
+            "alg": {
+                "type": "string",
+                "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key"
+            },
+            "e": {
+                "type": "string",
+                "description": "The \"e\" RSA public exponent parameter"
+            },
+            "key_ops": {
+                "type": "array",
+                "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "kid": {
+                "type": "string",
+                "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set"
+            },
+            "kty": {
+                "type": "string",
+                "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key"
+            },
+            "n": {
+                "type": "string",
+                "description": "The \"n\" RSA public modulus parameter"
+            }
+        },
+        "description": "Object representing a JSON Web Key",
+        "$id": "JWK"
+    },
+    "LegalEntityDetail": {
+        "required": [
+            "legalEntityId",
+            "legalEntityName",
+            "logoUri",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "legalEntityId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the organisation issued by the CDR Register"
+            },
+            "legalEntityName": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique legal name of the organisation"
+            },
+            "logoUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Legal Entity logo URI",
+                "x-cds-type": "URIString"
+            },
+            "registrationNumber": {
+                "type": "string",
+                "description": "Unique registration number (if the company is registered outside Australia)"
+            },
+            "registrationDate": {
+                "type": "string",
+                "description": "Date of registration (if the company is registered outside Australia)",
+                "format": "date",
+                "x-cds-type": "DateString"
+            },
+            "registeredCountry": {
+                "maxLength": 100,
+                "type": "string",
+                "description": "Country of registeration (if the company is registered outside Australia)"
+            },
+            "abn": {
+                "maxLength": 11,
+                "type": "string",
+                "description": "Australian Business Number for the organisation"
+            },
+            "acn": {
+                "maxLength": 9,
+                "type": "string",
+                "description": "Australian Company Number for the organisation"
+            },
+            "arbn": {
+                "maxLength": 9,
+                "type": "string",
+                "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+            },
+            "anzsicDivision": {
+                "maxLength": 100,
+                "type": "string",
+                "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
+            },
+            "organisationType": {
+                "type": "string",
+                "description": "Legal organisation type",
+                "enum": [
+                    "SOLE_TRADER",
+                    "COMPANY",
+                    "PARTNERSHIP",
+                    "TRUST",
+                    "GOVERNMENT_ENTITY",
+                    "OTHER"
+                ]
+            },
+            "status": {
+                "type": "string",
+                "enum": [
+                    "ACTIVE",
+                    "REMOVED"
+                ]
+            }
+        },
+        "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
+        "$id": "LegalEntityDetail"
+    },
+    "Links": {
+        "required": [
+            "self"
+        ],
+        "type": "object",
+        "properties": {
+            "self": {
+                "type": "string",
+                "description": "Fully qualified link to this API call"
+            }
+        },
+        "$id": "Links"
+    },
+    "LinksPaginated": {
+        "required": [
+            "self"
+        ],
+        "type": "object",
+        "properties": {
+            "first": {
+                "type": "string",
+                "description": "URI to the first page of this set. Mandatory if this response is not the first page"
+            },
+            "last": {
+                "type": "string",
+                "description": "URI to the last page of this set. Mandatory if this response is not the last page"
+            },
+            "next": {
+                "type": "string",
+                "description": "URI to the next page of this set. Mandatory if this response is not the last page"
+            },
+            "prev": {
+                "type": "string",
+                "description": "URI to the previous page of this set. Mandatory if this response is not the first page"
+            },
+            "self": {
+                "type": "string",
+                "description": "Fully qualified link to this API call"
+            }
+        },
+        "$id": "LinksPaginated"
+    },
+    "Meta": {
+        "type": "object",
+        "$id": "Meta"
+    },
+    "MetaError": {
+        "type": "object",
+        "properties": {
+            "urn": {
+                "type": "string",
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+            }
+        },
+        "description": "Additional data for customised error codes",
+        "x-conditional": [
+            "urn"
+        ],
+        "$id": "MetaError"
+    },
+    "MetaPaginated": {
+        "required": [
+            "totalPages",
+            "totalRecords"
+        ],
+        "type": "object",
+        "properties": {
+            "totalPages": {
+                "type": "integer",
+                "description": "The total number of pages in the full set",
+                "format": "int32"
+            },
+            "totalRecords": {
+                "type": "integer",
+                "description": "The total number of records in the full set",
+                "format": "int32"
+            }
+        },
+        "$id": "MetaPaginated"
+    },
+    "RegisterDataHolderAuth": {
+        "required": [
+            "jwksEndpoint",
+            "registerUType"
+        ],
+        "type": "object",
+        "properties": {
+            "registerUType": {
+                "type": "string",
+                "description": "The type of authentication and authorisation mechanism in use",
+                "enum": [
+                    "SIGNED-JWT"
+                ]
+            },
+            "jwksEndpoint": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "JWKS endpoint used for authentication by the Data Holder with the Data Recipient",
+                "x-cds-type": "URIString"
+            }
+        },
+        "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication",
+        "$id": "RegisterDataHolderAuth"
+    },
+    "RegisterDataHolderBrand": {
+        "required": [
+            "authDetails",
+            "brandName",
+            "dataHolderBrandId",
+            "endpointDetail",
+            "industries",
+            "lastUpdated",
+            "legalEntity",
+            "logoUri",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "dataHolderBrandId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the Data Holder Brand issued by the CDR Register"
+            },
+            "brandName": {
+                "maxLength": 200,
+                "type": "string",
+                "description": "The name of Data Holder Brand"
+            },
+            "industries": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "banking",
+                        "energy",
+                        "telco"
+                    ]
+                }
+            },
+            "logoUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Brand logo URI",
+                "x-cds-type": "URIString"
+            },
+            "legalEntity": {
+                "$ref": "LegalEntityDetail"
+            },
+            "status": {
+                "type": "string",
+                "enum": [
+                    "ACTIVE",
+                    "INACTIVE",
+                    "REMOVED"
+                ]
+            },
+            "endpointDetail": {
+                "$ref": "RegisterDataHolderBrandServiceEndpoint"
+            },
+            "authDetails": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                    "$ref": "RegisterDataHolderAuth"
+                }
+            },
+            "lastUpdated": {
+                "type": "string",
+                "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+                "format": "date-time",
+                "x-cds-type": "DateTimeString"
+            }
+        },
+        "$id": "RegisterDataHolderBrand"
+    },
+    "RegisterDataHolderBrandServiceEndpoint": {
+        "required": [
+            "infosecBaseUri",
+            "publicBaseUri",
+            "resourceBaseUri",
+            "version",
+            "websiteUri"
+        ],
+        "type": "object",
+        "properties": {
+            "version": {
+                "type": "string",
+                "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
+            },
+            "publicBaseUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+                "x-cds-type": "URIString"
+            },
+            "resourceBaseUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+                "x-cds-type": "URIString"
+            },
+            "infosecBaseUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+                "x-cds-type": "URIString"
+            },
+            "extensionBaseUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+                "x-cds-type": "URIString"
+            },
+            "websiteUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Publicly available website or web resource URI",
+                "x-cds-type": "URIString"
+            }
+        },
+        "description": "Endpoints related to Data Holder Brand services",
+        "$id": "RegisterDataHolderBrandServiceEndpoint"
+    },
+    "RegisterDataRecipient": {
+        "required": [
+            "accreditationLevel",
+            "accreditationNumber",
+            "lastUpdated",
+            "legalEntityId",
+            "legalEntityName",
+            "logoUri",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "legalEntityId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register."
+            },
+            "legalEntityName": {
+                "maxLength": 200,
+                "type": "string",
+                "description": "Legal name of the Data Recipient"
+            },
+            "accreditationNumber": {
+                "maxLength": 100,
+                "type": "string",
+                "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation"
+            },
+            "accreditationLevel": {
+                "type": "string",
+                "description": "Accreditation level of the Data Recipient in the CDR Register",
+                "enum": [
+                    "UNRESTRICTED",
+                    "SPONSORED"
+                ]
+            },
+            "logoUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Legal Entity logo URI",
+                "x-cds-type": "URIString"
+            },
+            "dataRecipientBrands": {
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                    "$ref": "DataRecipientBrandMetaData"
+                }
+            },
+            "status": {
+                "type": "string",
+                "description": "Data Recipient status in the CDR Register",
+                "enum": [
+                    "ACTIVE",
+                    "SUSPENDED",
+                    "REVOKED",
+                    "SURRENDERED"
+                ]
+            },
+            "lastUpdated": {
+                "type": "string",
+                "description": "The date/time that the Legal Entity was last updated in the CDR Register",
+                "format": "date-time",
+                "x-cds-type": "DateTimeString"
+            }
+        },
+        "$id": "RegisterDataRecipient"
+    },
+    "ResponseDataHoldersBrandSummaryList": {
+        "required": [
+            "data",
+            "links",
+            "meta"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "Response data for the query",
+                "items": {
+                    "$ref": "DataHolderBrandSummary"
+                }
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "ResponseDataHoldersBrandSummaryList"
+    },
+    "ResponseErrorListV2": {
+        "required": [
+            "errors"
+        ],
+        "type": "object",
+        "properties": {
+            "errors": {
+                "type": "array",
+                "description": "",
+                "items": {
+                    "$ref": "ResponseErrorListV2_errors"
+                }
+            }
+        },
+        "x-conditional": [
+            "meta"
+        ],
+        "$id": "ResponseErrorListV2"
+    },
+    "ResponseErrorListV2_errors": {
+        "required": [
+            "code",
+            "detail",
+            "title"
+        ],
+        "type": "object",
+        "properties": {
+            "code": {
+                "type": "string",
+                "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
+            },
+            "title": {
+                "type": "string",
+                "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
+            },
+            "detail": {
+                "type": "string",
+                "description": "A human-readable explanation specific to this occurrence of the problem."
+            },
+            "meta": {
+                "$ref": "MetaError"
+            }
+        },
+        "$id": "ResponseErrorListV2_errors"
+    },
+    "ResponseJWKS": {
+        "required": [
+            "keys"
+        ],
+        "type": "object",
+        "properties": {
+            "keys": {
+                "type": "array",
+                "description": "The value of the \"keys\" parameter is an array of JWK values",
+                "items": {
+                    "$ref": "JWK"
+                }
+            }
+        },
+        "description": "Response containing the JSON Web Key Set",
+        "$id": "ResponseJWKS"
+    },
+    "ResponseOpenIDProviderConfigMetadata": {
+        "required": [
+            "claims_supported",
+            "code_challenge_methods_supported",
+            "grant_types_supported",
+            "id_token_signing_alg_values_supported",
+            "issuer",
+            "jwks_uri",
+            "response_types_supported",
+            "scopes_supported",
+            "subject_types_supported",
+            "tls_client_certificate_bound_access_tokens",
+            "token_endpoint",
+            "token_endpoint_auth_methods_supported",
+            "token_endpoint_auth_signing_alg_values_supported"
+        ],
+        "type": "object",
+        "properties": {
+            "issuer": {
+                "type": "string",
+                "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier"
+            },
+            "jwks_uri": {
+                "type": "string",
+                "description": "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication"
+            },
+            "token_endpoint": {
+                "type": "string",
+                "description": "URL of the CDR Register's OAuth 2.0 Token Endpoint"
+            },
+            "claims_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "id_token_signing_alg_values_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "subject_types_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "code_challenge_methods_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "scopes_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "response_types_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "grant_types_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "token_endpoint_auth_methods_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of Client Authentication methods supported by this Token Endpoint",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "tls_client_certificate_bound_access_tokens": {
+                "type": "boolean",
+                "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens"
+            },
+            "token_endpoint_auth_signing_alg_values_supported": {
+                "type": "array",
+                "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \\\"private_key_jwt\\\" authentication method",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "description": "Response containing the Open ID Provider Configuration Metadata",
+        "$id": "ResponseOpenIDProviderConfigMetadata"
+    },
+    "ResponseRegisterDataHolderBrandList": {
+        "required": [
+            "data",
+            "links",
+            "meta"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "Response data for the query",
+                "items": {
+                    "$ref": "RegisterDataHolderBrand"
+                }
+            },
+            "links": {
+                "$ref": "LinksPaginated"
+            },
+            "meta": {
+                "$ref": "MetaPaginated"
+            }
+        },
+        "description": "Response containing a list of CDR Register Data Holder Brand objects",
+        "$id": "ResponseRegisterDataHolderBrandList"
+    },
+    "ResponseRegisterDataRecipientList": {
+        "required": [
+            "data",
+            "links",
+            "meta"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "Response data for the query",
+                "items": {
+                    "$ref": "RegisterDataRecipient"
+                }
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "description": "Response containing a list of Data Recipients in the CDR Register",
+        "$id": "ResponseRegisterDataRecipientList"
+    },
+    "SoftwareProductMetaData": {
+        "required": [
+            "logoUri",
+            "softwareProductId",
+            "softwareProductName",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "softwareProductId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the Data Recipient software product issued by the CDR Register"
+            },
+            "softwareProductName": {
+                "maxLength": 200,
+                "type": "string",
+                "description": "Name of the software product"
+            },
+            "softwareProductDescription": {
+                "maxLength": 4000,
+                "type": "string",
+                "description": "Description of the software product"
+            },
+            "logoUri": {
+                "maxLength": 1000,
+                "type": "string",
+                "description": "Software product logo URI",
+                "x-cds-type": "URIString"
+            },
+            "status": {
+                "type": "string",
+                "description": "Software Product status in the CDR Register",
+                "enum": [
+                    "ACTIVE",
+                    "INACTIVE",
+                    "REMOVED"
+                ]
+            }
+        },
+        "description": "Data Recipient Brand Software Products",
+        "$id": "SoftwareProductMetaData"
+    },
+    "SoftwareProductsStatusList": {
+        "required": [
+            "data",
+            "links",
+            "meta"
+        ],
+        "type": "object",
+        "properties": {
+            "data": {
+                "uniqueItems": true,
+                "type": "array",
+                "description": "Response data for the query",
+                "items": {
+                    "$ref": "SoftwareProductStatus"
+                }
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "$id": "SoftwareProductsStatusList"
+    },
+    "SoftwareProductStatus": {
+        "required": [
+            "softwareProductId",
+            "status"
+        ],
+        "type": "object",
+        "properties": {
+            "softwareProductId": {
+                "maxLength": 36,
+                "type": "string",
+                "description": "Unique id of the software product issued by the CDR Register"
+            },
+            "status": {
+                "type": "string",
+                "description": "Software product status in the CDR Register",
+                "enum": [
+                    "ACTIVE",
+                    "INACTIVE",
+                    "REMOVED"
+                ]
+            }
+        },
+        "$id": "SoftwareProductStatus"
+    }
+}

@@ -1,25 +1,19 @@
 {
-  "type": "object",
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ],
   "properties": {
     "data": {
-      "type": "object",
-      "required": [
-        "concessions"
-      ],
       "properties": {
         "concessions": {
           "description": "Array may be empty if no concessions exist",
-          "type": "array",
           "items": {
             "$ref": "EnergyConcession.json"
-          }
+          },
+          "type": "array"
         }
-      }
+      },
+      "required": [
+        "concessions"
+      ],
+      "type": "object"
     },
     "links": {
       "$ref": "../common/Links.json"
@@ -27,5 +21,11 @@
     "meta": {
       "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
 }

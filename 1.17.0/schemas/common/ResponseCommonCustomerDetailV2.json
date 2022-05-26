@@ -1,31 +1,26 @@
 {
-  "required": [
-    "data",
-    "links"
-  ],
-  "type": "object",
   "properties": {
     "data": {
-      "required": [
-        "customerUType"
-      ],
-      "type": "object",
       "properties": {
         "customerUType": {
-          "type": "string",
           "description": "The type of customer object that is present",
           "enum": [
             "organisation",
             "person"
-          ]
-        },
-        "person": {
-          "$ref": "CommonPersonDetailV2.json"
+          ],
+          "type": "string"
         },
         "organisation": {
           "$ref": "CommonOrganisationDetailV2.json"
+        },
+        "person": {
+          "$ref": "CommonPersonDetailV2.json"
         }
       },
+      "required": [
+        "customerUType"
+      ],
+      "type": "object",
       "x-conditional": [
         "person",
         "organisation"
@@ -37,5 +32,10 @@
     "meta": {
       "$ref": "Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
 }

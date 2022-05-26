@@ -1,5 +1,125 @@
 {
-  "type": "object",
+  "properties": {
+    "additionalInformation": {
+      "description": "Object that contains links to additional information on specific topics",
+      "properties": {
+        "bundleUri": {
+          "description": "A link to detail on bundles that this plan can be a part of",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "eligibilityUri": {
+          "description": "A link to detail on eligibility criteria for the plan",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "overviewUri": {
+          "description": "A link to a general overview of the plan",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "pricingUri": {
+          "description": "A link to detail on pricing for the plan",
+          "type": "string",
+          "x-cds-type": "URIString"
+        },
+        "termsUri": {
+          "description": "A link to terms and conditions for the plan",
+          "type": "string",
+          "x-cds-type": "URIString"
+        }
+      },
+      "type": "object"
+    },
+    "applicationUri": {
+      "description": "A link to an application web page where this plan can be applied for",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "brand": {
+      "description": "The ID of the brand under which this plan is offered",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "brandName": {
+      "description": "The display name of the brand under which this plan is offered",
+      "type": "string"
+    },
+    "customerType": {
+      "description": "The type of customer that the plan is offered to.  If absent then the plan is available to all customers",
+      "enum": [
+        "RESIDENTIAL",
+        "BUSINESS"
+      ],
+      "type": "string"
+    },
+    "description": {
+      "description": "A description of the plan",
+      "type": "string"
+    },
+    "displayName": {
+      "description": "The display name of the plan",
+      "type": "string"
+    },
+    "effectiveFrom": {
+      "description": "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "effectiveTo": {
+      "description": "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "fuelType": {
+      "description": "The fuel types covered by the plan",
+      "enum": [
+        "ELECTRICITY",
+        "GAS",
+        "DUAL"
+      ],
+      "type": "string"
+    },
+    "geography": {
+      "description": "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
+      "properties": {
+        "excludedPostcodes": {
+          "description": "Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "includedPostcodes": {
+          "description": "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "lastUpdated": {
+      "description": "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "planId": {
+      "description": "The ID of the specific plan",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "type": {
+      "description": "The type of the plan",
+      "enum": [
+        "STANDING",
+        "MARKET",
+        "REGULATED"
+      ],
+      "type": "string"
+    }
+  },
   "required": [
     "planId",
     "lastUpdated",
@@ -8,125 +128,5 @@
     "brand",
     "brandName"
   ],
-  "properties": {
-    "planId": {
-      "type": "string",
-      "x-cds-type": "ASCIIString",
-      "description": "The ID of the specific plan"
-    },
-    "effectiveFrom": {
-      "type": "string",
-      "x-cds-type": "DateTimeString",
-      "description": "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate"
-    },
-    "effectiveTo": {
-      "type": "string",
-      "x-cds-type": "DateTimeString",
-      "description": "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "x-cds-type": "DateTimeString",
-      "description": "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)"
-    },
-    "displayName": {
-      "type": "string",
-      "description": "The display name of the plan"
-    },
-    "description": {
-      "type": "string",
-      "description": "A description of the plan"
-    },
-    "type": {
-      "type": "string",
-      "description": "The type of the plan",
-      "enum": [
-        "STANDING",
-        "MARKET",
-        "REGULATED"
-      ]
-    },
-    "fuelType": {
-      "type": "string",
-      "description": "The fuel types covered by the plan",
-      "enum": [
-        "ELECTRICITY",
-        "GAS",
-        "DUAL"
-      ]
-    },
-    "brand": {
-      "type": "string",
-      "x-cds-type": "ASCIIString",
-      "description": "The ID of the brand under which this plan is offered"
-    },
-    "brandName": {
-      "type": "string",
-      "description": "The display name of the brand under which this plan is offered"
-    },
-    "applicationUri": {
-      "type": "string",
-      "x-cds-type": "URIString",
-      "description": "A link to an application web page where this plan can be applied for"
-    },
-    "additionalInformation": {
-      "type": "object",
-      "description": "Object that contains links to additional information on specific topics",
-      "properties": {
-        "overviewUri": {
-          "type": "string",
-          "x-cds-type": "URIString",
-          "description": "A link to a general overview of the plan"
-        },
-        "termsUri": {
-          "type": "string",
-          "x-cds-type": "URIString",
-          "description": "A link to terms and conditions for the plan"
-        },
-        "eligibilityUri": {
-          "type": "string",
-          "x-cds-type": "URIString",
-          "description": "A link to detail on eligibility criteria for the plan"
-        },
-        "pricingUri": {
-          "type": "string",
-          "x-cds-type": "URIString",
-          "description": "A link to detail on pricing for the plan"
-        },
-        "bundleUri": {
-          "type": "string",
-          "x-cds-type": "URIString",
-          "description": "A link to detail on bundles that this plan can be a part of"
-        }
-      }
-    },
-    "customerType": {
-      "type": "string",
-      "description": "The type of customer that the plan is offered to.  If absent then the plan is available to all customers",
-      "enum": [
-        "RESIDENTIAL",
-        "BUSINESS"
-      ]
-    },
-    "geography": {
-      "type": "object",
-      "description": "Describes the geographical area that the plan is available for.  If absent then it is assumed the plan is not geographically limited",
-      "properties": {
-        "excludedPostcodes": {
-          "description": "Array of valid Australian post codes that are specifically excluded from the plan.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "includedPostcodes": {
-          "description": "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
+  "type": "object"
 }

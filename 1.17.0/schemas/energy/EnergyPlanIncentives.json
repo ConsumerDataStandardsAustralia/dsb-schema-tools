@@ -1,35 +1,35 @@
 {
   "description": "Optional list of incentives available for the contract",
-  "type": "array",
   "items": {
-    "type": "object",
-    "required": [
-      "displayName",
-      "description",
-      "category"
-    ],
     "properties": {
-      "displayName": {
-        "type": "string",
-        "description": "The display name of the incentive"
-      },
-      "description": {
-        "type": "string",
-        "description": "The description of the incentive"
-      },
       "category": {
-        "type": "string",
         "description": "The type of the incentive",
         "enum": [
           "GIFT",
           "ACCOUNT_CREDIT",
           "OTHER"
-        ]
+        ],
+        "type": "string"
+      },
+      "description": {
+        "description": "The description of the incentive",
+        "type": "string"
+      },
+      "displayName": {
+        "description": "The display name of the incentive",
+        "type": "string"
       },
       "eligibility": {
-        "type": "string",
-        "description": "A display message outlining an eligibility criteria that may apply"
+        "description": "A display message outlining an eligibility criteria that may apply",
+        "type": "string"
       }
-    }
-  }
+    },
+    "required": [
+      "displayName",
+      "description",
+      "category"
+    ],
+    "type": "object"
+  },
+  "type": "array"
 }

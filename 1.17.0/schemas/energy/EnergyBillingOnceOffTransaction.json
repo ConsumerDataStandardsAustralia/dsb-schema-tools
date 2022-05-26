@@ -1,18 +1,5 @@
 {
-  "type": "object",
-  "required": [
-    "amount",
-    "description"
-  ],
   "properties": {
-    "servicePointId": {
-      "description": "The ID of the service point to which this transaction applies if any",
-      "type": "string"
-    },
-    "invoiceNumber": {
-      "description": "The number of the invoice in which this transaction is included if it has been issued",
-      "type": "string"
-    },
     "amount": {
       "description": "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
       "type": "string",
@@ -21,6 +8,19 @@
     "description": {
       "description": "A free text description of the item",
       "type": "string"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": "string"
+    },
+    "servicePointId": {
+      "description": "The ID of the service point to which this transaction applies if any",
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object"
 }

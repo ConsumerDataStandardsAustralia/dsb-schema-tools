@@ -1,22 +1,22 @@
 {
-  "required": [
-    "legalEntityId",
-    "status"
-  ],
-  "type": "object",
   "properties": {
     "legalEntityId": {
+      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
       "maxLength": 36,
-      "type": "string",
-      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register."
+      "type": "string"
     },
     "status": {
-      "type": "string",
       "description": "Data Holder status in the CDR Register",
       "enum": [
         "ACTIVE",
         "REMOVED"
-      ]
+      ],
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "legalEntityId",
+    "status"
+  ],
+  "type": "object"
 }

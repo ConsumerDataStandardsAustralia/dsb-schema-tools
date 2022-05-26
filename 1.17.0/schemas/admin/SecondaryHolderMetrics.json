@@ -1,52 +1,52 @@
 {
-  "required": [
-    "errors",
-    "rejections"
-  ],
-  "type": "object",
+  "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
   "properties": {
     "errors": {
-      "type": "object",
+      "description": "Number of calls resulting in error due to server execution over time",
       "properties": {
         "currentDay": {
-          "type": "number",
-          "description": "Number of errors for current day"
+          "description": "Number of errors for current day",
+          "type": "number"
         },
         "previousDays": {
-          "type": "array",
           "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
-          }
+          },
+          "type": "array"
         }
       },
-      "description": "Number of calls resulting in error due to server execution over time",
+      "type": "object",
       "x-conditional": [
         "currentDay",
         "previousDays"
       ]
     },
     "rejections": {
-      "type": "object",
+      "description": "Number of calls resulting in a rejection due to server execution over time",
       "properties": {
         "currentDay": {
-          "type": "number",
-          "description": "Number of rejections for current day"
+          "description": "Number of rejections for current day",
+          "type": "number"
         },
         "previousDays": {
-          "type": "array",
           "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
-          }
+          },
+          "type": "array"
         }
       },
-      "description": "Number of calls resulting in a rejection due to server execution over time",
+      "type": "object",
       "x-conditional": [
         "currentDay",
         "previousDays"
       ]
     }
   },
-  "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster"
+  "required": [
+    "errors",
+    "rejections"
+  ],
+  "type": "object"
 }

@@ -1,27 +1,27 @@
 {
-  "required": [
-    "identifier",
-    "type"
-  ],
-  "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "description": "The name assigned to the PayID by the owner of the PayID"
-    },
     "identifier": {
-      "type": "string",
-      "description": "The identifier of the PayID (dependent on type)"
+      "description": "The identifier of the PayID (dependent on type)",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name assigned to the PayID by the owner of the PayID",
+      "type": "string"
     },
     "type": {
-      "type": "string",
       "description": "The type of the PayID",
       "enum": [
         "ABN",
         "EMAIL",
         "ORG_IDENTIFIER",
         "TELEPHONE"
-      ]
+      ],
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "identifier",
+    "type"
+  ],
+  "type": "object"
 }

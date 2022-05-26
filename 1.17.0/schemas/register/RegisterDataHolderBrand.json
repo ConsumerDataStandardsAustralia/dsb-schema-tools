@@ -1,4 +1,62 @@
 {
+  "properties": {
+    "authDetails": {
+      "items": {
+        "$ref": "RegisterDataHolderAuth.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "brandName": {
+      "description": "The name of Data Holder Brand",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "dataHolderBrandId": {
+      "description": "Unique id of the Data Holder Brand issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "endpointDetail": {
+      "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
+    },
+    "industries": {
+      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+      "items": {
+        "enum": [
+          "banking",
+          "energy",
+          "telco"
+        ],
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "lastUpdated": {
+      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+      "format": "date-time",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "legalEntity": {
+      "$ref": "LegalEntityDetail.json"
+    },
+    "logoUri": {
+      "description": "Brand logo URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  },
   "required": [
     "authDetails",
     "brandName",
@@ -10,63 +68,5 @@
     "logoUri",
     "status"
   ],
-  "type": "object",
-  "properties": {
-    "dataHolderBrandId": {
-      "maxLength": 36,
-      "type": "string",
-      "description": "Unique id of the Data Holder Brand issued by the CDR Register"
-    },
-    "brandName": {
-      "maxLength": 200,
-      "type": "string",
-      "description": "The name of Data Holder Brand"
-    },
-    "industries": {
-      "uniqueItems": true,
-      "type": "array",
-      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
-      "items": {
-        "type": "string",
-        "enum": [
-          "banking",
-          "energy",
-          "telco"
-        ]
-      }
-    },
-    "logoUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Brand logo URI",
-      "x-cds-type": "URIString"
-    },
-    "legalEntity": {
-      "$ref": "#/components/schemas/LegalEntityDetail"
-    },
-    "status": {
-      "type": "string",
-      "enum": [
-        "ACTIVE",
-        "INACTIVE",
-        "REMOVED"
-      ]
-    },
-    "endpointDetail": {
-      "$ref": "#/components/schemas/RegisterDataHolderBrandServiceEndpoint"
-    },
-    "authDetails": {
-      "uniqueItems": true,
-      "type": "array",
-      "items": {
-        "$ref": "#/components/schemas/RegisterDataHolderAuth"
-      }
-    },
-    "lastUpdated": {
-      "type": "string",
-      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
-      "format": "date-time",
-      "x-cds-type": "DateTimeString"
-    }
-  }
+  "type": "object"
 }

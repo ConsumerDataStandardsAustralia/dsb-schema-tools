@@ -1,27 +1,27 @@
 {
-  "required": [
-    "data"
-  ],
-  "type": "object",
   "properties": {
     "data": {
+      "properties": {
+        "action": {
+          "default": "REFRESH",
+          "description": "The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable",
+          "enum": [
+            "REFRESH"
+          ],
+          "type": "string"
+        }
+      },
       "required": [
         "action"
       ],
-      "type": "object",
-      "properties": {
-        "action": {
-          "type": "string",
-          "description": "The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable",
-          "default": "REFRESH",
-          "enum": [
-            "REFRESH"
-          ]
-        }
-      }
+      "type": "object"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data"
+  ],
+  "type": "object"
 }

@@ -1,12 +1,7 @@
 {
-  "type": "object",
-  "required": [
-    "data",
-    "links"
-  ],
   "properties": {
     "data": {
-      "$ref": "EnergyPlanDetail"
+      "$ref": "EnergyPlanDetail.json"
     },
     "links": {
       "$ref": "../common/Links.json"
@@ -14,5 +9,10 @@
     "meta": {
       "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
 }

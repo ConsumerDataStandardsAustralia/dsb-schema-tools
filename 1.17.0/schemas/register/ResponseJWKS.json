@@ -1,16 +1,16 @@
 {
+  "description": "Response containing the JSON Web Key Set",
+  "properties": {
+    "keys": {
+      "description": "The value of the \"keys\" parameter is an array of JWK values",
+      "items": {
+        "$ref": "JWK.json"
+      },
+      "type": "array"
+    }
+  },
   "required": [
     "keys"
   ],
-  "type": "object",
-  "properties": {
-    "keys": {
-      "type": "array",
-      "description": "The value of the \"keys\" parameter is an array of JWK values",
-      "items": {
-        "$ref": "#/components/schemas/JWK"
-      }
-    }
-  },
-  "description": "Response containing the JSON Web Key Set"
+  "type": "object"
 }

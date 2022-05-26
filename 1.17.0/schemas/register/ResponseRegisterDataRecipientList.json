@@ -1,25 +1,25 @@
 {
+  "description": "Response containing a list of Data Recipients in the CDR Register",
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "RegisterDataRecipient.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "../common/Links.json"
+    },
+    "meta": {
+      "$ref": "../common/Meta.json"
+    }
+  },
   "required": [
     "data",
     "links",
     "meta"
   ],
-  "type": "object",
-  "properties": {
-    "data": {
-      "uniqueItems": true,
-      "type": "array",
-      "description": "Response data for the query",
-      "items": {
-        "$ref": "#/components/schemas/RegisterDataRecipient"
-      }
-    },
-    "links": {
-      "$ref": "#/components/schemas/Links"
-    },
-    "meta": {
-      "$ref": "#/components/schemas/Meta"
-    }
-  },
-  "description": "Response containing a list of Data Recipients in the CDR Register"
+  "type": "object"
 }

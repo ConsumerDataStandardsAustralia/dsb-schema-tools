@@ -1,70 +1,63 @@
 {
-  "required": [
-    "agentLastName",
-    "agentRole",
-    "businessName",
-    "organisationType"
-  ],
-  "type": "object",
   "properties": {
-    "lastUpdateTime": {
-      "type": "string",
-      "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
-      "x-cds-type": "DateTimeString"
-    },
-    "agentFirstName": {
-      "type": "string",
-      "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
-    },
-    "agentLastName": {
-      "type": "string",
-      "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field"
-    },
-    "agentRole": {
-      "type": "string",
-      "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
-    },
-    "businessName": {
-      "type": "string",
-      "description": "Name of the organisation"
-    },
-    "legalName": {
-      "type": "string",
-      "description": "Legal name, if different to the business name"
-    },
-    "shortName": {
-      "type": "string",
-      "description": "Short name used for communication, if different to the business name"
-    },
     "abn": {
-      "type": "string",
-      "description": "Australian Business Number for the organisation"
+      "description": "Australian Business Number for the organisation",
+      "type": "string"
     },
     "acn": {
-      "type": "string",
-      "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
+      "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type",
+      "type": "string"
     },
-    "isACNCRegistered": {
-      "type": "boolean",
-      "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
-      "x-cds-type": "Boolean"
+    "agentFirstName": {
+      "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field",
+      "type": "string"
+    },
+    "agentLastName": {
+      "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field",
+      "type": "string"
+    },
+    "agentRole": {
+      "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known",
+      "type": "string"
+    },
+    "businessName": {
+      "description": "Name of the organisation",
+      "type": "string"
+    },
+    "establishmentDate": {
+      "description": "The date the organisation described was established",
+      "type": "string",
+      "x-cds-type": "DateString"
     },
     "industryCode": {
-      "type": "string",
       "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
+      "type": "string",
       "x-cds-type": "ExternalRef"
     },
     "industryCodeVersion": {
-      "type": "string",
-      "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
       "default": "ANZSIC_1292.0_2006_V2.0",
+      "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
       "enum": [
         "ANZSIC_1292.0_2006_V1.0",
         "ANZSIC_1292.0_2006_V2.0"
-      ]
+      ],
+      "type": "string"
+    },
+    "isACNCRegistered": {
+      "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+      "type": "boolean",
+      "x-cds-type": "Boolean"
+    },
+    "lastUpdateTime": {
+      "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "legalName": {
+      "description": "Legal name, if different to the business name",
+      "type": "string"
     },
     "organisationType": {
-      "type": "string",
       "description": "Legal organisation type",
       "enum": [
         "COMPANY",
@@ -73,19 +66,26 @@
         "PARTNERSHIP",
         "SOLE_TRADER",
         "TRUST"
-      ]
+      ],
+      "type": "string"
     },
     "registeredCountry": {
-      "type": "string",
       "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+      "type": "string",
       "x-cds-type": "ExternalRef"
     },
-    "establishmentDate": {
-      "type": "string",
-      "description": "The date the organisation described was established",
-      "x-cds-type": "DateString"
+    "shortName": {
+      "description": "Short name used for communication, if different to the business name",
+      "type": "string"
     }
   },
+  "required": [
+    "agentLastName",
+    "agentRole",
+    "businessName",
+    "organisationType"
+  ],
+  "type": "object",
   "x-conditional": [
     "industryCodeVersion"
   ]

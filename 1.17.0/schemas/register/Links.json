@@ -1,12 +1,12 @@
 {
+  "properties": {
+    "self": {
+      "description": "Fully qualified link to this API call",
+      "type": "string"
+    }
+  },
   "required": [
     "self"
   ],
-  "type": "object",
-  "properties": {
-    "self": {
-      "type": "string",
-      "description": "Fully qualified link to this API call"
-    }
-  }
+  "type": "object"
 }

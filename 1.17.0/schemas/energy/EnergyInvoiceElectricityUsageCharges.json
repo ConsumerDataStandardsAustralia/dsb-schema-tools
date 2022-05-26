@@ -1,19 +1,47 @@
 {
-  "type": "object",
-  "required": [
-    "totalUsageCharges",
-    "totalGenerationCredits",
-    "totalOnceOffCharges",
-    "totalOnceOffDiscounts"
-  ],
   "properties": {
-    "totalUsageCharges": {
-      "description": "The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)",
-      "type": "string",
-      "x-cds-type": "AmountString"
+    "otherCharges": {
+      "description": "Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)",
+      "items": {
+        "properties": {
+          "amount": {
+            "description": "The aggregate total of charges for this item (exclusive of GST)",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "description": {
+            "description": "A free text description of the type of charge",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of charge. Assumed to be other if absent",
+            "enum": [
+              "ENVIRONMENTAL",
+              "REGULATED",
+              "NETWORK",
+              "METERING",
+              "RETAIL_SERVICE",
+              "RCTI",
+              "OTHER"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "description"
+        ],
+        "type": "object"
+      },
+      "type": "array"
     },
     "totalGenerationCredits": {
       "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "totalGst": {
+      "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
       "type": "string",
       "x-cds-type": "AmountString"
     },
@@ -27,45 +55,17 @@
       "type": "string",
       "x-cds-type": "AmountString"
     },
-    "otherCharges": {
-      "description": "Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "amount",
-          "description"
-        ],
-        "properties": {
-          "type": {
-            "description": "Type of charge. Assumed to be other if absent",
-            "type": "string",
-            "enum": [
-              "ENVIRONMENTAL",
-              "REGULATED",
-              "NETWORK",
-              "METERING",
-              "RETAIL_SERVICE",
-              "RCTI",
-              "OTHER"
-            ]
-          },
-          "amount": {
-            "description": "The aggregate total of charges for this item (exclusive of GST)",
-            "type": "string",
-            "x-cds-type": "AmountString"
-          },
-          "description": {
-            "description": "A free text description of the type of charge",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "totalGst": {
-      "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
+    "totalUsageCharges": {
+      "description": "The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)",
       "type": "string",
       "x-cds-type": "AmountString"
     }
-  }
+  },
+  "required": [
+    "totalUsageCharges",
+    "totalGenerationCredits",
+    "totalOnceOffCharges",
+    "totalOnceOffDiscounts"
+  ],
+  "type": "object"
 }

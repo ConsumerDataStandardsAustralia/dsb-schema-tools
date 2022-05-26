@@ -1,31 +1,31 @@
 {
+  "properties": {
+    "data": {
+      "properties": {
+        "directDebitAuthorisations": {
+          "description": "The list of authorisations returned",
+          "items": {
+            "$ref": "BankingDirectDebit.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "directDebitAuthorisations"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
   "required": [
     "data",
     "links",
     "meta"
   ],
-  "type": "object",
-  "properties": {
-    "data": {
-      "required": [
-        "directDebitAuthorisations"
-      ],
-      "type": "object",
-      "properties": {
-        "directDebitAuthorisations": {
-          "type": "array",
-          "description": "The list of authorisations returned",
-          "items": {
-            "$ref": "BankingDirectDebit.json"
-          }
-        }
-      }
-    },
-    "links": {
-      "$ref": "LinksPaginated"
-    },
-    "meta": {
-      "$ref": "MetaPaginated"
-    }
-  }
+  "type": "object"
 }

@@ -1,4 +1,41 @@
 {
+  "description": "Endpoints related to Data Holder Brand services",
+  "properties": {
+    "extensionBaseUri": {
+      "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "infosecBaseUri": {
+      "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "publicBaseUri": {
+      "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "resourceBaseUri": {
+      "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "version": {
+      "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)",
+      "type": "string"
+    },
+    "websiteUri": {
+      "description": "Publicly available website or web resource URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    }
+  },
   "required": [
     "infosecBaseUri",
     "publicBaseUri",
@@ -6,42 +43,5 @@
     "version",
     "websiteUri"
   ],
-  "type": "object",
-  "properties": {
-    "version": {
-      "type": "string",
-      "description": "The major version of the high level standards. This is not the version of the endpoint or the payload being requested but the version of the overall standards being applied. This version number will be \"v\" followed by the major version of the standards as a positive integer (e.g. v1, v12 or v76)"
-    },
-    "publicBaseUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
-      "x-cds-type": "URIString"
-    },
-    "resourceBaseUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Base URI for the Data Holder's Consumer Data Standard resource endpoints",
-      "x-cds-type": "URIString"
-    },
-    "infosecBaseUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Base URI for the Data Holder's Consumer Data Standard information security endpoints",
-      "x-cds-type": "URIString"
-    },
-    "extensionBaseUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
-      "x-cds-type": "URIString"
-    },
-    "websiteUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Publicly available website or web resource URI",
-      "x-cds-type": "URIString"
-    }
-  },
-  "description": "Endpoints related to Data Holder Brand services"
+  "type": "object"
 }

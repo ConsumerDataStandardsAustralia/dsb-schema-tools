@@ -1,11 +1,19 @@
 {
-  "required": [
-    "featureType"
-  ],
-  "type": "object",
   "properties": {
-    "featureType": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER",
+      "type": "string"
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this feature",
       "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)",
+      "type": "string"
+    },
+    "featureType": {
       "description": "The type of feature described",
       "enum": [
         "ADDITIONAL_CARDS",
@@ -37,22 +45,14 @@
         "REDRAW",
         "RELATIONSHIP_MANAGEMENT",
         "UNLIMITED_TXNS"
-      ]
-    },
-    "additionalValue": {
-      "type": "string",
-      "description": "Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)"
-    },
-    "additionalInfo": {
-      "type": "string",
-      "description": "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER"
-    },
-    "additionalInfoUri": {
-      "type": "string",
-      "description": "Link to a web page with more information on this feature",
-      "x-cds-type": "URIString"
+      ],
+      "type": "string"
     }
   },
+  "required": [
+    "featureType"
+  ],
+  "type": "object",
   "x-conditional": [
     "additionalValue",
     "additionalInfo"

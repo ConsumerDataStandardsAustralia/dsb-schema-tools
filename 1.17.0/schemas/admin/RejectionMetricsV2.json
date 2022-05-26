@@ -1,52 +1,52 @@
 {
-  "required": [
-    "authenticated",
-    "unauthenticated"
-  ],
-  "type": "object",
+  "description": "Number of calls rejected due to traffic thresholds over time",
   "properties": {
     "authenticated": {
-      "type": "object",
+      "description": "Rejection counts for all authenticated end points",
       "properties": {
         "currentDay": {
-          "type": "number",
-          "description": "Number of calls rejected for current day"
+          "description": "Number of calls rejected for current day",
+          "type": "number"
         },
         "previousDays": {
-          "type": "array",
           "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
-          }
+          },
+          "type": "array"
         }
       },
-      "description": "Rejection counts for all authenticated end points",
+      "type": "object",
       "x-conditional": [
         "currentDay",
         "previousDays"
       ]
     },
     "unauthenticated": {
-      "type": "object",
+      "description": "Rejection counts for all uauthenticated end points",
       "properties": {
         "currentDay": {
-          "type": "number",
-          "description": "Number of calls rejected for current day"
+          "description": "Number of calls rejected for current day",
+          "type": "number"
         },
         "previousDays": {
-          "type": "array",
           "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
-          }
+          },
+          "type": "array"
         }
       },
-      "description": "Rejection counts for all uauthenticated end points",
+      "type": "object",
       "x-conditional": [
         "currentDay",
         "previousDays"
       ]
     }
   },
-  "description": "Number of calls rejected due to traffic thresholds over time"
+  "required": [
+    "authenticated",
+    "unauthenticated"
+  ],
+  "type": "object"
 }

@@ -1,31 +1,31 @@
 {
-  "type": "object",
+  "properties": {
+    "data": {
+      "properties": {
+        "derRecords": {
+          "description": "Array of meter reads",
+          "items": {
+            "$ref": "EnergyDerRecord.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "derRecords"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
   "required": [
     "data",
     "links",
     "meta"
   ],
-  "properties": {
-    "data": {
-      "type": "object",
-      "required": [
-        "derRecords"
-      ],
-      "properties": {
-        "derRecords": {
-          "description": "Array of meter reads",
-          "type": "array",
-          "items": {
-            "$ref": "EnergyDerRecord.json"
-          }
-        }
-      }
-    },
-    "links": {
-      "$ref": "../common/LinksPaginated.json"
-    },
-    "meta": {
-      "$ref": "../common/MetaPaginated.json"
-    }
-  }
+  "type": "object"
 }

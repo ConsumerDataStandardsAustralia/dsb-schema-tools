@@ -1,17 +1,17 @@
 {
+  "properties": {
+    "errors": {
+      "description": "",
+      "items": {
+        "$ref": "ResponseErrorListV2_errors.json"
+      },
+      "type": "array"
+    }
+  },
   "required": [
     "errors"
   ],
   "type": "object",
-  "properties": {
-    "errors": {
-      "type": "array",
-      "description": "",
-      "items": {
-        "$ref": "#/components/schemas/ResponseErrorListV2_errors"
-      }
-    }
-  },
   "x-conditional": [
     "meta"
   ]

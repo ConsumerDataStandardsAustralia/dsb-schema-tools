@@ -1,16 +1,38 @@
 {
-  "required": [
-    "description",
-    "discountType"
-  ],
-  "type": "object",
   "properties": {
-    "description": {
+    "accruedRate": {
+      "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
       "type": "string",
-      "description": "Description of the discount"
+      "x-cds-type": "RateString"
+    },
+    "additionalInfo": {
+      "description": "Display text providing more information on the discount",
+      "type": "string"
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this discount",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)",
+      "type": "string"
+    },
+    "amount": {
+      "description": "Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "balanceRate": {
+      "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+      "type": "string",
+      "x-cds-type": "RateString"
+    },
+    "description": {
+      "description": "Description of the discount",
+      "type": "string"
     },
     "discountType": {
-      "type": "string",
       "description": "The type of discount. See the next section for an overview of valid values and their meaning",
       "enum": [
         "BALANCE",
@@ -18,54 +40,32 @@
         "ELIGIBILITY_ONLY",
         "FEE_CAP",
         "PAYMENTS"
-      ]
-    },
-    "amount": {
-      "type": "string",
-      "description": "Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.",
-      "x-cds-type": "AmountString"
-    },
-    "balanceRate": {
-      "type": "string",
-      "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-      "x-cds-type": "RateString"
-    },
-    "transactionRate": {
-      "type": "string",
-      "description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
-      "x-cds-type": "RateString"
-    },
-    "accruedRate": {
-      "type": "string",
-      "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-      "x-cds-type": "RateString"
-    },
-    "feeRate": {
-      "type": "string",
-      "description": "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
-      "x-cds-type": "RateString"
-    },
-    "additionalValue": {
-      "type": "string",
-      "description": "Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)"
-    },
-    "additionalInfo": {
-      "type": "string",
-      "description": "Display text providing more information on the discount"
-    },
-    "additionalInfoUri": {
-      "type": "string",
-      "description": "Link to a web page with more information on this discount",
-      "x-cds-type": "URIString"
+      ],
+      "type": "string"
     },
     "eligibility": {
-      "type": "array",
       "description": "Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.",
       "items": {
         "$ref": "BankingProductDiscountEligibility.json"
-      }
+      },
+      "type": "array"
+    },
+    "feeRate": {
+      "description": "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee",
+      "type": "string",
+      "x-cds-type": "RateString"
+    },
+    "transactionRate": {
+      "description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory",
+      "type": "string",
+      "x-cds-type": "RateString"
     }
   },
+  "required": [
+    "description",
+    "discountType"
+  ],
+  "type": "object",
   "x-conditional": [
     "accruedRate",
     "additionalValue",

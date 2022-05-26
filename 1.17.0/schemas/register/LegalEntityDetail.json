@@ -1,65 +1,43 @@
 {
-  "required": [
-    "legalEntityId",
-    "legalEntityName",
-    "logoUri",
-    "status"
-  ],
-  "type": "object",
+  "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
   "properties": {
-    "legalEntityId": {
-      "maxLength": 36,
-      "type": "string",
-      "description": "Unique id of the organisation issued by the CDR Register"
-    },
-    "legalEntityName": {
-      "maxLength": 36,
-      "type": "string",
-      "description": "Unique legal name of the organisation"
-    },
-    "logoUri": {
-      "maxLength": 1000,
-      "type": "string",
-      "description": "Legal Entity logo URI",
-      "x-cds-type": "URIString"
-    },
-    "registrationNumber": {
-      "type": "string",
-      "description": "Unique registration number (if the company is registered outside Australia)"
-    },
-    "registrationDate": {
-      "type": "string",
-      "description": "Date of registration (if the company is registered outside Australia)",
-      "format": "date",
-      "x-cds-type": "DateString"
-    },
-    "registeredCountry": {
-      "maxLength": 100,
-      "type": "string",
-      "description": "Country of registeration (if the company is registered outside Australia)"
-    },
     "abn": {
+      "description": "Australian Business Number for the organisation",
       "maxLength": 11,
-      "type": "string",
-      "description": "Australian Business Number for the organisation"
+      "type": "string"
     },
     "acn": {
+      "description": "Australian Company Number for the organisation",
       "maxLength": 9,
-      "type": "string",
-      "description": "Australian Company Number for the organisation"
-    },
-    "arbn": {
-      "maxLength": 9,
-      "type": "string",
-      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies"
+      "type": "string"
     },
     "anzsicDivision": {
+      "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
       "maxLength": 100,
+      "type": "string"
+    },
+    "arbn": {
+      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+      "maxLength": 9,
+      "type": "string"
+    },
+    "legalEntityId": {
+      "description": "Unique id of the organisation issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "legalEntityName": {
+      "description": "Unique legal name of the organisation",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "logoUri": {
+      "description": "Legal Entity logo URI",
+      "maxLength": 1000,
       "type": "string",
-      "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**"
+      "x-cds-type": "URIString"
     },
     "organisationType": {
-      "type": "string",
       "description": "Legal organisation type",
       "enum": [
         "SOLE_TRADER",
@@ -68,15 +46,37 @@
         "TRUST",
         "GOVERNMENT_ENTITY",
         "OTHER"
-      ]
+      ],
+      "type": "string"
+    },
+    "registeredCountry": {
+      "description": "Country of registeration (if the company is registered outside Australia)",
+      "maxLength": 100,
+      "type": "string"
+    },
+    "registrationDate": {
+      "description": "Date of registration (if the company is registered outside Australia)",
+      "format": "date",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "registrationNumber": {
+      "description": "Unique registration number (if the company is registered outside Australia)",
+      "type": "string"
     },
     "status": {
-      "type": "string",
       "enum": [
         "ACTIVE",
         "REMOVED"
-      ]
+      ],
+      "type": "string"
     }
   },
-  "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)"
+  "required": [
+    "legalEntityId",
+    "legalEntityName",
+    "logoUri",
+    "status"
+  ],
+  "type": "object"
 }

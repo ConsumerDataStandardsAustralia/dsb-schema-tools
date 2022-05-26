@@ -1,15 +1,15 @@
 {
-  "type": "object",
+  "description": "Defines a condition for the applicability of a tiered rate",
   "properties": {
     "additionalInfo": {
-      "type": "string",
-      "description": "Display text providing more information on the condition"
+      "description": "Display text providing more information on the condition",
+      "type": "string"
     },
     "additionalInfoUri": {
-      "type": "string",
       "description": "Link to a web page with more information on this condition",
+      "type": "string",
       "x-cds-type": "URIString"
     }
   },
-  "description": "Defines a condition for the applicability of a tiered rate"
+  "type": "object"
 }

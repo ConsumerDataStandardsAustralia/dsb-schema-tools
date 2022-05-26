@@ -1,4 +1,34 @@
 {
+  "description": "Object representing a JSON Web Key",
+  "properties": {
+    "alg": {
+      "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
+      "type": "string"
+    },
+    "e": {
+      "description": "The \"e\" RSA public exponent parameter",
+      "type": "string"
+    },
+    "key_ops": {
+      "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "kid": {
+      "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set",
+      "type": "string"
+    },
+    "kty": {
+      "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
+      "type": "string"
+    },
+    "n": {
+      "description": "The \"n\" RSA public modulus parameter",
+      "type": "string"
+    }
+  },
   "required": [
     "alg",
     "e",
@@ -7,35 +37,5 @@
     "kty",
     "n"
   ],
-  "type": "object",
-  "properties": {
-    "alg": {
-      "type": "string",
-      "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key"
-    },
-    "e": {
-      "type": "string",
-      "description": "The \"e\" RSA public exponent parameter"
-    },
-    "key_ops": {
-      "type": "array",
-      "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
-      "items": {
-        "type": "string"
-      }
-    },
-    "kid": {
-      "type": "string",
-      "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set"
-    },
-    "kty": {
-      "type": "string",
-      "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key"
-    },
-    "n": {
-      "type": "string",
-      "description": "The \"n\" RSA public modulus parameter"
-    }
-  },
-  "description": "Object representing a JSON Web Key"
+  "type": "object"
 }

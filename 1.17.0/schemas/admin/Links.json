@@ -1,13 +1,13 @@
 {
+  "properties": {
+    "self": {
+      "description": "Fully qualified link to this API call",
+      "type": "string",
+      "x-cds-type": "URIString"
+    }
+  },
   "required": [
     "self"
   ],
-  "type": "object",
-  "properties": {
-    "self": {
-      "type": "string",
-      "description": "Fully qualified link to this API call",
-      "x-cds-type": "URIString"
-    }
-  }
+  "type": "object"
 }

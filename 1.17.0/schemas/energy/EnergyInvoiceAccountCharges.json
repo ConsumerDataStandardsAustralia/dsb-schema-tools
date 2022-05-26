@@ -1,10 +1,5 @@
 {
   "description": "Object contain charges and credits related to electricity usage",
-  "type": "object",
-  "required": [
-    "totalCharges",
-    "totalDiscounts"
-  ],
   "properties": {
     "totalCharges": {
       "description": "The aggregate total of account level charges for the period covered by the invoice",
@@ -21,5 +16,10 @@
       "type": "string",
       "x-cds-type": "AmountString"
     }
-  }
+  },
+  "required": [
+    "totalCharges",
+    "totalDiscounts"
+  ],
+  "type": "object"
 }

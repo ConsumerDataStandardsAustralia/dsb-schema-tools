@@ -1,18 +1,5 @@
 {
-  "required": [
-    "payeeAccountUType"
-  ],
-  "type": "object",
   "properties": {
-    "payeeAccountUType": {
-      "type": "string",
-      "description": "Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP",
-      "enum": [
-        "account",
-        "card",
-        "payId"
-      ]
-    },
     "account": {
       "$ref": "BankingDomesticPayeeAccount.json"
     },
@@ -21,8 +8,21 @@
     },
     "payId": {
       "$ref": "BankingDomesticPayeePayId.json"
+    },
+    "payeeAccountUType": {
+      "description": "Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP",
+      "enum": [
+        "account",
+        "card",
+        "payId"
+      ],
+      "type": "string"
     }
   },
+  "required": [
+    "payeeAccountUType"
+  ],
+  "type": "object",
   "x-conditional": [
     "account",
     "card",

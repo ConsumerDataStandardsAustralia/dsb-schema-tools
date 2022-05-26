@@ -1,22 +1,22 @@
 {
-  "required": [
-    "error"
-  ],
-  "type": "object",
   "properties": {
     "error": {
-      "type": "string",
       "description": "Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)",
       "enum": [
         "invalid_redirect_uri",
         "invalid_client_metadata",
         "invalid_software_statement",
         "unapproved_software_statement"
-      ]
+      ],
+      "type": "string"
     },
     "error_description": {
-      "type": "string",
-      "description": "Additional text description of the error for debugging."
+      "description": "Additional text description of the error for debugging.",
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "error"
+  ],
+  "type": "object"
 }

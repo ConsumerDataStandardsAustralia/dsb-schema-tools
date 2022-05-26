@@ -1,18 +1,98 @@
 {
-  "type": "object",
-  "required": [
-    "servicePointId",
-    "registerSuffix",
-    "readStartDate",
-    "readUType"
-  ],
-  "x-conditional": [
-    "basicRead",
-    "intervalRead"
-  ],
   "properties": {
-    "servicePointId": {
-      "description": "The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.",
+    "basicRead": {
+      "description": "Mandatory if readUType is set to basicRead",
+      "properties": {
+        "quality": {
+          "default": "ACTUAL",
+          "description": "The quality of the read taken.  If absent then assumed to be ACTUAL",
+          "enum": [
+            "ACTUAL",
+            "SUBSTITUTE",
+            "FINAL_SUBSTITUTE"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "description": "Meter read value.  If positive then it means consumption, if negative it means export",
+          "type": "number"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "controlledLoad": {
+      "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime",
+      "type": "boolean"
+    },
+    "intervalRead": {
+      "description": "Mandatory if readUType is set to intervalRead",
+      "properties": {
+        "aggregateValue": {
+          "description": "The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export",
+          "type": "number"
+        },
+        "intervalReads": {
+          "description": "Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)",
+          "items": {
+            "properties": {
+              "quality": {
+                "default": "ACTUAL",
+                "description": "The quality of the read taken.  If absent then assumed to be ACTUAL",
+                "enum": [
+                  "ACTUAL",
+                  "SUBSTITUTE",
+                  "FINAL_SUBSTITUTE"
+                ],
+                "type": "string"
+              },
+              "value": {
+                "description": "Interval value.  If positive then it means consumption, if negative it means export",
+                "type": "number"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "readIntervalLength": {
+          "description": "Read interval length in minutes",
+          "type": "integer",
+          "x-cds-type": "PositiveInteger"
+        }
+      },
+      "required": [
+        "readIntervalLength",
+        "aggregateValue",
+        "intervalReads"
+      ],
+      "type": "object"
+    },
+    "meterID": {
+      "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
+      "type": "string"
+    },
+    "readEndDate": {
+      "description": "Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "readStartDate": {
+      "description": "Date time when the meter reads start",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "readUType": {
+      "description": "Specify the type of the meter read data",
+      "enum": [
+        "basicRead",
+        "intervalRead"
+      ],
       "type": "string"
     },
     "registerId": {
@@ -23,104 +103,24 @@
       "description": "Register suffix of the meter register where the meter reads are obtained",
       "type": "string"
     },
-    "meterID": {
-      "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
+    "servicePointId": {
+      "description": "The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.",
       "type": "string"
-    },
-    "controlledLoad": {
-      "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime",
-      "type": "boolean"
-    },
-    "readStartDate": {
-      "description": "Date time when the meter reads start",
-      "type": "string",
-      "x-cds-type": "DateString"
-    },
-    "readEndDate": {
-      "description": "Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate",
-      "type": "string",
-      "x-cds-type": "DateString"
     },
     "unitOfMeasure": {
       "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values",
       "type": "string"
-    },
-    "readUType": {
-      "description": "Specify the type of the meter read data",
-      "type": "string",
-      "enum": [
-        "basicRead",
-        "intervalRead"
-      ]
-    },
-    "basicRead": {
-      "description": "Mandatory if readUType is set to basicRead",
-      "type": "object",
-      "required": [
-        "value"
-      ],
-      "properties": {
-        "quality": {
-          "description": "The quality of the read taken.  If absent then assumed to be ACTUAL",
-          "type": "string",
-          "enum": [
-            "ACTUAL",
-            "SUBSTITUTE",
-            "FINAL_SUBSTITUTE"
-          ],
-          "default": "ACTUAL"
-        },
-        "value": {
-          "description": "Meter read value.  If positive then it means consumption, if negative it means export",
-          "type": "number"
-        }
-      }
-    },
-    "intervalRead": {
-      "description": "Mandatory if readUType is set to intervalRead",
-      "type": "object",
-      "required": [
-        "readIntervalLength",
-        "aggregateValue",
-        "intervalReads"
-      ],
-      "properties": {
-        "readIntervalLength": {
-          "description": "Read interval length in minutes",
-          "type": "integer",
-          "x-cds-type": "PositiveInteger"
-        },
-        "aggregateValue": {
-          "description": "The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export",
-          "type": "number"
-        },
-        "intervalReads": {
-          "description": "Array of reads with each element indicating the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "required": [
-              "value"
-            ],
-            "properties": {
-              "quality": {
-                "description": "The quality of the read taken.  If absent then assumed to be ACTUAL",
-                "type": "string",
-                "enum": [
-                  "ACTUAL",
-                  "SUBSTITUTE",
-                  "FINAL_SUBSTITUTE"
-                ],
-                "default": "ACTUAL"
-              },
-              "value": {
-                "description": "Interval value.  If positive then it means consumption, if negative it means export",
-                "type": "number"
-              }
-            }
-          }
-        }
-      }
     }
-  }
+  },
+  "required": [
+    "servicePointId",
+    "registerSuffix",
+    "readStartDate",
+    "readUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "basicRead",
+    "intervalRead"
+  ]
 }

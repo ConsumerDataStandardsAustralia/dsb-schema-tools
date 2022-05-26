@@ -1,9 +1,4 @@
 {
-  "type": "object",
-  "required": [
-    "amount",
-    "method"
-  ],
   "properties": {
     "amount": {
       "description": "The amount paid",
@@ -12,7 +7,6 @@
     },
     "method": {
       "description": "The method of payment",
-      "type": "string",
       "enum": [
         "DIRECT_DEBIT",
         "CARD",
@@ -21,7 +15,13 @@
         "CASH",
         "CHEQUE",
         "OTHER"
-      ]
+      ],
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "amount",
+    "method"
+  ],
+  "type": "object"
 }

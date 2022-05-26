@@ -1,9 +1,4 @@
 {
-  "type": "object",
-  "required": [
-    "data",
-    "links"
-  ],
   "properties": {
     "data": {
       "$ref": "EnergyServicePointDetail.json"
@@ -14,5 +9,10 @@
     "meta": {
       "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
 }

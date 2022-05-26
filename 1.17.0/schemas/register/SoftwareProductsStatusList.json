@@ -1,24 +1,24 @@
 {
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "SoftwareProductStatus.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "../common/Links.json"
+    },
+    "meta": {
+      "$ref": "../common/Meta.json"
+    }
+  },
   "required": [
     "data",
     "links",
     "meta"
   ],
-  "type": "object",
-  "properties": {
-    "data": {
-      "uniqueItems": true,
-      "type": "array",
-      "description": "Response data for the query",
-      "items": {
-        "$ref": "#/components/schemas/SoftwareProductStatus"
-      }
-    },
-    "links": {
-      "$ref": "#/components/schemas/Links"
-    },
-    "meta": {
-      "$ref": "#/components/schemas/Meta"
-    }
-  }
+  "type": "object"
 }

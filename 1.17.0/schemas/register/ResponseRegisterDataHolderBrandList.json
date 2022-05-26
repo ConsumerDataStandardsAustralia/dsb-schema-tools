@@ -1,25 +1,25 @@
 {
+  "description": "Response containing a list of CDR Register Data Holder Brand objects",
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "RegisterDataHolderBrand.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
   "required": [
     "data",
     "links",
     "meta"
   ],
-  "type": "object",
-  "properties": {
-    "data": {
-      "uniqueItems": true,
-      "type": "array",
-      "description": "Response data for the query",
-      "items": {
-        "$ref": "#/components/schemas/RegisterDataHolderBrand"
-      }
-    },
-    "links": {
-      "$ref": "#/components/schemas/LinksPaginated"
-    },
-    "meta": {
-      "$ref": "#/components/schemas/MetaPaginated"
-    }
-  },
-  "description": "Response containing a list of CDR Register Data Holder Brand objects"
+  "type": "object"
 }

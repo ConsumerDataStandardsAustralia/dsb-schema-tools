@@ -1,31 +1,31 @@
 {
+  "properties": {
+    "data": {
+      "properties": {
+        "accounts": {
+          "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records",
+          "items": {
+            "$ref": "BankingAccount.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "accounts"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
   "required": [
     "data",
     "links",
     "meta"
   ],
-  "type": "object",
-  "properties": {
-    "data": {
-      "required": [
-        "accounts"
-      ],
-      "type": "object",
-      "properties": {
-        "accounts": {
-          "type": "array",
-          "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records",
-          "items": {
-            "$ref": "BankingAccount.json"
-          }
-        }
-      }
-    },
-    "links": {
-      "$ref": "LinksPaginated"
-    },
-    "meta": {
-      "$ref": "MetaPaginated"
-    }
-  }
+  "type": "object"
 }

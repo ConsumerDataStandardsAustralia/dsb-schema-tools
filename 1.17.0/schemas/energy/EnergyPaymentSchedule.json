@@ -1,40 +1,24 @@
 {
-  "type": "object",
-  "required": [
-    "paymentScheduleUType"
-  ],
-  "x-conditional": [
-    "cardDebit",
-    "directDebit",
-    "manualPayment"
-  ],
   "properties": {
     "amount": {
       "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
       "type": "string",
       "x-cds-type": "AmountString"
     },
-    "paymentScheduleUType": {
-      "description": "The type of object present in this response",
-      "type": "string",
-      "enum": [
-        "cardDebit",
-        "directDebit",
-        "manualPayment"
-      ]
-    },
     "cardDebit": {
       "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
-      "type": "object",
-      "required": [
-        "cardScheme",
-        "paymentFrequency",
-        "calculationType"
-      ],
       "properties": {
+        "calculationType": {
+          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+          "enum": [
+            "STATIC",
+            "BALANCE",
+            "CALCULATED"
+          ],
+          "type": "string"
+        },
         "cardScheme": {
           "description": "The type of credit card held on file",
-          "type": "string",
           "enum": [
             "VISA",
             "MASTERCARD",
@@ -42,77 +26,93 @@
             "DINERS",
             "OTHER",
             "UNKNOWN"
-          ]
+          ],
+          "type": "string"
         },
         "paymentFrequency": {
           "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
           "type": "string",
           "x-cds-type": "ExternalRef"
-        },
-        "calculationType": {
-          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
-          "type": "string",
-          "enum": [
-            "STATIC",
-            "BALANCE",
-            "CALCULATED"
-          ]
         }
-      }
-    },
-    "directDebit": {
-      "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
-      "type": "object",
+      },
       "required": [
+        "cardScheme",
         "paymentFrequency",
         "calculationType"
       ],
-      "x-conditional": [
-        "bsb",
-        "accountNumber"
-      ],
+      "type": "object"
+    },
+    "directDebit": {
+      "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
       "properties": {
-        "isTokenised": {
-          "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
-          "type": "boolean"
+        "accountNumber": {
+          "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+          "type": "string"
         },
         "bsb": {
           "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
           "type": "string"
         },
-        "accountNumber": {
-          "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+        "calculationType": {
+          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+          "enum": [
+            "STATIC",
+            "BALANCE",
+            "CALCULATED"
+          ],
           "type": "string"
+        },
+        "isTokenised": {
+          "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
+          "type": "boolean"
         },
         "paymentFrequency": {
           "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
           "type": "string",
           "x-cds-type": "ExternalRef"
-        },
-        "calculationType": {
-          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
-          "type": "string",
-          "enum": [
-            "STATIC",
-            "BALANCE",
-            "CALCULATED"
-          ]
         }
-      }
+      },
+      "required": [
+        "paymentFrequency",
+        "calculationType"
+      ],
+      "type": "object",
+      "x-conditional": [
+        "bsb",
+        "accountNumber"
+      ]
     },
     "manualPayment": {
       "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
-      "type": "object",
-      "required": [
-        "billFrequency"
-      ],
       "properties": {
         "billFrequency": {
           "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
           "type": "string",
           "x-cds-type": "ExternalRef"
         }
-      }
+      },
+      "required": [
+        "billFrequency"
+      ],
+      "type": "object"
+    },
+    "paymentScheduleUType": {
+      "description": "The type of object present in this response",
+      "enum": [
+        "cardDebit",
+        "directDebit",
+        "manualPayment"
+      ],
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "paymentScheduleUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "cardDebit",
+    "directDebit",
+    "manualPayment"
+  ]
 }

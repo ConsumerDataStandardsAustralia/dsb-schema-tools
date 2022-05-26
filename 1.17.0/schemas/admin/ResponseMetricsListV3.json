@@ -1,11 +1,51 @@
 {
-  "required": [
-    "data",
-    "links"
-  ],
-  "type": "object",
   "properties": {
     "data": {
+      "properties": {
+        "availability": {
+          "$ref": "AvailabilityMetrics.json"
+        },
+        "averageResponse": {
+          "$ref": "AverageResponseMetricsV2.json"
+        },
+        "averageTps": {
+          "$ref": "AverageTPSMetrics.json"
+        },
+        "customerCount": {
+          "description": "Number of customers with active authorisations at the time of the call",
+          "type": "integer"
+        },
+        "errors": {
+          "$ref": "ErrorMetrics.json"
+        },
+        "invocations": {
+          "$ref": "InvocationMetricsV2.json"
+        },
+        "peakTps": {
+          "$ref": "PeakTPSMetrics.json"
+        },
+        "performance": {
+          "$ref": "PerformanceMetrics.json"
+        },
+        "recipientCount": {
+          "description": "Number of Data Recipient Software Products with active authorisations at the time of the call",
+          "type": "integer"
+        },
+        "rejections": {
+          "$ref": "RejectionMetricsV2.json"
+        },
+        "requestTime": {
+          "description": "The date and time that the metrics in this payload were requested.",
+          "type": "string",
+          "x-cds-type": "DateTimeString"
+        },
+        "secondaryHolder": {
+          "$ref": "SecondaryHolderMetrics.json"
+        },
+        "sessionCount": {
+          "$ref": "SessionCountMetrics.json"
+        }
+      },
       "required": [
         "availability",
         "averageResponse",
@@ -21,60 +61,20 @@
         "sessionCount"
       ],
       "type": "object",
-      "properties": {
-        "requestTime": {
-          "type": "string",
-          "description": "The date and time that the metrics in this payload were requested.",
-          "x-cds-type": "DateTimeString"
-        },
-        "availability": {
-          "$ref": "AvailabilityMetrics.json"
-        },
-        "performance": {
-          "$ref": "PerformanceMetrics.json"
-        },
-        "invocations": {
-          "$ref": "InvocationMetricsV2.json"
-        },
-        "averageResponse": {
-          "$ref": "AverageResponseMetricsV2.json"
-        },
-        "sessionCount": {
-          "$ref": "SessionCountMetrics.json"
-        },
-        "averageTps": {
-          "$ref": "AverageTPSMetrics.json"
-        },
-        "peakTps": {
-          "$ref": "PeakTPSMetrics.json"
-        },
-        "errors": {
-          "$ref": "ErrorMetrics.json"
-        },
-        "rejections": {
-          "$ref": "RejectionMetricsV2.json"
-        },
-        "customerCount": {
-          "type": "integer",
-          "description": "Number of customers with active authorisations at the time of the call"
-        },
-        "recipientCount": {
-          "type": "integer",
-          "description": "Number of Data Recipient Software Products with active authorisations at the time of the call"
-        },
-        "secondaryHolder": {
-          "$ref": "SecondaryHolderMetrics.json"
-        }
-      },
       "x-conditional": [
         "secondaryHolder"
       ]
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "../common/Links.json"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
 }

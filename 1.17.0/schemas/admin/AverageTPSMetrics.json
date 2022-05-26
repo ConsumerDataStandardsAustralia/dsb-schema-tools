@@ -1,19 +1,19 @@
 {
-  "type": "object",
+  "description": "Transactions per second over time",
   "properties": {
     "currentDay": {
-      "type": "number",
-      "description": "Average TPS for current day"
+      "description": "Average TPS for current day",
+      "type": "number"
     },
     "previousDays": {
-      "type": "array",
       "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
       "items": {
         "type": "number"
-      }
+      },
+      "type": "array"
     }
   },
-  "description": "Transactions per second over time",
+  "type": "object",
   "x-conditional": [
     "currentDay",
     "previousDays"

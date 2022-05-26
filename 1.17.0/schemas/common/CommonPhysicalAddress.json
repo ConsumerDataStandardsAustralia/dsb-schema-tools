@@ -1,24 +1,24 @@
 {
-  "required": [
-    "addressUType"
-  ],
-  "type": "object",
   "properties": {
     "addressUType": {
-      "type": "string",
       "description": "The type of address object present",
       "enum": [
         "paf",
         "simple"
-      ]
-    },
-    "simple": {
-      "$ref": "CommonSimpleAddress.json"
+      ],
+      "type": "string"
     },
     "paf": {
       "$ref": "CommonPAFAddress.json"
+    },
+    "simple": {
+      "$ref": "CommonSimpleAddress.json"
     }
   },
+  "required": [
+    "addressUType"
+  ],
+  "type": "object",
   "x-conditional": [
     "simple",
     "paf"

@@ -1,24 +1,24 @@
 {
-  "required": [
-    "legalEntityId",
-    "status"
-  ],
-  "type": "object",
   "properties": {
     "legalEntityId": {
+      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
       "maxLength": 36,
-      "type": "string",
-      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register"
+      "type": "string"
     },
     "status": {
-      "type": "string",
       "description": "Data Recipient status in the CDR Register",
       "enum": [
         "ACTIVE",
         "SUSPENDED",
         "REVOKED",
         "SURRENDERED"
-      ]
+      ],
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "legalEntityId",
+    "status"
+  ],
+  "type": "object"
 }

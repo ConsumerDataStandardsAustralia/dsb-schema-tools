@@ -1,6 +1,6 @@
 {
-  "type": "string",
   "description": "The registration request JWT to be used to register with a Data Holder.",
+  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "format": "JWT",
-  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  "type": "string"
 }

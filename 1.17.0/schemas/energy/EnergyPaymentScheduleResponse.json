@@ -1,10 +1,4 @@
 {
-  "type": "object",
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ],
   "properties": {
     "data": {
       "$ref": "EnergyPaymentSchedule.json"
@@ -15,5 +9,11 @@
     "meta": {
       "$ref": "../common/Meta.json"
     }
-  }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
 }

@@ -1,4 +1,154 @@
 {
+  "description": "Number of API calls in each performance tier over time",
+  "properties": {
+    "highPriority": {
+      "description": "API call counts for the high priority tier",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "largePayload": {
+      "description": "API call counts for the large payload tier",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "largeSecondary": {
+      "description": "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "lowPriority": {
+      "description": "API call counts for the low priority tier",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "secondary": {
+      "description": "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "unattended": {
+      "description": "API call counts for the unattended tier",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "unauthenticated": {
+      "description": "API call counts for the unauthenticated tier",
+      "properties": {
+        "currentDay": {
+          "description": "API call counts for current day",
+          "type": "number"
+        },
+        "previousDays": {
+          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    }
+  },
   "required": [
     "highPriority",
     "largePayload",
@@ -7,156 +157,6 @@
     "unauthenticated"
   ],
   "type": "object",
-  "properties": {
-    "unauthenticated": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the unauthenticated tier",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    },
-    "highPriority": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the high priority tier",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    },
-    "lowPriority": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the low priority tier",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    },
-    "unattended": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the unattended tier",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    },
-    "largePayload": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the large payload tier",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    },
-    "secondary": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    },
-    "largeSecondary": {
-      "type": "object",
-      "properties": {
-        "currentDay": {
-          "type": "number",
-          "description": "API call counts for current day"
-        },
-        "previousDays": {
-          "type": "array",
-          "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
-          "items": {
-            "type": "number"
-          }
-        }
-      },
-      "description": "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
-      "x-conditional": [
-        "currentDay",
-        "previousDays"
-      ]
-    }
-  },
-  "description": "Number of API calls in each performance tier over time",
   "x-conditional": [
     "secondary",
     "largeSecondary"

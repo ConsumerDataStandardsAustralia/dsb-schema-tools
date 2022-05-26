@@ -1,11 +1,19 @@
 {
-  "required": [
-    "eligibilityType"
-  ],
-  "type": "object",
   "properties": {
-    "eligibilityType": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER",
+      "type": "string"
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this eligibility criteria",
       "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)",
+      "type": "string"
+    },
+    "eligibilityType": {
       "description": "The type of eligibility criteria described.  See the next section for an overview of valid values and their meaning",
       "enum": [
         "BUSINESS",
@@ -20,22 +28,14 @@
         "RESIDENCY_STATUS",
         "STAFF",
         "STUDENT"
-      ]
-    },
-    "additionalValue": {
-      "type": "string",
-      "description": "Generic field containing additional information relevant to the [eligibilityType](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [eligibilityType](#tocSproducteligibilitytypedoc)"
-    },
-    "additionalInfo": {
-      "type": "string",
-      "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to OTHER"
-    },
-    "additionalInfoUri": {
-      "type": "string",
-      "description": "Link to a web page with more information on this eligibility criteria",
-      "x-cds-type": "URIString"
+      ],
+      "type": "string"
     }
   },
+  "required": [
+    "eligibilityType"
+  ],
+  "type": "object",
   "x-conditional": [
     "additionalValue",
     "additionalInfo"
