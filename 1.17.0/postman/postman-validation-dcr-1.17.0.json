@@ -1,101 +1,94 @@
 {
     "CommonEmailAddress": {
-        "required": [
-            "address",
-            "purpose"
-        ],
-        "type": "object",
         "properties": {
+            "address": {
+                "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
+                "type": "string",
+                "x-cds-type": "ExternalRef"
+            },
             "isPreferred": {
-                "type": "boolean",
                 "description": "May be true for one and only one email record in the collection. Denotes the default email address",
+                "type": "boolean",
                 "x-cds-type": "Boolean"
             },
             "purpose": {
-                "type": "string",
                 "description": "The purpose for the email, as specified by the customer (Enumeration)",
                 "enum": [
                     "HOME",
                     "OTHER",
                     "UNSPECIFIED",
                     "WORK"
-                ]
-            },
-            "address": {
-                "type": "string",
-                "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
-                "x-cds-type": "ExternalRef"
+                ],
+                "type": "string"
             }
         },
+        "required": [
+            "address",
+            "purpose"
+        ],
+        "type": "object",
         "$id": "CommonEmailAddress"
     },
     "CommonOrganisation": {
-        "required": [
-            "agentLastName",
-            "agentRole",
-            "businessName",
-            "organisationType"
-        ],
-        "type": "object",
         "properties": {
-            "lastUpdateTime": {
-                "type": "string",
-                "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
-                "x-cds-type": "DateTimeString"
-            },
-            "agentFirstName": {
-                "type": "string",
-                "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field"
-            },
-            "agentLastName": {
-                "type": "string",
-                "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field"
-            },
-            "agentRole": {
-                "type": "string",
-                "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known"
-            },
-            "businessName": {
-                "type": "string",
-                "description": "Name of the organisation"
-            },
-            "legalName": {
-                "type": "string",
-                "description": "Legal name, if different to the business name"
-            },
-            "shortName": {
-                "type": "string",
-                "description": "Short name used for communication, if different to the business name"
-            },
             "abn": {
-                "type": "string",
-                "description": "Australian Business Number for the organisation"
+                "description": "Australian Business Number for the organisation",
+                "type": "string"
             },
             "acn": {
-                "type": "string",
-                "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type"
+                "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type",
+                "type": "string"
             },
-            "isACNCRegistered": {
-                "type": "boolean",
-                "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
-                "x-cds-type": "Boolean"
+            "agentFirstName": {
+                "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field",
+                "type": "string"
+            },
+            "agentLastName": {
+                "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field",
+                "type": "string"
+            },
+            "agentRole": {
+                "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known",
+                "type": "string"
+            },
+            "businessName": {
+                "description": "Name of the organisation",
+                "type": "string"
+            },
+            "establishmentDate": {
+                "description": "The date the organisation described was established",
+                "type": "string",
+                "x-cds-type": "DateString"
             },
             "industryCode": {
-                "type": "string",
                 "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
+                "type": "string",
                 "x-cds-type": "ExternalRef"
             },
             "industryCodeVersion": {
-                "type": "string",
-                "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
                 "default": "ANZSIC_1292.0_2006_V2.0",
+                "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
                 "enum": [
                     "ANZSIC_1292.0_2006_V1.0",
                     "ANZSIC_1292.0_2006_V2.0"
-                ]
+                ],
+                "type": "string"
+            },
+            "isACNCRegistered": {
+                "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+                "type": "boolean",
+                "x-cds-type": "Boolean"
+            },
+            "lastUpdateTime": {
+                "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+                "type": "string",
+                "x-cds-type": "DateTimeString"
+            },
+            "legalName": {
+                "description": "Legal name, if different to the business name",
+                "type": "string"
             },
             "organisationType": {
-                "type": "string",
                 "description": "Legal organisation type",
                 "enum": [
                     "COMPANY",
@@ -104,19 +97,26 @@
                     "PARTNERSHIP",
                     "SOLE_TRADER",
                     "TRUST"
-                ]
+                ],
+                "type": "string"
             },
             "registeredCountry": {
-                "type": "string",
                 "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+                "type": "string",
                 "x-cds-type": "ExternalRef"
             },
-            "establishmentDate": {
-                "type": "string",
-                "description": "The date the organisation described was established",
-                "x-cds-type": "DateString"
+            "shortName": {
+                "description": "Short name used for communication, if different to the business name",
+                "type": "string"
             }
         },
+        "required": [
+            "agentLastName",
+            "agentRole",
+            "businessName",
+            "organisationType"
+        ],
+        "type": "object",
         "x-conditional": [
             "industryCodeVersion"
         ],
@@ -146,160 +146,160 @@
         "$id": "CommonOrganisationDetailV2"
     },
     "CommonPAFAddress": {
+        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
+        "properties": {
+            "buildingName1": {
+                "description": "Building/Property name 1",
+                "type": "string"
+            },
+            "buildingName2": {
+                "description": "Building/Property name 2",
+                "type": "string"
+            },
+            "dpid": {
+                "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
+                "type": "string"
+            },
+            "flatUnitNumber": {
+                "description": "Unit number (including suffix, if applicable)",
+                "type": "string"
+            },
+            "flatUnitType": {
+                "description": "Type of flat or unit for the address",
+                "type": "string"
+            },
+            "floorLevelNumber": {
+                "description": "Floor or level number (including alpha characters)",
+                "type": "string"
+            },
+            "floorLevelType": {
+                "description": "Type of floor or level for the address",
+                "type": "string"
+            },
+            "localityName": {
+                "description": "Full name of locality",
+                "type": "string"
+            },
+            "lotNumber": {
+                "description": "Allotment number for the address",
+                "type": "string"
+            },
+            "postalDeliveryNumber": {
+                "description": "Postal delivery number if the address is a postal delivery type",
+                "type": "integer",
+                "x-cds-type": "PositiveInteger"
+            },
+            "postalDeliveryNumberPrefix": {
+                "description": "Postal delivery number prefix related to the postal delivery number",
+                "type": "string"
+            },
+            "postalDeliveryNumberSuffix": {
+                "description": "Postal delivery number suffix related to the postal delivery number",
+                "type": "string"
+            },
+            "postalDeliveryType": {
+                "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
+                "type": "string"
+            },
+            "postcode": {
+                "description": "Postcode for the locality",
+                "type": "string"
+            },
+            "state": {
+                "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
+                "type": "string"
+            },
+            "streetName": {
+                "description": "The name of the street",
+                "type": "string"
+            },
+            "streetSuffix": {
+                "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
+                "type": "string"
+            },
+            "streetType": {
+                "description": "The street type. Valid enumeration defined by Australia Post PAF code file",
+                "type": "string"
+            },
+            "thoroughfareNumber1": {
+                "description": "Thoroughfare number for a property (first number in a property ranged address)",
+                "type": "integer",
+                "x-cds-type": "PositiveInteger"
+            },
+            "thoroughfareNumber1Suffix": {
+                "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
+                "type": "string"
+            },
+            "thoroughfareNumber2": {
+                "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+                "type": "integer",
+                "x-cds-type": "PositiveInteger"
+            },
+            "thoroughfareNumber2Suffix": {
+                "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
+                "type": "string"
+            }
+        },
         "required": [
             "localityName",
             "postcode",
             "state"
         ],
         "type": "object",
-        "properties": {
-            "dpid": {
-                "type": "string",
-                "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier"
-            },
-            "thoroughfareNumber1": {
-                "type": "integer",
-                "description": "Thoroughfare number for a property (first number in a property ranged address)",
-                "x-cds-type": "PositiveInteger"
-            },
-            "thoroughfareNumber1Suffix": {
-                "type": "string",
-                "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated"
-            },
-            "thoroughfareNumber2": {
-                "type": "integer",
-                "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-                "x-cds-type": "PositiveInteger"
-            },
-            "thoroughfareNumber2Suffix": {
-                "type": "string",
-                "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated"
-            },
-            "flatUnitType": {
-                "type": "string",
-                "description": "Type of flat or unit for the address"
-            },
-            "flatUnitNumber": {
-                "type": "string",
-                "description": "Unit number (including suffix, if applicable)"
-            },
-            "floorLevelType": {
-                "type": "string",
-                "description": "Type of floor or level for the address"
-            },
-            "floorLevelNumber": {
-                "type": "string",
-                "description": "Floor or level number (including alpha characters)"
-            },
-            "lotNumber": {
-                "type": "string",
-                "description": "Allotment number for the address"
-            },
-            "buildingName1": {
-                "type": "string",
-                "description": "Building/Property name 1"
-            },
-            "buildingName2": {
-                "type": "string",
-                "description": "Building/Property name 2"
-            },
-            "streetName": {
-                "type": "string",
-                "description": "The name of the street"
-            },
-            "streetType": {
-                "type": "string",
-                "description": "The street type. Valid enumeration defined by Australia Post PAF code file"
-            },
-            "streetSuffix": {
-                "type": "string",
-                "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file"
-            },
-            "postalDeliveryType": {
-                "type": "string",
-                "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file"
-            },
-            "postalDeliveryNumber": {
-                "type": "integer",
-                "description": "Postal delivery number if the address is a postal delivery type",
-                "x-cds-type": "PositiveInteger"
-            },
-            "postalDeliveryNumberPrefix": {
-                "type": "string",
-                "description": "Postal delivery number prefix related to the postal delivery number"
-            },
-            "postalDeliveryNumberSuffix": {
-                "type": "string",
-                "description": "Postal delivery number suffix related to the postal delivery number"
-            },
-            "localityName": {
-                "type": "string",
-                "description": "Full name of locality"
-            },
-            "postcode": {
-                "type": "string",
-                "description": "Postcode for the locality"
-            },
-            "state": {
-                "type": "string",
-                "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
-            }
-        },
-        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
         "$id": "CommonPAFAddress"
     },
     "CommonPerson": {
-        "required": [
-            "lastName",
-            "middleNames"
-        ],
-        "type": "object",
         "properties": {
-            "lastUpdateTime": {
-                "type": "string",
-                "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
-                "x-cds-type": "DateTimeString"
-            },
             "firstName": {
-                "type": "string",
-                "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided."
+                "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.",
+                "type": "string"
             },
             "lastName": {
+                "description": "For people with single names the single name should be in this field",
+                "type": "string"
+            },
+            "lastUpdateTime": {
+                "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
                 "type": "string",
-                "description": "For people with single names the single name should be in this field"
+                "x-cds-type": "DateTimeString"
             },
             "middleNames": {
-                "type": "array",
                 "description": "Field is mandatory but array may be empty",
                 "items": {
                     "type": "string"
-                }
-            },
-            "prefix": {
-                "type": "string",
-                "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)"
-            },
-            "suffix": {
-                "type": "string",
-                "description": "Used for a trailing suffix to the name (e.g. Jr)"
+                },
+                "type": "array"
             },
             "occupationCode": {
-                "type": "string",
                 "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
+                "type": "string",
                 "x-cds-type": "ExternalRef"
             },
             "occupationCodeVersion": {
-                "type": "string",
-                "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
                 "default": "ANZSCO_1220.0_2013_V1.2",
+                "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
                 "enum": [
                     "ANZSCO_1220.0_2006_V1.0",
                     "ANZSCO_1220.0_2006_V1.1",
                     "ANZSCO_1220.0_2013_V1.2",
                     "ANZSCO_1220.0_2013_V1.3"
-                ]
+                ],
+                "type": "string"
+            },
+            "prefix": {
+                "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+                "type": "string"
+            },
+            "suffix": {
+                "description": "Used for a trailing suffix to the name (e.g. Jr)",
+                "type": "string"
             }
         },
+        "required": [
+            "lastName",
+            "middleNames"
+        ],
+        "type": "object",
         "x-conditional": [
             "occupationCodeVersion"
         ],
@@ -345,20 +345,34 @@
         "$id": "CommonPersonDetailV2"
     },
     "CommonPhoneNumber": {
-        "required": [
-            "fullNumber",
-            "number",
-            "purpose"
-        ],
-        "type": "object",
         "properties": {
+            "areaCode": {
+                "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.",
+                "type": "string"
+            },
+            "countryCode": {
+                "description": "If absent, assumed to be Australia (+61). The + should be included",
+                "type": "string"
+            },
+            "extension": {
+                "description": "An extension number (if applicable)",
+                "type": "string"
+            },
+            "fullNumber": {
+                "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
+                "type": "string",
+                "x-cds-type": "ExternalRef"
+            },
             "isPreferred": {
-                "type": "boolean",
                 "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
+                "type": "boolean",
                 "x-cds-type": "Boolean"
             },
+            "number": {
+                "description": "The actual phone number, with leading zeros as appropriate",
+                "type": "string"
+            },
             "purpose": {
-                "type": "string",
                 "description": "The purpose of the number as specified by the customer",
                 "enum": [
                     "HOME",
@@ -367,56 +381,42 @@
                     "OTHER",
                     "UNSPECIFIED",
                     "WORK"
-                ]
-            },
-            "countryCode": {
-                "type": "string",
-                "description": "If absent, assumed to be Australia (+61). The + should be included"
-            },
-            "areaCode": {
-                "type": "string",
-                "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted."
-            },
-            "number": {
-                "type": "string",
-                "description": "The actual phone number, with leading zeros as appropriate"
-            },
-            "extension": {
-                "type": "string",
-                "description": "An extension number (if applicable)"
-            },
-            "fullNumber": {
-                "type": "string",
-                "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
-                "x-cds-type": "ExternalRef"
+                ],
+                "type": "string"
             }
         },
+        "required": [
+            "fullNumber",
+            "number",
+            "purpose"
+        ],
+        "type": "object",
         "x-conditional": [
             "areaCode"
         ],
         "$id": "CommonPhoneNumber"
     },
     "CommonPhysicalAddress": {
-        "required": [
-            "addressUType"
-        ],
-        "type": "object",
         "properties": {
             "addressUType": {
-                "type": "string",
                 "description": "The type of address object present",
                 "enum": [
                     "paf",
                     "simple"
-                ]
-            },
-            "simple": {
-                "$ref": "CommonSimpleAddress"
+                ],
+                "type": "string"
             },
             "paf": {
                 "$ref": "CommonPAFAddress"
+            },
+            "simple": {
+                "$ref": "CommonSimpleAddress"
             }
         },
+        "required": [
+            "addressUType"
+        ],
+        "type": "object",
         "x-conditional": [
             "simple",
             "paf"
@@ -451,147 +451,135 @@
         "$id": "CommonPhysicalAddressWithPurpose"
     },
     "CommonSimpleAddress": {
+        "properties": {
+            "addressLine1": {
+                "description": "First line of the standard address object",
+                "type": "string"
+            },
+            "addressLine2": {
+                "description": "Second line of the standard address object",
+                "type": "string"
+            },
+            "addressLine3": {
+                "description": "Third line of the standard address object",
+                "type": "string"
+            },
+            "city": {
+                "description": "Name of the city or locality",
+                "type": "string"
+            },
+            "country": {
+                "default": "AUS",
+                "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+                "type": "string",
+                "x-cds-type": "ExternalRef"
+            },
+            "mailingName": {
+                "description": "Name of the individual or business formatted for inclusion in an address used for physical mail",
+                "type": "string"
+            },
+            "postcode": {
+                "description": "Mandatory for Australian addresses",
+                "type": "string"
+            },
+            "state": {
+                "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
+                "type": "string"
+            }
+        },
         "required": [
             "addressLine1",
             "city",
             "state"
         ],
         "type": "object",
-        "properties": {
-            "mailingName": {
-                "type": "string",
-                "description": "Name of the individual or business formatted for inclusion in an address used for physical mail"
-            },
-            "addressLine1": {
-                "type": "string",
-                "description": "First line of the standard address object"
-            },
-            "addressLine2": {
-                "type": "string",
-                "description": "Second line of the standard address object"
-            },
-            "addressLine3": {
-                "type": "string",
-                "description": "Third line of the standard address object"
-            },
-            "postcode": {
-                "type": "string",
-                "description": "Mandatory for Australian addresses"
-            },
-            "city": {
-                "type": "string",
-                "description": "Name of the city or locality"
-            },
-            "state": {
-                "type": "string",
-                "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT"
-            },
-            "country": {
-                "type": "string",
-                "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
-                "default": "AUS",
-                "x-cds-type": "ExternalRef"
-            }
-        },
         "x-conditional": [
             "postcode"
         ],
         "$id": "CommonSimpleAddress"
     },
     "DiscoveryOutage": {
+        "properties": {
+            "duration": {
+                "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+                "type": "string",
+                "x-cds-type": "ExternalRef"
+            },
+            "explanation": {
+                "description": "Provides an explanation of the current outage that can be displayed to an end customer",
+                "type": "string"
+            },
+            "isPartial": {
+                "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
+                "type": "boolean",
+                "x-cds-type": "Boolean"
+            },
+            "outageTime": {
+                "description": "Date and time that the outage is scheduled to begin",
+                "type": "string",
+                "x-cds-type": "DateTimeString"
+            }
+        },
         "required": [
             "duration",
             "explanation",
             "outageTime"
         ],
         "type": "object",
-        "properties": {
-            "outageTime": {
-                "type": "string",
-                "description": "Date and time that the outage is scheduled to begin",
-                "x-cds-type": "DateTimeString"
-            },
-            "duration": {
-                "type": "string",
-                "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                "x-cds-type": "ExternalRef"
-            },
-            "isPartial": {
-                "type": "boolean",
-                "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
-                "x-cds-type": "Boolean"
-            },
-            "explanation": {
-                "type": "string",
-                "description": "Provides an explanation of the current outage that can be displayed to an end customer"
-            }
-        },
         "$id": "DiscoveryOutage"
     },
     "Links": {
-        "required": [
-            "self"
-        ],
-        "type": "object",
         "properties": {
             "self": {
-                "type": "string",
                 "description": "Fully qualified link that generated the current response document",
+                "type": "string",
                 "x-cds-type": "URIString"
             }
         },
-        "$id": "Links"
-    },
-    "LinksPaginated": {
-        "type": "object",
         "required": [
             "self"
         ],
+        "type": "object",
+        "$id": "Links"
+    },
+    "LinksPaginated": {
+        "properties": {
+            "first": {
+                "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+                "type": "string",
+                "x-cds-type": "URIString"
+            },
+            "last": {
+                "description": "URI to the last page of this set. Mandatory if this response is not the last page",
+                "type": "string",
+                "x-cds-type": "URIString"
+            },
+            "next": {
+                "description": "URI to the next page of this set. Mandatory if this response is not the last page",
+                "type": "string",
+                "x-cds-type": "URIString"
+            },
+            "prev": {
+                "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
+                "type": "string",
+                "x-cds-type": "URIString"
+            },
+            "self": {
+                "description": "Fully qualified link that generated the current response document",
+                "type": "string",
+                "x-cds-type": "URIString"
+            }
+        },
+        "required": [
+            "self"
+        ],
+        "type": "object",
         "x-conditional": [
             "prev",
             "next",
             "first",
             "last"
         ],
-        "properties": {
-            "self": {
-                "type": "string",
-                "description": "Fully qualified link that generated the current response document",
-                "x-cds-type": "URIString"
-            },
-            "first": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "description": "URI to the first page of this set. Mandatory if this response is not the first page",
-                "x-cds-type": "URIString"
-            },
-            "prev": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
-                "x-cds-type": "URIString"
-            },
-            "next": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "description": "URI to the next page of this set. Mandatory if this response is not the last page",
-                "x-cds-type": "URIString"
-            },
-            "last": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "description": "URI to the last page of this set. Mandatory if this response is not the last page",
-                "x-cds-type": "URIString"
-            }
-        },
         "$id": "LinksPaginated"
     },
     "Meta": {
@@ -599,109 +587,62 @@
         "$id": "Meta"
     },
     "MetaError": {
-        "type": "object",
+        "description": "Additional data for customised error codes",
         "properties": {
             "urn": {
-                "type": "string",
-                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code."
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.",
+                "type": "string"
             }
         },
-        "description": "Additional data for customised error codes",
+        "type": "object",
         "x-conditional": [
             "urn"
         ],
         "$id": "MetaError"
     },
     "MetaPaginated": {
-        "type": "object",
-        "required": [
-            "totalRecords",
-            "totalPages"
-        ],
         "properties": {
-            "totalRecords": {
+            "totalPages": {
+                "description": "The total number of pages in the full set. See [pagination](#pagination).",
                 "type": "integer",
-                "description": "The total number of records in the full set. See [pagination](#pagination).",
                 "x-cds-type": "NaturalNumber"
             },
-            "totalPages": {
+            "totalRecords": {
+                "description": "The total number of records in the full set. See [pagination](#pagination).",
                 "type": "integer",
-                "description": "The total number of pages in the full set. See [pagination](#pagination).",
                 "x-cds-type": "NaturalNumber"
             }
         },
+        "required": [
+            "totalPages",
+            "totalRecords"
+        ],
+        "type": "object",
         "$id": "MetaPaginated"
     },
     "ResponseCommonCustomer": {
-        "required": [
-            "data",
-            "links"
-        ],
-        "type": "object",
         "properties": {
             "data": {
-                "required": [
-                    "customerUType"
-                ],
-                "type": "object",
                 "properties": {
                     "customerUType": {
-                        "type": "string",
                         "description": "The type of customer object that is present",
                         "enum": [
                             "organisation",
                             "person"
-                        ]
-                    },
-                    "person": {
-                        "$ref": "CommonPerson"
+                        ],
+                        "type": "string"
                     },
                     "organisation": {
                         "$ref": "CommonOrganisation"
+                    },
+                    "person": {
+                        "$ref": "CommonPerson"
                     }
                 },
-                "x-conditional": [
-                    "person",
-                    "organisation"
-                ]
-            },
-            "links": {
-                "$ref": "Links"
-            },
-            "meta": {
-                "$ref": "Meta"
-            }
-        },
-        "$id": "ResponseCommonCustomer"
-    },
-    "ResponseCommonCustomerDetailV2": {
-        "required": [
-            "data",
-            "links"
-        ],
-        "type": "object",
-        "properties": {
-            "data": {
                 "required": [
                     "customerUType"
                 ],
                 "type": "object",
-                "properties": {
-                    "customerUType": {
-                        "type": "string",
-                        "description": "The type of customer object that is present",
-                        "enum": [
-                            "organisation",
-                            "person"
-                        ]
-                    },
-                    "person": {
-                        "$ref": "CommonPersonDetailV2"
-                    },
-                    "organisation": {
-                        "$ref": "CommonOrganisationDetailV2"
-                    }
-                },
                 "x-conditional": [
                     "person",
                     "organisation"
@@ -714,52 +655,94 @@
                 "$ref": "Meta"
             }
         },
-        "$id": "ResponseCommonCustomerDetailV2"
-    },
-    "ResponseCommonDiscoveryStatus": {
         "required": [
             "data",
             "links"
         ],
         "type": "object",
+        "$id": "ResponseCommonCustomer"
+    },
+    "ResponseCommonCustomerDetailV2": {
         "properties": {
             "data": {
+                "properties": {
+                    "customerUType": {
+                        "description": "The type of customer object that is present",
+                        "enum": [
+                            "organisation",
+                            "person"
+                        ],
+                        "type": "string"
+                    },
+                    "organisation": {
+                        "$ref": "CommonOrganisationDetailV2"
+                    },
+                    "person": {
+                        "$ref": "CommonPersonDetailV2"
+                    }
+                },
                 "required": [
-                    "status",
-                    "updateTime"
+                    "customerUType"
                 ],
                 "type": "object",
+                "x-conditional": [
+                    "person",
+                    "organisation"
+                ]
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
+        "$id": "ResponseCommonCustomerDetailV2"
+    },
+    "ResponseCommonDiscoveryStatus": {
+        "properties": {
+            "data": {
                 "properties": {
-                    "status": {
+                    "detectionTime": {
+                        "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
                         "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "expectedResolutionTime": {
+                        "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "explanation": {
+                        "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK",
+                        "type": "string"
+                    },
+                    "status": {
                         "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
                         "enum": [
                             "OK",
                             "PARTIAL_FAILURE",
                             "SCHEDULED_OUTAGE",
                             "UNAVAILABLE"
-                        ]
-                    },
-                    "explanation": {
-                        "type": "string",
-                        "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK"
-                    },
-                    "detectionTime": {
-                        "type": "string",
-                        "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
-                        "x-cds-type": "DateTimeString"
-                    },
-                    "expectedResolutionTime": {
-                        "type": "string",
-                        "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
-                        "x-cds-type": "DateTimeString"
+                        ],
+                        "type": "string"
                     },
                     "updateTime": {
-                        "type": "string",
                         "description": "The date and time that this status was last updated by the Data Holder.",
+                        "type": "string",
                         "x-cds-type": "DateTimeString"
                     }
                 },
+                "required": [
+                    "status",
+                    "updateTime"
+                ],
+                "type": "object",
                 "x-conditional": [
                     "explanation"
                 ]
@@ -771,29 +754,29 @@
                 "$ref": "Meta"
             }
         },
-        "$id": "ResponseCommonDiscoveryStatus"
-    },
-    "ResponseDiscoveryOutagesList": {
         "required": [
             "data",
             "links"
         ],
         "type": "object",
+        "$id": "ResponseCommonDiscoveryStatus"
+    },
+    "ResponseDiscoveryOutagesList": {
         "properties": {
             "data": {
-                "required": [
-                    "outages"
-                ],
-                "type": "object",
                 "properties": {
                     "outages": {
-                        "type": "array",
                         "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
                         "items": {
                             "$ref": "DiscoveryOutage"
-                        }
+                        },
+                        "type": "array"
                     }
-                }
+                },
+                "required": [
+                    "outages"
+                ],
+                "type": "object"
             },
             "links": {
                 "$ref": "Links"
@@ -802,44 +785,49 @@
                 "$ref": "Meta"
             }
         },
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
         "$id": "ResponseDiscoveryOutagesList"
     },
     "ResponseErrorListV2": {
-        "required": [
-            "errors"
-        ],
-        "type": "object",
         "properties": {
             "errors": {
-                "type": "array",
                 "description": "",
                 "items": {
+                    "properties": {
+                        "code": {
+                            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
+                            "type": "string"
+                        },
+                        "detail": {
+                            "description": "A human-readable explanation specific to this occurrence of the problem.",
+                            "type": "string"
+                        },
+                        "meta": {
+                            "$ref": "MetaError"
+                        },
+                        "title": {
+                            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
+                            "type": "string"
+                        }
+                    },
                     "required": [
                         "code",
                         "detail",
                         "title"
                     ],
-                    "type": "object",
-                    "properties": {
-                        "code": {
-                            "type": "string",
-                            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN."
-                        },
-                        "title": {
-                            "type": "string",
-                            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code."
-                        },
-                        "detail": {
-                            "type": "string",
-                            "description": "A human-readable explanation specific to this occurrence of the problem."
-                        },
-                        "meta": {
-                            "$ref": "MetaError"
-                        }
-                    }
-                }
+                    "type": "object"
+                },
+                "type": "array"
             }
         },
+        "required": [
+            "errors"
+        ],
+        "type": "object",
         "x-conditional": [
             "meta"
         ],
@@ -893,36 +881,221 @@
         "$id": "ClientRegistration"
     },
     "ClientRegistrationRequest": {
-        "type": "string",
         "description": "The registration request JWT to be used to register with a Data Holder.",
-        "format": "JWT",
         "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "format": "JWT",
+        "type": "string",
         "$id": "ClientRegistrationRequest"
     },
     "RegistrationError": {
-        "required": [
-            "error"
-        ],
-        "type": "object",
         "properties": {
             "error": {
-                "type": "string",
                 "description": "Predefined error code as described in [section 3.3 OIDC Dynamic Client Registration](https://openid.net/specs/openid-connect-registration-1_0.html)",
                 "enum": [
                     "invalid_redirect_uri",
                     "invalid_client_metadata",
                     "invalid_software_statement",
                     "unapproved_software_statement"
-                ]
+                ],
+                "type": "string"
             },
             "error_description": {
-                "type": "string",
-                "description": "Additional text description of the error for debugging."
+                "description": "Additional text description of the error for debugging.",
+                "type": "string"
             }
         },
+        "required": [
+            "error"
+        ],
+        "type": "object",
         "$id": "RegistrationError"
     },
     "RegistrationProperties": {
+        "properties": {
+            "application_type": {
+                "description": "Kind of the application. The only supported application type will be `web`",
+                "enum": [
+                    "web"
+                ],
+                "type": "string"
+            },
+            "client_description": {
+                "description": "Human-readable string name of the software product description to be presented to the end user during authorization",
+                "example": "A mock software product",
+                "type": "string"
+            },
+            "client_id": {
+                "description": "Data Holder issued client identifier string",
+                "example": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
+                "type": "string"
+            },
+            "client_id_issued_at": {
+                "description": "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
+                "example": 1571808167,
+                "format": "int32",
+                "type": "integer"
+            },
+            "client_name": {
+                "description": "Human-readable string name of the software product to be presented to the end-user during authorization",
+                "example": "Mock Software",
+                "type": "string"
+            },
+            "client_uri": {
+                "description": "URL string of a web page providing information about the client",
+                "example": "https://www.mockcompany.com.au",
+                "type": "string"
+            },
+            "grant_types": {
+                "description": "Array of OAuth 2.0 grant type strings that the client can use at the token endpoint",
+                "items": {
+                    "enum": [
+                        "client_credentials",
+                        "authorization_code",
+                        "refresh_token"
+                    ],
+                    "type": "string"
+                },
+                "type": "array"
+            },
+            "id_token_encrypted_response_alg": {
+                "description": "JWE `alg` algorithm with which an id_token is to be encrypted",
+                "example": "RSA-OAEP",
+                "type": "string"
+            },
+            "id_token_encrypted_response_enc": {
+                "description": "JWE `enc` algorithm with which an id_token is to be encrypted",
+                "example": "A256GCM",
+                "type": "string"
+            },
+            "id_token_signed_response_alg": {
+                "description": "Algorithm with which an id_token is to be signed",
+                "enum": [
+                    "PS256",
+                    "ES256"
+                ],
+                "type": "string"
+            },
+            "jwks_uri": {
+                "description": "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys",
+                "example": "https://www.mockcompany.com.au/jwks",
+                "type": "string"
+            },
+            "legal_entity_id": {
+                "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity",
+                "example": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B",
+                "type": "string"
+            },
+            "legal_entity_name": {
+                "description": "Human-readable string name of the Accredited Data Recipient Legal Entity",
+                "example": "Mock Company Pty Ltd.",
+                "type": "string"
+            },
+            "logo_uri": {
+                "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
+                "example": "https://www.mockcompany.com.au/logos/logo1.png",
+                "type": "string"
+            },
+            "org_id": {
+                "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand",
+                "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8",
+                "type": "string"
+            },
+            "org_name": {
+                "description": "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization",
+                "example": "Mock Company Brand.",
+                "type": "string"
+            },
+            "policy_uri": {
+                "description": "URL string that points to a human-readable policy document for the Software Product",
+                "example": "https://www.mockcompany.com.au/policy.html",
+                "type": "string"
+            },
+            "recipient_base_uri": {
+                "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
+                "example": "https://www.mockcompany.com.au",
+                "type": "string"
+            },
+            "redirect_uris": {
+                "description": "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
+                "example": [
+                    "https://www.mockcompany.com.au/redirects/redirect1",
+                    "https://www.mockcompany.com.au/redirects/redirect2"
+                ],
+                "items": {
+                    "format": "uri",
+                    "type": "string"
+                },
+                "type": "array"
+            },
+            "request_object_signing_alg": {
+                "description": "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder",
+                "enum": [
+                    "PS256",
+                    "ES256"
+                ],
+                "type": "string"
+            },
+            "response_types": {
+                "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.",
+                "items": {
+                    "enum": [
+                        "code id_token"
+                    ],
+                    "type": "string"
+                },
+                "type": "array"
+            },
+            "revocation_uri": {
+                "description": "URI string that references the location of the Software Product consent revocation endpoint",
+                "example": "https://www.mockcompany.com.au/revocation",
+                "type": "string"
+            },
+            "scope": {
+                "description": "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
+                "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration",
+                "type": "string"
+            },
+            "sector_identifier_uri": {
+                "description": "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
+                "example": "https://www.mockcompany.com.au/sector_identifier",
+                "type": "string"
+            },
+            "software_id": {
+                "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
+                "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE",
+                "type": "string"
+            },
+            "software_roles": {
+                "description": "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`",
+                "example": "data-recipient-software-product",
+                "type": "string"
+            },
+            "software_statement": {
+                "description": "The Software Statement Assertion, as defined in CDR standards",
+                "format": "JWT",
+                "type": "string"
+            },
+            "token_endpoint_auth_method": {
+                "description": "The requested authentication method for the token endpoint",
+                "enum": [
+                    "private_key_jwt"
+                ],
+                "type": "string"
+            },
+            "token_endpoint_auth_signing_alg": {
+                "description": "The algorithm used for signing the JWT",
+                "enum": [
+                    "PS256",
+                    "ES256"
+                ],
+                "type": "string"
+            },
+            "tos_uri": {
+                "description": "URL string that points to a human-readable terms of service document for the Software Product",
+                "example": "https://www.mockcompany.com.au/tos.html",
+                "type": "string"
+            }
+        },
         "required": [
             "client_description",
             "client_id",
@@ -945,191 +1118,6 @@
             "token_endpoint_auth_signing_alg"
         ],
         "type": "object",
-        "properties": {
-            "client_id": {
-                "type": "string",
-                "description": "Data Holder issued client identifier string",
-                "example": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a"
-            },
-            "client_id_issued_at": {
-                "type": "integer",
-                "description": "Time at which the client identifier was issued expressed as seconds since 1970-01-01T00:00:00Z as measured in UTC",
-                "format": "int32",
-                "example": 1571808167
-            },
-            "client_name": {
-                "type": "string",
-                "description": "Human-readable string name of the software product to be presented to the end-user during authorization",
-                "example": "Mock Software"
-            },
-            "client_description": {
-                "type": "string",
-                "description": "Human-readable string name of the software product description to be presented to the end user during authorization",
-                "example": "A mock software product"
-            },
-            "client_uri": {
-                "type": "string",
-                "description": "URL string of a web page providing information about the client",
-                "example": "https://www.mockcompany.com.au"
-            },
-            "legal_entity_id": {
-                "type": "string",
-                "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Legal Entity",
-                "example": "344F0E809-BDBE-4F8E-BD30-5E6C3CB78D7B"
-            },
-            "legal_entity_name": {
-                "type": "string",
-                "description": "Human-readable string name of the Accredited Data Recipient Legal Entity",
-                "example": "Mock Company Pty Ltd."
-            },
-            "org_id": {
-                "type": "string",
-                "description": "A unique identifier string assigned by the CDR Register that identifies the Accredited Data Recipient Brand",
-                "example": "3B0B0A7B-3E7B-4A2C-9497-E357A71D07C8"
-            },
-            "org_name": {
-                "type": "string",
-                "description": "Human-readable string name of the Accredited Data Recipient to be presented to the end user during authorization",
-                "example": "Mock Company Brand."
-            },
-            "redirect_uris": {
-                "type": "array",
-                "description": "Array of redirection URI strings for use in redirect-based flows. If used, redirect_uris MUST match or be a subset of the redirect_uris as defined in the SSA",
-                "example": [
-                    "https://www.mockcompany.com.au/redirects/redirect1",
-                    "https://www.mockcompany.com.au/redirects/redirect2"
-                ],
-                "items": {
-                    "type": "string",
-                    "format": "uri"
-                }
-            },
-            "sector_identifier_uri": {
-                "type": "string",
-                "description": "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
-                "example": "https://www.mockcompany.com.au/sector_identifier"
-            },
-            "logo_uri": {
-                "type": "string",
-                "description": "URL string that references a logo for the client. If present, the server SHOULD display this image to the end-user during approval",
-                "example": "https://www.mockcompany.com.au/logos/logo1.png"
-            },
-            "tos_uri": {
-                "type": "string",
-                "description": "URL string that points to a human-readable terms of service document for the Software Product",
-                "example": "https://www.mockcompany.com.au/tos.html"
-            },
-            "policy_uri": {
-                "type": "string",
-                "description": "URL string that points to a human-readable policy document for the Software Product",
-                "example": "https://www.mockcompany.com.au/policy.html"
-            },
-            "jwks_uri": {
-                "type": "string",
-                "description": "URL string referencing the client JSON Web Key (JWK) Set **[[RFC7517]](#nref-RFC7517)** document, which contains the client public keys",
-                "example": "https://www.mockcompany.com.au/jwks"
-            },
-            "revocation_uri": {
-                "type": "string",
-                "description": "URI string that references the location of the Software Product consent revocation endpoint",
-                "example": "https://www.mockcompany.com.au/revocation"
-            },
-            "recipient_base_uri": {
-                "type": "string",
-                "description": "Base URI for the Consumer Data Standard Data Recipient endpoints. This should be the base to provide reference to all other Data Recipient Endpoints",
-                "example": "https://www.mockcompany.com.au"
-            },
-            "token_endpoint_auth_method": {
-                "type": "string",
-                "description": "The requested authentication method for the token endpoint",
-                "enum": [
-                    "private_key_jwt"
-                ]
-            },
-            "token_endpoint_auth_signing_alg": {
-                "type": "string",
-                "description": "The algorithm used for signing the JWT",
-                "enum": [
-                    "PS256",
-                    "ES256"
-                ]
-            },
-            "grant_types": {
-                "type": "array",
-                "description": "Array of OAuth 2.0 grant type strings that the client can use at the token endpoint",
-                "items": {
-                    "type": "string",
-                    "enum": [
-                        "client_credentials",
-                        "authorization_code",
-                        "refresh_token"
-                    ]
-                }
-            },
-            "response_types": {
-                "type": "array",
-                "description": "Array of the OAuth 2.0 response type strings that the client can use at the authorization endpoint.",
-                "items": {
-                    "type": "string",
-                    "enum": [
-                        "code id_token"
-                    ]
-                }
-            },
-            "application_type": {
-                "type": "string",
-                "description": "Kind of the application. The only supported application type will be `web`",
-                "enum": [
-                    "web"
-                ]
-            },
-            "id_token_signed_response_alg": {
-                "type": "string",
-                "description": "Algorithm with which an id_token is to be signed",
-                "enum": [
-                    "PS256",
-                    "ES256"
-                ]
-            },
-            "id_token_encrypted_response_alg": {
-                "type": "string",
-                "description": "JWE `alg` algorithm with which an id_token is to be encrypted",
-                "example": "RSA-OAEP"
-            },
-            "id_token_encrypted_response_enc": {
-                "type": "string",
-                "description": "JWE `enc` algorithm with which an id_token is to be encrypted",
-                "example": "A256GCM"
-            },
-            "request_object_signing_alg": {
-                "type": "string",
-                "description": "Algorithm which the ADR expects to sign the request object if a request object will be part of the authorization request sent to the Data Holder",
-                "enum": [
-                    "PS256",
-                    "ES256"
-                ]
-            },
-            "software_statement": {
-                "type": "string",
-                "description": "The Software Statement Assertion, as defined in CDR standards",
-                "format": "JWT"
-            },
-            "software_id": {
-                "type": "string",
-                "description": "String representing a unique identifier assigned by the Register and used by registration endpoints to identify the software product to be dynamically registered. </br></br>The \"software_id\" will remain the same for the lifetime of the product, across multiple updates and versions",
-                "example": "740C368F-ECF9-4D29-A2EA-0514A66B0CDE"
-            },
-            "software_roles": {
-                "type": "string",
-                "description": "String containing a role of the software in the CDR Regime. Initially the only value used with be `data-recipient-software-product`",
-                "example": "data-recipient-software-product"
-            },
-            "scope": {
-                "type": "string",
-                "description": "String containing a space-separated list of scope values that the client can use when requesting access tokens.",
-                "example": "openid profile bank:accounts.basic:read bank:accounts.detail:read bank:transactions:read bank:payees:read bank:regular_payments:read common:customer.basic:read common:customer.detail:read cdr:registration"
-            }
-        },
         "$id": "RegistrationProperties"
     }
 }
