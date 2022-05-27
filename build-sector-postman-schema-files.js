@@ -10,6 +10,7 @@
 // 1. remove all .json and set blank
 // 2. change all "$ref": "../common/<FILENAME> to "$ref": "<FILENAME>
 
+
 var fs = require('fs');
 var path = require('path');
 
