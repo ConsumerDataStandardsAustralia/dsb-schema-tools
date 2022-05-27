@@ -14,7 +14,6 @@
   "required": [
     "totalPages",
     "totalRecords"
-  ]
-  ,
+  ],
   "type": "object"
 }

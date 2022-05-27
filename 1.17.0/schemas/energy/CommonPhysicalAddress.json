@@ -9,10 +9,10 @@
       "type": "string"
     },
     "paf": {
-      "$ref": "../common/CommonPAFAddress.json"
+      "$ref": "CommonPAFAddress.json"
     },
     "simple": {
-      "$ref": "../common/CommonSimpleAddress.json"
+      "$ref": "CommonSimpleAddress.json"
     }
   },
   "required": [

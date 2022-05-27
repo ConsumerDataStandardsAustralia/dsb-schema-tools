@@ -14,10 +14,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "../common/Links.json"
+      "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "../common/Meta.json"
+      "$ref": "Meta.json"
     }
   },
   "required": [

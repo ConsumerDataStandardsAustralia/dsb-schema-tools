@@ -97,7 +97,7 @@
           "type": "array",
           "description": "The addresses for the account to be used for correspondence",
           "items": {
-            "$ref": "../common/CommonPhysicalAddress.json"
+            "$ref": "CommonPhysicalAddress.json"
           }
         }
       },

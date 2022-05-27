@@ -67,7 +67,7 @@
       "x-cds-type": "DateTimeString"
     },
     "location": {
-      "$ref": "../common/CommonPhysicalAddress.json",
+      "$ref": "CommonPhysicalAddress.json",
       "description": "Location of the servicepoint",
       "type": "object"
     },

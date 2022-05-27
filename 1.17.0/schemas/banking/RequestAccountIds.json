@@ -17,7 +17,7 @@
       "type": "object"
     },
     "meta": {
-      "$ref": "../common/Meta.json"
+      "$ref": "Meta.json"
     }
   },
   "required": [
