@@ -10,7 +10,10 @@
     "softwareProductDescription": {
       "description": "Description of the software product",
       "maxLength": 4000,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "softwareProductId": {
       "description": "Unique id of the Data Recipient software product issued by the CDR Register",

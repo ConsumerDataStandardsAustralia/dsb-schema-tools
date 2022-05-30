@@ -21,16 +21,25 @@
             "address",
             "name"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "beneficiaryBankBIC": {
           "description": "Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "ExternalRef"
         },
         "chipNumber": {
           "description": "Number for the Clearing House Interbank Payments System",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "country": {
           "description": "Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
@@ -39,20 +48,32 @@
         },
         "fedWireNumber": {
           "description": "Number for Fedwire payment (Federal Reserve Wire Network)",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "legalEntityIdentifier": {
           "description": "The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "ExternalRef"
         },
         "routingNumber": {
           "description": "International bank routing number",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "sortCode": {
           "description": "Sort code used for account identification in some jurisdictions",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [
@@ -70,11 +91,17 @@
         },
         "message": {
           "description": "Response message for the payment",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "name": {
           "description": "Name of the beneficiary",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
       "required": [

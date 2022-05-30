@@ -15,7 +15,10 @@
     },
     "gst": {
       "description": "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "onceOff": {

@@ -7,12 +7,18 @@
     },
     "maturityAmount": {
       "description": "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "maturityCurrency": {
       "description": "If absent assumes AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "maturityDate": {

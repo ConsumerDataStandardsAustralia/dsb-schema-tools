@@ -2,16 +2,25 @@
   "properties": {
     "additionalInfo": {
       "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "additionalInfoUri": {
       "description": "Link to a web page with more information on this eligibility constraint",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "URIString"
     },
     "additionalValue": {
       "description": "Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "discountEligibilityType": {
       "description": "The type of the specific eligibility constraint for a discount",

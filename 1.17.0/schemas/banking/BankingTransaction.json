@@ -12,23 +12,38 @@
     },
     "apcaNumber": {
       "description": "6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "billerCode": {
       "description": "BPAY Biller Code for the transaction (if available)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "billerName": {
       "description": "Name of the BPAY biller for the transaction (if available)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "crn": {
       "description": "BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for MaskedPANString. If the contents are are otherwise sensitive, then it should be masked using the rules applicable for the MaskedAccountString common type.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "currency": {
       "description": "The currency for the transaction amount. AUD assumed if not present",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "description": {
@@ -37,7 +52,10 @@
     },
     "executionDateTime": {
       "description": "The time the transaction was executed by the originating customer, if available",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "isDetailAvailable": {
@@ -47,15 +65,24 @@
     },
     "merchantCategoryCode": {
       "description": "The merchant category code (or MCC) for an outgoing payment to a merchant",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "merchantName": {
       "description": "Name of the merchant for an outgoing payment to a merchant",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "postingDateTime": {
       "description": "The time the transaction was posted. This field is Mandatory if the transaction has status POSTED.  This is the time that appears on a standard statement",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "reference": {
@@ -72,7 +99,10 @@
     },
     "transactionId": {
       "description": "A unique ID of the transaction adhering to the standards for ID permanence.  This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if `isDetailAvailable` is set to true.",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "ASCIIString"
     },
     "type": {
@@ -91,7 +121,10 @@
     },
     "valueDateTime": {
       "description": "Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     }
   },

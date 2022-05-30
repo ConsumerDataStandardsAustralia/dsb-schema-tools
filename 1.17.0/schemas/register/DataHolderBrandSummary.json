@@ -3,17 +3,26 @@
     "abn": {
       "description": "Australian Business Number for the organisation",
       "maxLength": 11,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "acn": {
       "description": "Australian Company Number for the organisation",
       "maxLength": 9,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "arbn": {
       "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
       "maxLength": 9,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "brandName": {
       "description": "The name of Data Holder Brand",
@@ -23,7 +32,10 @@
     "dataHolderBrandId": {
       "description": "Unique id of the Data Holder Brand issued by the CDR Register",
       "maxLength": 36,
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-conditional": true
     },
     "industries": {
@@ -42,7 +54,10 @@
     "interimId": {
       "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused",
       "maxLength": 36,
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-conditional": true
     },
     "lastUpdated": {

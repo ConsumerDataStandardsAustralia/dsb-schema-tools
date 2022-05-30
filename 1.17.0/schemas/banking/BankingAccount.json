@@ -7,7 +7,10 @@
     },
     "creationDate": {
       "description": "Date that the account was created (if known)",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "displayName": {
@@ -17,7 +20,10 @@
     "isOwned": {
       "default": true,
       "description": "Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed",
-      "type": "boolean",
+      "type": [
+        "boolean",
+        "null"
+      ],
       "x-cds-type": "Boolean"
     },
     "maskedNumber": {
@@ -27,7 +33,10 @@
     },
     "nickname": {
       "description": "A customer supplied nick name for the account",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "openStatus": {
       "default": "OPEN",
@@ -36,7 +45,10 @@
         "CLOSED",
         "OPEN"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "productCategory": {
       "$ref": "BankingProductCategory.json"

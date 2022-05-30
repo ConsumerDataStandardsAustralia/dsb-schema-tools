@@ -2,47 +2,74 @@
   "properties": {
     "loanEndDate": {
       "description": "Date that the loan is due to be repaid in full",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "maxRedraw": {
       "description": "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "maxRedrawCurrency": {
       "description": "If absent assumes AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "minInstalmentAmount": {
       "description": "Minimum amount of next instalment",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "minInstalmentCurrency": {
       "description": "If absent assumes AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "minRedraw": {
       "description": "Minimum redraw amount",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "minRedrawCurrency": {
       "description": "If absent assumes AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "nextInstalmentDate": {
       "description": "Next date that an instalment is required",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "offsetAccountEnabled": {
       "description": "Set to true if one or more offset accounts are configured for this loan account",
-      "type": "boolean",
+      "type": [
+        "boolean",
+        "null"
+      ],
       "x-cds-type": "Boolean"
     },
     "offsetAccountIds": {
@@ -51,26 +78,41 @@
         "type": "string",
         "x-cds-type": "ASCIIString"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "originalLoanAmount": {
       "description": "Optional original loan value",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "originalLoanCurrency": {
       "description": "If absent assumes AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "originalStartDate": {
       "description": "Optional original start date for the loan",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "repaymentFrequency": {
       "description": "The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "ExternalRef"
     },
     "repaymentType": {
@@ -80,7 +122,10 @@
         "INTEREST_ONLY",
         "PRINCIPAL_AND_INTEREST"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object"

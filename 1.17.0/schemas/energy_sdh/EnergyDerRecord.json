@@ -147,7 +147,10 @@
     "hasCentralProtectionControl": {
       "default": false,
       "description": "For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "installedPhasesCount": {
       "description": "The number of phases that DER is connected to",
@@ -162,66 +165,114 @@
       "properties": {
         "exportLimitkva": {
           "description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "frequencyRateOfChange": {
           "description": "Rate of change of frequency trip point (Hz/s).",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "interTripScheme": {
           "description": "Description of the form of inter-trip (e.g. 'from local substation').",
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "neutralVoltageDisplacement": {
           "description": "Trip voltage.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "overFrequencyProtection": {
           "description": "Protective function limit in Hz.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "overFrequencyProtectionDelay": {
           "description": "Trip delay time in seconds.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "overVoltageProtection": {
           "description": "Protective function limit in V.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "overVoltageProtectionDelay": {
           "description": "Trip delay time in seconds.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "sustainedOverVoltage": {
           "description": "Sustained over voltage.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "sustainedOverVoltageDelay": {
           "description": "Trip delay time in seconds.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "underFrequencyProtection": {
           "description": "Protective function limit in Hz.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "underFrequencyProtectionDelay": {
           "description": "Trip delay time in seconds.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "underVoltageProtection": {
           "description": "Protective function limit in V.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "underVoltageProtectionDelay": {
           "description": "Trip delay time in seconds.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "voltageVectorShift": {
           "description": "Trip angle in degrees.",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "servicePointId": {
       "description": "The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.",

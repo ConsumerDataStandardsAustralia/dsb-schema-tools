@@ -6,14 +6,20 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -27,14 +33,20 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -48,17 +60,26 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "x-conditional": [
         "currentDay",
         "previousDays"
@@ -69,14 +90,20 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -90,17 +117,26 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "x-conditional": [
         "currentDay",
         "previousDays"
@@ -111,14 +147,20 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -132,14 +174,20 @@
       "properties": {
         "currentDay": {
           "description": "API call counts for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",

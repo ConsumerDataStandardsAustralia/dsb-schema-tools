@@ -33,7 +33,10 @@
         ],
         "type": "object"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "totalGenerationCredits": {
       "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
@@ -42,7 +45,10 @@
     },
     "totalGst": {
       "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "totalOnceOffCharges": {

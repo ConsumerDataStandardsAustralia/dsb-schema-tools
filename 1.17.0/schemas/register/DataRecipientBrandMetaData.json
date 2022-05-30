@@ -21,7 +21,10 @@
       "items": {
         "$ref": "SoftwareProductMetaData.json"
       },
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "uniqueItems": true
     },
     "status": {

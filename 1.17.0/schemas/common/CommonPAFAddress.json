@@ -3,31 +3,52 @@
   "properties": {
     "buildingName1": {
       "description": "Building/Property name 1",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "buildingName2": {
       "description": "Building/Property name 2",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "dpid": {
       "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "flatUnitNumber": {
       "description": "Unit number (including suffix, if applicable)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "flatUnitType": {
       "description": "Type of flat or unit for the address",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "floorLevelNumber": {
       "description": "Floor or level number (including alpha characters)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "floorLevelType": {
       "description": "Type of floor or level for the address",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "localityName": {
       "description": "Full name of locality",
@@ -35,24 +56,39 @@
     },
     "lotNumber": {
       "description": "Allotment number for the address",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "postalDeliveryNumber": {
       "description": "Postal delivery number if the address is a postal delivery type",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "x-cds-type": "PositiveInteger"
     },
     "postalDeliveryNumberPrefix": {
       "description": "Postal delivery number prefix related to the postal delivery number",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "postalDeliveryNumberSuffix": {
       "description": "Postal delivery number suffix related to the postal delivery number",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "postalDeliveryType": {
       "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "postcode": {
       "description": "Postcode for the locality",
@@ -64,33 +100,54 @@
     },
     "streetName": {
       "description": "The name of the street",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "streetSuffix": {
       "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "streetType": {
       "description": "The street type. Valid enumeration defined by Australia Post PAF code file",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "thoroughfareNumber1": {
       "description": "Thoroughfare number for a property (first number in a property ranged address)",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "x-cds-type": "PositiveInteger"
     },
     "thoroughfareNumber1Suffix": {
       "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "thoroughfareNumber2": {
       "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "x-cds-type": "PositiveInteger"
     },
     "thoroughfareNumber2Suffix": {
       "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

@@ -7,7 +7,10 @@
     },
     "paymentCurrency": {
       "description": "If absent assumes AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "paymentDueAmount": {

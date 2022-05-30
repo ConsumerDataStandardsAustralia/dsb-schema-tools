@@ -6,14 +6,20 @@
       "properties": {
         "currentDay": {
           "description": "Number of calls rejected for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -27,14 +33,20 @@
       "properties": {
         "currentDay": {
           "description": "Number of calls rejected for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",

@@ -3,7 +3,10 @@
   "properties": {
     "finalPaymentDate": {
       "description": "The limit date after which no more payments should be made using this schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "interval": {
@@ -33,12 +36,18 @@
         "ON",
         "ONLY"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "paymentsRemaining": {
       "description": "Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely",
       "example": 1,
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "x-cds-type": "PositiveInteger"
     }
   },

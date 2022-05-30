@@ -4,22 +4,34 @@
     "abn": {
       "description": "Australian Business Number for the organisation",
       "maxLength": 11,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "acn": {
       "description": "Australian Company Number for the organisation",
       "maxLength": 9,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "anzsicDivision": {
       "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
       "maxLength": 100,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "arbn": {
       "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
       "maxLength": 9,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "legalEntityId": {
       "description": "Unique id of the organisation issued by the CDR Register",
@@ -47,22 +59,34 @@
         "GOVERNMENT_ENTITY",
         "OTHER"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "registeredCountry": {
       "description": "Country of registeration (if the company is registered outside Australia)",
       "maxLength": 100,
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "registrationDate": {
       "description": "Date of registration (if the company is registered outside Australia)",
       "format": "date",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "registrationNumber": {
       "description": "Unique registration number (if the company is registered outside Australia)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "status": {
       "enum": [

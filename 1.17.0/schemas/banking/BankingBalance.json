@@ -7,7 +7,10 @@
     },
     "amortisedLimit": {
       "description": "Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "availableBalance": {
@@ -17,12 +20,18 @@
     },
     "creditLimit": {
       "description": "Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "currency": {
       "description": "The currency for the balance amounts. If absent assumed to be AUD",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "CurrencyString"
     },
     "currentBalance": {
@@ -35,7 +44,10 @@
       "items": {
         "$ref": "BankingBalancePurse.json"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "required": [

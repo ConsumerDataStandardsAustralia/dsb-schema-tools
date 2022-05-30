@@ -11,7 +11,10 @@
             "SUBSTITUTE",
             "FINAL_SUBSTITUTE"
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "value": {
           "description": "Meter read value.  If positive then it means consumption, if negative it means export",
@@ -21,11 +24,17 @@
       "required": [
         "value"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "controlledLoad": {
       "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "intervalRead": {
       "description": "Mandatory if readUType is set to intervalRead",
@@ -71,15 +80,24 @@
         "aggregateValue",
         "intervalReads"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "meterID": {
       "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "readEndDate": {
       "description": "Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "readStartDate": {
@@ -97,7 +115,10 @@
     },
     "registerId": {
       "description": "Register ID of the meter register where the meter reads are obtained",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "registerSuffix": {
       "description": "Register suffix of the meter register where the meter reads are obtained",
@@ -109,7 +130,10 @@
     },
     "unitOfMeasure": {
       "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

@@ -5,7 +5,10 @@
     },
     "applicationUri": {
       "description": "A link to an application web page where this product can be applied for.",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "URIString"
     },
     "brand": {
@@ -14,7 +17,10 @@
     },
     "brandName": {
       "description": "An optional display name of the brand",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "cardArt": {
       "description": "An array of card art images",
@@ -35,7 +41,10 @@
         ],
         "type": "object"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "description": {
       "description": "A description of the product",
@@ -43,12 +52,18 @@
     },
     "effectiveFrom": {
       "description": "The date and time from which this product is effective (ie. is available for origination).  Used to enable the articulation of products to the regime before they are available for customers to originate",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "effectiveTo": {
       "description": "The date and time at which this product will be retired and will no longer be offered.  Used to enable the managed deprecation of products",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "isTailored": {

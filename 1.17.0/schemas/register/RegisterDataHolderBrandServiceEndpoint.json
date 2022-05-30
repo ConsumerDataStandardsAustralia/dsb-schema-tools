@@ -4,7 +4,10 @@
     "extensionBaseUri": {
       "description": "Base URI for the Data Holder extension endpoints to the Consumer Data Standard (optional)",
       "maxLength": 1000,
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "URIString"
     },
     "infosecBaseUri": {

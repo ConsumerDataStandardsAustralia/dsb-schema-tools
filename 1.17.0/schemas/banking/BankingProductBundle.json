@@ -2,11 +2,17 @@
   "properties": {
     "additionalInfo": {
       "description": "Display text providing more information on the bundle",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "additionalInfoUri": {
       "description": "Link to a web page with more information on the bundle criteria and benefits",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "URIString"
     },
     "description": {
@@ -23,7 +29,10 @@
         "type": "string",
         "x-cds-type": "ASCIIString"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "required": [

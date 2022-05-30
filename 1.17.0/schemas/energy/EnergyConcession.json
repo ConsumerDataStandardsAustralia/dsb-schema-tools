@@ -2,16 +2,25 @@
   "properties": {
     "additionalInfo": {
       "description": "Display text providing more information on the concession. Mandatory if type is VARIABLE",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "additionalInfoUri": {
       "description": "Optional link to additional information regarding the concession",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "URIString"
     },
     "amount": {
       "description": "Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "appliedTo": {
@@ -25,11 +34,17 @@
         ],
         "type": "string"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "discountFrequency": {
       "description": "Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "ExternalRef"
     },
     "displayName": {
@@ -38,17 +53,26 @@
     },
     "endDate": {
       "description": "Optional end date for the application of the concession",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "percentage": {
       "description": "Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "RateString"
     },
     "startDate": {
       "description": "Optional start date for the application of the concession",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "type": {

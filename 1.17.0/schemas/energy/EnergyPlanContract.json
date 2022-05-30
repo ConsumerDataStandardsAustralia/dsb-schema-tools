@@ -2,7 +2,10 @@
   "properties": {
     "additionalFeeInformation": {
       "description": "Free text field containing additional information of the fees for this contract",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "controlledLoad": {
       "$ref": "EnergyPlanControlledLoad.json"
@@ -34,7 +37,10 @@
       "required": [
         "greenPercentage"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "isFixed": {
       "description": "Flag indicating whether prices are fixed or variable",
@@ -42,7 +48,10 @@
     },
     "onExpiryDescription": {
       "description": "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "paymentOption": {
       "description": "Payment options for this contract",
@@ -83,11 +92,17 @@
         "LOCAL",
         "AEST"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "variation": {
       "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

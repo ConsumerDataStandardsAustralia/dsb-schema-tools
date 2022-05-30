@@ -6,14 +6,20 @@
       "properties": {
         "currentDay": {
           "description": "Average response time for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -27,14 +33,20 @@
       "properties": {
         "currentDay": {
           "description": "Average response time for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -51,14 +63,20 @@
           "properties": {
             "currentDay": {
               "description": "Average response time for current day",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "previousDays": {
               "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
               "items": {
                 "type": "number"
               },
-              "type": "array"
+              "type": [
+                "array",
+                "null"
+              ]
             }
           },
           "type": "object",
@@ -72,14 +90,20 @@
           "properties": {
             "currentDay": {
               "description": "Average response time for current day",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "previousDays": {
               "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
               "items": {
                 "type": "number"
               },
-              "type": "array"
+              "type": [
+                "array",
+                "null"
+              ]
             }
           },
           "type": "object",
@@ -93,21 +117,30 @@
         "primary",
         "secondary"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "lowPriority": {
       "description": "Average response time for the low priority tier",
       "properties": {
         "currentDay": {
           "description": "Average response time for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -124,14 +157,20 @@
           "properties": {
             "currentDay": {
               "description": "Average response time for current day",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "previousDays": {
               "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
               "items": {
                 "type": "number"
               },
-              "type": "array"
+              "type": [
+                "array",
+                "null"
+              ]
             }
           },
           "type": "object",
@@ -145,14 +184,20 @@
           "properties": {
             "currentDay": {
               "description": "Average response time for current day",
-              "type": "number"
+              "type": [
+                "number",
+                "null"
+              ]
             },
             "previousDays": {
               "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
               "items": {
                 "type": "number"
               },
-              "type": "array"
+              "type": [
+                "array",
+                "null"
+              ]
             }
           },
           "type": "object",
@@ -166,21 +211,30 @@
         "primary",
         "secondary"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "unattended": {
       "description": "Average response time for the unattended tier",
       "properties": {
         "currentDay": {
           "description": "Average response time for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",
@@ -194,14 +248,20 @@
       "properties": {
         "currentDay": {
           "description": "Average response time for current day",
-          "type": "number"
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "previousDays": {
           "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
           "items": {
             "type": "number"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
       "type": "object",

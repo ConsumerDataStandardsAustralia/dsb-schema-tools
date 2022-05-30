@@ -5,35 +5,56 @@
       "properties": {
         "bundleUri": {
           "description": "A link to detail on bundles that this plan can be a part of",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "URIString"
         },
         "eligibilityUri": {
           "description": "A link to detail on eligibility criteria for the plan",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "URIString"
         },
         "overviewUri": {
           "description": "A link to a general overview of the plan",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "URIString"
         },
         "pricingUri": {
           "description": "A link to detail on pricing for the plan",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "URIString"
         },
         "termsUri": {
           "description": "A link to terms and conditions for the plan",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "URIString"
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "applicationUri": {
       "description": "A link to an application web page where this plan can be applied for",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "URIString"
     },
     "brand": {
@@ -51,24 +72,39 @@
         "RESIDENTIAL",
         "BUSINESS"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "description": {
       "description": "A description of the plan",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "displayName": {
       "description": "The display name of the plan",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "effectiveFrom": {
       "description": "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "effectiveTo": {
       "description": "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "fuelType": {
@@ -88,17 +124,26 @@
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         },
         "includedPostcodes": {
           "description": "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": [
+            "array",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "lastUpdated": {
       "description": "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",

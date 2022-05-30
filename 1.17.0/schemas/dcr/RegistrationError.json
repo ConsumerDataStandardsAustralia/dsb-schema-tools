@@ -12,7 +12,10 @@
     },
     "error_description": {
       "description": "Additional text description of the error for debugging.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

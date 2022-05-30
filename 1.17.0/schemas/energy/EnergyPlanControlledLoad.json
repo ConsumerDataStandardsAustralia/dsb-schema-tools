@@ -8,7 +8,10 @@
     },
     "description": {
       "description": "A description of the controlled load tier",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "displayName": {
       "description": "A display name for the controlled load tier",

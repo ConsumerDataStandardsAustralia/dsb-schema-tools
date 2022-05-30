@@ -6,7 +6,10 @@
     },
     "name": {
       "description": "The name assigned to the PayID by the owner of the PayID",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "type": {
       "description": "The type of the PayID",

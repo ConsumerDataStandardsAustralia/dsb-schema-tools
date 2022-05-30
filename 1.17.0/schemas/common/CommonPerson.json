@@ -2,7 +2,10 @@
   "properties": {
     "firstName": {
       "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "lastName": {
       "description": "For people with single names the single name should be in this field",
@@ -10,7 +13,10 @@
     },
     "lastUpdateTime": {
       "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     },
     "middleNames": {
@@ -22,7 +28,10 @@
     },
     "occupationCode": {
       "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "ExternalRef"
     },
     "occupationCodeVersion": {
@@ -34,15 +43,24 @@
         "ANZSCO_1220.0_2013_V1.2",
         "ANZSCO_1220.0_2013_V1.3"
       ],
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "prefix": {
       "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "suffix": {
       "description": "Used for a trailing suffix to the name (e.g. Jr)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

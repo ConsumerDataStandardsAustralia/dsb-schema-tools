@@ -20,7 +20,10 @@
         ],
         "type": "object"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "amount": {
       "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
@@ -50,11 +53,17 @@
         ],
         "type": "object"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "description": {
       "description": "Optional description of the transaction that can be used for display purposes",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "endDate": {
       "description": "Date and time when the demand period ends",
@@ -63,11 +72,17 @@
     },
     "invoiceNumber": {
       "description": "The number of the invoice in which this transaction is included if it has been issued",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "isEstimate": {
       "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "rate": {
       "description": "The rate for the demand charge in kVA.  A negative value indicates power generated",
@@ -75,7 +90,10 @@
     },
     "servicePointId": {
       "description": "The ID of the service point to which this transaction applies if any",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "startDate": {
       "description": "Date and time when the demand period starts",

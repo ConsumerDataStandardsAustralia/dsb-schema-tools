@@ -10,12 +10,18 @@
     },
     "lastDebitAmount": {
       "description": "The amount of the last debit executed under this authorisation",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "lastDebitDateTime": {
       "description": "The date and time of the last debit executed under this authorisation",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateTimeString"
     }
   },

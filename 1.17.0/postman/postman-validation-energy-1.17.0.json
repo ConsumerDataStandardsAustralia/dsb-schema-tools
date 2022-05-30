@@ -1,868 +1,55 @@
 {
-    "CommonEmailAddress": {
-        "properties": {
-            "address": {
-                "description": "A correctly formatted email address, as defined by the addr_spec format in **[[RFC5322]](#nref-RFC5322)**",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "isPreferred": {
-                "description": "May be true for one and only one email record in the collection. Denotes the default email address",
-                "type": "boolean",
-                "x-cds-type": "Boolean"
-            },
-            "purpose": {
-                "description": "The purpose for the email, as specified by the customer (Enumeration)",
-                "enum": [
-                    "HOME",
-                    "OTHER",
-                    "UNSPECIFIED",
-                    "WORK"
-                ],
-                "type": "string"
-            }
-        },
-        "required": [
-            "address",
-            "purpose"
-        ],
-        "type": "object",
-        "$id": "CommonEmailAddress"
-    },
-    "CommonOrganisation": {
-        "properties": {
-            "abn": {
-                "description": "Australian Business Number for the organisation",
-                "type": "string"
-            },
-            "acn": {
-                "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type",
-                "type": "string"
-            },
-            "agentFirstName": {
-                "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field",
-                "type": "string"
-            },
-            "agentLastName": {
-                "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field",
-                "type": "string"
-            },
-            "agentRole": {
-                "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known",
-                "type": "string"
-            },
-            "businessName": {
-                "description": "Name of the organisation",
-                "type": "string"
-            },
-            "establishmentDate": {
-                "description": "The date the organisation described was established",
-                "type": "string",
-                "x-cds-type": "DateString"
-            },
-            "industryCode": {
-                "description": "A valid [ANZSIC](http://www.abs.gov.au/ANZSIC) code for the organisation. If the industry code held by the data holder is not one of the supported [ANZSIC](http://www.abs.gov.au/ANZSIC) versions, then it must not be supplied.",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "industryCodeVersion": {
-                "default": "ANZSIC_1292.0_2006_V2.0",
-                "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
-                "enum": [
-                    "ANZSIC_1292.0_2006_V1.0",
-                    "ANZSIC_1292.0_2006_V2.0"
-                ],
-                "type": "string"
-            },
-            "isACNCRegistered": {
-                "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
-                "type": "boolean",
-                "x-cds-type": "Boolean"
-            },
-            "lastUpdateTime": {
-                "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
-                "type": "string",
-                "x-cds-type": "DateTimeString"
-            },
-            "legalName": {
-                "description": "Legal name, if different to the business name",
-                "type": "string"
-            },
-            "organisationType": {
-                "description": "Legal organisation type",
-                "enum": [
-                    "COMPANY",
-                    "GOVERNMENT_ENTITY",
-                    "OTHER",
-                    "PARTNERSHIP",
-                    "SOLE_TRADER",
-                    "TRUST"
-                ],
-                "type": "string"
-            },
-            "registeredCountry": {
-                "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "shortName": {
-                "description": "Short name used for communication, if different to the business name",
-                "type": "string"
-            }
-        },
-        "required": [
-            "agentLastName",
-            "agentRole",
-            "businessName",
-            "organisationType"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "industryCodeVersion"
-        ],
-        "$id": "CommonOrganisation"
-    },
-    "CommonOrganisationDetailV2": {
-        "allOf": [
-            {
-                "$ref": "CommonOrganisation"
-            },
-            {
-                "required": [
-                    "physicalAddresses"
-                ],
-                "type": "object",
-                "properties": {
-                    "physicalAddresses": {
-                        "type": "array",
-                        "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
-                        "items": {
-                            "$ref": "CommonPhysicalAddressWithPurpose"
-                        }
-                    }
-                }
-            }
-        ],
-        "$id": "CommonOrganisationDetailV2"
-    },
-    "CommonPAFAddress": {
-        "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
-        "properties": {
-            "buildingName1": {
-                "description": "Building/Property name 1",
-                "type": "string"
-            },
-            "buildingName2": {
-                "description": "Building/Property name 2",
-                "type": "string"
-            },
-            "dpid": {
-                "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
-                "type": "string"
-            },
-            "flatUnitNumber": {
-                "description": "Unit number (including suffix, if applicable)",
-                "type": "string"
-            },
-            "flatUnitType": {
-                "description": "Type of flat or unit for the address",
-                "type": "string"
-            },
-            "floorLevelNumber": {
-                "description": "Floor or level number (including alpha characters)",
-                "type": "string"
-            },
-            "floorLevelType": {
-                "description": "Type of floor or level for the address",
-                "type": "string"
-            },
-            "localityName": {
-                "description": "Full name of locality",
-                "type": "string"
-            },
-            "lotNumber": {
-                "description": "Allotment number for the address",
-                "type": "string"
-            },
-            "postalDeliveryNumber": {
-                "description": "Postal delivery number if the address is a postal delivery type",
-                "type": "integer",
-                "x-cds-type": "PositiveInteger"
-            },
-            "postalDeliveryNumberPrefix": {
-                "description": "Postal delivery number prefix related to the postal delivery number",
-                "type": "string"
-            },
-            "postalDeliveryNumberSuffix": {
-                "description": "Postal delivery number suffix related to the postal delivery number",
-                "type": "string"
-            },
-            "postalDeliveryType": {
-                "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
-                "type": "string"
-            },
-            "postcode": {
-                "description": "Postcode for the locality",
-                "type": "string"
-            },
-            "state": {
-                "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
-                "type": "string"
-            },
-            "streetName": {
-                "description": "The name of the street",
-                "type": "string"
-            },
-            "streetSuffix": {
-                "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
-                "type": "string"
-            },
-            "streetType": {
-                "description": "The street type. Valid enumeration defined by Australia Post PAF code file",
-                "type": "string"
-            },
-            "thoroughfareNumber1": {
-                "description": "Thoroughfare number for a property (first number in a property ranged address)",
-                "type": "integer",
-                "x-cds-type": "PositiveInteger"
-            },
-            "thoroughfareNumber1Suffix": {
-                "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
-                "type": "string"
-            },
-            "thoroughfareNumber2": {
-                "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-                "type": "integer",
-                "x-cds-type": "PositiveInteger"
-            },
-            "thoroughfareNumber2Suffix": {
-                "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
-                "type": "string"
-            }
-        },
-        "required": [
-            "localityName",
-            "postcode",
-            "state"
-        ],
-        "type": "object",
-        "$id": "CommonPAFAddress"
-    },
-    "CommonPerson": {
-        "properties": {
-            "firstName": {
-                "description": "For people with single names this field need not be present. The single name should be in the lastName field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.",
-                "type": "string"
-            },
-            "lastName": {
-                "description": "For people with single names the single name should be in this field",
-                "type": "string"
-            },
-            "lastUpdateTime": {
-                "description": "The date and time that this record was last updated by the customer.  If no update has occurred then this date should reflect the initial creation date for the data",
-                "type": "string",
-                "x-cds-type": "DateTimeString"
-            },
-            "middleNames": {
-                "description": "Field is mandatory but array may be empty",
-                "items": {
-                    "type": "string"
-                },
-                "type": "array"
-            },
-            "occupationCode": {
-                "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "occupationCodeVersion": {
-                "default": "ANZSCO_1220.0_2013_V1.2",
-                "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an ``occupationCode`` is supplied. If ``occupationCode`` is supplied but ``occupationCodeVersion`` is absent, default is ``ANZSCO_1220.0_2013_V1.2``",
-                "enum": [
-                    "ANZSCO_1220.0_2006_V1.0",
-                    "ANZSCO_1220.0_2006_V1.1",
-                    "ANZSCO_1220.0_2013_V1.2",
-                    "ANZSCO_1220.0_2013_V1.3"
-                ],
-                "type": "string"
-            },
-            "prefix": {
-                "description": "Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
-                "type": "string"
-            },
-            "suffix": {
-                "description": "Used for a trailing suffix to the name (e.g. Jr)",
-                "type": "string"
-            }
-        },
-        "required": [
-            "lastName",
-            "middleNames"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "occupationCodeVersion"
-        ],
-        "$id": "CommonPerson"
-    },
-    "CommonPersonDetailV2": {
-        "allOf": [
-            {
-                "$ref": "CommonPerson"
-            },
-            {
-                "required": [
-                    "emailAddresses",
-                    "phoneNumbers",
-                    "physicalAddresses"
-                ],
-                "type": "object",
-                "properties": {
-                    "phoneNumbers": {
-                        "type": "array",
-                        "description": "Array is mandatory but may be empty if no phone numbers are held",
-                        "items": {
-                            "$ref": "CommonPhoneNumber"
-                        }
-                    },
-                    "emailAddresses": {
-                        "type": "array",
-                        "description": "May be empty",
-                        "items": {
-                            "$ref": "CommonEmailAddress"
-                        }
-                    },
-                    "physicalAddresses": {
-                        "type": "array",
-                        "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
-                        "items": {
-                            "$ref": "CommonPhysicalAddressWithPurpose"
-                        }
-                    }
-                }
-            }
-        ],
-        "$id": "CommonPersonDetailV2"
-    },
-    "CommonPhoneNumber": {
-        "properties": {
-            "areaCode": {
-                "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.",
-                "type": "string"
-            },
-            "countryCode": {
-                "description": "If absent, assumed to be Australia (+61). The + should be included",
-                "type": "string"
-            },
-            "extension": {
-                "description": "An extension number (if applicable)",
-                "type": "string"
-            },
-            "fullNumber": {
-                "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "isPreferred": {
-                "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
-                "type": "boolean",
-                "x-cds-type": "Boolean"
-            },
-            "number": {
-                "description": "The actual phone number, with leading zeros as appropriate",
-                "type": "string"
-            },
-            "purpose": {
-                "description": "The purpose of the number as specified by the customer",
-                "enum": [
-                    "HOME",
-                    "INTERNATIONAL",
-                    "MOBILE",
-                    "OTHER",
-                    "UNSPECIFIED",
-                    "WORK"
-                ],
-                "type": "string"
-            }
-        },
-        "required": [
-            "fullNumber",
-            "number",
-            "purpose"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "areaCode"
-        ],
-        "$id": "CommonPhoneNumber"
-    },
-    "CommonPhysicalAddress": {
-        "properties": {
-            "addressUType": {
-                "description": "The type of address object present",
-                "enum": [
-                    "paf",
-                    "simple"
-                ],
-                "type": "string"
-            },
-            "paf": {
-                "$ref": "CommonPAFAddress"
-            },
-            "simple": {
-                "$ref": "CommonSimpleAddress"
-            }
-        },
-        "required": [
-            "addressUType"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "simple",
-            "paf"
-        ],
-        "$id": "CommonPhysicalAddress"
-    },
-    "CommonPhysicalAddressWithPurpose": {
-        "allOf": [
-            {
-                "$ref": "CommonPhysicalAddress"
-            },
-            {
-                "required": [
-                    "purpose"
-                ],
-                "type": "object",
-                "properties": {
-                    "purpose": {
-                        "type": "string",
-                        "description": "Enumeration of values indicating the purpose of the physical address",
-                        "enum": [
-                            "MAIL",
-                            "OTHER",
-                            "PHYSICAL",
-                            "REGISTERED",
-                            "WORK"
-                        ]
-                    }
-                }
-            }
-        ],
-        "$id": "CommonPhysicalAddressWithPurpose"
-    },
-    "CommonSimpleAddress": {
-        "properties": {
-            "addressLine1": {
-                "description": "First line of the standard address object",
-                "type": "string"
-            },
-            "addressLine2": {
-                "description": "Second line of the standard address object",
-                "type": "string"
-            },
-            "addressLine3": {
-                "description": "Third line of the standard address object",
-                "type": "string"
-            },
-            "city": {
-                "description": "Name of the city or locality",
-                "type": "string"
-            },
-            "country": {
-                "default": "AUS",
-                "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "mailingName": {
-                "description": "Name of the individual or business formatted for inclusion in an address used for physical mail",
-                "type": "string"
-            },
-            "postcode": {
-                "description": "Mandatory for Australian addresses",
-                "type": "string"
-            },
-            "state": {
-                "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
-                "type": "string"
-            }
-        },
-        "required": [
-            "addressLine1",
-            "city",
-            "state"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "postcode"
-        ],
-        "$id": "CommonSimpleAddress"
-    },
-    "DiscoveryOutage": {
-        "properties": {
-            "duration": {
-                "description": "Planned duration of the outage. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                "type": "string",
-                "x-cds-type": "ExternalRef"
-            },
-            "explanation": {
-                "description": "Provides an explanation of the current outage that can be displayed to an end customer",
-                "type": "string"
-            },
-            "isPartial": {
-                "description": "Flag that indicates, if present and set to true, that the outage is only partial meaning that only a subset of normally available end points will be affected by the outage",
-                "type": "boolean",
-                "x-cds-type": "Boolean"
-            },
-            "outageTime": {
-                "description": "Date and time that the outage is scheduled to begin",
-                "type": "string",
-                "x-cds-type": "DateTimeString"
-            }
-        },
-        "required": [
-            "duration",
-            "explanation",
-            "outageTime"
-        ],
-        "type": "object",
-        "$id": "DiscoveryOutage"
-    },
-    "Links": {
-        "properties": {
-            "self": {
-                "description": "Fully qualified link that generated the current response document",
-                "type": "string",
-                "x-cds-type": "URIString"
-            }
-        },
-        "required": [
-            "self"
-        ],
-        "type": "object",
-        "$id": "Links"
-    },
-    "LinksPaginated": {
-        "properties": {
-            "first": {
-                "description": "URI to the first page of this set. Mandatory if this response is not the first page",
-                "type": "string",
-                "x-cds-type": "URIString"
-            },
-            "last": {
-                "description": "URI to the last page of this set. Mandatory if this response is not the last page",
-                "type": "string",
-                "x-cds-type": "URIString"
-            },
-            "next": {
-                "description": "URI to the next page of this set. Mandatory if this response is not the last page",
-                "type": "string",
-                "x-cds-type": "URIString"
-            },
-            "prev": {
-                "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
-                "type": "string",
-                "x-cds-type": "URIString"
-            },
-            "self": {
-                "description": "Fully qualified link that generated the current response document",
-                "type": "string",
-                "x-cds-type": "URIString"
-            }
-        },
-        "required": [
-            "self"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "prev",
-            "next",
-            "first",
-            "last"
-        ],
-        "$id": "LinksPaginated"
-    },
-    "Meta": {
-        "type": "object",
-        "$id": "Meta"
-    },
-    "MetaError": {
-        "description": "Additional data for customised error codes",
-        "properties": {
-            "urn": {
-                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.",
-                "type": "string"
-            }
-        },
-        "type": "object",
-        "x-conditional": [
-            "urn"
-        ],
-        "$id": "MetaError"
-    },
-    "MetaPaginated": {
-        "properties": {
-            "totalPages": {
-                "description": "The total number of pages in the full set. See [pagination](#pagination).",
-                "type": "integer",
-                "x-cds-type": "NaturalNumber"
-            },
-            "totalRecords": {
-                "description": "The total number of records in the full set. See [pagination](#pagination).",
-                "type": "integer",
-                "x-cds-type": "NaturalNumber"
-            }
-        },
-        "required": [
-            "totalPages",
-            "totalRecords"
-        ],
-        "type": "object",
-        "$id": "MetaPaginated"
-    },
-    "ResponseCommonCustomer": {
-        "properties": {
-            "data": {
-                "properties": {
-                    "customerUType": {
-                        "description": "The type of customer object that is present",
-                        "enum": [
-                            "organisation",
-                            "person"
-                        ],
-                        "type": "string"
-                    },
-                    "organisation": {
-                        "$ref": "CommonOrganisation"
-                    },
-                    "person": {
-                        "$ref": "CommonPerson"
-                    }
-                },
-                "required": [
-                    "customerUType"
-                ],
-                "type": "object",
-                "x-conditional": [
-                    "person",
-                    "organisation"
-                ]
-            },
-            "links": {
-                "$ref": "Links"
-            },
-            "meta": {
-                "$ref": "Meta"
-            }
-        },
-        "required": [
-            "data",
-            "links"
-        ],
-        "type": "object",
-        "$id": "ResponseCommonCustomer"
-    },
-    "ResponseCommonCustomerDetailV2": {
-        "properties": {
-            "data": {
-                "properties": {
-                    "customerUType": {
-                        "description": "The type of customer object that is present",
-                        "enum": [
-                            "organisation",
-                            "person"
-                        ],
-                        "type": "string"
-                    },
-                    "organisation": {
-                        "$ref": "CommonOrganisationDetailV2"
-                    },
-                    "person": {
-                        "$ref": "CommonPersonDetailV2"
-                    }
-                },
-                "required": [
-                    "customerUType"
-                ],
-                "type": "object",
-                "x-conditional": [
-                    "person",
-                    "organisation"
-                ]
-            },
-            "links": {
-                "$ref": "Links"
-            },
-            "meta": {
-                "$ref": "Meta"
-            }
-        },
-        "required": [
-            "data",
-            "links"
-        ],
-        "type": "object",
-        "$id": "ResponseCommonCustomerDetailV2"
-    },
-    "ResponseCommonDiscoveryStatus": {
-        "properties": {
-            "data": {
-                "properties": {
-                    "detectionTime": {
-                        "description": "The date and time that the current outage was detected. Should only be present if the status property is PARTIAL_FAILURE or UNAVAILABLE",
-                        "type": "string",
-                        "x-cds-type": "DateTimeString"
-                    },
-                    "expectedResolutionTime": {
-                        "description": "The date and time that full service is expected to resume (if known). Should not be present if the status property has a value of OK.",
-                        "type": "string",
-                        "x-cds-type": "DateTimeString"
-                    },
-                    "explanation": {
-                        "description": "Provides an explanation of the current outage that can be displayed to an end customer. Mandatory if the status property is any value other than OK",
-                        "type": "string"
-                    },
-                    "status": {
-                        "description": "Enumeration with values. OK (implementation is fully functional). PARTIAL_FAILURE (one or more end points are unexpectedly unavailable). UNAVAILABLE (the full implementation is unexpectedly unavailable). SCHEDULED_OUTAGE (an advertised outage is in effect)",
-                        "enum": [
-                            "OK",
-                            "PARTIAL_FAILURE",
-                            "SCHEDULED_OUTAGE",
-                            "UNAVAILABLE"
-                        ],
-                        "type": "string"
-                    },
-                    "updateTime": {
-                        "description": "The date and time that this status was last updated by the Data Holder.",
-                        "type": "string",
-                        "x-cds-type": "DateTimeString"
-                    }
-                },
-                "required": [
-                    "status",
-                    "updateTime"
-                ],
-                "type": "object",
-                "x-conditional": [
-                    "explanation"
-                ]
-            },
-            "links": {
-                "$ref": "Links"
-            },
-            "meta": {
-                "$ref": "Meta"
-            }
-        },
-        "required": [
-            "data",
-            "links"
-        ],
-        "type": "object",
-        "$id": "ResponseCommonDiscoveryStatus"
-    },
-    "ResponseDiscoveryOutagesList": {
-        "properties": {
-            "data": {
-                "properties": {
-                    "outages": {
-                        "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
-                        "items": {
-                            "$ref": "DiscoveryOutage"
-                        },
-                        "type": "array"
-                    }
-                },
-                "required": [
-                    "outages"
-                ],
-                "type": "object"
-            },
-            "links": {
-                "$ref": "Links"
-            },
-            "meta": {
-                "$ref": "Meta"
-            }
-        },
-        "required": [
-            "data",
-            "links"
-        ],
-        "type": "object",
-        "$id": "ResponseDiscoveryOutagesList"
-    },
-    "ResponseErrorListV2": {
-        "properties": {
-            "errors": {
-                "description": "",
-                "items": {
-                    "properties": {
-                        "code": {
-                            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
-                            "type": "string"
-                        },
-                        "detail": {
-                            "description": "A human-readable explanation specific to this occurrence of the problem.",
-                            "type": "string"
-                        },
-                        "meta": {
-                            "$ref": "MetaError"
-                        },
-                        "title": {
-                            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "code",
-                        "detail",
-                        "title"
-                    ],
-                    "type": "object"
-                },
-                "type": "array"
-            }
-        },
-        "required": [
-            "errors"
-        ],
-        "type": "object",
-        "x-conditional": [
-            "meta"
-        ],
-        "$id": "ResponseErrorListV2"
-    },
     "CommonPAFAddress": {
         "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
         "properties": {
             "buildingName1": {
                 "description": "Building/Property name 1",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "buildingName2": {
                 "description": "Building/Property name 2",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "dpid": {
                 "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "flatUnitNumber": {
                 "description": "Unit number (including suffix, if applicable)",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "flatUnitType": {
                 "description": "Type of flat or unit for the address",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "floorLevelNumber": {
                 "description": "Floor or level number (including alpha characters)",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "floorLevelType": {
                 "description": "Type of floor or level for the address",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "localityName": {
                 "description": "Full name of locality",
@@ -870,24 +57,39 @@
             },
             "lotNumber": {
                 "description": "Allotment number for the address",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "postalDeliveryNumber": {
                 "description": "Postal delivery number if the address is a postal delivery type",
-                "type": "integer",
+                "type": [
+                    "integer",
+                    "null"
+                ],
                 "x-cds-type": "PositiveInteger"
             },
             "postalDeliveryNumberPrefix": {
                 "description": "Postal delivery number prefix related to the postal delivery number",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "postalDeliveryNumberSuffix": {
                 "description": "Postal delivery number suffix related to the postal delivery number",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "postalDeliveryType": {
                 "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "postcode": {
                 "description": "Postcode for the locality",
@@ -899,33 +101,54 @@
             },
             "streetName": {
                 "description": "The name of the street",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "streetSuffix": {
                 "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "streetType": {
                 "description": "The street type. Valid enumeration defined by Australia Post PAF code file",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "thoroughfareNumber1": {
                 "description": "Thoroughfare number for a property (first number in a property ranged address)",
-                "type": "integer",
+                "type": [
+                    "integer",
+                    "null"
+                ],
                 "x-cds-type": "PositiveInteger"
             },
             "thoroughfareNumber1Suffix": {
                 "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "thoroughfareNumber2": {
                 "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
-                "type": "integer",
+                "type": [
+                    "integer",
+                    "null"
+                ],
                 "x-cds-type": "PositiveInteger"
             },
             "thoroughfareNumber2Suffix": {
                 "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "required": [
@@ -972,11 +195,17 @@
             },
             "addressLine2": {
                 "description": "Second line of the standard address object",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "addressLine3": {
                 "description": "Third line of the standard address object",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "city": {
                 "description": "Name of the city or locality",
@@ -985,16 +214,25 @@
             "country": {
                 "default": "AUS",
                 "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "ExternalRef"
             },
             "mailingName": {
                 "description": "Name of the individual or business formatted for inclusion in an address used for physical mail",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "postcode": {
                 "description": "Mandatory for Australian addresses",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "state": {
                 "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
@@ -1083,7 +321,10 @@
             },
             "accountNumber": {
                 "description": "Optional identifier of the account as defined by the data holder.  This must be the value presented on physical statements (if it exists) and must not be used for the value of accountId",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "creationDate": {
                 "description": "The date that the account was created or opened",
@@ -1092,7 +333,10 @@
             },
             "displayName": {
                 "description": "An optional display name for the account if one exists or can be derived.  The content of this field is at the discretion of the data holder",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "required": [
@@ -1423,7 +667,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "amount": {
                 "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
@@ -1453,11 +700,17 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "description": {
                 "description": "Optional description of the transaction that can be used for display purposes",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "endDate": {
                 "description": "Date and time when the demand period ends",
@@ -1466,11 +719,17 @@
             },
             "invoiceNumber": {
                 "description": "The number of the invoice in which this transaction is included if it has been issued",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "isEstimate": {
                 "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
-                "type": "boolean"
+                "type": [
+                    "boolean",
+                    "null"
+                ]
             },
             "rate": {
                 "description": "The rate for the demand charge in kVA.  A negative value indicates power generated",
@@ -1478,7 +737,10 @@
             },
             "servicePointId": {
                 "description": "The ID of the service point to which this transaction applies if any",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "startDate": {
                 "description": "Date and time when the demand period starts",
@@ -1556,11 +818,17 @@
             },
             "invoiceNumber": {
                 "description": "The number of the invoice in which this transaction is included if it has been issued",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "servicePointId": {
                 "description": "The ID of the service point to which this transaction applies if any",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "required": [
@@ -1592,7 +860,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "amount": {
                 "description": "The amount of the charge",
@@ -1622,7 +893,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "description": {
                 "description": "A free text description of the item",
@@ -1630,20 +904,32 @@
             },
             "endDate": {
                 "description": "Optional end date for the application of the charge",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateString"
             },
             "invoiceNumber": {
                 "description": "The number of the invoice in which this transaction is included if it has been issued",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "servicePointId": {
                 "description": "The ID of the service point to which this transaction applies if any",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "startDate": {
                 "description": "Optional start date for the application of the charge",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateString"
             },
             "type": {
@@ -1657,7 +943,10 @@
                     "RCTI",
                     "OTHER"
                 ],
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "required": [
@@ -1712,7 +1001,10 @@
             },
             "gst": {
                 "description": "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "onceOff": {
@@ -1778,7 +1070,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "amount": {
                 "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
@@ -1808,11 +1103,17 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "description": {
                 "description": "Optional description of the transaction that can be used for display purposes",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "endDate": {
                 "description": "Date and time when the usage period ends",
@@ -1821,11 +1122,17 @@
             },
             "invoiceNumber": {
                 "description": "The number of the invoice in which this transaction is included if it has been issued",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "isEstimate": {
                 "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
-                "type": "boolean"
+                "type": [
+                    "boolean",
+                    "null"
+                ]
             },
             "measureUnit": {
                 "description": "The measurement unit of rate. Assumed to be KWH if absent",
@@ -1839,11 +1146,17 @@
                     "METER",
                     "MONTH"
                 ],
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "servicePointId": {
                 "description": "The ID of the service point to which this transaction applies if any",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "startDate": {
                 "description": "Date and time when the usage period starts",
@@ -1884,16 +1197,25 @@
         "properties": {
             "additionalInfo": {
                 "description": "Display text providing more information on the concession. Mandatory if type is VARIABLE",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "additionalInfoUri": {
                 "description": "Optional link to additional information regarding the concession",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "URIString"
             },
             "amount": {
                 "description": "Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "appliedTo": {
@@ -1907,11 +1229,17 @@
                     ],
                     "type": "string"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "discountFrequency": {
                 "description": "Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "ExternalRef"
             },
             "displayName": {
@@ -1920,17 +1248,26 @@
             },
             "endDate": {
                 "description": "Optional end date for the application of the concession",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateString"
             },
             "percentage": {
                 "description": "Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "RateString"
             },
             "startDate": {
                 "description": "Optional start date for the application of the concession",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateString"
             },
             "type": {
@@ -2189,7 +1526,10 @@
             "hasCentralProtectionControl": {
                 "default": false,
                 "description": "For DER installations where NSPs specify the need for additional forms of protection above those inbuilt in an inverter.  If absent then assumed to be false",
-                "type": "boolean"
+                "type": [
+                    "boolean",
+                    "null"
+                ]
             },
             "installedPhasesCount": {
                 "description": "The number of phases that DER is connected to",
@@ -2204,66 +1544,114 @@
                 "properties": {
                     "exportLimitkva": {
                         "description": "Maximum amount of power (kVA) that may be exported from a connection point to the grid, as monitored by a control / relay function. An absent value indicates no limit",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "frequencyRateOfChange": {
                         "description": "Rate of change of frequency trip point (Hz/s).",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "interTripScheme": {
                         "description": "Description of the form of inter-trip (e.g. 'from local substation').",
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "neutralVoltageDisplacement": {
                         "description": "Trip voltage.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "overFrequencyProtection": {
                         "description": "Protective function limit in Hz.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "overFrequencyProtectionDelay": {
                         "description": "Trip delay time in seconds.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "overVoltageProtection": {
                         "description": "Protective function limit in V.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "overVoltageProtectionDelay": {
                         "description": "Trip delay time in seconds.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "sustainedOverVoltage": {
                         "description": "Sustained over voltage.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "sustainedOverVoltageDelay": {
                         "description": "Trip delay time in seconds.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "underFrequencyProtection": {
                         "description": "Protective function limit in Hz.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "underFrequencyProtectionDelay": {
                         "description": "Trip delay time in seconds.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "underVoltageProtection": {
                         "description": "Protective function limit in V.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "underVoltageProtectionDelay": {
                         "description": "Trip delay time in seconds.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     },
                     "voltageVectorShift": {
                         "description": "Trip angle in degrees.",
-                        "type": "number"
+                        "type": [
+                            "number",
+                            "null"
+                        ]
                     }
                 },
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "servicePointId": {
                 "description": "Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements",
@@ -2300,7 +1688,10 @@
             },
             "dueDate": {
                 "description": "The date that the invoice is due to be paid",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateString"
             },
             "electricity": {
@@ -2313,12 +1704,18 @@
             },
             "gstAmount": {
                 "description": "The total GST amount for this invoice.  If absent then zero is assumed",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "invoiceAmount": {
                 "description": "The net amount due for this invoice regardless of previous balance",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "invoiceNumber": {
@@ -2345,7 +1742,10 @@
                     },
                     "gstAmount": {
                         "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "x-cds-type": "AmountString"
                     }
                 },
@@ -2353,7 +1753,10 @@
                     "discountAmount",
                     "date"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "paymentStatus": {
                 "description": "Indicator of the payment status for the invoice",
@@ -2382,7 +1785,10 @@
                     "startDate",
                     "endDate"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "servicePoints": {
                 "description": "Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges",
@@ -2421,7 +1827,10 @@
             },
             "totalGst": {
                 "description": "The total GST for all account level charges.  If absent then zero is assumed",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             }
         },
@@ -2467,7 +1876,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "totalGenerationCredits": {
                 "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
@@ -2476,7 +1888,10 @@
             },
             "totalGst": {
                 "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "totalOnceOffCharges": {
@@ -2539,7 +1954,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "totalGenerationCredits": {
                 "description": "The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)",
@@ -2548,7 +1966,10 @@
             },
             "totalGst": {
                 "description": "The total GST for all electricity usage charges.  If absent then zero is assumed",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "totalOnceOffCharges": {
@@ -2612,7 +2033,10 @@
         "properties": {
             "amount": {
                 "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smooting scenarios)",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "AmountString"
             },
             "cardDebit": {
@@ -2650,18 +2074,27 @@
                     "paymentFrequency",
                     "calculationType"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "directDebit": {
                 "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
                 "properties": {
                     "accountNumber": {
                         "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "bsb": {
                         "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "calculationType": {
                         "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
@@ -2674,7 +2107,10 @@
                     },
                     "isTokenised": {
                         "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent.  If false then bsb and accountNumber should not be expected to be included",
-                        "type": "boolean"
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
                     },
                     "paymentFrequency": {
                         "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
@@ -2686,7 +2122,10 @@
                     "paymentFrequency",
                     "calculationType"
                 ],
-                "type": "object",
+                "type": [
+                    "object",
+                    "null"
+                ],
                 "x-conditional": [
                     "bsb",
                     "accountNumber"
@@ -2704,7 +2143,10 @@
                 "required": [
                     "billFrequency"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "paymentScheduleUType": {
                 "description": "The type of object present in this response",
@@ -2754,35 +2196,56 @@
                 "properties": {
                     "bundleUri": {
                         "description": "A link to detail on bundles that this plan can be a part of",
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "x-cds-type": "URIString"
                     },
                     "eligibilityUri": {
                         "description": "A link to detail on eligibility criteria for the plan",
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "x-cds-type": "URIString"
                     },
                     "overviewUri": {
                         "description": "A link to a general overview of the plan",
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "x-cds-type": "URIString"
                     },
                     "pricingUri": {
                         "description": "A link to detail on pricing for the plan",
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "x-cds-type": "URIString"
                     },
                     "termsUri": {
                         "description": "A link to terms and conditions for the plan",
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
                         "x-cds-type": "URIString"
                     }
                 },
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "applicationUri": {
                 "description": "A link to an application web page where this plan can be applied for",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "URIString"
             },
             "brand": {
@@ -2800,24 +2263,39 @@
                     "RESIDENTIAL",
                     "BUSINESS"
                 ],
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "description": {
                 "description": "A description of the plan",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "displayName": {
                 "description": "The display name of the plan",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "effectiveFrom": {
                 "description": "The date and time from which this plan is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateTimeString"
             },
             "effectiveTo": {
                 "description": "The date and time at which this plan will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateTimeString"
             },
             "fuelType": {
@@ -2837,17 +2315,26 @@
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": [
+                            "array",
+                            "null"
+                        ]
                     },
                     "includedPostcodes": {
                         "description": "Array of valid Australian post codes that are included from the plan.  If absent defaults to all non-excluded post codes.  Each element is a single four digit postcode (e.g. 3000) or a range of postcodes defined by two four digit postcodes and a hyphen (e.g. 3000-3999)",
                         "items": {
                             "type": "string"
                         },
-                        "type": "array"
+                        "type": [
+                            "array",
+                            "null"
+                        ]
                     }
                 },
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "lastUpdated": {
                 "description": "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
@@ -2884,7 +2371,10 @@
         "properties": {
             "additionalFeeInformation": {
                 "description": "Free text field containing additional information of the fees for this contract",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "controlledLoad": {
                 "$ref": "EnergyPlanControlledLoad"
@@ -2916,7 +2406,10 @@
                 "required": [
                     "greenPercentage"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "isFixed": {
                 "description": "Flag indicating whether prices are fixed or variable",
@@ -2924,7 +2417,10 @@
             },
             "onExpiryDescription": {
                 "description": "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "paymentOption": {
                 "description": "Payment options for this contract",
@@ -2965,11 +2461,17 @@
                     "LOCAL",
                     "AEST"
                 ],
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "variation": {
                 "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if isFixed is true",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "required": [
@@ -3057,7 +2559,10 @@
             },
             "description": {
                 "description": "A description of the controlled load tier",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "displayName": {
                 "description": "A display name for the controlled load tier",
@@ -4053,7 +3558,10 @@
                             "BUSINESS",
                             "RESIDENTIAL"
                         ],
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "threshold": {
                         "description": "A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>",
@@ -4064,11 +3572,17 @@
                         ]
                     }
                 },
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "isGenerator": {
                 "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer",
-                "type": "boolean"
+                "type": [
+                    "boolean",
+                    "null"
+                ]
             },
             "jurisdictionCode": {
                 "description": "Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>",
@@ -4150,7 +3664,10 @@
                             "BUSINESS",
                             "RESIDENTIAL"
                         ],
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "threshold": {
                         "description": "A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>",
@@ -4161,7 +3678,10 @@
                         ]
                     }
                 },
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "distributionLossFactor": {
                 "properties": {
@@ -4187,7 +3707,10 @@
             },
             "isGenerator": {
                 "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer",
-                "type": "boolean"
+                "type": [
+                    "boolean",
+                    "null"
+                ]
             },
             "jurisdictionCode": {
                 "description": "Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>",
@@ -4360,7 +3883,10 @@
                     ],
                     "type": "object"
                 },
-                "type": "array"
+                "type": [
+                    "array",
+                    "null"
+                ]
             },
             "nationalMeteringId": {
                 "description": "The independent ID of the service point, known in the industry as the NMI",
@@ -4536,7 +4062,10 @@
                             "SUBSTITUTE",
                             "FINAL_SUBSTITUTE"
                         ],
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "value": {
                         "description": "Meter read value.  If positive then it means consumption, if negative it means export",
@@ -4546,11 +4075,17 @@
                 "required": [
                     "value"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "controlledLoad": {
                 "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime",
-                "type": "boolean"
+                "type": [
+                    "boolean",
+                    "null"
+                ]
             },
             "intervalRead": {
                 "description": "Mandatory if readUType is set to intervalRead",
@@ -4596,15 +4131,24 @@
                     "aggregateValue",
                     "intervalReads"
                 ],
-                "type": "object"
+                "type": [
+                    "object",
+                    "null"
+                ]
             },
             "meterID": {
                 "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "readEndDate": {
                 "description": "Date time when the meter reads end.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "DateString"
             },
             "readStartDate": {
@@ -4622,7 +4166,10 @@
             },
             "registerId": {
                 "description": "Register ID of the meter register where the meter reads are obtained",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "registerSuffix": {
                 "description": "Register suffix of the meter register where the meter reads are obtained",
@@ -4634,7 +4181,10 @@
             },
             "unitOfMeasure": {
                 "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values",
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "required": [
@@ -4718,22 +4268,34 @@
         "properties": {
             "first": {
                 "description": "URI to the first page of this set. Mandatory if this response is not the first page",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "URIString"
             },
             "last": {
                 "description": "URI to the last page of this set. Mandatory if this response is not the last page",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "URIString"
             },
             "next": {
                 "description": "URI to the next page of this set. Mandatory if this response is not the last page",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "URIString"
             },
             "prev": {
                 "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
-                "type": "string",
+                "type": [
+                    "string",
+                    "null"
+                ],
                 "x-cds-type": "URIString"
             },
             "self": {

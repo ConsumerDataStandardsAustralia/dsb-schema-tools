@@ -14,7 +14,10 @@
     },
     "dueDate": {
       "description": "The date that the invoice is due to be paid",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "DateString"
     },
     "electricity": {
@@ -27,12 +30,18 @@
     },
     "gstAmount": {
       "description": "The total GST amount for this invoice.  If absent then zero is assumed",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "invoiceAmount": {
       "description": "The net amount due for this invoice regardless of previous balance",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "x-cds-type": "AmountString"
     },
     "invoiceNumber": {
@@ -59,7 +68,10 @@
         },
         "gstAmount": {
           "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "x-cds-type": "AmountString"
         }
       },
@@ -67,7 +79,10 @@
         "discountAmount",
         "date"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "paymentStatus": {
       "description": "Indicator of the payment status for the invoice",
@@ -96,7 +111,10 @@
         "startDate",
         "endDate"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "servicePoints": {
       "description": "Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges",
