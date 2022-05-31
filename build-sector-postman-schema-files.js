@@ -19,35 +19,16 @@ const version = '1.17.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' +  sector );
-  //const commonDirPath = path.join(__dirname, version + '/schemas/common' );
   var stream = fs.createWriteStream(__dirname + '/' +  version + '/postman/postman-validation-' + sector + '-' + version + '.json');
   var cnt = 0;
   var isFirst = true;
-  //var dirCnt = 0;
- // var commonFile = fs.readdirSync(commonDirPath);
+
   var files = fs.readdirSync(directoryPath);
 
-  // if (sector != 'register' || sector != 'admin' || sector != 'dcr') {
-  //   commonFile.forEach(function (file) {
-  //     var filePath = path.join(commonDirPath, file);
-  //     if (cnt > 0) {
-  //       stream.write(',');
-  //     }
-  //     cnt++;
       if (isFirst == true) {
         isFirst = false;
         stream.write('{');
       }
-  //     var data = JSON.parse(fs.readFileSync(filePath));
-  //     var fileName = file.substr(0, file.indexOf('.'));
-  //     data.$id =  file;
-  //     stream.write('"' + fileName + '" :')
-  //     stream.write(JSON.stringify(data));
-  //     console.log("Processed " + file);  
-  //   });
-  //   stream.write(',');
-  // }
-
   
   cnt = 0;
   isFirst = true;
