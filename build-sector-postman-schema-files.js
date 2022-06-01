@@ -4,7 +4,7 @@
 
 // This will generate a file (or files) in the /<VERSION>/postman directory.
 // One for each sector listed in the "const sectors" array
-// Some manual processing is required of running this.
+// Some manual processing MAY be required after running this program.
 // This is to ensure that the Postman collection runner can consume the generated files
 // In the generated output files do the following:
 // 1. remove all .json and set blank
