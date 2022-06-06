@@ -1,0 +1,123 @@
+{
+  "type": "object",
+  "required": [
+    "timeOfUseType",
+    "startDate",
+    "endDate",
+    "usage",
+    "amount"
+  ],
+  "properties": {
+    "servicePointId": {
+      "description": "The ID of the service point to which this transaction applies if any",
+      "type": ["string", "null"]
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": ["string", "null"]
+    },
+    "timeOfUseType": {
+      "description": "The time of use type that the transaction applies to",
+      "type": "string",
+      "enum": [
+        "PEAK",
+        "OFF_PEAK",
+        "OFF_PEAK_DEMAND_CHARGE",
+        "SHOULDER",
+        "SHOULDER1",
+        "SHOULDER2",
+        "CONTROLLED_LOAD",
+        "SOLAR",
+        "AGGREGATE"
+      ]
+    },
+    "description": {
+      "description": "Optional description of the transaction that can be used for display purposes",
+      "type": ["string", "null"]
+    },
+    "isEstimate": {
+      "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
+      "type": ["boolean", "null"]
+    },
+    "startDate": {
+      "description": "Date and time when the usage period starts",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "endDate": {
+      "description": "Date and time when the usage period ends",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "measureUnit": {
+      "type": ["string", "null"],
+      "description": "The measurement unit of rate. Assumed to be KWH if absent",
+      "enum": [
+        "KWH",
+        "KVA",
+        "KVAR",
+        "KVARH",
+        "KW",
+        "DAYS",
+        "METER",
+        "MONTH"
+      ]
+    },
+    "usage": {
+      "description": "The usage for the period in measure unit.  A negative value indicates power generated",
+      "type": "number"
+    },
+    "amount": {
+      "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "calculationFactors": {
+      "description": "Additional calculation factors that inform the transaction",
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": [
+          "value",
+          "type"
+        ],
+        "properties": {
+          "value": {
+            "description": "The value of the calculation factor",
+            "type": "number"
+          },
+          "type": {
+            "description": "The type of the calculation factor",
+            "type": "string",
+            "enum": [
+              "DLF",
+              "MLF"
+            ]
+          }
+        }
+      }
+    },
+    "adjustments": {
+      "description": "Optional array of adjustments arising for this transaction",
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "required": [
+          "amount",
+          "description"
+        ],
+        "properties": {
+          "amount": {
+            "description": "The amount of the adjustment",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "description": {
+            "description": "A free text description of the adjustment",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

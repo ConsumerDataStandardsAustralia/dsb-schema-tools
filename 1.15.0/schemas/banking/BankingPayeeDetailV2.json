@@ -1,0 +1,43 @@
+{
+  "allOf": [
+    {
+      "$ref": "BankingPayeeV2.json"
+    },
+    {
+      "type": "object",
+      "required": [
+        "payeeUType"
+      ],
+      "x-conditional": [
+        "domestic",
+        "biller",
+        "digitalWallet",
+        "international"
+      ],
+      "properties": {
+        "payeeUType": {
+          "type": "string",
+          "description": "Type of object included that describes the payee in detail",
+          "enum": [
+            "biller",
+            "domestic",
+            "digitalWallet",
+            "international"
+          ]
+        },
+        "domestic": {
+          "$ref": "BankingDomesticPayee.json"
+        },
+        "digitalWallet": {
+          "$ref": "BankingDigitalWalletPayee.json"
+        },
+        "biller": {
+          "$ref": "BankingBillerPayee.json"
+        },
+        "international": {
+          "$ref": "BankingInternationalPayee.json"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "required": [
+    "amount",
+    "description"
+  ],
+  "properties": {
+    "servicePointId": {
+      "description": "The ID of the service point to which this transaction applies if any",
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": ["string","null"]
+    },
+    "startDate": {
+      "description": "Optional start date for the application of the charge",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "endDate": {
+      "description": "Optional end date for the application of the charge",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "type": {
+      "description": "Type of charge. Assumed to be other if absent",
+      "type": "string",
+      "enum": [
+        "ENVIRONMENTAL",
+        "REGULATED",
+        "NETWORK",
+        "METERING",
+        "RETAIL_SERVICE",
+        "RCTI",
+        "OTHER"
+      ]
+    },
+    "amount": {
+      "description": "The amount of the charge",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the item",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "required": [
+    "name",
+    "feeType"
+  ],
+  "x-conditional": [
+    "additionalValue",
+    "amount",
+    "balanceRate",
+    "transactionRate",
+    "accruedRate"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the fee"
+    },
+    "feeType": {
+      "type": "string",
+      "description": "The type of fee",
+      "enum": [
+        "DEPOSIT",
+        "EVENT",
+        "EXIT",
+        "PAYMENT",
+        "PERIODIC",
+        "PURCHASE",
+        "TRANSACTION",
+        "UPFRONT",
+        "VARIABLE",
+        "WITHDRAWAL"
+      ]
+    },
+    "amount": {
+      "type": "string",
+      "description": "The amount charged for the fee. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied",
+      "x-cds-type": "AmountString"
+    },
+    "balanceRate": {
+      "type": "string",
+      "description": "A fee rate calculated based on a proportion of the balance. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied.",
+      "x-cds-type": "RateString"
+    },
+    "transactionRate": {
+      "type": "string",
+      "description": "A fee rate calculated based on a proportion of a transaction. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied",
+      "x-cds-type": "RateString"
+    },
+    "accruedRate": {
+      "type": "string",
+      "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of amount, balanceRate, transactionRate and accruedRate is mandatory unless the *feeType* \"VARIABLE\" is supplied",
+      "x-cds-type": "RateString"
+    },
+    "accrualFrequency": {
+      "type": "string",
+      "description": "The indicative frequency with which the fee is calculated on the account. Only applies if balanceRate or accruedRate is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "x-cds-type": "ExternalRef"
+    },
+    "currency": {
+      "type": "string",
+      "description": "The currency the fee will be charged in. Assumes AUD if absent",
+      "x-cds-type": "CurrencyString"
+    },
+    "additionalValue": {
+      "type": "string",
+      "description": "Generic field containing additional information relevant to the [feeType](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [feeType](#tocSproductfeetypedoc)"
+    },
+    "additionalInfo": {
+      "type": "string",
+      "description": "Display text providing more information on the fee"
+    },
+    "additionalInfoUri": {
+      "type": "string",
+      "description": "Link to a web page with more information on this fee",
+      "x-cds-type": "URIString"
+    },
+    "discounts": {
+      "description": "An optional list of discounts to this fee that may be available",
+      "type": "array",
+      "items": {
+        "$ref": "BankingProductDiscount.json"
+      }
+    }
+  }
+}

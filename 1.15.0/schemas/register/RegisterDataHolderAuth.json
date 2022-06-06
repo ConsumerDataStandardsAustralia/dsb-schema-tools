@@ -1,0 +1,23 @@
+{
+  "description": "Provides details of authorisation endpoints for Data Holders",
+  "type": "object",
+  "required": [
+    "registerUType",
+    "jwksEndpoint"
+  ],
+  "properties": {
+    "registerUType": {
+      "type": "string",
+      "description": "The type of authentication and authorisation mechanism in use",
+      "enum": [
+        "SIGNED-JWT"
+      ]
+    },
+    "jwksEndpoint": {
+      "description": "JWKS endpoint for private_key_jwt client authentication with Data Recipient",
+      "type": "string",
+      "x-cds-type": "URIString",
+      "maxLength": 1000
+    }
+  }
+}
