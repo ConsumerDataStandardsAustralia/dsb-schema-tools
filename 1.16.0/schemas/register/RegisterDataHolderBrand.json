@@ -61,7 +61,7 @@
       "minimum": 1,
       "uniqueItems": true,
       "items": {
-        "$ref": "RegisterDataHolderAuth"
+        "$ref": "RegisterDataHolderAuth.json"
       }
     },
     "lastUpdated": {

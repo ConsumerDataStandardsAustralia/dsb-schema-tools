@@ -1,0 +1,60 @@
+{
+  "allOf": [
+    {
+      "$ref": "EnergyPlan.json"
+    },
+    {
+      "type": "object",
+      "x-conditional": [
+        "gasContract",
+        "electricityContract"
+      ],
+      "properties": {
+        "meteringCharges": {
+          "description": "Charges for metering included in the plan",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "displayName",
+              "minimumValue"
+            ],
+            "properties": {
+              "displayName": {
+                "type": "string",
+                "description": "Display name of the charge"
+              },
+              "description": {
+                "type": "string",
+                "description": "Description of the charge"
+              },
+              "minimumValue": {
+                "type": "string",
+                "x-cds-type": "AmountString",
+                "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
+              },
+              "maximumValue": {
+                "type": "string",
+                "x-cds-type": "AmountString",
+                "description": "The upper limit of the charge if the charge could occur in a range"
+              },
+              "period": {
+                "type": "string",
+                "x-cds-type": "ExternalRef",
+                "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
+              }
+            }
+          }
+        },
+        "gasContract": {
+          "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
+          "$ref": "EnergyPlanContractFull.json"
+        },
+        "electricityContract": {
+          "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
+          "$ref": "EnergyPlanContractFull.json"
+        }
+      }
+    }
+  ]
+}

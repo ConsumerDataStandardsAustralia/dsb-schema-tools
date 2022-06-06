@@ -10,8 +10,8 @@ const addFormats = require("ajv-formats");
 const { Console } = require("console");
 
 
-const sectors = ['banking', 'energy', 'register', 'admin', 'dcr'];
-const version = '1.14.0';
+const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'admin', 'dcr'];
+const version = '1.17.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' + sector);
@@ -49,7 +49,12 @@ sectors.forEach(sector => {
     var filePath = path.join(directoryPath, file);
     //console.log('Processing file: ' + filePath);
     var data = JSON.parse(fs.readFileSync(filePath));
-    validate.compile(data);
+    try {
+      validate.compile(data);
+    }catch(e) {
+        console.log('ERROR in file ' + file + ': ' + e.message);
+    }
+    
 
   });
   console.log("Validated " + sector);
