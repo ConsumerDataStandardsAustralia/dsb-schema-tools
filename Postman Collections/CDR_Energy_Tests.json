@@ -69,7 +69,7 @@
 							}
 						}
 					],
-					"id": "c0afb6fa-e085-4fb8-9706-2089dde8b7fe",
+					"_postman_id": "c0afb6fa-e085-4fb8-9706-2089dde8b7fe",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -289,7 +289,7 @@
 				},
 				{
 					"name": "Get Generic Plan Detail",
-					"id": "d1b86c6c-acf2-4bdc-a6e3-9a7ec1eaf0b9",
+					"_postman_id": "d1b86c6c-acf2-4bdc-a6e3-9a7ec1eaf0b9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -327,7 +327,8 @@
 								{
 									"id": "6eabe576-a16c-45a6-9265-3c0ccee8ac7a",
 									"key": "planId",
-									"value": "LCL91113MRE1@EME"
+									"value": "LCL91113MRE1@EME",
+									"type": "string"
 								}
 							]
 						},
@@ -336,7 +337,7 @@
 					"response": []
 				}
 			],
-			"id": "4154cd06-c97e-4140-91a4-234bbdf0f407"
+			"_postman_id": "4154cd06-c97e-4140-91a4-234bbdf0f407"
 		},
 		{
 			"name": "Secondary Dataholder",
@@ -349,7 +350,7 @@
 							"item": [
 								{
 									"name": "T.EAR.006 Get Service Point Detail",
-									"id": "3dbb99d1-b01f-44f6-af13-c4404fec0d43",
+									"_postman_id": "3dbb99d1-b01f-44f6-af13-c4404fec0d43",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -407,7 +408,8 @@
 													"id": "9cf3be4b-5dd5-4b5c-b361-130e9df09109",
 													"key": "servicePointId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId."
+													"description": "(Required) ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.",
+													"type": "string"
 												}
 											]
 										},
@@ -417,7 +419,7 @@
 								},
 								{
 									"name": "T.EAR.023 Get Usage For Service Point",
-									"id": "328bdd99-f498-4a14-8209-1065e68ed381",
+									"_postman_id": "328bdd99-f498-4a14-8209-1065e68ed381",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -483,7 +485,8 @@
 												{
 													"key": "servicePointId",
 													"value": "{{servicePointId}}",
-													"description": "(Required) ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId."
+													"description": "(Required) ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.",
+													"type": "string"
 												}
 											]
 										},
@@ -493,7 +496,7 @@
 								},
 								{
 									"name": "T.EAR.033 Get DER For Service Point",
-									"id": "2a7ad0c7-a608-4091-b215-3cee413f8011",
+									"_postman_id": "2a7ad0c7-a608-4091-b215-3cee413f8011",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -548,7 +551,8 @@
 													"id": "fc9771f7-cd19-4e81-a0e7-ed93e42db8ad",
 													"key": "servicePointId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId."
+													"description": "(Required) ID of the specific service point requested.  This is a tokenised ID previous obtained from the Service Point List Data end point.  Note that it is not a nationalMeteringId.",
+													"type": "string"
 												}
 											]
 										},
@@ -557,14 +561,15 @@
 									"response": []
 								}
 							],
-							"id": "8f298df2-43e8-4b53-b756-fff9d33a80c3"
+							"_postman_id": "8f298df2-43e8-4b53-b756-fff9d33a80c3",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "usage",
 							"item": [
 								{
 									"name": "Get Bulk Usage",
-									"id": "51c9daea-7b5e-4e2d-9e6c-7b221a563290",
+									"_postman_id": "51c9daea-7b5e-4e2d-9e6c-7b221a563290",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -636,7 +641,7 @@
 								},
 								{
 									"name": "Get Usage For Specific Service Points",
-									"id": "aec21b8c-933d-494d-88bc-a515c3b28dbd",
+									"_postman_id": "aec21b8c-933d-494d-88bc-a515c3b28dbd",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -716,14 +721,15 @@
 									"response": []
 								}
 							],
-							"id": "8e39da12-5ee5-4829-9b0a-39d3412a0aeb"
+							"_postman_id": "8e39da12-5ee5-4829-9b0a-39d3412a0aeb",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "der",
 							"item": [
 								{
 									"name": "Get Bulk DER",
-									"id": "ab542fa8-0ca6-4379-a261-3b4044e4dfde",
+									"_postman_id": "ab542fa8-0ca6-4379-a261-3b4044e4dfde",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -791,7 +797,7 @@
 								},
 								{
 									"name": "Get DER For Specific Service Points",
-									"id": "69721cd5-c920-4e99-acc5-369649201a89",
+									"_postman_id": "69721cd5-c920-4e99-acc5-369649201a89",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -871,7 +877,8 @@
 									"response": []
 								}
 							],
-							"id": "5fccf74e-7759-44c9-8bd1-cdf5fc000929"
+							"_postman_id": "5fccf74e-7759-44c9-8bd1-cdf5fc000929",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "T.EAR.001 Get Service Points v1",
@@ -898,16 +905,15 @@
 											"            pm.response.to.have.status(200);",
 											"        });",
 											"",
-											"",
-											"        pm.test(\"x-v header is present and has correct value\", function () {",
+											"        var requestMinXv = pm.request.headers.get(\"x-min-v\");",
+											"        pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {",
 											"            var requestXv = parseInt(pm.request.headers.get(\"x-v\"));",
-											"            var requestMinXv = parseInt(pm.request.headers.get(\"x-min-v\"));",
+											"            var requestMinXv = parseInt(requestMinXv);",
 											"            var checkValue = Math.min(requestXv, requestMinXv);",
 											"            var responseXv = parseInt(pm.response.headers.get(\"x-v\"));",
 											"            pm.expect(responseXv).gte(checkValue);",
 											"        });",
 											"",
-											"        console.log(jsonData);",
 											"        // Schema payload check",
 											"        pm.test('Response payload conforms to standards schema', function() {",
 											"            const valid = ajv.validate(\"EnergyPlanListResponse\", jsonData)",
@@ -928,7 +934,7 @@
 									}
 								}
 							],
-							"id": "4f014553-75c0-480d-9ad3-d69e102bd13c",
+							"_postman_id": "4f014553-75c0-480d-9ad3-d69e102bd13c",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -983,7 +989,7 @@
 						},
 						{
 							"name": "T.EAR.002 Get Service Points v1",
-							"id": "b7d9a332-d384-473e-9378-bb3ee84b9ad8",
+							"_postman_id": "b7d9a332-d384-473e-9378-bb3ee84b9ad8",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1059,10 +1065,11 @@
 							"response": []
 						}
 					],
-					"id": "237b8fa0-2427-4051-a313-7f9d0ae4757a"
+					"_postman_id": "237b8fa0-2427-4051-a313-7f9d0ae4757a",
+					"_postman_isSubFolder": true
 				}
 			],
-			"id": "86e7cb51-9efe-4784-8bea-1b75b6ad019f"
+			"_postman_id": "86e7cb51-9efe-4784-8bea-1b75b6ad019f"
 		},
 		{
 			"name": "Primary Dataholder",
@@ -1075,7 +1082,7 @@
 							"item": [
 								{
 									"name": "Get Account Detail",
-									"id": "fee369ac-13eb-4c27-bfeb-199cbe4c6520",
+									"_postman_id": "fee369ac-13eb-4c27-bfeb-199cbe4c6520",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1128,7 +1135,8 @@
 													"id": "ceec046a-cfb6-4f4a-a6e6-d7127d46e107",
 													"key": "accountId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point."
+													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+													"type": "string"
 												}
 											]
 										},
@@ -1138,7 +1146,7 @@
 								},
 								{
 									"name": "Get Agreed Payment Schedule",
-									"id": "17abeb10-9a78-4e75-88a3-1952fd5e780d",
+									"_postman_id": "17abeb10-9a78-4e75-88a3-1952fd5e780d",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1192,7 +1200,8 @@
 													"id": "d9edca99-ee96-476d-b493-2d5088e757da",
 													"key": "accountId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point."
+													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+													"type": "string"
 												}
 											]
 										},
@@ -1202,7 +1211,7 @@
 								},
 								{
 									"name": "Get Concessions",
-									"id": "299a9f26-d047-4dbf-957b-2b0201e8f2cd",
+									"_postman_id": "299a9f26-d047-4dbf-957b-2b0201e8f2cd",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1256,7 +1265,8 @@
 													"id": "9682d685-efc4-48dc-a48f-4feca732784d",
 													"key": "accountId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point."
+													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+													"type": "string"
 												}
 											]
 										},
@@ -1266,7 +1276,7 @@
 								},
 								{
 									"name": "Get Balance For Account",
-									"id": "ecf02db5-f6a6-4194-8a9f-9bfbc1fc91c0",
+									"_postman_id": "ecf02db5-f6a6-4194-8a9f-9bfbc1fc91c0",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1320,7 +1330,8 @@
 													"id": "1f122e08-0ba6-465a-9ffa-9f83b4d4fe6f",
 													"key": "accountId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point."
+													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+													"type": "string"
 												}
 											]
 										},
@@ -1330,7 +1341,7 @@
 								},
 								{
 									"name": "Get Invoices For Account",
-									"id": "2a260bf9-c181-4608-86a2-4aa4b9837092",
+									"_postman_id": "2a260bf9-c181-4608-86a2-4aa4b9837092",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1406,7 +1417,8 @@
 													"id": "9c62cf61-e672-4873-823c-1b6d8f0e8b25",
 													"key": "accountId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point."
+													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+													"type": "string"
 												}
 											]
 										},
@@ -1416,7 +1428,7 @@
 								},
 								{
 									"name": "Get Billing For Account",
-									"id": "dd3aba69-214b-4d4f-a94c-b07b25f8083c",
+									"_postman_id": "dd3aba69-214b-4d4f-a94c-b07b25f8083c",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1492,7 +1504,8 @@
 													"id": "be0ba263-4cc4-4bc9-b1f3-03cc64a645cc",
 													"key": "accountId",
 													"value": "Excepteur tem",
-													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point."
+													"description": "(Required) ID of a specific account to obtain data for.  This is a tokenised ID previous obtained from the Account List end point.",
+													"type": "string"
 												}
 											]
 										},
@@ -1501,14 +1514,15 @@
 									"response": []
 								}
 							],
-							"id": "908b4a94-312a-421a-a016-52c8e5e2c746"
+							"_postman_id": "908b4a94-312a-421a-a016-52c8e5e2c746",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "balances",
 							"item": [
 								{
 									"name": "Get Bulk Balances",
-									"id": "0c47554f-57ee-414c-b75f-9a8f19e5703e",
+									"_postman_id": "0c47554f-57ee-414c-b75f-9a8f19e5703e",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1575,7 +1589,7 @@
 								},
 								{
 									"name": "Get Balances For Specific Accounts",
-									"id": "496be802-74f7-4f88-8dce-5eee4b40a3a6",
+									"_postman_id": "496be802-74f7-4f88-8dce-5eee4b40a3a6",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1654,14 +1668,15 @@
 									"response": []
 								}
 							],
-							"id": "25edca15-977f-4339-a5f0-423b94136933"
+							"_postman_id": "25edca15-977f-4339-a5f0-423b94136933",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "invoices",
 							"item": [
 								{
 									"name": "Get Bulk Invoices",
-									"id": "ad004ef7-0326-47ce-bd3b-69954e305c40",
+									"_postman_id": "ad004ef7-0326-47ce-bd3b-69954e305c40",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1738,7 +1753,7 @@
 								},
 								{
 									"name": "Get Invoices For Specific Accounts",
-									"id": "740ac757-833f-4fc0-a902-f9697fef0245",
+									"_postman_id": "740ac757-833f-4fc0-a902-f9697fef0245",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1827,14 +1842,15 @@
 									"response": []
 								}
 							],
-							"id": "ff5b462c-9742-479b-bf14-ecfaccaa9eac"
+							"_postman_id": "ff5b462c-9742-479b-bf14-ecfaccaa9eac",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "billing",
 							"item": [
 								{
 									"name": "Get Bulk Billing",
-									"id": "09bfa49a-9245-4da0-92b4-13862af98bca",
+									"_postman_id": "09bfa49a-9245-4da0-92b4-13862af98bca",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -1911,7 +1927,7 @@
 								},
 								{
 									"name": "Get Billing For Specific Accounts",
-									"id": "4832ecd9-4434-44ae-a190-cb0065df0cd8",
+									"_postman_id": "4832ecd9-4434-44ae-a190-cb0065df0cd8",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
 									},
@@ -2000,11 +2016,12 @@
 									"response": []
 								}
 							],
-							"id": "55870e33-97cd-4305-a6ce-704321ad511d"
+							"_postman_id": "55870e33-97cd-4305-a6ce-704321ad511d",
+							"_postman_isSubFolder": true
 						},
 						{
 							"name": "Get Accounts",
-							"id": "9bd4fbc1-9773-4c57-8cbe-c88067dc90b7",
+							"_postman_id": "9bd4fbc1-9773-4c57-8cbe-c88067dc90b7",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -2069,10 +2086,11 @@
 							"response": []
 						}
 					],
-					"id": "503d10d8-a99f-40ef-acb5-a9338a048351"
+					"_postman_id": "503d10d8-a99f-40ef-acb5-a9338a048351",
+					"_postman_isSubFolder": true
 				}
 			],
-			"id": "42681465-259a-40d3-8030-149d56cbfc17"
+			"_postman_id": "42681465-259a-40d3-8030-149d56cbfc17"
 		}
 	],
 	"auth": {
@@ -2262,64 +2280,67 @@
 	],
 	"variable": [
 		{
-			"id": "3600773d-78a5-4ce0-baa9-253cae0df00e",
+			"id": "84b01e75-b101-489c-9344-8bc40e778fd5",
 			"key": "primaryDataHolderUrl",
-			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io"
+			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io",
+			"type": "string"
 		},
 		{
-			"id": "be038e59-212b-492b-8104-b1d77cacf1dc",
+			"id": "b1d672f7-1928-46da-bd91-87c66e4706f5",
 			"key": "secondaryDataHolderUrl",
-			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io"
+			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io",
+			"type": "string"
 		},
 		{
-			"id": "ca30d2a9-8792-4e21-8dfc-5f7530db1c2f",
+			"id": "86b39596-f928-4787-94fd-6aff69aa7644",
 			"key": "version",
-			"value": "1.17.0"
+			"value": "1.17.0",
+			"type": "string"
 		},
 		{
-			"id": "470e2754-ea58-4bf5-950d-11994389b6e7",
+			"id": "92ea51f0-31b3-423b-9389-a06a775ae257",
 			"key": "GlobalEnergySchema",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "3133bd7a-b8ad-4359-a383-25564d707885",
+			"id": "46ade726-2e71-42e8-a661-c9a9fe71a312",
 			"key": "cdsClientHeader",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2f0a0c54-7ede-4d6f-ba21-f21697c55574",
+			"id": "e3eb5f9d-048d-451f-9926-76e689185246",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "0f8190b8-8891-48c3-8970-eb22122193e8",
+			"id": "af64c514-e7d8-4bfc-ad31-0c1ae8a5d200",
 			"key": "testAccountId1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f1f664e0-9467-46a5-a293-fb5968fcde32",
+			"id": "dd4b778f-a527-4286-9a6f-a07bdfb893d7",
 			"key": "testPlanId1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "56f69873-7a1a-43b7-94ef-9d3993c71c25",
+			"id": "70d3f674-f661-49dd-9019-4309b7c1d88d",
 			"key": "pageSize",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "5c860445-c318-48c3-8020-f8f87eb35938",
+			"id": "1dea65d5-2d0a-407a-9140-3a092d71cdf2",
 			"key": "servicePointId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "73874519-b4d5-4e7a-9c24-41bac29e10d3",
+			"id": "54ad3b05-e4d2-4581-9dbc-2043d21908b1",
 			"key": "updatedSinceDate",
 			"value": "2010-05-30T06:23:54.270Z",
 			"type": "string"
