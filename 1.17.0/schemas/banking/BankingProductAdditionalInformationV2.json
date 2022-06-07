@@ -1,0 +1,103 @@
+{
+  "description": "Object that contains links to additional information on specific topics",
+  "properties": {
+    "additionalBundleUris": {
+      "description": "An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.",
+      "items": {
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "additionalEligibilityUris": {
+      "description": "An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.",
+      "items": {
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "additionalFeesAndPricingUris": {
+      "description": "An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.",
+      "items": {
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "additionalOverviewUris": {
+      "description": "An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.",
+      "items": {
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "additionalTermsUris": {
+      "description": "An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.",
+      "items": {
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "bundleUri": {
+      "description": "Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "eligibilityUri": {
+      "description": "Eligibility rules and criteria for the product. Mandatory if `additionalEligibilityUris` includes one or more supporting documents.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "feesAndPricingUri": {
+      "description": "Description of fees, pricing, discounts, exemptions and bonuses for the product. Mandatory if `additionalFeesAndPricingUris` includes one or more supporting documents.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "overviewUri": {
+      "description": "General overview of the product. Mandatory if `additionalOverviewUris` includes one or more supporting documents.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "termsUri": {
+      "description": "Terms and conditions for the product. Mandatory if `additionalTermsUris` includes one or more supporting documents.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "overviewUri",
+    "termsUri",
+    "eligibilityUri",
+    "feesAndPricingUri",
+    "bundleUri"
+  ]
+}

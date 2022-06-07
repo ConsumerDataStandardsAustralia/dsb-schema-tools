@@ -1,0 +1,90 @@
+{
+  "properties": {
+    "abn": {
+      "description": "Australian Business Number for the organisation",
+      "maxLength": 11,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "acn": {
+      "description": "Australian Company Number for the organisation",
+      "maxLength": 9,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "arbn": {
+      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+      "maxLength": 9,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brandName": {
+      "description": "The name of Data Holder Brand",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "dataHolderBrandId": {
+      "description": "Unique id of the Data Holder Brand issued by the CDR Register",
+      "maxLength": 36,
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-conditional": true
+    },
+    "industries": {
+      "description": "The industries the Data Holder Brand belongs to. Please note that the CDR Register entity model is constrained to one industry per brand which is planned to be relaxed in the future.",
+      "items": {
+        "enum": [
+          "banking",
+          "energy",
+          "telco"
+        ],
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "interimId": {
+      "description": "Interim id of the Data Holder Brand issued by the CDR Register. This is to be used to uniquely identify the record when dataHolderBrandId is not populated and is not to be reused",
+      "maxLength": 36,
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-conditional": true
+    },
+    "lastUpdated": {
+      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+      "format": "date-time",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "logoUri": {
+      "description": "Brand logo URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "publicBaseUri": {
+      "description": "Base URI for the Data Holder's Consumer Data Standard public endpoints",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    }
+  },
+  "required": [
+    "brandName",
+    "publicBaseUri",
+    "logoUri",
+    "industries",
+    "lastUpdated"
+  ],
+  "type": "object"
+}

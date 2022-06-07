@@ -1,0 +1,54 @@
+{
+  "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
+  "properties": {
+    "dailyCharge": {
+      "description": "The daily supply charge (exclusive of GST) for this controlled load tier",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A description of the controlled load tier",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "A display name for the controlled load tier",
+      "type": "string"
+    },
+    "period": {
+      "description": "The period for which the controlled load rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "rates": {
+      "description": "Array of controlled load rates in order of usage volume",
+      "items": {
+        "properties": {
+          "unitPrice": {
+            "description": "Unit price of usage per kWh (exclusive of GST)",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "volume": {
+            "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+            "type": "number"
+          }
+        },
+        "required": [
+          "unitPrice"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "displayName",
+    "dailyCharge",
+    "period",
+    "rates"
+  ],
+  "type": "object"
+}

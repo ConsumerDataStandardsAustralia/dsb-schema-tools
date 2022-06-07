@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "reads": {
+          "description": "Array of meter reads",
+          "items": {
+            "$ref": "EnergyUsageRead.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "reads"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

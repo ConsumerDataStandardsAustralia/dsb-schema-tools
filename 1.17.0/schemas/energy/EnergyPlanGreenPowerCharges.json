@@ -1,0 +1,74 @@
+{
+  "description": "Optional list of charges applicable to green power",
+  "items": {
+    "properties": {
+      "description": {
+        "description": "The description of the charge",
+        "type": "string"
+      },
+      "displayName": {
+        "description": "The display name of the charge",
+        "type": "string"
+      },
+      "scheme": {
+        "description": "The applicable green power scheme",
+        "enum": [
+          "GREENPOWER",
+          "OTHER"
+        ],
+        "type": "string"
+      },
+      "tiers": {
+        "description": "Array of charge tiers based on the percentage of green power used for the period implied by the type.  Array is in order of increasing percentage of green power",
+        "items": {
+          "properties": {
+            "amount": {
+              "description": "The amount of the charge if the type implies the application of a fixed amount",
+              "type": "string",
+              "x-cds-type": "AmountString"
+            },
+            "percentGreen": {
+              "description": "The upper percentage of green power used applicable for this tier",
+              "type": "string",
+              "x-cds-type": "RateString"
+            },
+            "rate": {
+              "description": "The rate of the charge if the type implies the application of a rate",
+              "type": "string",
+              "x-cds-type": "RateString"
+            }
+          },
+          "required": [
+            "percentGreen"
+          ],
+          "type": "object",
+          "x-conditional": [
+            "rate",
+            "amount"
+          ]
+        },
+        "type": "array"
+      },
+      "type": {
+        "description": "The type of charge",
+        "enum": [
+          "FIXED_PER_DAY",
+          "FIXED_PER_WEEK",
+          "FIXED_PER_MONTH",
+          "FIXED_PER_UNIT",
+          "PERCENT_OF_USE",
+          "PERCENT_OF_BILL"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "displayName",
+      "scheme",
+      "type",
+      "tiers"
+    ],
+    "type": "object"
+  },
+  "type": "array"
+}
