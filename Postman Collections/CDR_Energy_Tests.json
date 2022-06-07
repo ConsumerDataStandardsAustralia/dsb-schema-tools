@@ -898,16 +898,21 @@
 											"            pm.response.to.have.status(200);",
 											"        });",
 											"",
+											"        pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {",
+											"            var responseXv = pm.response.headers.get(\"x-v\");",
 											"",
-											"        pm.test(\"x-v header is present and has correct value\", function () {",
+											"            pm.expect(responseXv).to.b.a(\"number\");",
+											"        });",
+											"",
+											"        var requestMinXv = pm.request.headers.get(\"x-min-v\");",
+											"        pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {",
 											"            var requestXv = parseInt(pm.request.headers.get(\"x-v\"));",
-											"            var requestMinXv = parseInt(pm.request.headers.get(\"x-min-v\"));",
+											"            var requestMinXv = parseInt(requestMinXv);",
 											"            var checkValue = Math.min(requestXv, requestMinXv);",
 											"            var responseXv = parseInt(pm.response.headers.get(\"x-v\"));",
 											"            pm.expect(responseXv).gte(checkValue);",
 											"        });",
 											"",
-											"        console.log(jsonData);",
 											"        // Schema payload check",
 											"        pm.test('Response payload conforms to standards schema', function() {",
 											"            const valid = ajv.validate(\"EnergyPlanListResponse\", jsonData)",
@@ -2262,64 +2267,64 @@
 	],
 	"variable": [
 		{
-			"id": "3600773d-78a5-4ce0-baa9-253cae0df00e",
+			"id": "b99ca581-b42c-4c4f-af3b-1599321d09bd",
 			"key": "primaryDataHolderUrl",
 			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io"
 		},
 		{
-			"id": "be038e59-212b-492b-8104-b1d77cacf1dc",
+			"id": "45240435-5e6c-42ac-ba8d-b3e395a294fa",
 			"key": "secondaryDataHolderUrl",
 			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io"
 		},
 		{
-			"id": "ca30d2a9-8792-4e21-8dfc-5f7530db1c2f",
+			"id": "239d0d08-31e9-4f96-bf0d-e464dfb210ab",
 			"key": "version",
 			"value": "1.17.0"
 		},
 		{
-			"id": "470e2754-ea58-4bf5-950d-11994389b6e7",
+			"id": "49447c05-346f-47ab-8a75-088419065239",
 			"key": "GlobalEnergySchema",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "3133bd7a-b8ad-4359-a383-25564d707885",
+			"id": "5fcb49e0-29ba-480e-977e-a54f43a777c4",
 			"key": "cdsClientHeader",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2f0a0c54-7ede-4d6f-ba21-f21697c55574",
+			"id": "8c68ee99-a8c6-4095-9463-d9ed6d49043d",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "0f8190b8-8891-48c3-8970-eb22122193e8",
+			"id": "0839e179-0967-429c-9955-ab6c08b716e9",
 			"key": "testAccountId1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f1f664e0-9467-46a5-a293-fb5968fcde32",
+			"id": "6655153d-17bf-42be-bca4-cb7391373f02",
 			"key": "testPlanId1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "56f69873-7a1a-43b7-94ef-9d3993c71c25",
+			"id": "9a96c6c9-1bf5-4960-bb7d-c27043549290",
 			"key": "pageSize",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "5c860445-c318-48c3-8020-f8f87eb35938",
+			"id": "a440efc3-4880-47da-b9e5-fe9819eae12b",
 			"key": "servicePointId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "73874519-b4d5-4e7a-9c24-41bac29e10d3",
+			"id": "9fec1d01-a5f6-41a0-9c4f-227fe49d6c68",
 			"key": "updatedSinceDate",
 			"value": "2010-05-30T06:23:54.270Z",
 			"type": "string"
