@@ -76,7 +76,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{primaryDataHolderUrl}}/energy/plans?type=ALL&fuelType=ALL&effective={{timeCurrent}}&updated-since={{updatedSinceDate}}&page=1&page-size={{pageSize}}",
+							"raw": "{{primaryDataHolderUrl}}/energy/plans?type=ALL&fuelType=ALL&effective=ALL&updated-since={{updatedSinceDate}}&page=1&page-size={{pageSize}}",
 							"host": [
 								"{{primaryDataHolderUrl}}"
 							],
@@ -97,7 +97,7 @@
 								},
 								{
 									"key": "effective",
-									"value": "{{timeCurrent}}",
+									"value": "ALL",
 									"description": "Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'"
 								},
 								{
@@ -1126,21 +1126,6 @@
 											"            pm.response.to.have.status(200);",
 											"        });",
 											"",
-											"        pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {",
-											"            var responseXv = pm.response.headers.get(\"x-v\");",
-											"",
-											"            pm.expect(responseXv).to.b.a(\"number\");",
-											"        });",
-											"",
-											"        var requestMinXv = pm.request.headers.get(\"x-min-v\");",
-											"        pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {",
-											"            var requestXv = parseInt(pm.request.headers.get(\"x-v\"));",
-											"            var requestMinXv = parseInt(requestMinXv);",
-											"            var checkValue = Math.min(requestXv, requestMinXv);",
-											"            var responseXv = parseInt(pm.response.headers.get(\"x-v\"));",
-											"            pm.expect(responseXv).gte(checkValue);",
-											"        });",
-											"",
 											"        // Schema payload check",
 											"        pm.test('Response payload conforms to standards schema', function() {",
 											"            const valid = ajv.validate(\"EnergyServicePointListResponse\", jsonData)",
@@ -1229,23 +1214,8 @@
 											"            pm.response.to.have.status(200);\r",
 											"        });\r",
 											"\r",
-											"        // pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {\r",
-											"        //     var responseXv = pm.response.headers.get(\"x-v\");\r",
-											"\r",
-											"        //     pm.expect(responseXv).to.b.a(\"number\");\r",
-											"        // });\r",
-											"\r",
-											"        // var requestMinXv = pm.request.headers.get(\"x-min-v\");\r",
-											"        // pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {\r",
-											"        //     var requestXv = parseInt(pm.request.headers.get(\"x-v\"));\r",
-											"        //     var requestMinXv = parseInt(requestMinXv);\r",
-											"        //     var checkValue = Math.min(requestXv, requestMinXv);\r",
-											"        //     var responseXv = parseInt(pm.response.headers.get(\"x-v\"));\r",
-											"        //     pm.expect(responseXv).gte(checkValue);\r",
-											"        // });\r",
-											"\r",
 											"        // Schema payload check\r",
-											"        pm.test('Response payload conforms to standards schema', function() {\r",
+											"        pm.test('A.EAR.004 Response payload conforms to standards schema', function() {\r",
 											"            const valid = ajv.validate(\"EnergyServicePointListResponse\", jsonData)\r",
 											"            if (!valid){\r",
 											"            ajv.errors.forEach(element => {\r",
@@ -1295,7 +1265,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints?page=1&page-size=2",
+									"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints?page=1&page-size={{pageSize}}",
 									"host": [
 										"{{secondaryDataHolderUrl}}"
 									],
@@ -1312,7 +1282,7 @@
 										},
 										{
 											"key": "page-size",
-											"value": "2",
+											"value": "{{pageSize}}",
 											"description": "Page size to request.  Default is 25 (standard pagination)"
 										}
 									]
