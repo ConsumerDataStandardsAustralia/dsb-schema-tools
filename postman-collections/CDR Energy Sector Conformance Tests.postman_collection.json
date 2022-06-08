@@ -11,7 +11,7 @@
 			"name": "Unauthenticated",
 			"item": [
 				{
-					"name": "Get Generic Plans",
+					"name": "Get Generic Plans v1",
 					"event": [
 						{
 							"listen": "test",
@@ -92,7 +92,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{primaryDataHolderUrl}}/energy/plans?type=ALL&fuelType=ALL&effective=CURRENT&page=1&page-size={{pageSize}}",
+							"raw": "{{primaryDataHolderUrl}}/energy/plans?type=ALL&fuelType=ALL&effective={{timeCurrent}}&updated-since={{updatedSinceDate}}&page=1&page-size={{pageSize}}",
 							"host": [
 								"{{primaryDataHolderUrl}}"
 							],
@@ -113,14 +113,13 @@
 								},
 								{
 									"key": "effective",
-									"value": "CURRENT",
+									"value": "{{timeCurrent}}",
 									"description": "Allows for the filtering of plans based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'"
 								},
 								{
 									"key": "updated-since",
 									"value": "{{updatedSinceDate}}",
-									"description": "Only include plans that have been updated after the specified date and time.  If absent defaults to include all plans",
-									"disabled": true
+									"description": "Only include plans that have been updated after the specified date and time.  If absent defaults to include all plans"
 								},
 								{
 									"key": "brand",
@@ -281,7 +280,7 @@
 					]
 				},
 				{
-					"name": "Get Generic Plan Detail",
+					"name": "Get Generic Plan Detail v1",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -334,7 +333,7 @@
 							"name": "{service Point Id}",
 							"item": [
 								{
-									"name": "T.EAR.006 Get Service Point Detail",
+									"name": "T.EAR.006 Get Service Point Detail v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -393,7 +392,7 @@
 									"response": []
 								},
 								{
-									"name": "T.EAR.023 Get Usage For Service Point",
+									"name": "T.EAR.023 Get Usage For Service Point v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -465,7 +464,7 @@
 									"response": []
 								},
 								{
-									"name": "T.EAR.033 Get DER For Service Point",
+									"name": "T.EAR.033 Get DER For Service Point v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -530,7 +529,7 @@
 							"name": "usage",
 							"item": [
 								{
-									"name": "Get Bulk Usage",
+									"name": "Get Bulk Usage v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -598,7 +597,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Usage For Specific Service Points",
+									"name": "Get Usage For Specific Service Points v1",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -1028,7 +1027,7 @@
 							"name": "{account Id}",
 							"item": [
 								{
-									"name": "Get Account Detail",
+									"name": "Get Account Detail v1",
 									"request": {
 										"auth": {
 											"type": "bearer",
@@ -1096,7 +1095,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Agreed Payment Schedule",
+									"name": "Get Agreed Payment Schedule v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1155,7 +1154,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Concessions",
+									"name": "Get Concessions v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1214,7 +1213,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Balance For Account",
+									"name": "Get Balance For Account v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1273,7 +1272,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Invoices For Account",
+									"name": "Get Invoices For Account v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1354,7 +1353,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Billing For Account",
+									"name": "Get Billing For Account v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1440,7 +1439,7 @@
 							"name": "balances",
 							"item": [
 								{
-									"name": "Get Bulk Balances",
+									"name": "Get Bulk Balances v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1503,7 +1502,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Balances For Specific Accounts",
+									"name": "Get Balances For Specific Accounts v1",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -1585,7 +1584,7 @@
 							"name": "invoices",
 							"item": [
 								{
-									"name": "Get Bulk Invoices",
+									"name": "Get Bulk Invoices v1",
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1658,7 +1657,7 @@
 									"response": []
 								},
 								{
-									"name": "Get Invoices For Specific Accounts",
+									"name": "Get Invoices For Specific Accounts v1",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -1911,7 +1910,7 @@
 							]
 						},
 						{
-							"name": "Get Accounts",
+							"name": "Get Accounts v1",
 							"request": {
 								"method": "GET",
 								"header": [
