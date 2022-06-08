@@ -845,7 +845,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"servicePointIds\": [\n            \"ex in\",\n            \"tempor labore sint\"\n        ]\n    },\n    \"meta\": {}\n}",
+											"raw": "{\n    \"data\": {\n        \"servicePointIds\": [\n            \"{{servicePointId}}\"\n        ]\n    },\n    \"meta\": {}\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1143,7 +1143,7 @@
 											"",
 											"        // Schema payload check",
 											"        pm.test('Response payload conforms to standards schema', function() {",
-											"            const valid = ajv.validate(\"EnergyPlanListResponse\", jsonData)",
+											"            const valid = ajv.validate(\"EnergyServicePointListResponse\", jsonData)",
 											"            if (!valid){",
 											"            ajv.errors.forEach(element => {",
 											"                console.log(JSON.stringify(element));",
@@ -2521,7 +2521,7 @@
 		},
 		{
 			"key": "servicePointId",
-			"value": "",
+			"value": "SP12345",
 			"type": "string"
 		},
 		{
