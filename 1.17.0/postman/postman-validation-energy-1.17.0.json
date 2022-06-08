@@ -4012,7 +4012,7 @@
         "required": [
             "data",
             "links",
-            "me"
+            "meta"
         ],
         "type": "object",
         "$id": "EnergyServicePointListResponse"
