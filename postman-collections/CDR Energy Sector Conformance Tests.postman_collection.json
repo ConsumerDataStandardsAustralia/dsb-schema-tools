@@ -17,8 +17,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"if (utils.minimumVariablesProvided() == true)\r",
-									"{\r",
+									"\r",
 									"        // Parse the response body\r",
 									"        var jsonData;\r",
 									"        try {\r",
@@ -28,27 +27,16 @@
 									"        catch(e) {\r",
 									"            console.log(e);\r",
 									"        }\r",
-									"         //console.log(response);\r",
 									"\r",
 									"        // HTTP Response and headers\r",
 									"        pm.test(\"Status code is 200\", function () {\r",
 									"            pm.response.to.have.status(200);\r",
 									"        });\r",
 									"\r",
-									"        // pm.test(\"Content-Type header specifies json\", function () {\r",
-									"        //     pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
-									"        // });\r",
 									"\r",
-									"        pm.test(\"x-v header is present and has correct value\", function () {\r",
-									"            var requestXv = parseInt(pm.request.headers.get(\"x-v\"));\r",
-									"            var requestMinXv = parseInt(pm.request.headers.get(\"x-min-v\"));\r",
-									"            var checkValue = Math.min(requestXv, requestMinXv);\r",
-									"            var responseXv = parseInt(pm.response.headers.get(\"x-v\"));\r",
-									"            pm.expect(responseXv).gte(checkValue);\r",
-									"        });\r",
 									"\r",
-									"        console.log(jsonData);\r",
 									"        // Schema payload check\r",
+									"                // Schema payload check\r",
 									"        pm.test('Response payload conforms to standards schema', function() {\r",
 									"            const valid = ajv.validate(\"EnergyPlanListResponse\", jsonData)\r",
 									"            if (!valid){\r",
@@ -57,12 +45,8 @@
 									"                });\r",
 									"            };\r",
 									"            pm.expect(valid).to.be.true; \r",
-									"        });    \r",
-									"}\r",
-									"else \r",
-									"{\r",
-									"\t    console.error(\"Minimum variable set not defined for test: baseUrl\");\r",
-									"}\r",
+									"        });   \r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -281,7 +265,48 @@
 				},
 				{
 					"name": "Get Generic Plan Detail v1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"        // Parse the response body",
+									"        var jsonData;",
+									"        try {",
+									"            jsonData = pm.response.json();",
+									"",
+									"            }",
+									"        catch(e) {",
+									"            console.log(e);",
+									"        }",
+									"",
+									"        // HTTP Response and headers",
+									"        pm.test(\"Status code is 200\", function () {",
+									"            pm.response.to.have.status(200);",
+									"        });",
+									"",
+									"",
+									"        // Schema payload check",
+									"        pm.test('Response payload conforms to standards schema', function() {",
+									"            const valid = ajv.validate(\"EnergyPlanResponse\", jsonData)",
+									"            if (!valid){",
+									"            ajv.errors.forEach(element => {",
+									"                console.log(JSON.stringify(element));",
+									"                });",
+									"            };",
+									"            pm.expect(valid).to.be.true; ",
+									"        });    ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -334,6 +359,43 @@
 							"item": [
 								{
 									"name": "T.EAR.006 Get Service Point Detail v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body",
+													"        var jsonData;",
+													"        try {",
+													"            jsonData = pm.response.json();",
+													"",
+													"            }",
+													"        catch(e) {",
+													"            console.log(e);",
+													"        }",
+													"",
+													"        // HTTP Response and headers",
+													"        pm.test(\"Status code is 200\", function () {",
+													"            pm.response.to.have.status(200);",
+													"        });",
+													"",
+													"",
+													"        // Schema payload check",
+													"        pm.test('Response payload conforms to standards schema', function() {",
+													"            const valid = ajv.validate(\"EnergyServicePointDetailResponse\", jsonData)",
+													"            if (!valid){",
+													"            ajv.errors.forEach(element => {",
+													"                console.log(JSON.stringify(element));",
+													"                });",
+													"            };",
+													"            pm.expect(valid).to.be.true; ",
+													"        });    ",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -393,6 +455,43 @@
 								},
 								{
 									"name": "T.EAR.023 Get Usage For Service Point v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyUsageListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -465,6 +564,43 @@
 								},
 								{
 									"name": "T.EAR.033 Get DER For Service Point v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyDerDetailResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -530,46 +666,79 @@
 							"item": [
 								{
 									"name": "Get Bulk Usage v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyUsageListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
 											{
-												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 												"key": "x-v",
-												"value": "1"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
 												"key": "x-min-v",
-												"value": "1"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
 												"key": "x-fapi-interaction-id",
-												"value": "Excepteur tem",
-												"disabled": true
+												"value": "{{x-fapi-interaction-id}}",
+												"type": "text"
 											},
 											{
-												"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 												"key": "x-fapi-auth-date",
-												"value": "Excepteur tem",
-												"disabled": true
+												"value": "{{timeTenMinutesAgo}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
 												"key": "x-fapi-customer-ip-address",
-												"value": "Excepteur tem",
-												"disabled": true
+												"value": "{{x-fapi-customer-ip-address}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 												"key": "x-cds-client-headers",
-												"value": "Excepteur tem",
-												"disabled": true
+												"value": "{{cdsClientHeader}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/usage?page=1&page-size=2",
+											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/usage?page=1&page-size={{pageSize}}",
 											"host": [
 												"{{secondaryDataHolderUrl}}"
 											],
@@ -587,7 +756,7 @@
 												},
 												{
 													"key": "page-size",
-													"value": "2",
+													"value": "{{pageSize}}",
 													"description": "Page size to request.  Default is 25 (standard pagination)"
 												}
 											]
@@ -598,6 +767,43 @@
 								},
 								{
 									"name": "Get Usage For Specific Service Points v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyUsageListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "POST",
 										"header": [
@@ -647,7 +853,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/usage?page=-60678824.86384351&page-size=-60678824.86384351",
+											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/usage?page=1&page-size={{pageSize}}",
 											"host": [
 												"{{secondaryDataHolderUrl}}"
 											],
@@ -660,12 +866,12 @@
 											"query": [
 												{
 													"key": "page",
-													"value": "-60678824.86384351",
+													"value": "1",
 													"description": "Page of results to request (standard pagination)"
 												},
 												{
 													"key": "page-size",
-													"value": "-60678824.86384351",
+													"value": "{{pageSize}}",
 													"description": "Page size to request.  Default is 25 (standard pagination)"
 												}
 											]
@@ -681,42 +887,79 @@
 							"item": [
 								{
 									"name": "Get Bulk DER",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyDerListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
 											{
-												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 												"key": "x-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
 												"key": "x-min-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
 												"key": "x-fapi-interaction-id",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-interaction-id}}",
+												"type": "text"
 											},
 											{
-												"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 												"key": "x-fapi-auth-date",
-												"value": "Excepteur tem"
+												"value": "{{timeTenMinutesAgo}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
 												"key": "x-fapi-customer-ip-address",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-customer-ip-address}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 												"key": "x-cds-client-headers",
-												"value": "Excepteur tem"
+												"value": "{{cdsClientHeader}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/der?page=-60678824.86384351&page-size=-60678824.86384351",
+											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/der?page=1&page-size={{pageSize}}",
 											"host": [
 												"{{secondaryDataHolderUrl}}"
 											],
@@ -729,12 +972,12 @@
 											"query": [
 												{
 													"key": "page",
-													"value": "-60678824.86384351",
+													"value": "1",
 													"description": "Page of results to request (standard pagination)"
 												},
 												{
 													"key": "page-size",
-													"value": "-60678824.86384351",
+													"value": "{{pageSize}}",
 													"description": "Page size to request.  Default is 25 (standard pagination)"
 												}
 											]
@@ -745,47 +988,85 @@
 								},
 								{
 									"name": "Get DER For Specific Service Points",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyDerListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "POST",
 										"header": [
 											{
-												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 												"key": "x-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
 												"key": "x-min-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
 												"key": "x-fapi-interaction-id",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-interaction-id}}",
+												"type": "text"
 											},
 											{
-												"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 												"key": "x-fapi-auth-date",
-												"value": "Excepteur tem"
+												"value": "{{timeTenMinutesAgo}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
 												"key": "x-fapi-customer-ip-address",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-customer-ip-address}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 												"key": "x-cds-client-headers",
-												"value": "Excepteur tem"
+												"value": "{{cdsClientHeader}}",
+												"type": "text"
 											},
 											{
 												"key": "Content-Type",
-												"value": "application/json"
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"servicePointIds\": [\n            \"minim Excepteur ad in\",\n            \"ea \"\n        ]\n    },\n    \"meta\": {}\n}",
+											"raw": "{\n    \"data\": {\n        \"servicePointIds\": [\n            {{servicePointId}}\n        ]\n    },\n    \"meta\": {}\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -793,7 +1074,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/der?page=-60678824.86384351&page-size=-60678824.86384351",
+											"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints/der?page=1&page-size={{pageSize}}",
 											"host": [
 												"{{secondaryDataHolderUrl}}"
 											],
@@ -806,12 +1087,12 @@
 											"query": [
 												{
 													"key": "page",
-													"value": "-60678824.86384351",
+													"value": "1",
 													"description": "Page of results to request (standard pagination)"
 												},
 												{
 													"key": "page-size",
-													"value": "-60678824.86384351",
+													"value": "{{pageSize}}",
 													"description": "Page size to request.  Default is 25 (standard pagination)"
 												}
 											]
@@ -829,8 +1110,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"if (utils.minimumVariablesProvided() == true)",
-											"{",
+											"",
 											"        // Parse the response body",
 											"        var jsonData;",
 											"        try {",
@@ -871,27 +1151,13 @@
 											"            };",
 											"            pm.expect(valid).to.be.true; ",
 											"        });    ",
-											"}",
-											"else ",
-											"{",
-											"\t    console.error(\"Minimum variable set not defined for test: baseUrl\");",
-											"}"
+											""
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -942,17 +1208,59 @@
 						},
 						{
 							"name": "T.EAR.002 Get Service Points v1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"        // Parse the response body\r",
+											"        var jsonData;\r",
+											"        try {\r",
+											"            jsonData = pm.response.json();\r",
+											"\r",
+											"            }\r",
+											"        catch(e) {\r",
+											"            console.log(e);\r",
+											"        }\r",
+											"\r",
+											"        // HTTP Response and headers\r",
+											"        pm.test(\"Status code is 200\", function () {\r",
+											"            pm.response.to.have.status(200);\r",
+											"        });\r",
+											"\r",
+											"        // pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {\r",
+											"        //     var responseXv = pm.response.headers.get(\"x-v\");\r",
+											"\r",
+											"        //     pm.expect(responseXv).to.b.a(\"number\");\r",
+											"        // });\r",
+											"\r",
+											"        // var requestMinXv = pm.request.headers.get(\"x-min-v\");\r",
+											"        // pm.test(!requestMinXv? \"x-v header is present and has correct value\": pm.test.skip, function () {\r",
+											"        //     var requestXv = parseInt(pm.request.headers.get(\"x-v\"));\r",
+											"        //     var requestMinXv = parseInt(requestMinXv);\r",
+											"        //     var checkValue = Math.min(requestXv, requestMinXv);\r",
+											"        //     var responseXv = parseInt(pm.response.headers.get(\"x-v\"));\r",
+											"        //     pm.expect(responseXv).gte(checkValue);\r",
+											"        // });\r",
+											"\r",
+											"        // Schema payload check\r",
+											"        pm.test('Response payload conforms to standards schema', function() {\r",
+											"            const valid = ajv.validate(\"EnergyServicePointListResponse\", jsonData)\r",
+											"            if (!valid){\r",
+											"            ajv.errors.forEach(element => {\r",
+											"                console.log(JSON.stringify(element));\r",
+											"                });\r",
+											"            };\r",
+											"            pm.expect(valid).to.be.true; \r",
+											"        });    \r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{accessToken}}",
-											"type": "string"
-										}
-									]
-								},
 								"method": "GET",
 								"header": [
 									{
@@ -1029,16 +1337,6 @@
 								{
 									"name": "Get Account Detail v1",
 									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{accessToken}}",
-													"type": "string"
-												}
-											]
-										},
 										"method": "GET",
 										"header": [
 											{
@@ -1754,38 +2052,39 @@
 										"method": "GET",
 										"header": [
 											{
-												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 												"key": "x-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text",
+												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)"
 											},
 											{
-												"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
 												"key": "x-min-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text"
 											},
 											{
-												"description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
 												"key": "x-fapi-interaction-id",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-interaction-id}}",
+												"type": "text"
 											},
 											{
-												"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 												"key": "x-fapi-auth-date",
-												"value": "Excepteur tem"
+												"value": "{{timeTenMinutesAgo}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
 												"key": "x-fapi-customer-ip-address",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-customer-ip-address}}",
+												"type": "text"
 											},
 											{
-												"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 												"key": "x-cds-client-headers",
-												"value": "Excepteur tem"
+												"value": "{{cdsClientHeader}}",
+												"type": "text"
 											}
 										],
 										"url": {
-											"raw": "{{primaryDataHolderUrl}}/energy/accounts/billing?newest-time=Excepteur tem&oldest-time=Excepteur tem&page=-60678824.86384351&page-size=-60678824.86384351",
+											"raw": "{{primaryDataHolderUrl}}/energy/accounts/billing?newest-time={{timeCurrent}}&oldest-time={{dateLastYear}}&page=1&page-size={{pageSize}}",
 											"host": [
 												"{{primaryDataHolderUrl}}"
 											],
@@ -1797,22 +2096,22 @@
 											"query": [
 												{
 													"key": "newest-time",
-													"value": "Excepteur tem",
+													"value": "{{timeCurrent}}",
 													"description": "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type"
 												},
 												{
 													"key": "oldest-time",
-													"value": "Excepteur tem",
+													"value": "{{dateLastYear}}",
 													"description": "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type"
 												},
 												{
 													"key": "page",
-													"value": "-60678824.86384351",
+													"value": "1",
 													"description": "Page of results to request (standard pagination)"
 												},
 												{
 													"key": "page-size",
-													"value": "-60678824.86384351",
+													"value": "{{pageSize}}",
 													"description": "Page size to request.  Default is 25 (standard pagination)"
 												}
 											]
@@ -1827,38 +2126,45 @@
 										"method": "POST",
 										"header": [
 											{
-												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)",
 												"key": "x-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text",
+												"description": "(Required) Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If the value of [x-min-v](#request-headers) is equal to or higher than the value of [x-v](#request-headers) then the [x-min-v](#request-headers) header should be treated as absent. If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable. See [HTTP Headers](#request-headers)"
 											},
 											{
-												"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable.",
 												"key": "x-min-v",
-												"value": "Excepteur tem"
+												"value": "1",
+												"type": "text",
+												"description": "Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between [x-min-v](#request-headers) and [x-v](#request-headers). If all versions requested are not supported then the data holder must respond with a 406 Not Acceptable."
 											},
 											{
-												"description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction.",
 												"key": "x-fapi-interaction-id",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-interaction-id}}",
+												"type": "text",
+												"description": "An [RFC4122](https://tools.ietf.org/html/rfc4122) UUID used as a correlation id. If provided, the data holder must play back this value in the x-fapi-interaction-id response header. If not provided a [RFC4122] UUID value is required to be provided in the response header to track the interaction."
 											},
 											{
-												"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls.",
 												"key": "x-fapi-auth-date",
-												"value": "Excepteur tem"
+												"value": "{{timeTenMinutesAgo}}",
+												"type": "text",
+												"description": "The time when the customer last logged in to the data recipient. Required for all resource calls (customer present and unattended). Not to be included for unauthenticated calls."
 											},
 											{
-												"description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls.",
 												"key": "x-fapi-customer-ip-address",
-												"value": "Excepteur tem"
+												"value": "{{x-fapi-customer-ip-address}}",
+												"type": "text",
+												"description": "The customer's original IP address if the customer is currently logged in to the data recipient. The presence of this header indicates that the API is being called in a customer present context. Not to be included for unauthenticated calls."
 											},
 											{
-												"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls.",
 												"key": "x-cds-client-headers",
-												"value": "Excepteur tem"
+												"value": "{{cdsClientHeader}}",
+												"type": "text",
+												"description": "The customer's original standard http headers [Base64](#common-field-types) encoded, including the original User Agent header, if the customer is currently logged in to the data recipient. Mandatory for customer present calls.  Not required for unattended or unauthenticated calls."
 											},
 											{
 												"key": "Content-Type",
-												"value": "application/json"
+												"value": "application/json",
+												"type": "text"
 											}
 										],
 										"body": {
@@ -1871,7 +2177,7 @@
 											}
 										},
 										"url": {
-											"raw": "{{primaryDataHolderUrl}}/energy/accounts/billing?newest-time=Excepteur tem&oldest-time=Excepteur tem&page=-60678824.86384351&page-size=-60678824.86384351",
+											"raw": "{{primaryDataHolderUrl}}/energy/accounts/billing?newest-time={{timeCurrent}}&oldest-time={{dateLastYear}}&page=1&page-size={{pageSize}}",
 											"host": [
 												"{{primaryDataHolderUrl}}"
 											],
@@ -1883,22 +2189,22 @@
 											"query": [
 												{
 													"key": "newest-time",
-													"value": "Excepteur tem",
+													"value": "{{timeCurrent}}",
 													"description": "Constrain the request to records with effective time at or before this date/time.  If absent defaults to current date/time.  Format is aligned to DateTimeString common type"
 												},
 												{
 													"key": "oldest-time",
-													"value": "Excepteur tem",
+													"value": "{{dateLastYear}}",
 													"description": "Constrain the request to records with effective time at or after this date/time. If absent defaults to newest-time minus 12 months.  Format is aligned to DateTimeString common type"
 												},
 												{
 													"key": "page",
-													"value": "-60678824.86384351",
+													"value": "1",
 													"description": "Page of results to request (standard pagination)"
 												},
 												{
 													"key": "page-size",
-													"value": "-60678824.86384351",
+													"value": "{{pageSize}}",
 													"description": "Page size to request.  Default is 25 (standard pagination)"
 												}
 											]
@@ -2070,45 +2376,45 @@
 					"",
 					"    // setting the base url for schema files",
 					"    var version = pm.collectionVariables.get(\"version\");",
-					"    var schemaBaseUrl = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main\";",
+					"    var schemaBaseUrl = \"https://raw.githubusercontent.com/ConsumerDataStandardsAustralia/dsb-schema-tools/main/\";",
 					"    //var schemaBaseUrl = \"http://localhost:8080/\";",
 					"",
 					"    var urlEnergySchemaValidationFileDirectory = schemaBaseUrl + version + \"/postman/postman-validation-energy-\" + version + \".json\";",
 					"",
-					"    // pm.sendRequest(urlEnergySchemaValidationFileDirectory, (error, responseEnergy) => {",
-					"    //     console.log(\"Reading schema files for energy....\"); ",
-					"    //     if (error) {",
-					"    //         console.log('Getting schema returned: ' + error);",
-					"    //     } else {",
+					"    pm.sendRequest(urlEnergySchemaValidationFileDirectory, (error, responseEnergy) => {",
+					"        console.log(\"Reading schema files for energy....\"); ",
+					"        if (error) {",
+					"            console.log('Getting schema returned: ' + error);",
+					"        } else {",
 					"            ",
-					"    //         try { ",
-					"    //             let energySchemaCount = 0;",
-					"    //             let enrgySchemaAdded = 0;",
-					"    //             schemaEnergy = responseEnergy.json();",
+					"            try { ",
+					"                let energySchemaCount = 0;",
+					"                let enrgySchemaAdded = 0;",
+					"                schemaEnergy = responseEnergy.json();",
 					"",
-					"    //             for (var key in schemaEnergy) {",
-					"    //                 energySchemaCount++;",
-					"    //                 if (schemaEnergy.hasOwnProperty(key)) {",
-					"    //                     schemaEnergy[key].$id = key;",
-					"    //                     try {",
-					"    //                         ajv.addSchema(schemaEnergy[key]);",
-					"    //                         energySchemaCount++;",
-					"    //                     }",
-					"    //                     catch(ex){",
-					"    //                         console.log(\"Exception in \" + key + \" : \" + JSON.stringify(ex));",
-					"    //                     }",
+					"                for (var key in schemaEnergy) {",
+					"                    energySchemaCount++;",
+					"                    if (schemaEnergy.hasOwnProperty(key)) {",
+					"                        schemaEnergy[key].$id = key;",
+					"                        try {",
+					"                            ajv.addSchema(schemaEnergy[key]);",
+					"                            energySchemaCount++;",
+					"                        }",
+					"                        catch(ex){",
+					"                            console.log(\"Exception in \" + key + \" : \" + JSON.stringify(ex));",
+					"                        }",
 					"                        ",
-					"    //                 }",
-					"    //             }",
-					"    //             console.log(\"Energy schema contains \" + energySchemaCount + \" entries\") ;",
-					"    //             console.log(\"Added \" + energySchemaCount + \" schemas from Energy\"); ",
-					"    //             pm.collectionVariables.set(\"GlobalEnergySchema\", schemaEnergy);       ",
-					"    //         } catch(e) {",
-					"    //             console.log(\"Exception :\" + JSON.stringify(e));",
-					"    //         }",
+					"                    }",
+					"                }",
+					"                console.log(\"Energy schema contains \" + energySchemaCount + \" entries\") ;",
+					"                console.log(\"Added \" + energySchemaCount + \" schemas from Energy\"); ",
+					"                pm.collectionVariables.set(\"GlobalEnergySchema\", schemaEnergy);       ",
+					"            } catch(e) {",
+					"                console.log(\"Exception :\" + JSON.stringify(e));",
+					"            }",
 					"             ",
-					"    //     }",
-					"    // }); ",
+					"        }",
+					"    }); ",
 					"  }",
 					"",
 					"",
@@ -2129,8 +2435,15 @@
 					"",
 					"        if (currPage == totalPages ){ return 3}",
 					"    },",
-					"    minimumVariablesProvided: function ( ) {",
-					"        if (pm.variables.get(\"primaryDataHolderUrl\") != \"\" && pm.variables.get(\"secondaryDataHolderUrl\") != \"\")",
+					"    primaryDataHolderUrlProvided: function ( ) {",
+					"        if (pm.variables.get(\"primaryDataHolderUrl\") != \"\")",
+					"            return true;",
+					"        else",
+					"            return false;",
+					"    },",
+					"",
+					"    secondaryDataHolderUrlProvided: function ( ) {",
+					"        if (pm.variables.get(\"secondaryDataHolderUrlProvided\") != \"\")",
 					"            return true;",
 					"        else",
 					"            return false;",
