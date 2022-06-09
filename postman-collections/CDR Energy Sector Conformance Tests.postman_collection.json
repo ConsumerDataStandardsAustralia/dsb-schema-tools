@@ -1306,6 +1306,43 @@
 							"item": [
 								{
 									"name": "Get Account Detail v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyAccountDetailResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1364,6 +1401,43 @@
 								},
 								{
 									"name": "Get Agreed Payment Schedule v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyPaymentScheduleResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1423,6 +1497,43 @@
 								},
 								{
 									"name": "Get Concessions v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyConcessionsResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1482,6 +1593,43 @@
 								},
 								{
 									"name": "Get Balance For Account v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyBalanceResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1541,6 +1689,43 @@
 								},
 								{
 									"name": "Get Invoices For Account v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyInvoiceListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1622,6 +1807,43 @@
 								},
 								{
 									"name": "Get Billing For Account v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyBillingListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1708,6 +1930,43 @@
 							"item": [
 								{
 									"name": "Get Bulk Balances v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyBalanceListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1771,6 +2030,43 @@
 								},
 								{
 									"name": "Get Balances For Specific Accounts v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyBalanceListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "POST",
 										"header": [
@@ -1812,7 +2108,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"esse cillum consectetur dolore\",\n            \"consectetur proident mollit\"\n        ]\n    },\n    \"meta\": {}\n}",
+											"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{accountId}}\",\n            \"{{accountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1853,6 +2149,43 @@
 							"item": [
 								{
 									"name": "Get Bulk Invoices v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyInvoiceListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -1926,6 +2259,43 @@
 								},
 								{
 									"name": "Get Invoices For Specific Accounts v1",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyInvoiceListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "POST",
 										"header": [
@@ -1967,7 +2337,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"ea ex\",\n            \"commodo dolore voluptate enim cupidatat\"\n        ]\n    },\n    \"meta\": {}\n}",
+											"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{accountId}}\",\n            \"{{accountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2018,6 +2388,43 @@
 							"item": [
 								{
 									"name": "Get Bulk Billing",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyBillingListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "GET",
 										"header": [
@@ -2092,6 +2499,43 @@
 								},
 								{
 									"name": "Get Billing For Specific Accounts",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"        // Parse the response body\r",
+													"        var jsonData;\r",
+													"        try {\r",
+													"            jsonData = pm.response.json();\r",
+													"\r",
+													"            }\r",
+													"        catch(e) {\r",
+													"            console.log(e);\r",
+													"        }\r",
+													"\r",
+													"        // HTTP Response and headers\r",
+													"        pm.test(\"Status code is 200\", function () {\r",
+													"            pm.response.to.have.status(200);\r",
+													"        });\r",
+													"\r",
+													"\r",
+													"        // Schema payload check\r",
+													"        pm.test('Response payload conforms to standards schema', function() {\r",
+													"            const valid = ajv.validate(\"EnergyBillingListResponse\", jsonData)\r",
+													"            if (!valid){\r",
+													"            ajv.errors.forEach(element => {\r",
+													"                console.log(JSON.stringify(element));\r",
+													"                });\r",
+													"            };\r",
+													"            pm.expect(valid).to.be.true; \r",
+													"        });    \r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "POST",
 										"header": [
@@ -2139,7 +2583,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"ea ex\",\n            \"commodo dolore voluptate enim cupidatat\"\n        ]\n    },\n    \"meta\": {}\n}",
+											"raw": "{\n    \"data\": {\n        \"accountIds\": [\n            \"{{accountId}}\",\n            \"{{accountId2}}\"\n        ]\n    },\n    \"meta\": {}\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2187,6 +2631,43 @@
 						},
 						{
 							"name": "Get Accounts v1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"        // Parse the response body\r",
+											"        var jsonData;\r",
+											"        try {\r",
+											"            jsonData = pm.response.json();\r",
+											"\r",
+											"            }\r",
+											"        catch(e) {\r",
+											"            console.log(e);\r",
+											"        }\r",
+											"\r",
+											"        // HTTP Response and headers\r",
+											"        pm.test(\"Status code is 200\", function () {\r",
+											"            pm.response.to.have.status(200);\r",
+											"        });\r",
+											"\r",
+											"\r",
+											"        // Schema payload check\r",
+											"        pm.test('Response payload conforms to standards schema', function() {\r",
+											"            const valid = ajv.validate(\"EnergyAccountListResponse\", jsonData)\r",
+											"            if (!valid){\r",
+											"            ajv.errors.forEach(element => {\r",
+											"                console.log(JSON.stringify(element));\r",
+											"                });\r",
+											"            };\r",
+											"            pm.expect(valid).to.be.true; \r",
+											"        });    \r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
