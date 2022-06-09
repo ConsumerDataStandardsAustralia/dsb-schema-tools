@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "00f48ddb-3d9b-4437-9c00-d821681a0115",
+		"_postman_id": "e56b121b-46c0-44a7-a6ca-3daef27e22cc",
 		"name": "CDR Energy Sector Conformance Tests",
 		"description": "# CDR Energy Conformance Tests\n\nThis collection contains a series of conformance tests for the Consumer Data Right standards applicable to the designation for the Banking sector in Australia.\n\nThese tests do not constitute a full functional test of an implementation compliant with CDR standards. It is the obligation of data holders and data recipients to functionally test their implementations fully using whatever mechanism they choose.\n\nThese tests do contain comprehensive coverage of the requirements of the standards. A data holder implementation that is able to pass all of the tests in this collection could be reasonably described as conformant to the CDR standards for the Banking sector.\n\n# Conformance Scope\n\nThis collection complies with v1.17.0 of the CDR standards.\n\nIt includes support for the following API end points:\n\n### Energy APIs\n\n*   Get Generic Plans\n*   Get Generic Plan Detail\n*   Get Service Point Detail\n*   Get Usage For Service Point\n*   Get DER For Service Point\n*   Get Bulk Usage\n*   Get Usage For Specific Service Points\n*   Get Account Detail\n*   Get Agreed Payment Schedule\n*   Get Concessions\n*   Get Balance For Account\n*   Get Invoices For Account\n*   Get Billing For Account\n*   Get Bulk Balances\n*   Get Balances For Specific Accounts\n*   Get Bulk Invoices\n*   Get Invoices For Specific Account\n*   Get Accounts\n    \n\n# Scope Exclusions\n\nThis collections does not cover:\n\n*   CDR API end points not listed above\n*   Negative scenarios that are not specifically addressed in the standards for individual end points\n*   Non-functional requirements\n*   Information Security Profile and associated end points\n*   MA-SSL configuration\n    \n\n# Change Log\n\n| Change Date | Change Description |\n| --- | --- |\n| 1st June 2022 | Initial creation of the collection |\n|  |  |\n\n# Contact Support:\n\n{\n\nName : Consumer Data Standards\n\nEmail : [cdr-data61@csiro.au](mailto:cdr-data61@csiro.au)\n\n}",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -76,7 +76,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{primaryDataHolderUrl}}/energy/plans?type=ALL&fuelType=ALL&effective=ALL&updated-since={{updatedSinceDate}}&page=1&page-size={{pageSize}}",
+							"raw": "{{primaryDataHolderUrl}}/energy/plans?type=ALL&fuelType=ALL&effective=ALL&updated-since={{dateLastYear}}&page=1&page-size={{pageSize}}",
 							"host": [
 								"{{primaryDataHolderUrl}}"
 							],
@@ -102,12 +102,12 @@
 								},
 								{
 									"key": "updated-since",
-									"value": "{{updatedSinceDate}}",
+									"value": "{{dateLastYear}}",
 									"description": "Only include plans that have been updated after the specified date and time.  If absent defaults to include all plans"
 								},
 								{
 									"key": "brand",
-									"value": "Excepteur tem",
+									"value": "",
 									"description": "Used to filter results on the brand field.  If absent defaults to include all plans",
 									"disabled": true
 								},
@@ -449,12 +449,12 @@
 												}
 											]
 										},
-										"description": "Obtain a list of service points owned by the customer that has authorised the current session"
+										"description": "Obtain a list of service points owned by the customer that has authorised the current session.\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.006) for additional information."
 									},
 									"response": []
 								},
 								{
-									"name": "T.EAR.023 Get Usage For Service Point v1",
+									"name": "T.EAR.012 Get Usage For Service Point v1",
 									"event": [
 										{
 											"listen": "test",
@@ -558,7 +558,7 @@
 												}
 											]
 										},
-										"description": "Obtain a list of electricity usage data from a particular service point"
+										"description": "Obtain a list of electricity usage data from a particular service point.\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.012) for additional information."
 									},
 									"response": []
 								},
@@ -655,7 +655,7 @@
 												}
 											]
 										},
-										"description": "Obtain a list of DER data from a particular service point"
+										"description": "Obtain a list of DER data from a particular service point\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.033) for additional information."
 									},
 									"response": []
 								}
@@ -665,7 +665,7 @@
 							"name": "usage",
 							"item": [
 								{
-									"name": "Get Bulk Usage v1",
+									"name": "T.EAR.045 Get Bulk Usage v1",
 									"event": [
 										{
 											"listen": "test",
@@ -761,12 +761,12 @@
 												}
 											]
 										},
-										"description": "Obtain usage data for all service points associated with the customer"
+										"description": "Obtain usage data for all service points associated with the customer.\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.045) for additional information."
 									},
 									"response": []
 								},
 								{
-									"name": "Get Usage For Specific Service Points v1",
+									"name": "T.EAR.023 Get Usage For Specific Service Points v1",
 									"event": [
 										{
 											"listen": "test",
@@ -876,7 +876,7 @@
 												}
 											]
 										},
-										"description": "Obtain the electricity usage data for a specific set of service points"
+										"description": "Obtain the electricity usage data for a specific set of service points.\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.023) for additional information."
 									},
 									"response": []
 								}
@@ -886,7 +886,7 @@
 							"name": "der",
 							"item": [
 								{
-									"name": "Get Bulk DER",
+									"name": "T.EAR.061 Get Bulk DER",
 									"event": [
 										{
 											"listen": "test",
@@ -982,12 +982,12 @@
 												}
 											]
 										},
-										"description": "Obtain DER data for all service points associated with the customer"
+										"description": "Obtain DER data for all service points associated with the customer\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.061) for additional information."
 									},
 									"response": []
 								},
 								{
-									"name": "Get DER For Specific Service Points",
+									"name": "T.EAR.039 Get DER For Specific Service Points",
 									"event": [
 										{
 											"listen": "test",
@@ -1066,7 +1066,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"data\": {\n        \"servicePointIds\": [\n            {{servicePointId}}\n        ]\n    },\n    \"meta\": {}\n}",
+											"raw": "{\n    \"data\": {\n        \"servicePointIds\": [\n            \"{{servicePointId}}\"\n        ]\n    },\n    \"meta\": {}\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1097,7 +1097,7 @@
 												}
 											]
 										},
-										"description": "Obtain DER data for a specific set of service points"
+										"description": "Obtain DER data for a specific set of service points\n\nSee [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.039) for additional information."
 									},
 									"response": []
 								}
@@ -2819,7 +2819,7 @@
 					"    postman.setEnvironmentVariable(\"dateToday\", dateToday.toISOString());",
 					"    postman.setEnvironmentVariable(\"dateYesterday\", dateYesterday.toISOString());",
 					"    postman.setEnvironmentVariable(\"dateTomorrow\", dateTomorrow.toISOString());",
-					"    postman.setEnvironmentVariable(\"dateLastYear\", dateTomorrow.toISOString());",
+					"    postman.setEnvironmentVariable(\"dateLastYear\", dateLastYear.toISOString());",
 					"",
 					"",
 					"    // setting the base url for schema files",
