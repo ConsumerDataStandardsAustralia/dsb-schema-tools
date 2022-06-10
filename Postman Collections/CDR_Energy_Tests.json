@@ -900,15 +900,14 @@
 											"        });",
 											"",
 											"        var requestXFapi = parseInt(pm.request.headers.get(\"x-fapi-interaction-id\"));",
-											"        pm.test((requestXFapi) ? pm.test : pm.test.skip)(\"A.CFI.001: Validate FAPI Interation ID - included in request\", function () {",
-											"            var requestXFapi = pm.request.headers.get(\"x-fapi-interaction-id\");",
-											"            var requestXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
-											"            pm.expect(requestXFapi).equals(requestXFapi);",
+											"        pm.test((requestXFapi) ? pm.test : pm.test.skip)(\"A.CFI.001: Validate FAPI Interaction ID - included in request\", function () {",
+											"            var responseXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
+											"            pm.expect(responseXFapi).equals(requestXFapi);",
 											"        });",
 											"",
 											"        pm.test((!requestXFapi) ? pm.test : pm.test.skip)(\"A.CFI.002: Validate FAPI Interaction ID - not in request\", function () {",
-											"            var requestXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
-											"            pm.expect(requestXFapi).",
+											"            var responseXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
+											"            pm.expect(responseXFapi).not.null;",
 											"        });",
 											"",
 											"        pm.test(\"x-v header is present and has correct value\", function () {",
@@ -2276,64 +2275,64 @@
 	],
 	"variable": [
 		{
-			"id": "8865239a-d88b-4533-9aa0-41b119185c7a",
+			"id": "d6e29393-61cb-47b6-9aeb-3e447c9ac398",
 			"key": "primaryDataHolderUrl",
 			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io"
 		},
 		{
-			"id": "19dbd493-69e5-4ddb-bc36-bff143459d29",
+			"id": "742718ce-4acb-415e-bb59-a31beed9bec2",
 			"key": "secondaryDataHolderUrl",
 			"value": "https://886f1638-19cf-4b35-9e05-6ae133dc8ea1.mock.pstmn.io"
 		},
 		{
-			"id": "afb8daa1-84c0-4229-b595-8ff6380074ea",
+			"id": "9ae0208f-9a22-46d6-8bd8-2be287d0d464",
 			"key": "version",
 			"value": "1.17.0"
 		},
 		{
-			"id": "63d09584-6a0e-4a8b-95ab-404447dca3e5",
+			"id": "2e25e712-1178-491d-918d-3a580e7557fa",
 			"key": "GlobalEnergySchema",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "1a3d79a0-7486-47c9-b4cb-24fc6fa7c863",
+			"id": "07d21007-ee70-43d7-8466-d3760def5dda",
 			"key": "cdsClientHeader",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "fe31941e-39dc-4037-b1d2-5e1d53342a6f",
+			"id": "9f759455-e61e-450d-bfe1-c56228da121e",
 			"key": "accessToken",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "4ce2a1f4-0176-4937-9931-543ea5398328",
+			"id": "e07c3190-1863-437f-89b7-21ba4d19574b",
 			"key": "testAccountId1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "defcbdf8-4185-4025-8128-be7230e7c0b8",
+			"id": "d3b2b75b-32b3-4332-a05c-e1b33544965c",
 			"key": "testPlanId1",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "be2eee4d-654d-48d7-8260-4729e53bb4a0",
+			"id": "7949523b-2063-4a8f-9578-4574f1b162d2",
 			"key": "pageSize",
 			"value": "2",
 			"type": "string"
 		},
 		{
-			"id": "d77d9317-606a-4e7e-816d-043b9a0fd9c6",
+			"id": "1cea128a-665a-4fbb-9fb1-4a88f4d36e4b",
 			"key": "servicePointId",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "e3f92d2b-fd87-4439-891e-bda3d571ec55",
+			"id": "66b9566e-6721-475c-885b-569deddb96ac",
 			"key": "updatedSinceDate",
 			"value": "2010-05-30T06:23:54.270Z",
 			"type": "string"
