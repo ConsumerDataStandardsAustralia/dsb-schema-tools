@@ -18,34 +18,34 @@
 							"script": {
 								"exec": [
 									"\r",
-									"        // Parse the response body\r",
-									"        var jsonData;\r",
-									"        try {\r",
-									"            jsonData = pm.response.json();\r",
+									"// Parse the response body\r",
+									"var jsonData;\r",
+									"try {\r",
+									"    jsonData = pm.response.json();\r",
 									"\r",
-									"            }\r",
-									"        catch(e) {\r",
-									"            console.log(e);\r",
-									"        }\r",
+									"    }\r",
+									"catch(e) {\r",
+									"    console.log(e);\r",
+									"}\r",
 									"\r",
-									"        // HTTP Response and headers\r",
-									"        pm.test(\"Status code is 200\", function () {\r",
-									"            pm.response.to.have.status(200);\r",
-									"        });\r",
+									"// HTTP Response and headers\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
 									"\r",
 									"\r",
 									"\r",
+									"// Schema payload check\r",
 									"        // Schema payload check\r",
-									"                // Schema payload check\r",
-									"        pm.test('Response payload conforms to standards schema', function() {\r",
-									"            const valid = ajv.validate(\"EnergyPlanListResponse\", jsonData)\r",
-									"            if (!valid){\r",
-									"            ajv.errors.forEach(element => {\r",
-									"                console.log(JSON.stringify(element));\r",
-									"                });\r",
-									"            };\r",
-									"            pm.expect(valid).to.be.true; \r",
-									"        });   \r",
+									"pm.test('Response payload conforms to standards schema', function() {\r",
+									"    const valid = ajv.validate(\"EnergyPlanListResponse\", jsonData)\r",
+									"    if (!valid){\r",
+									"    ajv.errors.forEach(element => {\r",
+									"        console.log(JSON.stringify(element));\r",
+									"        });\r",
+									"    };\r",
+									"    pm.expect(valid).to.be.true; \r",
+									"});   \r",
 									"\r",
 									""
 								],
@@ -1120,14 +1120,49 @@
 											"        catch(e) {",
 											"            console.log(e);",
 											"        }",
+											" ",
+											"        ",
+											"        var requestVersion = pm.request.headers.get(\"x-v\");",
+											"        var requestVersionNumber = Number(pm.request.headers.get(\"x-v\"));",
 											"",
-											"        // HTTP Response and headers",
-											"        pm.test(\"Status code is 200\", function () {",
+											"        var requestMinVersion = pm.request.headers.get(\"x-min-v\");",
+											"        var requestMinVersionNumber = Number(pm.request.headers.get(\"x-min-v\"));",
+											"",
+											"        var requestXvIsPositiveInteger = Number.isSafeInteger(requestVersionNumber);",
+											"        var requestMinXvIsPositiveInteger = Number.isSafeInteger(requestMinVersionNumber);",
+											"",
+											"        ((requestVersion != null && requestXvIsPositiveInteger == true) ? pm.test : pm.test.skip)(\"A.CVN.001: Validate version - valid version number [x-v]\", function () {",
+											"            var responseVersion = pm.request.headers.get(\"x-v\");",
+											"            var responseVersionNumber = Number(pm.response.headers.get(\"x-v\"));",
+											"            var responseXvIsPositiveInteger = Number.isSafeInteger(responseVersionNumber) && responseVersionNumber > 0;",
 											"            pm.response.to.have.status(200);",
+											"            pm.expect(responseVersion).not.null;",
+											"            pm.expect(responseXvIsPositiveInteger).to.be.true;",
 											"        });",
 											"",
-											"        // Schema payload check",
-											"        pm.test('Response payload conforms to standards schema', function() {",
+											"        ((requestMinVersion != null && requestMinXvIsPositiveInteger == true) ? pm.test : pm.test.skip)(\"A.CVM.001: Validate version - <x-min-v> is provided\", function () {",
+											"            var responseVersion = pm.request.headers.get(\"x-v\");",
+											"            var responseVersionNumber = Number(pm.response.headers.get(\"x-v\"));",
+											"            var responseXvIsPositiveInteger = Number.isSafeInteger(responseVersionNumber) && responseVersionNumber > 0;",
+											"            pm.response.to.have.status(200);",
+											"            pm.expect(responseVersion).not.null;",
+											"            pm.expect(responseXvIsPositiveInteger).to.be.true;",
+											"            pm.expect(responseVersionNumber).gte(requestMinVersionNumber);",
+											"",
+											"        });",
+											"",
+											"        var requestXFapi = pm.request.headers.get(\"x-fapi-interaction-id\");",
+											"        ((requestXFapi != null) ? pm.test : pm.test.skip)(\"A.CFI.001: Validate FAPI Interaction ID - included in request\", function () {",
+											"            var responseXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
+											"            pm.expect(responseXFapi).equals(requestXFapi);",
+											"        });",
+											"",
+											"        ((requestXFapi == null) ? pm.test : pm.test.skip)(\"A.CFI.002: Validate FAPI Interaction ID - not in request\", function () {",
+											"            var responseXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
+											"            pm.expect(responseXFapi).not.null;",
+											"        });",
+											"",
+											"        ((pm.response.code == 200) ? pm.test : pm.test.skip)('A.EAR.004: Validate schema - EnergyServicePointListReponse', function() {",
 											"            const valid = ajv.validate(\"EnergyServicePointListResponse\", jsonData)",
 											"            if (!valid){",
 											"            ajv.errors.forEach(element => {",
@@ -1135,7 +1170,9 @@
 											"                });",
 											"            };",
 											"            pm.expect(valid).to.be.true; ",
-											"        });    ",
+											"        });  ",
+											"",
+											"  ",
 											""
 										],
 										"type": "text/javascript"
@@ -1146,13 +1183,19 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "x-v",
+										"key": "x-min-v",
 										"value": "1",
 										"type": "text"
 									},
 									{
-										"key": "x-min-v",
-										"value": "1",
+										"key": "x-fapi-auth-date",
+										"value": "{{timeTenMinutesAgo}}",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "x-fapi-customer-ip-address",
+										"value": "{{x-fapi-customer-ip-address}}",
 										"type": "text"
 									},
 									{
@@ -1161,9 +1204,99 @@
 										"type": "text"
 									},
 									{
+										"key": "x-cds-client-headers",
+										"value": "{{cdsClientHeader}}",
+										"type": "text"
+									},
+									{
+										"key": "x-v",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{secondaryDataHolderUrl}}/energy/electricity/servicepoints",
+									"host": [
+										"{{secondaryDataHolderUrl}}"
+									],
+									"path": [
+										"energy",
+										"electricity",
+										"servicepoints"
+									]
+								},
+								"description": "Obtain a list of service points owned by the customer that has authorised the current session\n\nRefer to [DSB documentation](https://consumerdatastandardsaustralia.github.io/standards-testing/v1.0.1/#testcase-t.ear.001)"
+							},
+							"response": []
+						},
+						{
+							"name": "T.EAR.109 Get Service Points  invalid version value",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"",
+											"        // Parse the response body",
+											"        var jsonData;",
+											"        try {",
+											"            jsonData = pm.response.json();",
+											"",
+											"            }",
+											"        catch(e) {",
+											"            console.log(e);",
+											"        }",
+											"",
+											"        ",
+											"        ",
+											"        var requestVersion = pm.request.headers.get(\"x-v\");",
+											"        var requestVersionNumber = Number(pm.request.headers.get(\"x-v\"));",
+											"        var requestXvIsValidInteger = Number.isSafeInteger(requestVersionNumber) && requestVersionNumber >= 0 && requestVersionNumber < 1001;",
+											"",
+											"",
+											"        ((requestVersion != null && (requestXvIsValidInteger == false)) ? pm.test : pm.test.skip)(\"A.CVN.002: Validate version - invalid version value [x-v]\", function () {",
+											"            pm.response.to.have.status(400);",
+											"            const valid = ajv.validate(\"ErrorListResponse\", jsonData)",
+											"            if (!valid){",
+											"            ajv.errors.forEach(element => {",
+											"                console.log(JSON.stringify(element));",
+											"                });",
+											"            };",
+											"            pm.expect(valid).to.be.true; ",
+											"            pm.expect(jsonData.errors?.code).equals(\"urn:au-cds:error:cds-all:Field/Invalid\")       ",
+											"",
+											"        });",
+											"",
+											"        var requestXFapi = pm.request.headers.get(\"x-fapi-interaction-id\");",
+											"        ((requestXFapi != null) ? pm.test : pm.test.skip)(\"A.CFI.001: Validate FAPI Interaction ID - included in request\", function () {",
+											"            var responseXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
+											"            pm.expect(responseXFapi).equals(requestXFapi);",
+											"        });",
+											"",
+											"        ((requestXFapi == null) ? pm.test : pm.test.skip)(\"A.CFI.002: Validate FAPI Interaction ID - not in request\", function () {",
+											"            var responseXFapi = pm.response.headers.get(\"x-fapi-interaction-id\");",
+											"            pm.expect(responseXFapi).not.null;",
+											"        });",
+											"  ",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-min-v",
+										"value": "1",
+										"type": "text"
+									},
+									{
 										"key": "x-fapi-auth-date",
 										"value": "{{timeTenMinutesAgo}}",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									},
 									{
 										"key": "x-fapi-customer-ip-address",
@@ -1173,6 +1306,16 @@
 									{
 										"key": "x-cds-client-headers",
 										"value": "{{cdsClientHeader}}",
+										"type": "text"
+									},
+									{
+										"key": "x-v",
+										"value": "1",
+										"type": "text"
+									},
+									{
+										"key": "x-fapi-interaction-id",
+										"value": "{{x-fapi-interaction-id}}",
 										"type": "text"
 									}
 								],
