@@ -26,6 +26,8 @@ schemas folder
 
 # Postman Collection Test Suite
 
+***Note: The Postman collections and instructions have now been moved to a new repository [dsb-postman](https://github.com/ConsumerDataStandardsAustralia/dsb-postman).
+The implementation  of the dsb-postman repository is accessible as a public [Postman workspace](https://www.postman.com/winter-shadow-541400/workspace/dsb-schema-tests).***
 
 ## Using the Postman collection
 ```
