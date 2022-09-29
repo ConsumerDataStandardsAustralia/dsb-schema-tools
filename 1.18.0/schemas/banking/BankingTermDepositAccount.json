@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "lodgementDate": {
+      "description": "The lodgement date of the original deposit",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "maturityAmount": {
+      "description": "Amount to be paid upon maturity. If absent it implies the amount to paid is variable and cannot currently be calculated",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "maturityCurrency": {
+      "description": "If absent assumes AUD",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "maturityDate": {
+      "description": "Maturity date for the term deposit",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "maturityInstructions": {
+      "description": "Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments",
+      "enum": [
+        "HOLD_ON_MATURITY",
+        "PAID_OUT_AT_MATURITY",
+        "ROLLED_OVER"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "lodgementDate",
+    "maturityDate",
+    "maturityInstructions"
+  ],
+  "type": "object"
+}

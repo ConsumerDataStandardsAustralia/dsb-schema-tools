@@ -1,0 +1,80 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "availability": {
+          "$ref": "AvailabilityMetrics.json"
+        },
+        "averageResponse": {
+          "$ref": "AverageResponseMetricsV2.json"
+        },
+        "averageTps": {
+          "$ref": "AverageTPSMetrics.json"
+        },
+        "customerCount": {
+          "description": "Number of customers with active authorisations at the time of the call",
+          "type": "integer"
+        },
+        "errors": {
+          "$ref": "ErrorMetrics.json"
+        },
+        "invocations": {
+          "$ref": "InvocationMetricsV2.json"
+        },
+        "peakTps": {
+          "$ref": "PeakTPSMetrics.json"
+        },
+        "performance": {
+          "$ref": "PerformanceMetrics.json"
+        },
+        "recipientCount": {
+          "description": "Number of Data Recipient Software Products with active authorisations at the time of the call",
+          "type": "integer"
+        },
+        "rejections": {
+          "$ref": "RejectionMetricsV2.json"
+        },
+        "requestTime": {
+          "description": "The date and time that the metrics in this payload were requested.",
+          "type": "string",
+          "x-cds-type": "DateTimeString"
+        },
+        "secondaryHolder": {
+          "$ref": "SecondaryHolderMetrics.json"
+        },
+        "sessionCount": {
+          "$ref": "SessionCountMetrics.json"
+        }
+      },
+      "required": [
+        "availability",
+        "averageResponse",
+        "averageTps",
+        "customerCount",
+        "errors",
+        "invocations",
+        "peakTps",
+        "performance",
+        "recipientCount",
+        "rejections",
+        "requestTime",
+        "sessionCount"
+      ],
+      "type": "object",
+      "x-conditional": [
+        "secondaryHolder"
+      ]
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
+}

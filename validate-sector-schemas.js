@@ -1,4 +1,4 @@
-// This routine is used to validate the set set files
+// This routine is used to validate the set schema files
 // It utilises the ajv validator and will pick up most inconsistencies
 // Author: Tomas Schier
 
@@ -11,7 +11,8 @@ const { Console } = require("console");
 
 
 const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'admin', 'dcr'];
-const version = '1.17.0';
+const version = '1.18.0';
+
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' + sector);

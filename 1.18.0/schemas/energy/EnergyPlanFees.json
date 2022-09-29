@@ -1,0 +1,72 @@
+{
+  "description": "An array of fees applicable to the plan",
+  "items": {
+    "properties": {
+      "amount": {
+        "description": "The fee amount. Required if term is not PERCENT_OF_BILL",
+        "type": "string",
+        "x-cds-type": "AmountString"
+      },
+      "description": {
+        "description": "A description of the fee",
+        "type": "string"
+      },
+      "rate": {
+        "description": "The fee rate. Required if term is PERCENT_OF_BILL",
+        "type": "string",
+        "x-cds-type": "RateString"
+      },
+      "term": {
+        "description": "The term of the fee",
+        "enum": [
+          "FIXED",
+          "1_YEAR",
+          "2_YEAR",
+          "3_YEAR",
+          "4_YEAR",
+          "5_YEAR",
+          "PERCENT_OF_BILL",
+          "ANNUAL",
+          "DAILY",
+          "WEEKLY",
+          "MONTHLY",
+          "BIANNUAL",
+          "VARIABLE"
+        ],
+        "type": "string"
+      },
+      "type": {
+        "description": "The type of the fee",
+        "enum": [
+          "EXIT",
+          "ESTABLISHMENT",
+          "LATE_PAYMENT",
+          "DISCONNECTION",
+          "DISCONNECT_MOVE_OUT",
+          "DISCONNECT_NON_PAY",
+          "RECONNECTION",
+          "CONNECTION",
+          "PAYMENT_PROCESSING",
+          "CC_PROCESSING",
+          "CHEQUE_DISHONOUR",
+          "DD_DISHONOUR",
+          "MEMBERSHIP",
+          "CONTRIBUTION",
+          "PAPER_BILL",
+          "OTHER"
+        ],
+        "type": "string"
+      }
+    },
+    "required": [
+      "type",
+      "term"
+    ],
+    "type": "object",
+    "x-conditional": [
+      "amount",
+      "rate"
+    ]
+  },
+  "type": "array"
+}
