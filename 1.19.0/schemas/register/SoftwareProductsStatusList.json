@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "SoftwareProductStatus.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}
