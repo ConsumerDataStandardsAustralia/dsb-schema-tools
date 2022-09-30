@@ -1,4 +1,4 @@
-# DSB Schema Files
+# JSON Schema Files
 
 ## Disclaimer
 
