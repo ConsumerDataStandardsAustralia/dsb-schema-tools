@@ -25,7 +25,7 @@
             "currentMonth",
             "previousMonths"
         ],
-        "$id": "AvailabilityMetrics.json"
+        "$id": "AvailabilityMetrics"
     },
     "AverageResponseMetricsV2": {
         "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
@@ -312,7 +312,7 @@
             "secondary",
             "largeSecondary"
         ],
-        "$id": "AverageResponseMetricsV2.json"
+        "$id": "AverageResponseMetricsV2"
     },
     "AverageTPSMetrics": {
         "description": "Transactions per second over time",
@@ -340,7 +340,7 @@
             "currentDay",
             "previousDays"
         ],
-        "$id": "AverageTPSMetrics.json"
+        "$id": "AverageTPSMetrics"
     },
     "ErrorMetrics": {
         "description": "Number of calls resulting in error due to server execution over time",
@@ -368,7 +368,7 @@
             "currentDay",
             "previousDays"
         ],
-        "$id": "ErrorMetrics.json"
+        "$id": "ErrorMetrics"
     },
     "InvocationMetricsV2": {
         "description": "Number of API calls in each performance tier over time",
@@ -581,7 +581,7 @@
             "secondary",
             "largeSecondary"
         ],
-        "$id": "InvocationMetricsV2.json"
+        "$id": "InvocationMetricsV2"
     },
     "Links": {
         "properties": {
@@ -595,11 +595,11 @@
             "self"
         ],
         "type": "object",
-        "$id": "Links.json"
+        "$id": "Links"
     },
     "Meta": {
         "type": "object",
-        "$id": "Meta.json"
+        "$id": "Meta"
     },
     "MetaError": {
         "description": "Additional data for customised error codes",
@@ -616,7 +616,7 @@
         "x-conditional": [
             "urn"
         ],
-        "$id": "MetaError.json"
+        "$id": "MetaError"
     },
     "PeakTPSMetrics": {
         "description": "Maximum record transactions per second over time",
@@ -644,7 +644,7 @@
             "currentDay",
             "previousDays"
         ],
-        "$id": "PeakTPSMetrics.json"
+        "$id": "PeakTPSMetrics"
     },
     "PerformanceMetrics": {
         "description": "Percentage of calls within the performance thresholds",
@@ -672,7 +672,7 @@
             "currentDay",
             "previousDays"
         ],
-        "$id": "PerformanceMetrics.json"
+        "$id": "PerformanceMetrics"
     },
     "RejectionMetricsV2": {
         "description": "Number of calls rejected due to traffic thresholds over time",
@@ -737,7 +737,7 @@
             "unauthenticated"
         ],
         "type": "object",
-        "$id": "RejectionMetricsV2.json"
+        "$id": "RejectionMetricsV2"
     },
     "RequestMetaDataUpdate": {
         "properties": {
@@ -758,14 +758,14 @@
                 "type": "object"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
             "data"
         ],
         "type": "object",
-        "$id": "RequestMetaDataUpdate.json"
+        "$id": "RequestMetaDataUpdate"
     },
     "ResponseErrorListV2": {
         "properties": {
@@ -782,7 +782,7 @@
                             "type": "string"
                         },
                         "meta": {
-                            "$ref": "MetaError.json"
+                            "$ref": "MetaError"
                         },
                         "title": {
                             "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
@@ -806,43 +806,43 @@
         "x-conditional": [
             "meta"
         ],
-        "$id": "ResponseErrorListV2.json"
+        "$id": "ResponseErrorListV2"
     },
     "ResponseMetricsListV3": {
         "properties": {
             "data": {
                 "properties": {
                     "availability": {
-                        "$ref": "AvailabilityMetrics.json"
+                        "$ref": "AvailabilityMetrics"
                     },
                     "averageResponse": {
-                        "$ref": "AverageResponseMetricsV2.json"
+                        "$ref": "AverageResponseMetricsV2"
                     },
                     "averageTps": {
-                        "$ref": "AverageTPSMetrics.json"
+                        "$ref": "AverageTPSMetrics"
                     },
                     "customerCount": {
                         "description": "Number of customers with active authorisations at the time of the call",
                         "type": "integer"
                     },
                     "errors": {
-                        "$ref": "ErrorMetrics.json"
+                        "$ref": "ErrorMetrics"
                     },
                     "invocations": {
-                        "$ref": "InvocationMetricsV2.json"
+                        "$ref": "InvocationMetricsV2"
                     },
                     "peakTps": {
-                        "$ref": "PeakTPSMetrics.json"
+                        "$ref": "PeakTPSMetrics"
                     },
                     "performance": {
-                        "$ref": "PerformanceMetrics.json"
+                        "$ref": "PerformanceMetrics"
                     },
                     "recipientCount": {
                         "description": "Number of Data Recipient Software Products with active authorisations at the time of the call",
                         "type": "integer"
                     },
                     "rejections": {
-                        "$ref": "RejectionMetricsV2.json"
+                        "$ref": "RejectionMetricsV2"
                     },
                     "requestTime": {
                         "description": "The date and time that the metrics in this payload were requested.",
@@ -850,10 +850,10 @@
                         "x-cds-type": "DateTimeString"
                     },
                     "secondaryHolder": {
-                        "$ref": "SecondaryHolderMetrics.json"
+                        "$ref": "SecondaryHolderMetrics"
                     },
                     "sessionCount": {
-                        "$ref": "SessionCountMetrics.json"
+                        "$ref": "SessionCountMetrics"
                     }
                 },
                 "required": [
@@ -876,10 +876,10 @@
                 ]
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -887,7 +887,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "ResponseMetricsListV3.json"
+        "$id": "ResponseMetricsListV3"
     },
     "SecondaryHolderMetrics": {
         "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
@@ -952,7 +952,7 @@
             "rejections"
         ],
         "type": "object",
-        "$id": "SecondaryHolderMetrics.json"
+        "$id": "SecondaryHolderMetrics"
     },
     "SessionCountMetrics": {
         "description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
@@ -980,6 +980,6 @@
             "currentDay",
             "previousDays"
         ],
-        "$id": "SessionCountMetrics.json"
+        "$id": "SessionCountMetrics"
     }
 }

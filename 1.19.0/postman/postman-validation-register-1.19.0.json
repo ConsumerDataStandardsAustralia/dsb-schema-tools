@@ -88,23 +88,23 @@
             "lastUpdated"
         ],
         "type": "object",
-        "$id": "DataHolderBrandSummary.json"
+        "$id": "DataHolderBrandSummary"
     },
     "DataHoldersStatusList": {
         "properties": {
             "data": {
                 "description": "Response data for the query",
                 "items": {
-                    "$ref": "DataHolderStatus.json"
+                    "$ref": "DataHolderStatus"
                 },
                 "type": "array",
                 "uniqueItems": true
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -113,7 +113,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "DataHoldersStatusList.json"
+        "$id": "DataHoldersStatusList"
     },
     "DataHolderStatus": {
         "properties": {
@@ -136,7 +136,7 @@
             "status"
         ],
         "type": "object",
-        "$id": "DataHolderStatus.json"
+        "$id": "DataHolderStatus"
     },
     "DataRecipientBrandMetaData": {
         "description": "Metadata related to Data Recipient Brand",
@@ -159,7 +159,7 @@
             },
             "softwareProducts": {
                 "items": {
-                    "$ref": "SoftwareProductMetaData.json"
+                    "$ref": "SoftwareProductMetaData"
                 },
                 "type": [
                     "array",
@@ -184,23 +184,23 @@
             "status"
         ],
         "type": "object",
-        "$id": "DataRecipientBrandMetaData.json"
+        "$id": "DataRecipientBrandMetaData"
     },
     "DataRecipientsStatusList": {
         "properties": {
             "data": {
                 "description": "Response data for the query",
                 "items": {
-                    "$ref": "DataRecipientStatus.json"
+                    "$ref": "DataRecipientStatus"
                 },
                 "type": "array",
                 "uniqueItems": true
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -209,7 +209,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "DataRecipientsStatusList.json"
+        "$id": "DataRecipientsStatusList"
     },
     "DataRecipientStatus": {
         "properties": {
@@ -234,7 +234,7 @@
             "status"
         ],
         "type": "object",
-        "$id": "DataRecipientStatus.json"
+        "$id": "DataRecipientStatus"
     },
     "JWK": {
         "description": "Object representing a JSON Web Key",
@@ -276,7 +276,7 @@
             "n"
         ],
         "type": "object",
-        "$id": "JWK.json"
+        "$id": "JWK"
     },
     "LegalEntityDetail": {
         "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
@@ -383,7 +383,7 @@
             "status"
         ],
         "type": "object",
-        "$id": "LegalEntityDetail.json"
+        "$id": "LegalEntityDetail"
     },
     "Links": {
         "properties": {
@@ -396,7 +396,7 @@
             "self"
         ],
         "type": "object",
-        "$id": "Links.json"
+        "$id": "Links"
     },
     "LinksPaginated": {
         "properties": {
@@ -437,11 +437,11 @@
             "self"
         ],
         "type": "object",
-        "$id": "LinksPaginated.json"
+        "$id": "LinksPaginated"
     },
     "Meta": {
         "type": "object",
-        "$id": "Meta.json"
+        "$id": "Meta"
     },
     "MetaError": {
         "description": "Additional data for customised error codes",
@@ -458,7 +458,7 @@
         "x-conditional": [
             "urn"
         ],
-        "$id": "MetaError.json"
+        "$id": "MetaError"
     },
     "MetaPaginated": {
         "properties": {
@@ -478,7 +478,7 @@
             "totalRecords"
         ],
         "type": "object",
-        "$id": "MetaPaginated.json"
+        "$id": "MetaPaginated"
     },
     "RegisterDataHolderAuth": {
         "description": "Defines the mechanism used and associated endpoints for Data Holder to Data Recipient authentication",
@@ -502,13 +502,13 @@
             "registerUType"
         ],
         "type": "object",
-        "$id": "RegisterDataHolderAuth.json"
+        "$id": "RegisterDataHolderAuth"
     },
     "RegisterDataHolderBrand": {
         "properties": {
             "authDetails": {
                 "items": {
-                    "$ref": "RegisterDataHolderAuth.json"
+                    "$ref": "RegisterDataHolderAuth"
                 },
                 "type": "array",
                 "uniqueItems": true
@@ -524,7 +524,7 @@
                 "type": "string"
             },
             "endpointDetail": {
-                "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
+                "$ref": "RegisterDataHolderBrandServiceEndpoint"
             },
             "industries": {
                 "description": "The industries the Data Holder Brand belongs to",
@@ -546,7 +546,7 @@
                 "x-cds-type": "DateTimeString"
             },
             "legalEntity": {
-                "$ref": "LegalEntityDetail.json"
+                "$ref": "LegalEntityDetail"
             },
             "logoUri": {
                 "description": "Brand logo URI",
@@ -575,7 +575,7 @@
             "status"
         ],
         "type": "object",
-        "$id": "RegisterDataHolderBrand.json"
+        "$id": "RegisterDataHolderBrand"
     },
     "RegisterDataHolderBrandServiceEndpoint": {
         "description": "Endpoints related to Data Holder Brand services",
@@ -626,7 +626,7 @@
             "websiteUri"
         ],
         "type": "object",
-        "$id": "RegisterDataHolderBrandServiceEndpoint.json"
+        "$id": "RegisterDataHolderBrandServiceEndpoint"
     },
     "RegisterDataRecipient": {
         "properties": {
@@ -645,7 +645,7 @@
             },
             "dataRecipientBrands": {
                 "items": {
-                    "$ref": "DataRecipientBrandMetaData.json"
+                    "$ref": "DataRecipientBrandMetaData"
                 },
                 "type": [
                     "array",
@@ -696,23 +696,23 @@
             "status"
         ],
         "type": "object",
-        "$id": "RegisterDataRecipient.json"
+        "$id": "RegisterDataRecipient"
     },
     "ResponseDataHoldersBrandSummaryList": {
         "properties": {
             "data": {
                 "description": "Response data for the query",
                 "items": {
-                    "$ref": "DataHolderBrandSummary.json"
+                    "$ref": "DataHolderBrandSummary"
                 },
                 "type": "array",
                 "uniqueItems": true
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -721,14 +721,14 @@
             "meta"
         ],
         "type": "object",
-        "$id": "ResponseDataHoldersBrandSummaryList.json"
+        "$id": "ResponseDataHoldersBrandSummaryList"
     },
     "ResponseErrorListV2": {
         "properties": {
             "errors": {
                 "description": "",
                 "items": {
-                    "$ref": "ResponseErrorListV2_errors.json"
+                    "$ref": "ResponseErrorListV2_errors"
                 },
                 "type": "array"
             }
@@ -740,7 +740,7 @@
         "x-conditional": [
             "meta"
         ],
-        "$id": "ResponseErrorListV2.json"
+        "$id": "ResponseErrorListV2"
     },
     "ResponseErrorListV2_errors": {
         "properties": {
@@ -753,7 +753,7 @@
                 "type": "string"
             },
             "meta": {
-                "$ref": "MetaError.json"
+                "$ref": "MetaError"
             },
             "title": {
                 "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
@@ -766,7 +766,7 @@
             "title"
         ],
         "type": "object",
-        "$id": "ResponseErrorListV2_errors.json"
+        "$id": "ResponseErrorListV2_errors"
     },
     "ResponseJWKS": {
         "description": "Response containing the JSON Web Key Set",
@@ -774,7 +774,7 @@
             "keys": {
                 "description": "The value of the \"keys\" parameter is an array of JWK values",
                 "items": {
-                    "$ref": "JWK.json"
+                    "$ref": "JWK"
                 },
                 "type": "array"
             }
@@ -783,7 +783,7 @@
             "keys"
         ],
         "type": "object",
-        "$id": "ResponseJWKS.json"
+        "$id": "ResponseJWKS"
     },
     "ResponseOpenIDProviderConfigMetadata": {
         "description": "Response containing the Open ID Provider Configuration Metadata",
@@ -884,7 +884,7 @@
             "token_endpoint_auth_signing_alg_values_supported"
         ],
         "type": "object",
-        "$id": "ResponseOpenIDProviderConfigMetadata.json"
+        "$id": "ResponseOpenIDProviderConfigMetadata"
     },
     "ResponseRegisterDataHolderBrandList": {
         "description": "Response containing a list of CDR Register Data Holder Brand objects",
@@ -892,16 +892,16 @@
             "data": {
                 "description": "Response data for the query",
                 "items": {
-                    "$ref": "RegisterDataHolderBrand.json"
+                    "$ref": "RegisterDataHolderBrand"
                 },
                 "type": "array",
                 "uniqueItems": true
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -910,7 +910,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "ResponseRegisterDataHolderBrandList.json"
+        "$id": "ResponseRegisterDataHolderBrandList"
     },
     "ResponseRegisterDataRecipientList": {
         "description": "Response containing a list of Data Recipients in the CDR Register",
@@ -918,16 +918,16 @@
             "data": {
                 "description": "Response data for the query",
                 "items": {
-                    "$ref": "RegisterDataRecipient.json"
+                    "$ref": "RegisterDataRecipient"
                 },
                 "type": "array",
                 "uniqueItems": true
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -936,7 +936,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "ResponseRegisterDataRecipientList.json"
+        "$id": "ResponseRegisterDataRecipientList"
     },
     "SoftwareProductMetaData": {
         "description": "Data Recipient Brand Software Products",
@@ -982,23 +982,23 @@
             "status"
         ],
         "type": "object",
-        "$id": "SoftwareProductMetaData.json"
+        "$id": "SoftwareProductMetaData"
     },
     "SoftwareProductsStatusList": {
         "properties": {
             "data": {
                 "description": "Response data for the query",
                 "items": {
-                    "$ref": "SoftwareProductStatus.json"
+                    "$ref": "SoftwareProductStatus"
                 },
                 "type": "array",
                 "uniqueItems": true
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -1007,7 +1007,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "SoftwareProductsStatusList.json"
+        "$id": "SoftwareProductsStatusList"
     },
     "SoftwareProductStatus": {
         "properties": {
@@ -1031,6 +1031,6 @@
             "status"
         ],
         "type": "object",
-        "$id": "SoftwareProductStatus.json"
+        "$id": "SoftwareProductStatus"
     }
 }

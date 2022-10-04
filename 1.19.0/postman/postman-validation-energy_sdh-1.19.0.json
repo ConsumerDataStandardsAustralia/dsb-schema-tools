@@ -157,7 +157,7 @@
             "state"
         ],
         "type": "object",
-        "$id": "CommonPAFAddress.json"
+        "$id": "CommonPAFAddress"
     },
     "CommonPhysicalAddress": {
         "properties": {
@@ -170,10 +170,10 @@
                 "type": "string"
             },
             "paf": {
-                "$ref": "CommonPAFAddress.json"
+                "$ref": "CommonPAFAddress"
             },
             "simple": {
-                "$ref": "CommonSimpleAddress.json"
+                "$ref": "CommonSimpleAddress"
             }
         },
         "required": [
@@ -184,7 +184,7 @@
             "simple",
             "paf"
         ],
-        "$id": "CommonPhysicalAddress.json"
+        "$id": "CommonPhysicalAddress"
     },
     "CommonSimpleAddress": {
         "description": "Required if addressUType is set to simple",
@@ -248,18 +248,18 @@
         "x-conditional": [
             "postcode"
         ],
-        "$id": "CommonSimpleAddress.json"
+        "$id": "CommonSimpleAddress"
     },
     "EnergyDerDetailResponse": {
         "properties": {
             "data": {
-                "$ref": "EnergyDerRecord.json"
+                "$ref": "EnergyDerRecord"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -268,7 +268,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyDerDetailResponse.json"
+        "$id": "EnergyDerDetailResponse"
     },
     "EnergyDerListResponse": {
         "properties": {
@@ -277,7 +277,7 @@
                     "derRecords": {
                         "description": "Array of meter reads",
                         "items": {
-                            "$ref": "EnergyDerRecord.json"
+                            "$ref": "EnergyDerRecord"
                         },
                         "type": "array"
                     }
@@ -288,10 +288,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -300,7 +300,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyDerListResponse.json"
+        "$id": "EnergyDerListResponse"
     },
     "EnergyDerRecord": {
         "properties": {
@@ -603,7 +603,7 @@
         "x-conditional": [
             "protectionMode"
         ],
-        "$id": "EnergyDerRecord.json"
+        "$id": "EnergyDerRecord"
     },
     "EnergyServicePoint": {
         "properties": {
@@ -709,7 +709,7 @@
             "lastUpdateDateTime"
         ],
         "type": "object",
-        "$id": "EnergyServicePoint.json"
+        "$id": "EnergyServicePoint"
     },
     "EnergyServicePointDetail": {
         "properties": {
@@ -789,7 +789,7 @@
                 "x-cds-type": "DateTimeString"
             },
             "location": {
-                "$ref": "CommonPhysicalAddress.json",
+                "$ref": "CommonPhysicalAddress",
                 "description": "Location of the servicepoint",
                 "type": "object"
             },
@@ -1021,18 +1021,18 @@
             "relatedParticipants",
             "location"
         ],
-        "$id": "EnergyServicePointDetail.json"
+        "$id": "EnergyServicePointDetail"
     },
     "EnergyServicePointDetailResponse": {
         "properties": {
             "data": {
-                "$ref": "EnergyServicePointDetail.json"
+                "$ref": "EnergyServicePointDetail"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -1040,7 +1040,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "EnergyServicePointDetailResponse.json"
+        "$id": "EnergyServicePointDetailResponse"
     },
     "EnergyServicePointListResponse": {
         "properties": {
@@ -1048,7 +1048,7 @@
                 "properties": {
                     "servicePoints": {
                         "items": {
-                            "$ref": "EnergyServicePoint.json"
+                            "$ref": "EnergyServicePoint"
                         },
                         "type": "array"
                     }
@@ -1059,10 +1059,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -1071,7 +1071,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyServicePointListResponse.json"
+        "$id": "EnergyServicePointListResponse"
     },
     "EnergyUsageListResponse": {
         "properties": {
@@ -1080,7 +1080,7 @@
                     "reads": {
                         "description": "Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order",
                         "items": {
-                            "$ref": "EnergyUsageRead.json"
+                            "$ref": "EnergyUsageRead"
                         },
                         "type": "array"
                     }
@@ -1091,10 +1091,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -1103,7 +1103,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyUsageListResponse.json"
+        "$id": "EnergyUsageListResponse"
     },
     "EnergyUsageRead": {
         "properties": {
@@ -1277,7 +1277,7 @@
             "basicRead",
             "intervalRead"
         ],
-        "$id": "EnergyUsageRead.json"
+        "$id": "EnergyUsageRead"
     },
     "ErrorListResponse": {
         "properties": {
@@ -1327,7 +1327,7 @@
         "x-conditional": [
             "meta"
         ],
-        "$id": "ErrorListResponse.json"
+        "$id": "ErrorListResponse"
     },
     "Links": {
         "properties": {
@@ -1341,7 +1341,7 @@
             "self"
         ],
         "type": "object",
-        "$id": "Links.json"
+        "$id": "Links"
     },
     "LinksPaginated": {
         "properties": {
@@ -1393,11 +1393,11 @@
             "next",
             "last"
         ],
-        "$id": "LinksPaginated.json"
+        "$id": "LinksPaginated"
     },
     "Meta": {
         "type": "object",
-        "$id": "Meta.json"
+        "$id": "Meta"
     },
     "MetaPaginated": {
         "properties": {
@@ -1417,6 +1417,6 @@
             "totalRecords"
         ],
         "type": "object",
-        "$id": "MetaPaginated.json"
+        "$id": "MetaPaginated"
     }
 }

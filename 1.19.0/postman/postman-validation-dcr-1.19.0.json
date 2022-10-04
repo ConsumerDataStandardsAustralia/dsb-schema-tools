@@ -41,17 +41,17 @@
                 }
             },
             {
-                "$ref": "RegistrationProperties.json"
+                "$ref": "RegistrationProperties"
             }
         ],
-        "$id": "ClientRegistration.json"
+        "$id": "ClientRegistration"
     },
     "ClientRegistrationRequest": {
         "description": "The registration request JWT to be used to register with a Data Holder.",
         "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
         "format": "JWT",
         "type": "string",
-        "$id": "ClientRegistrationRequest.json"
+        "$id": "ClientRegistrationRequest"
     },
     "RegistrationError": {
         "properties": {
@@ -77,7 +77,7 @@
             "error"
         ],
         "type": "object",
-        "$id": "RegistrationError.json"
+        "$id": "RegistrationError"
     },
     "RegistrationProperties": {
         "properties": {
@@ -250,7 +250,7 @@
             },
             "sector_identifier_uri": {
                 "description": "URL string referencing the client sector identifier URI, used as an optional input to the Pairwise Identifier",
-                "example": "https://www.mockcompany.com.au/sector_identifier.json",
+                "example": "https://www.mockcompany.com.au/sector_identifier",
                 "type": [
                     "string",
                     "null"
@@ -320,6 +320,6 @@
             "token_endpoint_auth_signing_alg"
         ],
         "type": "object",
-        "$id": "RegistrationProperties.json"
+        "$id": "RegistrationProperties"
     }
 }

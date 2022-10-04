@@ -157,7 +157,7 @@
             "state"
         ],
         "type": "object",
-        "$id": "CommonPAFAddress.json"
+        "$id": "CommonPAFAddress"
     },
     "CommonPhysicalAddress": {
         "properties": {
@@ -170,10 +170,10 @@
                 "type": "string"
             },
             "paf": {
-                "$ref": "CommonPAFAddress.json"
+                "$ref": "CommonPAFAddress"
             },
             "simple": {
-                "$ref": "CommonSimpleAddress.json"
+                "$ref": "CommonSimpleAddress"
             }
         },
         "required": [
@@ -184,7 +184,7 @@
             "simple",
             "paf"
         ],
-        "$id": "CommonPhysicalAddress.json"
+        "$id": "CommonPhysicalAddress"
     },
     "CommonSimpleAddress": {
         "description": "Required if addressUType is set to simple",
@@ -248,12 +248,12 @@
         "x-conditional": [
             "postcode"
         ],
-        "$id": "CommonSimpleAddress.json"
+        "$id": "CommonSimpleAddress"
     },
     "EnergyAccount": {
         "allOf": [
             {
-                "$ref": "EnergyAccountBase.json"
+                "$ref": "EnergyAccountBase"
             },
             {
                 "description": "The array of plans containing service points and associated plan details",
@@ -311,7 +311,7 @@
                 }
             }
         ],
-        "$id": "EnergyAccount.json"
+        "$id": "EnergyAccount"
     },
     "EnergyAccountBase": {
         "properties": {
@@ -344,7 +344,7 @@
             "creationDate"
         ],
         "type": "object",
-        "$id": "EnergyAccountBase.json"
+        "$id": "EnergyAccountBase"
     },
     "EnergyAccountBaseV2": {
         "properties": {
@@ -394,12 +394,12 @@
         "x-conditional": [
             "creationDate"
         ],
-        "$id": "EnergyAccountBaseV2.json"
+        "$id": "EnergyAccountBaseV2"
     },
     "EnergyAccountDetail": {
         "allOf": [
             {
-                "$ref": "EnergyAccountBase.json"
+                "$ref": "EnergyAccountBase"
             },
             {
                 "description": "The array of plans containing service points and associated plan details",
@@ -515,11 +515,11 @@
                                         },
                                         "gasContract": {
                                             "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                            "$ref": "EnergyPlanContract.json"
+                                            "$ref": "EnergyPlanContract"
                                         },
                                         "electricityContract": {
                                             "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                            "$ref": "EnergyPlanContract.json"
+                                            "$ref": "EnergyPlanContract"
                                         }
                                     }
                                 },
@@ -564,18 +564,18 @@
                 }
             }
         ],
-        "$id": "EnergyAccountDetail.json"
+        "$id": "EnergyAccountDetail"
     },
     "EnergyAccountDetailResponse": {
         "properties": {
             "data": {
-                "$ref": "EnergyAccountDetail.json"
+                "$ref": "EnergyAccountDetail"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -584,18 +584,18 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyAccountDetailResponse.json"
+        "$id": "EnergyAccountDetailResponse"
     },
     "EnergyAccountDetailResponseV2": {
         "properties": {
             "data": {
-                "$ref": "EnergyAccountDetailV2.json"
+                "$ref": "EnergyAccountDetailV2"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -604,12 +604,12 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyAccountDetailResponseV2.json"
+        "$id": "EnergyAccountDetailResponseV2"
     },
     "EnergyAccountDetailV2": {
         "allOf": [
             {
-                "$ref": "EnergyAccountBaseV2.json"
+                "$ref": "EnergyAccountBaseV2"
             },
             {
                 "description": "The array of plans containing service points and associated plan details",
@@ -728,11 +728,11 @@
                                         },
                                         "gasContract": {
                                             "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                                            "$ref": "EnergyPlanContract.json"
+                                            "$ref": "EnergyPlanContract"
                                         },
                                         "electricityContract": {
                                             "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                                            "$ref": "EnergyPlanContract.json"
+                                            "$ref": "EnergyPlanContract"
                                         }
                                     }
                                 },
@@ -777,7 +777,7 @@
                 }
             }
         ],
-        "$id": "EnergyAccountDetailV2.json"
+        "$id": "EnergyAccountDetailV2"
     },
     "EnergyAccountListResponse": {
         "properties": {
@@ -786,7 +786,7 @@
                     "accounts": {
                         "description": "Array of accounts",
                         "items": {
-                            "$ref": "EnergyAccount.json"
+                            "$ref": "EnergyAccount"
                         },
                         "type": "array"
                     }
@@ -797,10 +797,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -809,7 +809,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyAccountListResponse.json"
+        "$id": "EnergyAccountListResponse"
     },
     "EnergyAccountListResponseV2": {
         "properties": {
@@ -818,7 +818,7 @@
                     "accounts": {
                         "description": "Array of accounts",
                         "items": {
-                            "$ref": "EnergyAccountV2.json"
+                            "$ref": "EnergyAccountV2"
                         },
                         "type": "array"
                     }
@@ -829,10 +829,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -841,12 +841,12 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyAccountListResponseV2.json"
+        "$id": "EnergyAccountListResponseV2"
     },
     "EnergyAccountV2": {
         "allOf": [
             {
-                "$ref": "EnergyAccountBaseV2.json"
+                "$ref": "EnergyAccountBaseV2"
             },
             {
                 "description": "The array of plans containing service points and associated plan details",
@@ -907,7 +907,7 @@
                 }
             }
         ],
-        "$id": "EnergyAccountV2.json"
+        "$id": "EnergyAccountV2"
     },
     "EnergyBalanceListResponse": {
         "properties": {
@@ -942,10 +942,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -954,7 +954,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyBalanceListResponse.json"
+        "$id": "EnergyBalanceListResponse"
     },
     "EnergyBalanceResponse": {
         "properties": {
@@ -972,10 +972,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -984,7 +984,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyBalanceResponse.json"
+        "$id": "EnergyBalanceResponse"
     },
     "EnergyBillingDemandTransaction": {
         "properties": {
@@ -1112,7 +1112,7 @@
             "amount"
         ],
         "type": "object",
-        "$id": "EnergyBillingDemandTransaction.json"
+        "$id": "EnergyBillingDemandTransaction"
     },
     "EnergyBillingListResponse": {
         "properties": {
@@ -1121,7 +1121,7 @@
                     "transactions": {
                         "description": "Array of transactions sorted by date and time in descending order",
                         "items": {
-                            "$ref": "EnergyBillingTransaction.json"
+                            "$ref": "EnergyBillingTransaction"
                         },
                         "type": "array"
                     }
@@ -1132,10 +1132,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -1144,7 +1144,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyBillingListResponse.json"
+        "$id": "EnergyBillingListResponse"
     },
     "EnergyBillingOnceOffTransaction": {
         "properties": {
@@ -1177,7 +1177,7 @@
             "description"
         ],
         "type": "object",
-        "$id": "EnergyBillingOnceOffTransaction.json"
+        "$id": "EnergyBillingOnceOffTransaction"
     },
     "EnergyBillingOtherTransaction": {
         "properties": {
@@ -1295,7 +1295,7 @@
             "description"
         ],
         "type": "object",
-        "$id": "EnergyBillingOtherTransaction.json"
+        "$id": "EnergyBillingOtherTransaction"
     },
     "EnergyBillingPaymentTransaction": {
         "properties": {
@@ -1323,7 +1323,7 @@
             "method"
         ],
         "type": "object",
-        "$id": "EnergyBillingPaymentTransaction.json"
+        "$id": "EnergyBillingPaymentTransaction"
     },
     "EnergyBillingTransaction": {
         "properties": {
@@ -1332,7 +1332,7 @@
                 "type": "string"
             },
             "demand": {
-                "$ref": "EnergyBillingDemandTransaction.json",
+                "$ref": "EnergyBillingDemandTransaction",
                 "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand"
             },
             "executionDateTime": {
@@ -1349,15 +1349,15 @@
                 "x-cds-type": "AmountString"
             },
             "onceOff": {
-                "$ref": "EnergyBillingOnceOffTransaction.json",
+                "$ref": "EnergyBillingOnceOffTransaction",
                 "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff"
             },
             "otherCharges": {
-                "$ref": "EnergyBillingOtherTransaction.json",
+                "$ref": "EnergyBillingOtherTransaction",
                 "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge"
             },
             "payment": {
-                "$ref": "EnergyBillingPaymentTransaction.json",
+                "$ref": "EnergyBillingPaymentTransaction",
                 "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment"
             },
             "transactionUType": {
@@ -1372,7 +1372,7 @@
                 "type": "string"
             },
             "usage": {
-                "$ref": "EnergyBillingUsageTransaction.json",
+                "$ref": "EnergyBillingUsageTransaction",
                 "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage"
             }
         },
@@ -1387,7 +1387,7 @@
             "onceOff",
             "payment"
         ],
-        "$id": "EnergyBillingTransaction.json"
+        "$id": "EnergyBillingTransaction"
     },
     "EnergyBillingUsageTransaction": {
         "properties": {
@@ -1532,7 +1532,7 @@
             "amount"
         ],
         "type": "object",
-        "$id": "EnergyBillingUsageTransaction.json"
+        "$id": "EnergyBillingUsageTransaction"
     },
     "EnergyConcession": {
         "properties": {
@@ -1632,7 +1632,7 @@
             "amount",
             "percentage"
         ],
-        "$id": "EnergyConcession.json"
+        "$id": "EnergyConcession"
     },
     "EnergyConcessionsResponse": {
         "properties": {
@@ -1641,7 +1641,7 @@
                     "concessions": {
                         "description": "Array may be empty if no concessions exist",
                         "items": {
-                            "$ref": "EnergyConcession.json"
+                            "$ref": "EnergyConcession"
                         },
                         "type": "array"
                     }
@@ -1652,10 +1652,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -1664,18 +1664,18 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyConcessionsResponse.json"
+        "$id": "EnergyConcessionsResponse"
     },
     "EnergyDerDetailResponse": {
         "properties": {
             "data": {
-                "$ref": "EnergyDerRecord.json"
+                "$ref": "EnergyDerRecord"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -1684,7 +1684,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyDerDetailResponse.json"
+        "$id": "EnergyDerDetailResponse"
     },
     "EnergyDerListResponse": {
         "properties": {
@@ -1693,7 +1693,7 @@
                     "derRecords": {
                         "description": "Array of meter reads",
                         "items": {
-                            "$ref": "EnergyDerRecord.json"
+                            "$ref": "EnergyDerRecord"
                         },
                         "type": "array"
                     }
@@ -1704,10 +1704,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -1716,7 +1716,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyDerListResponse.json"
+        "$id": "EnergyDerListResponse"
     },
     "EnergyDerRecord": {
         "properties": {
@@ -2019,12 +2019,12 @@
         "x-conditional": [
             "protectionMode"
         ],
-        "$id": "EnergyDerRecord.json"
+        "$id": "EnergyDerRecord"
     },
     "EnergyInvoice": {
         "properties": {
             "accountCharges": {
-                "$ref": "EnergyInvoiceAccountCharges.json"
+                "$ref": "EnergyInvoiceAccountCharges"
             },
             "accountId": {
                 "description": "The ID of the account for which the invoice was issued",
@@ -2044,11 +2044,11 @@
                 "x-cds-type": "DateString"
             },
             "electricity": {
-                "$ref": "EnergyInvoiceElectricityUsageCharges.json",
+                "$ref": "EnergyInvoiceElectricityUsageCharges",
                 "description": "Object containing charges and credits related to electricity usage"
             },
             "gas": {
-                "$ref": "EnergyInvoiceGasUsageCharges.json",
+                "$ref": "EnergyInvoiceGasUsageCharges",
                 "description": "Object containing charges and credits related to gas usage"
             },
             "gstAmount": {
@@ -2159,7 +2159,7 @@
         "x-conditional": [
             "period"
         ],
-        "$id": "EnergyInvoice.json"
+        "$id": "EnergyInvoice"
     },
     "EnergyInvoiceAccountCharges": {
         "description": "Object contain charges and credits related to electricity usage",
@@ -2188,7 +2188,7 @@
             "totalDiscounts"
         ],
         "type": "object",
-        "$id": "EnergyInvoiceAccountCharges.json"
+        "$id": "EnergyInvoiceAccountCharges"
     },
     "EnergyInvoiceElectricityUsageCharges": {
         "properties": {
@@ -2266,7 +2266,7 @@
             "totalOnceOffDiscounts"
         ],
         "type": "object",
-        "$id": "EnergyInvoiceElectricityUsageCharges.json"
+        "$id": "EnergyInvoiceElectricityUsageCharges"
     },
     "EnergyInvoiceGasUsageCharges": {
         "properties": {
@@ -2344,7 +2344,7 @@
             "totalOnceOffDiscounts"
         ],
         "type": "object",
-        "$id": "EnergyInvoiceGasUsageCharges.json"
+        "$id": "EnergyInvoiceGasUsageCharges"
     },
     "EnergyInvoiceListResponse": {
         "properties": {
@@ -2353,7 +2353,7 @@
                     "invoices": {
                         "description": "Array of invoices sorted by issue date in descending order",
                         "items": {
-                            "$ref": "EnergyInvoice.json"
+                            "$ref": "EnergyInvoice"
                         },
                         "type": "array"
                     }
@@ -2364,10 +2364,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -2376,7 +2376,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyInvoiceListResponse.json"
+        "$id": "EnergyInvoiceListResponse"
     },
     "EnergyPaymentSchedule": {
         "properties": {
@@ -2574,7 +2574,7 @@
             "manualPayment",
             "digitalWallet"
         ],
-        "$id": "EnergyPaymentSchedule.json"
+        "$id": "EnergyPaymentSchedule"
     },
     "EnergyPaymentScheduleResponse": {
         "properties": {
@@ -2583,7 +2583,7 @@
                     "paymentSchedules": {
                         "description": "Array may be empty if no payment schedule exist",
                         "items": {
-                            "$ref": "EnergyPaymentSchedule.json"
+                            "$ref": "EnergyPaymentSchedule"
                         },
                         "type": "array"
                     }
@@ -2594,10 +2594,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -2606,7 +2606,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyPaymentScheduleResponse.json"
+        "$id": "EnergyPaymentScheduleResponse"
     },
     "EnergyPlan": {
         "properties": {
@@ -2794,7 +2794,7 @@
             "brandName"
         ],
         "type": "object",
-        "$id": "EnergyPlan.json"
+        "$id": "EnergyPlan"
     },
     "EnergyPlanContract": {
         "properties": {
@@ -2806,22 +2806,22 @@
                 ]
             },
             "controlledLoad": {
-                "$ref": "EnergyPlanControlledLoad.json"
+                "$ref": "EnergyPlanControlledLoad"
             },
             "discounts": {
-                "$ref": "EnergyPlanDiscounts.json"
+                "$ref": "EnergyPlanDiscounts"
             },
             "eligibility": {
-                "$ref": "EnergyPlanEligibility.json"
+                "$ref": "EnergyPlanEligibility"
             },
             "fees": {
-                "$ref": "EnergyPlanFees.json"
+                "$ref": "EnergyPlanFees"
             },
             "greenPowerCharges": {
-                "$ref": "EnergyPlanGreenPowerCharges.json"
+                "$ref": "EnergyPlanGreenPowerCharges"
             },
             "incentives": {
-                "$ref": "EnergyPlanIncentives.json"
+                "$ref": "EnergyPlanIncentives"
             },
             "intrinsicGreenPower": {
                 "description": "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
@@ -2879,10 +2879,10 @@
                 "type": "string"
             },
             "solarFeedInTariff": {
-                "$ref": "EnergyPlanSolarFeedInTariff.json"
+                "$ref": "EnergyPlanSolarFeedInTariff"
             },
             "tariffPeriod": {
-                "$ref": "EnergyPlanTariffPeriod.json"
+                "$ref": "EnergyPlanTariffPeriod"
             },
             "timeZone": {
                 "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
@@ -2915,12 +2915,12 @@
             "variation",
             "controlledLoad"
         ],
-        "$id": "EnergyPlanContract.json"
+        "$id": "EnergyPlanContract"
     },
     "EnergyPlanContractFull": {
         "allOf": [
             {
-                "$ref": "EnergyPlanContract.json"
+                "$ref": "EnergyPlanContract"
             },
             {
                 "type": "object",
@@ -2976,7 +2976,7 @@
                 }
             }
         ],
-        "$id": "EnergyPlanContractFull.json"
+        "$id": "EnergyPlanContractFull"
     },
     "EnergyPlanControlledLoad": {
         "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
@@ -3197,12 +3197,12 @@
             ]
         },
         "type": "array",
-        "$id": "EnergyPlanControlledLoad.json"
+        "$id": "EnergyPlanControlledLoad"
     },
     "EnergyPlanDetail": {
         "allOf": [
             {
-                "$ref": "EnergyPlan.json"
+                "$ref": "EnergyPlan"
             },
             {
                 "type": "object",
@@ -3249,16 +3249,16 @@
                     },
                     "gasContract": {
                         "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                        "$ref": "EnergyPlanContractFull.json"
+                        "$ref": "EnergyPlanContractFull"
                     },
                     "electricityContract": {
                         "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                        "$ref": "EnergyPlanContractFull.json"
+                        "$ref": "EnergyPlanContractFull"
                     }
                 }
             }
         ],
-        "$id": "EnergyPlanDetail.json"
+        "$id": "EnergyPlanDetail"
     },
     "EnergyPlanDiscounts": {
         "description": "Optional list of discounts available for the contract",
@@ -3383,7 +3383,7 @@
             ]
         },
         "type": "array",
-        "$id": "EnergyPlanDiscounts.json"
+        "$id": "EnergyPlanDiscounts"
     },
     "EnergyPlanEligibility": {
         "description": "Eligibility restrictions or requirements",
@@ -3432,7 +3432,7 @@
             "type": "object"
         },
         "type": "array",
-        "$id": "EnergyPlanEligibility.json"
+        "$id": "EnergyPlanEligibility"
     },
     "EnergyPlanFees": {
         "description": "An array of fees applicable to the plan",
@@ -3505,7 +3505,7 @@
             ]
         },
         "type": "array",
-        "$id": "EnergyPlanFees.json"
+        "$id": "EnergyPlanFees"
     },
     "EnergyPlanGreenPowerCharges": {
         "description": "Optional list of charges applicable to green power",
@@ -3580,7 +3580,7 @@
             "type": "object"
         },
         "type": "array",
-        "$id": "EnergyPlanGreenPowerCharges.json"
+        "$id": "EnergyPlanGreenPowerCharges"
     },
     "EnergyPlanIncentives": {
         "description": "Optional list of incentives available for the contract",
@@ -3616,7 +3616,7 @@
             "type": "object"
         },
         "type": "array",
-        "$id": "EnergyPlanIncentives.json"
+        "$id": "EnergyPlanIncentives"
     },
     "EnergyPlanListResponse": {
         "properties": {
@@ -3625,7 +3625,7 @@
                     "plans": {
                         "description": "Array of plans",
                         "items": {
-                            "$ref": "EnergyPlan.json"
+                            "$ref": "EnergyPlan"
                         },
                         "type": "array"
                     }
@@ -3636,10 +3636,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -3648,18 +3648,18 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyPlanListResponse.json"
+        "$id": "EnergyPlanListResponse"
     },
     "EnergyPlanResponse": {
         "properties": {
             "data": {
-                "$ref": "EnergyPlanDetail.json"
+                "$ref": "EnergyPlanDetail"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -3667,7 +3667,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "EnergyPlanResponse.json"
+        "$id": "EnergyPlanResponse"
     },
     "EnergyPlanSolarFeedInTariff": {
         "description": "Array of feed in tariffs for solar power",
@@ -3796,7 +3796,7 @@
             ]
         },
         "type": "array",
-        "$id": "EnergyPlanSolarFeedInTariff.json"
+        "$id": "EnergyPlanSolarFeedInTariff"
     },
     "EnergyPlanTariffPeriod": {
         "description": "Array of tariff periods",
@@ -4139,7 +4139,7 @@
             ]
         },
         "type": "array",
-        "$id": "EnergyPlanTariffPeriod.json"
+        "$id": "EnergyPlanTariffPeriod"
     },
     "EnergyServicePoint": {
         "properties": {
@@ -4245,7 +4245,7 @@
             "lastUpdateDateTime"
         ],
         "type": "object",
-        "$id": "EnergyServicePoint.json"
+        "$id": "EnergyServicePoint"
     },
     "EnergyServicePointDetail": {
         "properties": {
@@ -4325,7 +4325,7 @@
                 "x-cds-type": "DateTimeString"
             },
             "location": {
-                "$ref": "CommonPhysicalAddress.json",
+                "$ref": "CommonPhysicalAddress",
                 "description": "Location of the servicepoint",
                 "type": "object"
             },
@@ -4557,18 +4557,18 @@
             "relatedParticipants",
             "location"
         ],
-        "$id": "EnergyServicePointDetail.json"
+        "$id": "EnergyServicePointDetail"
     },
     "EnergyServicePointDetailResponse": {
         "properties": {
             "data": {
-                "$ref": "EnergyServicePointDetail.json"
+                "$ref": "EnergyServicePointDetail"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -4576,7 +4576,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "EnergyServicePointDetailResponse.json"
+        "$id": "EnergyServicePointDetailResponse"
     },
     "EnergyServicePointListResponse": {
         "properties": {
@@ -4584,7 +4584,7 @@
                 "properties": {
                     "servicePoints": {
                         "items": {
-                            "$ref": "EnergyServicePoint.json"
+                            "$ref": "EnergyServicePoint"
                         },
                         "type": "array"
                     }
@@ -4595,10 +4595,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -4607,7 +4607,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyServicePointListResponse.json"
+        "$id": "EnergyServicePointListResponse"
     },
     "EnergyUsageListResponse": {
         "properties": {
@@ -4616,7 +4616,7 @@
                     "reads": {
                         "description": "Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order",
                         "items": {
-                            "$ref": "EnergyUsageRead.json"
+                            "$ref": "EnergyUsageRead"
                         },
                         "type": "array"
                     }
@@ -4627,10 +4627,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "LinksPaginated.json"
+                "$ref": "LinksPaginated"
             },
             "meta": {
-                "$ref": "MetaPaginated.json"
+                "$ref": "MetaPaginated"
             }
         },
         "required": [
@@ -4639,7 +4639,7 @@
             "meta"
         ],
         "type": "object",
-        "$id": "EnergyUsageListResponse.json"
+        "$id": "EnergyUsageListResponse"
     },
     "EnergyUsageRead": {
         "properties": {
@@ -4813,7 +4813,7 @@
             "basicRead",
             "intervalRead"
         ],
-        "$id": "EnergyUsageRead.json"
+        "$id": "EnergyUsageRead"
     },
     "ErrorListResponse": {
         "properties": {
@@ -4863,7 +4863,7 @@
         "x-conditional": [
             "meta"
         ],
-        "$id": "ErrorListResponse.json"
+        "$id": "ErrorListResponse"
     },
     "Links": {
         "properties": {
@@ -4877,7 +4877,7 @@
             "self"
         ],
         "type": "object",
-        "$id": "Links.json"
+        "$id": "Links"
     },
     "LinksPaginated": {
         "properties": {
@@ -4929,11 +4929,11 @@
             "next",
             "last"
         ],
-        "$id": "LinksPaginated.json"
+        "$id": "LinksPaginated"
     },
     "Meta": {
         "type": "object",
-        "$id": "Meta.json"
+        "$id": "Meta"
     },
     "MetaPaginated": {
         "properties": {
@@ -4953,6 +4953,6 @@
             "totalRecords"
         ],
         "type": "object",
-        "$id": "MetaPaginated.json"
+        "$id": "MetaPaginated"
     }
 }

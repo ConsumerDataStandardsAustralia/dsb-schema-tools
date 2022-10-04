@@ -30,7 +30,7 @@
             "purpose"
         ],
         "type": "object",
-        "$id": "CommonEmailAddress.json"
+        "$id": "CommonEmailAddress"
     },
     "CommonOrganisation": {
         "properties": {
@@ -156,12 +156,12 @@
         "x-conditional": [
             "industryCodeVersion"
         ],
-        "$id": "CommonOrganisation.json"
+        "$id": "CommonOrganisation"
     },
     "CommonOrganisationDetailV2": {
         "allOf": [
             {
-                "$ref": "CommonOrganisation.json"
+                "$ref": "CommonOrganisation"
             },
             {
                 "required": [
@@ -173,13 +173,13 @@
                         "type": "array",
                         "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                         "items": {
-                            "$ref": "CommonPhysicalAddressWithPurpose.json"
+                            "$ref": "CommonPhysicalAddressWithPurpose"
                         }
                     }
                 }
             }
         ],
-        "$id": "CommonOrganisationDetailV2.json"
+        "$id": "CommonOrganisationDetailV2"
     },
     "CommonPAFAddress": {
         "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf)",
@@ -339,7 +339,7 @@
             "state"
         ],
         "type": "object",
-        "$id": "CommonPAFAddress.json"
+        "$id": "CommonPAFAddress"
     },
     "CommonPerson": {
         "properties": {
@@ -414,12 +414,12 @@
         "x-conditional": [
             "occupationCodeVersion"
         ],
-        "$id": "CommonPerson.json"
+        "$id": "CommonPerson"
     },
     "CommonPersonDetailV2": {
         "allOf": [
             {
-                "$ref": "CommonPerson.json"
+                "$ref": "CommonPerson"
             },
             {
                 "required": [
@@ -433,27 +433,27 @@
                         "type": "array",
                         "description": "Array is mandatory but may be empty if no phone numbers are held",
                         "items": {
-                            "$ref": "CommonPhoneNumber.json"
+                            "$ref": "CommonPhoneNumber"
                         }
                     },
                     "emailAddresses": {
                         "type": "array",
                         "description": "May be empty",
                         "items": {
-                            "$ref": "CommonEmailAddress.json"
+                            "$ref": "CommonEmailAddress"
                         }
                     },
                     "physicalAddresses": {
                         "type": "array",
                         "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
                         "items": {
-                            "$ref": "CommonPhysicalAddressWithPurpose.json"
+                            "$ref": "CommonPhysicalAddressWithPurpose"
                         }
                     }
                 }
             }
         ],
-        "$id": "CommonPersonDetailV2.json"
+        "$id": "CommonPersonDetailV2"
     },
     "CommonPhoneNumber": {
         "properties": {
@@ -517,7 +517,7 @@
         "x-conditional": [
             "areaCode"
         ],
-        "$id": "CommonPhoneNumber.json"
+        "$id": "CommonPhoneNumber"
     },
     "CommonPhysicalAddress": {
         "properties": {
@@ -530,10 +530,10 @@
                 "type": "string"
             },
             "paf": {
-                "$ref": "CommonPAFAddress.json"
+                "$ref": "CommonPAFAddress"
             },
             "simple": {
-                "$ref": "CommonSimpleAddress.json"
+                "$ref": "CommonSimpleAddress"
             }
         },
         "required": [
@@ -544,12 +544,12 @@
             "simple",
             "paf"
         ],
-        "$id": "CommonPhysicalAddress.json"
+        "$id": "CommonPhysicalAddress"
     },
     "CommonPhysicalAddressWithPurpose": {
         "allOf": [
             {
-                "$ref": "CommonPhysicalAddress.json"
+                "$ref": "CommonPhysicalAddress"
             },
             {
                 "required": [
@@ -571,7 +571,7 @@
                 }
             }
         ],
-        "$id": "CommonPhysicalAddressWithPurpose.json"
+        "$id": "CommonPhysicalAddressWithPurpose"
     },
     "CommonSimpleAddress": {
         "properties": {
@@ -634,7 +634,7 @@
         "x-conditional": [
             "postcode"
         ],
-        "$id": "CommonSimpleAddress.json"
+        "$id": "CommonSimpleAddress"
     },
     "DiscoveryOutage": {
         "properties": {
@@ -667,7 +667,7 @@
             "outageTime"
         ],
         "type": "object",
-        "$id": "DiscoveryOutage.json"
+        "$id": "DiscoveryOutage"
     },
     "Links": {
         "properties": {
@@ -681,11 +681,11 @@
             "self"
         ],
         "type": "object",
-        "$id": "Links.json"
+        "$id": "Links"
     },
     "Meta": {
         "type": "object",
-        "$id": "Meta.json"
+        "$id": "Meta"
     },
     "MetaError": {
         "description": "Additional data for customised error codes",
@@ -702,7 +702,7 @@
         "x-conditional": [
             "urn"
         ],
-        "$id": "MetaError.json"
+        "$id": "MetaError"
     },
     "ResponseCommonCustomer": {
         "properties": {
@@ -717,10 +717,10 @@
                         "type": "string"
                     },
                     "organisation": {
-                        "$ref": "CommonOrganisation.json"
+                        "$ref": "CommonOrganisation"
                     },
                     "person": {
-                        "$ref": "CommonPerson.json"
+                        "$ref": "CommonPerson"
                     }
                 },
                 "required": [
@@ -733,10 +733,10 @@
                 ]
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -744,7 +744,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "ResponseCommonCustomer.json"
+        "$id": "ResponseCommonCustomer"
     },
     "ResponseCommonCustomerDetailV2": {
         "properties": {
@@ -759,10 +759,10 @@
                         "type": "string"
                     },
                     "organisation": {
-                        "$ref": "CommonOrganisationDetailV2.json"
+                        "$ref": "CommonOrganisationDetailV2"
                     },
                     "person": {
-                        "$ref": "CommonPersonDetailV2.json"
+                        "$ref": "CommonPersonDetailV2"
                     }
                 },
                 "required": [
@@ -775,10 +775,10 @@
                 ]
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -786,7 +786,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "ResponseCommonCustomerDetailV2.json"
+        "$id": "ResponseCommonCustomerDetailV2"
     },
     "ResponseCommonDiscoveryStatus": {
         "properties": {
@@ -841,10 +841,10 @@
                 ]
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -852,7 +852,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "ResponseCommonDiscoveryStatus.json"
+        "$id": "ResponseCommonDiscoveryStatus"
     },
     "ResponseDiscoveryOutagesList": {
         "properties": {
@@ -861,7 +861,7 @@
                     "outages": {
                         "description": "List of scheduled outages. Property is mandatory but may contain and empty list if no outages are scheduled",
                         "items": {
-                            "$ref": "DiscoveryOutage.json"
+                            "$ref": "DiscoveryOutage"
                         },
                         "type": "array"
                     }
@@ -872,10 +872,10 @@
                 "type": "object"
             },
             "links": {
-                "$ref": "Links.json"
+                "$ref": "Links"
             },
             "meta": {
-                "$ref": "Meta.json"
+                "$ref": "Meta"
             }
         },
         "required": [
@@ -883,7 +883,7 @@
             "links"
         ],
         "type": "object",
-        "$id": "ResponseDiscoveryOutagesList.json"
+        "$id": "ResponseDiscoveryOutagesList"
     },
     "ResponseErrorListV2": {
         "properties": {
@@ -900,7 +900,7 @@
                             "type": "string"
                         },
                         "meta": {
-                            "$ref": "MetaError.json"
+                            "$ref": "MetaError"
                         },
                         "title": {
                             "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
@@ -924,6 +924,6 @@
         "x-conditional": [
             "meta"
         ],
-        "$id": "ResponseErrorListV2.json"
+        "$id": "ResponseErrorListV2"
     }
 }
