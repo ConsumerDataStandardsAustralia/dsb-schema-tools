@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "creationDate": {
+      "description": "The date the payee was created by the customer",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "description": {
+      "description": "A description of the payee provided by the customer",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nickname": {
+      "description": "The short display name of the payee as provided by the customer. Where a customer has not provided a nickname, a display name derived by the bank for the payee consistent with existing digital banking channels",
+      "type": "string"
+    },
+    "payeeId": {
+      "description": "ID of the payee adhering to the rules of ID permanence",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "type": {
+      "description": "The type of payee.<br/>DOMESTIC means a registered payee for domestic payments including NPP. <br/>INTERNATIONAL means a registered payee for international payments. <br/>BILLER means a registered payee for BPAY. <br/>DIGITAL_WALLET means a registered payee for a bank's digital wallet",
+      "enum": [
+        "BILLER",
+        "DIGITAL_WALLET",
+        "DOMESTIC",
+        "INTERNATIONAL"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "nickname",
+    "payeeId",
+    "type"
+  ],
+  "type": "object"
+}

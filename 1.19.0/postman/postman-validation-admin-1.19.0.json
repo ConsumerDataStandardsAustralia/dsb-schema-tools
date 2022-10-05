@@ -1,0 +1,985 @@
+{
+    "AvailabilityMetrics": {
+        "description": "Percentage availability of the CDR platform over time",
+        "properties": {
+            "currentMonth": {
+                "description": "Percentage availability of the CDR platform so far for the current calendar month. 0.0 means 0%. 1.0 means 100%.",
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "previousMonths": {
+                "description": "Percentage availability of the CDR platform for previous calendar months. The first element indicates the last month and so on. A maximum of twelve entries is required if available. 0.0 means 0%. 1.0 means 100%.",
+                "items": {
+                    "type": "number"
+                },
+                "type": [
+                    "array",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "currentMonth",
+            "previousMonths"
+        ],
+        "$id": "AvailabilityMetrics"
+    },
+    "AverageResponseMetricsV2": {
+        "description": "Average response time in seconds, at millisecond resolution, within each performance tier",
+        "properties": {
+            "highPriority": {
+                "description": "Average response time for the high priority tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "Average response time for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "largePayload": {
+                "description": "Average response time for the large payload tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "Average response time for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "largeSecondary": {
+                "description": "Average response time for the large payload tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+                "properties": {
+                    "primary": {
+                        "description": "Average response time as measured for the primary data holder",
+                        "properties": {
+                            "currentDay": {
+                                "description": "Average response time for current day",
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "previousDays": {
+                                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": [
+                                    "array",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object",
+                        "x-conditional": [
+                            "currentDay",
+                            "previousDays"
+                        ]
+                    },
+                    "secondary": {
+                        "description": "Average response time as measured for the secondary data holder",
+                        "properties": {
+                            "currentDay": {
+                                "description": "Average response time for current day",
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "previousDays": {
+                                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": [
+                                    "array",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object",
+                        "x-conditional": [
+                            "currentDay",
+                            "previousDays"
+                        ]
+                    }
+                },
+                "required": [
+                    "primary",
+                    "secondary"
+                ],
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "lowPriority": {
+                "description": "Average response time for the low priority tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "Average response time for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "secondary": {
+                "description": "Average response time for the secondary tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+                "properties": {
+                    "primary": {
+                        "description": "Average response time as measured for the primary data holder",
+                        "properties": {
+                            "currentDay": {
+                                "description": "Average response time for current day",
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "previousDays": {
+                                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": [
+                                    "array",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object",
+                        "x-conditional": [
+                            "currentDay",
+                            "previousDays"
+                        ]
+                    },
+                    "secondary": {
+                        "description": "Average response time as measured for the secondary data holder",
+                        "properties": {
+                            "currentDay": {
+                                "description": "Average response time for current day",
+                                "type": [
+                                    "number",
+                                    "null"
+                                ]
+                            },
+                            "previousDays": {
+                                "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                                "items": {
+                                    "type": "number"
+                                },
+                                "type": [
+                                    "array",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object",
+                        "x-conditional": [
+                            "currentDay",
+                            "previousDays"
+                        ]
+                    }
+                },
+                "required": [
+                    "primary",
+                    "secondary"
+                ],
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "unattended": {
+                "description": "Average response time for the unattended tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "Average response time for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "unauthenticated": {
+                "description": "Average response time for the unauthenticated tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "Average response time for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Average response time for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            }
+        },
+        "required": [
+            "highPriority",
+            "largePayload",
+            "lowPriority",
+            "unattended",
+            "unauthenticated"
+        ],
+        "type": "object",
+        "x-conditional": [
+            "secondary",
+            "largeSecondary"
+        ],
+        "$id": "AverageResponseMetricsV2"
+    },
+    "AverageTPSMetrics": {
+        "description": "Transactions per second over time",
+        "properties": {
+            "currentDay": {
+                "description": "Average TPS for current day",
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "previousDays": {
+                "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                    "type": "number"
+                },
+                "type": [
+                    "array",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "currentDay",
+            "previousDays"
+        ],
+        "$id": "AverageTPSMetrics"
+    },
+    "ErrorMetrics": {
+        "description": "Number of calls resulting in error due to server execution over time",
+        "properties": {
+            "currentDay": {
+                "description": "Number of errors for current day",
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "previousDays": {
+                "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                    "type": "number"
+                },
+                "type": [
+                    "array",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "currentDay",
+            "previousDays"
+        ],
+        "$id": "ErrorMetrics"
+    },
+    "InvocationMetricsV2": {
+        "description": "Number of API calls in each performance tier over time",
+        "properties": {
+            "highPriority": {
+                "description": "API call counts for the high priority tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "largePayload": {
+                "description": "API call counts for the large payload tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "largeSecondary": {
+                "description": "API call counts for the large Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "lowPriority": {
+                "description": "API call counts for the low priority tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "secondary": {
+                "description": "API call counts for the Shared Responsibility Data Requests tier.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": [
+                    "object",
+                    "null"
+                ],
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "unattended": {
+                "description": "API call counts for the unattended tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "unauthenticated": {
+                "description": "API call counts for the unauthenticated tier",
+                "properties": {
+                    "currentDay": {
+                        "description": "API call counts for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "API call counts for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            }
+        },
+        "required": [
+            "highPriority",
+            "largePayload",
+            "lowPriority",
+            "unattended",
+            "unauthenticated"
+        ],
+        "type": "object",
+        "x-conditional": [
+            "secondary",
+            "largeSecondary"
+        ],
+        "$id": "InvocationMetricsV2"
+    },
+    "Links": {
+        "properties": {
+            "self": {
+                "description": "Fully qualified link to this API call",
+                "type": "string",
+                "x-cds-type": "URIString"
+            }
+        },
+        "required": [
+            "self"
+        ],
+        "type": "object",
+        "$id": "Links"
+    },
+    "Meta": {
+        "type": "object",
+        "$id": "Meta"
+    },
+    "MetaError": {
+        "description": "Additional data for customised error codes",
+        "properties": {
+            "urn": {
+                "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.",
+                "type": [
+                    "string",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "urn"
+        ],
+        "$id": "MetaError"
+    },
+    "PeakTPSMetrics": {
+        "description": "Maximum record transactions per second over time",
+        "properties": {
+            "currentDay": {
+                "description": "Peak TPS for current day",
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "previousDays": {
+                "description": "Peak TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                    "type": "number"
+                },
+                "type": [
+                    "array",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "currentDay",
+            "previousDays"
+        ],
+        "$id": "PeakTPSMetrics"
+    },
+    "PerformanceMetrics": {
+        "description": "Percentage of calls within the performance thresholds",
+        "properties": {
+            "currentDay": {
+                "description": "Percentage of calls within the performance threshold for the current day. 0.0 means 0%. 1.0 means 100%",
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "previousDays": {
+                "description": "Percentage of calls within the performance threshold for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. 0.0 means 0%. 1.0 means 100%",
+                "items": {
+                    "type": "number"
+                },
+                "type": [
+                    "array",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "currentDay",
+            "previousDays"
+        ],
+        "$id": "PerformanceMetrics"
+    },
+    "RejectionMetricsV2": {
+        "description": "Number of calls rejected due to traffic thresholds over time",
+        "properties": {
+            "authenticated": {
+                "description": "Rejection counts for all authenticated end points",
+                "properties": {
+                    "currentDay": {
+                        "description": "Number of calls rejected for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "unauthenticated": {
+                "description": "Rejection counts for all uauthenticated end points",
+                "properties": {
+                    "currentDay": {
+                        "description": "Number of calls rejected for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            }
+        },
+        "required": [
+            "authenticated",
+            "unauthenticated"
+        ],
+        "type": "object",
+        "$id": "RejectionMetricsV2"
+    },
+    "RequestMetaDataUpdate": {
+        "properties": {
+            "data": {
+                "properties": {
+                    "action": {
+                        "default": "REFRESH",
+                        "description": "The action to take for the meta data. At the moment the only option is REFRESH which requires the data holder to call the ACCC to refresh meta data as soon as practicable",
+                        "enum": [
+                            "REFRESH"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "action"
+                ],
+                "type": "object"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "required": [
+            "data"
+        ],
+        "type": "object",
+        "$id": "RequestMetaDataUpdate"
+    },
+    "ResponseErrorListV2": {
+        "properties": {
+            "errors": {
+                "description": "",
+                "items": {
+                    "properties": {
+                        "code": {
+                            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
+                            "type": "string"
+                        },
+                        "detail": {
+                            "description": "A human-readable explanation specific to this occurrence of the problem.",
+                            "type": "string"
+                        },
+                        "meta": {
+                            "$ref": "MetaError"
+                        },
+                        "title": {
+                            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "code",
+                        "detail",
+                        "title"
+                    ],
+                    "type": "object"
+                },
+                "type": "array"
+            }
+        },
+        "required": [
+            "errors"
+        ],
+        "type": "object",
+        "x-conditional": [
+            "meta"
+        ],
+        "$id": "ResponseErrorListV2"
+    },
+    "ResponseMetricsListV3": {
+        "properties": {
+            "data": {
+                "properties": {
+                    "availability": {
+                        "$ref": "AvailabilityMetrics"
+                    },
+                    "averageResponse": {
+                        "$ref": "AverageResponseMetricsV2"
+                    },
+                    "averageTps": {
+                        "$ref": "AverageTPSMetrics"
+                    },
+                    "customerCount": {
+                        "description": "Number of customers with active authorisations at the time of the call",
+                        "type": "integer"
+                    },
+                    "errors": {
+                        "$ref": "ErrorMetrics"
+                    },
+                    "invocations": {
+                        "$ref": "InvocationMetricsV2"
+                    },
+                    "peakTps": {
+                        "$ref": "PeakTPSMetrics"
+                    },
+                    "performance": {
+                        "$ref": "PerformanceMetrics"
+                    },
+                    "recipientCount": {
+                        "description": "Number of Data Recipient Software Products with active authorisations at the time of the call",
+                        "type": "integer"
+                    },
+                    "rejections": {
+                        "$ref": "RejectionMetricsV2"
+                    },
+                    "requestTime": {
+                        "description": "The date and time that the metrics in this payload were requested.",
+                        "type": "string",
+                        "x-cds-type": "DateTimeString"
+                    },
+                    "secondaryHolder": {
+                        "$ref": "SecondaryHolderMetrics"
+                    },
+                    "sessionCount": {
+                        "$ref": "SessionCountMetrics"
+                    }
+                },
+                "required": [
+                    "availability",
+                    "averageResponse",
+                    "averageTps",
+                    "customerCount",
+                    "errors",
+                    "invocations",
+                    "peakTps",
+                    "performance",
+                    "recipientCount",
+                    "rejections",
+                    "requestTime",
+                    "sessionCount"
+                ],
+                "type": "object",
+                "x-conditional": [
+                    "secondaryHolder"
+                ]
+            },
+            "links": {
+                "$ref": "Links"
+            },
+            "meta": {
+                "$ref": "Meta"
+            }
+        },
+        "required": [
+            "data",
+            "links"
+        ],
+        "type": "object",
+        "$id": "ResponseMetricsListV3"
+    },
+    "SecondaryHolderMetrics": {
+        "description": "Errors and rejections received by the primary data holder from the secondary data holder.  Mandatory for data holders designated for a Shared Responsibility Data Request data cluster",
+        "properties": {
+            "errors": {
+                "description": "Number of calls resulting in error due to server execution over time",
+                "properties": {
+                    "currentDay": {
+                        "description": "Number of errors for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Number of errors for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            },
+            "rejections": {
+                "description": "Number of calls resulting in a rejection due to server execution over time",
+                "properties": {
+                    "currentDay": {
+                        "description": "Number of rejections for current day",
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "previousDays": {
+                        "description": "Number of rejections for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object",
+                "x-conditional": [
+                    "currentDay",
+                    "previousDays"
+                ]
+            }
+        },
+        "required": [
+            "errors",
+            "rejections"
+        ],
+        "type": "object",
+        "$id": "SecondaryHolderMetrics"
+    },
+    "SessionCountMetrics": {
+        "description": "Session counts over time. Note that a session is defined as the provisioning of an Access Token.",
+        "properties": {
+            "currentDay": {
+                "description": "Session count for current day",
+                "type": [
+                    "number",
+                    "null"
+                ]
+            },
+            "previousDays": {
+                "description": "Session count for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+                "items": {
+                    "type": "number"
+                },
+                "type": [
+                    "array",
+                    "null"
+                ]
+            }
+        },
+        "type": "object",
+        "x-conditional": [
+            "currentDay",
+            "previousDays"
+        ],
+        "$id": "SessionCountMetrics"
+    }
+}
