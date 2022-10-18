@@ -99,14 +99,14 @@
         "termDeposit": {
           "type": "array",
           "items": {
-            "$ref": "BankingTermDepositAccount.json"
+            "$ref": "BankingTermDepositAccount"
           }
         },
         "creditCard": {
-          "$ref": "BankingCreditCardAccount.json"
+          "$ref": "BankingCreditCardAccount"
         },
         "loan": {
-          "$ref": "BankingLoanAccountV2.json"
+          "$ref": "BankingLoanAccountV2"
         },
         "depositRate": {
           "type": "string",
@@ -122,14 +122,14 @@
           "type": "array",
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "items": {
-            "$ref": "BankingProductDepositRate.json"
+            "$ref": "BankingProductDepositRate"
           }
         },
         "lendingRates": {
           "type": "array",
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "items": {
-            "$ref": "BankingProductLendingRateV2.json"
+            "$ref": "BankingProductLendingRateV2"
           }
         },
         "features": {
@@ -139,7 +139,7 @@
             "type": "object",
             "allOf": [
               {
-                "$ref": "BankingProductFeatureV2.json"
+                "$ref": "BankingProductFeatureV2"
               },
               {
                 "type": "object",
@@ -159,14 +159,14 @@
           "type": "array",
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
           "items": {
-            "$ref": "BankingProductFee.json"
+            "$ref": "BankingProductFee"
           }
         },
         "addresses": {
           "type": "array",
           "description": "The addresses for the account to be used for correspondence",
           "items": {
-            "$ref": "CommonPhysicalAddress.json"
+            "$ref": "CommonPhysicalAddress"
           }
         }
       },
@@ -436,10 +436,10 @@
       "$ref": "BankingDomesticPayeeAccount"
     },
     "card": {
-      "$ref": "BankingDomesticPayeeCard.json"
+      "$ref": "BankingDomesticPayeeCard"
     },
     "payId": {
-      "$ref": "BankingDomesticPayeePayId.json"
+      "$ref": "BankingDomesticPayeePayId"
     },
     "payeeAccountUType": {
       "description": "Type of account object included. Valid values are: **account** A standard Australian account defined by BSB/Account Number. **card** A credit or charge card to pay to (note that PANs are masked). **payId** A PayID recognised by NPP",
@@ -800,16 +800,16 @@
           ]
         },
         "biller": {
-          "$ref": "BankingBillerPayee.json"
+          "$ref": "BankingBillerPayee"
         },
         "domestic": {
-          "$ref": "BankingDomesticPayee.json"
+          "$ref": "BankingDomesticPayee"
         },
         "digitalWallet": {
-          "$ref": "BankingDigitalWalletPayee.json"
+          "$ref": "BankingDigitalWalletPayee"
         },
         "international": {
-          "$ref": "BankingInternationalPayee.json"
+          "$ref": "BankingInternationalPayee"
         }
       },
       "x-conditional": [
@@ -881,7 +881,7 @@
     "additionalEligibilityUris": {
       "description": "An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.",
       "items": {
-        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris"
       },
       "type": [
         "array",
@@ -891,7 +891,7 @@
     "additionalFeesAndPricingUris": {
       "description": "An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.",
       "items": {
-        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris"
       },
       "type": [
         "array",
@@ -901,7 +901,7 @@
     "additionalOverviewUris": {
       "description": "An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.",
       "items": {
-        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris"
       },
       "type": [
         "array",
@@ -911,7 +911,7 @@
     "additionalTermsUris": {
       "description": "An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.",
       "items": {
-        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris.json"
+        "$ref": "BankingProductAdditionalInformationV2_additionalInformationUris"
       },
       "type": [
         "array",
@@ -1183,49 +1183,49 @@
           "type": "array",
           "description": "An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also",
           "items": {
-            "$ref": "BankingProductBundle.json"
+            "$ref": "BankingProductBundle"
           }
         },
         "features": {
           "type": "array",
           "description": "Array of features available for the product",
           "items": {
-            "$ref": "BankingProductFeatureV2.json"
+            "$ref": "BankingProductFeatureV2"
           }
         },
         "constraints": {
           "type": "array",
           "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds",
           "items": {
-            "$ref": "BankingProductConstraint.json"
+            "$ref": "BankingProductConstraint"
           }
         },
         "eligibility": {
           "type": "array",
           "description": "Eligibility criteria for the product",
           "items": {
-            "$ref": "BankingProductEligibility.json"
+            "$ref": "BankingProductEligibility"
           }
         },
         "fees": {
           "type": "array",
           "description": "Fees applicable for the product",
           "items": {
-            "$ref": "BankingProductFee.json"
+            "$ref": "BankingProductFee"
           }
         },
         "depositRates": {
           "type": "array",
           "description": "Interest rates available for deposits",
           "items": {
-            "$ref": "BankingProductDepositRate.json"
+            "$ref": "BankingProductDepositRate"
           }
         },
         "lendingRates": {
           "type": "array",
           "description": "Interest rates charged against lending balances",
           "items": {
-            "$ref": "BankingProductLendingRateV2.json"
+            "$ref": "BankingProductLendingRateV2"
           }
         }
       }
@@ -1921,7 +1921,7 @@
       "type": "string"
     },
     "productCategory": {
-      "$ref": "BankingProductCategory.json"
+      "$ref": "BankingProductCategory"
     },
     "productId": {
       "description": "A data holder specific unique identifier for this product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
@@ -1965,12 +1965,12 @@
     },
     "paymentSet": {
       "items": {
-        "$ref": "BankingScheduledPaymentSet.json"
+        "$ref": "BankingScheduledPaymentSet"
       },
       "type": "array"
     },
     "recurrence": {
-      "$ref": "BankingScheduledPaymentRecurrence.json"
+      "$ref": "BankingScheduledPaymentRecurrence"
     },
     "scheduledPaymentId": {
       "description": "A unique ID of the scheduled payment adhering to the standards for ID permanence",
@@ -2042,10 +2042,10 @@
       "$ref": "BankingScheduledPaymentRecurrenceEventBased"
     },
     "intervalSchedule": {
-      "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule.json"
+      "$ref": "BankingScheduledPaymentRecurrenceIntervalSchedule"
     },
     "lastWeekDay": {
-      "$ref": "BankingScheduledPaymentRecurrenceLastWeekday.json"
+      "$ref": "BankingScheduledPaymentRecurrenceLastWeekday"
     },
     "nextPaymentDate": {
       "description": "The date of the next payment under the recurrence schedule",
@@ -2056,7 +2056,7 @@
       "x-cds-type": "DateString"
     },
     "onceOff": {
-      "$ref": "BankingScheduledPaymentRecurrenceOnceOff.json"
+      "$ref": "BankingScheduledPaymentRecurrenceOnceOff"
     },
     "recurrenceUType": {
       "description": "The type of recurrence used to define the schedule",
@@ -2267,10 +2267,10 @@
       "$ref": "BankingBillerPayee"
     },
     "domestic": {
-      "$ref": "BankingDomesticPayee.json"
+      "$ref": "BankingDomesticPayee"
     },
     "international": {
-      "$ref": "BankingInternationalPayee.json"
+      "$ref": "BankingInternationalPayee"
     },
     "nickname": {
       "description": "The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels",
@@ -2754,7 +2754,7 @@
       "$ref": "CommonPAFAddress"
     },
     "simple": {
-      "$ref": "CommonSimpleAddress.json"
+      "$ref": "CommonSimpleAddress"
     }
   },
   "required": [
@@ -2963,10 +2963,10 @@
       "$ref": "BankingAccountDetailV2"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -2993,10 +2993,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3012,10 +3012,10 @@
       "$ref": "BankingBalance"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -3042,10 +3042,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3073,10 +3073,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3092,10 +3092,10 @@
       "$ref": "BankingPayeeDetailV2"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -3122,10 +3122,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3141,10 +3141,10 @@
       "$ref": "BankingProductDetailV4"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -3171,10 +3171,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3202,10 +3202,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3221,10 +3221,10 @@
       "$ref": "BankingTransactionDetail"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -3250,10 +3250,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [

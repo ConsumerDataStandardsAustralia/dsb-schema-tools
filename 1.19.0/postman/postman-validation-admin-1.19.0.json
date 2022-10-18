@@ -802,33 +802,33 @@
           "$ref": "AvailabilityMetrics"
         },
         "averageResponse": {
-          "$ref": "AverageResponseMetricsV2.json"
+          "$ref": "AverageResponseMetricsV2"
         },
         "averageTps": {
-          "$ref": "AverageTPSMetrics.json"
+          "$ref": "AverageTPSMetrics"
         },
         "customerCount": {
           "description": "Number of customers with active authorisations at the time of the call",
           "type": "integer"
         },
         "errors": {
-          "$ref": "ErrorMetrics.json"
+          "$ref": "ErrorMetrics"
         },
         "invocations": {
-          "$ref": "InvocationMetricsV2.json"
+          "$ref": "InvocationMetricsV2"
         },
         "peakTps": {
-          "$ref": "PeakTPSMetrics.json"
+          "$ref": "PeakTPSMetrics"
         },
         "performance": {
-          "$ref": "PerformanceMetrics.json"
+          "$ref": "PerformanceMetrics"
         },
         "recipientCount": {
           "description": "Number of Data Recipient Software Products with active authorisations at the time of the call",
           "type": "integer"
         },
         "rejections": {
-          "$ref": "RejectionMetricsV2.json"
+          "$ref": "RejectionMetricsV2"
         },
         "requestTime": {
           "description": "The date and time that the metrics in this payload were requested.",
@@ -836,10 +836,10 @@
           "x-cds-type": "DateTimeString"
         },
         "secondaryHolder": {
-          "$ref": "SecondaryHolderMetrics.json"
+          "$ref": "SecondaryHolderMetrics"
         },
         "sessionCount": {
-          "$ref": "SessionCountMetrics.json"
+          "$ref": "SessionCountMetrics"
         }
       },
       "required": [
@@ -862,10 +862,10 @@
       ]
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [

@@ -99,10 +99,10 @@
       "uniqueItems": true
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -192,10 +192,10 @@
       "uniqueItems": true
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -509,7 +509,7 @@
       "type": "string"
     },
     "endpointDetail": {
-      "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
+      "$ref": "RegisterDataHolderBrandServiceEndpoint"
     },
     "industries": {
       "description": "The industries the Data Holder Brand belongs to",
@@ -531,7 +531,7 @@
       "x-cds-type": "DateTimeString"
     },
     "legalEntity": {
-      "$ref": "LegalEntityDetail.json"
+      "$ref": "LegalEntityDetail"
     },
     "logoUri": {
       "description": "Brand logo URI",
@@ -691,10 +691,10 @@
       "uniqueItems": true
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -875,10 +875,10 @@
       "uniqueItems": true
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -900,10 +900,10 @@
       "uniqueItems": true
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -969,10 +969,10 @@
       "uniqueItems": true
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [

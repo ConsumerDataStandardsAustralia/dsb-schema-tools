@@ -171,7 +171,7 @@
       "$ref": "CommonPAFAddress"
     },
     "simple": {
-      "$ref": "CommonSimpleAddress.json"
+      "$ref": "CommonSimpleAddress"
     }
   },
   "required": [
@@ -252,10 +252,10 @@
       "$ref": "EnergyDerRecord"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -283,10 +283,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -1020,10 +1020,10 @@
       "$ref": "EnergyServicePointDetail"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -1049,10 +1049,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -1080,10 +1080,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [

@@ -171,7 +171,7 @@
       "$ref": "CommonPAFAddress"
     },
     "simple": {
-      "$ref": "CommonSimpleAddress.json"
+      "$ref": "CommonSimpleAddress"
     }
   },
   "required": [
@@ -508,11 +508,11 @@
                   },
                   "gasContract": {
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                    "$ref": "EnergyPlanContract.json"
+                    "$ref": "EnergyPlanContract"
                   },
                   "electricityContract": {
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                    "$ref": "EnergyPlanContract.json"
+                    "$ref": "EnergyPlanContract"
                   }
                 }
               },
@@ -564,10 +564,10 @@
       "$ref": "EnergyAccountDetail"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -583,10 +583,10 @@
       "$ref": "EnergyAccountDetailV2"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -718,11 +718,11 @@
                   },
                   "gasContract": {
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-                    "$ref": "EnergyPlanContract.json"
+                    "$ref": "EnergyPlanContract"
                   },
                   "electricityContract": {
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-                    "$ref": "EnergyPlanContract.json"
+                    "$ref": "EnergyPlanContract"
                   }
                 }
               },
@@ -786,10 +786,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -817,10 +817,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -931,7 +931,7 @@
       "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -960,7 +960,7 @@
       "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -1115,10 +1115,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -1328,15 +1328,15 @@
       "x-cds-type": "AmountString"
     },
     "onceOff": {
-      "$ref": "EnergyBillingOnceOffTransaction.json",
+      "$ref": "EnergyBillingOnceOffTransaction",
       "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff"
     },
     "otherCharges": {
-      "$ref": "EnergyBillingOtherTransaction.json",
+      "$ref": "EnergyBillingOtherTransaction",
       "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge"
     },
     "payment": {
-      "$ref": "EnergyBillingPaymentTransaction.json",
+      "$ref": "EnergyBillingPaymentTransaction",
       "description": "Represents a payment to the account.  Mandatory if transactionUType is equal to payment"
     },
     "transactionUType": {
@@ -1351,7 +1351,7 @@
       "type": "string"
     },
     "usage": {
-      "$ref": "EnergyBillingUsageTransaction.json",
+      "$ref": "EnergyBillingUsageTransaction",
       "description": "Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage"
     }
   },
@@ -1628,10 +1628,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -1647,10 +1647,10 @@
       "$ref": "EnergyDerRecord"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -1678,10 +1678,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -2016,11 +2016,11 @@
       "x-cds-type": "DateString"
     },
     "electricity": {
-      "$ref": "EnergyInvoiceElectricityUsageCharges.json",
+      "$ref": "EnergyInvoiceElectricityUsageCharges",
       "description": "Object containing charges and credits related to electricity usage"
     },
     "gas": {
-      "$ref": "EnergyInvoiceGasUsageCharges.json",
+      "$ref": "EnergyInvoiceGasUsageCharges",
       "description": "Object containing charges and credits related to gas usage"
     },
     "gstAmount": {
@@ -2332,10 +2332,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -2560,10 +2560,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -2773,19 +2773,19 @@
       "$ref": "EnergyPlanControlledLoad"
     },
     "discounts": {
-      "$ref": "EnergyPlanDiscounts.json"
+      "$ref": "EnergyPlanDiscounts"
     },
     "eligibility": {
-      "$ref": "EnergyPlanEligibility.json"
+      "$ref": "EnergyPlanEligibility"
     },
     "fees": {
-      "$ref": "EnergyPlanFees.json"
+      "$ref": "EnergyPlanFees"
     },
     "greenPowerCharges": {
-      "$ref": "EnergyPlanGreenPowerCharges.json"
+      "$ref": "EnergyPlanGreenPowerCharges"
     },
     "incentives": {
-      "$ref": "EnergyPlanIncentives.json"
+      "$ref": "EnergyPlanIncentives"
     },
     "intrinsicGreenPower": {
       "description": "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
@@ -2843,10 +2843,10 @@
       "type": "string"
     },
     "solarFeedInTariff": {
-      "$ref": "EnergyPlanSolarFeedInTariff.json"
+      "$ref": "EnergyPlanSolarFeedInTariff"
     },
     "tariffPeriod": {
-      "$ref": "EnergyPlanTariffPeriod.json"
+      "$ref": "EnergyPlanTariffPeriod"
     },
     "timeZone": {
       "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
@@ -3210,11 +3210,11 @@
         },
         "gasContract": {
           "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-          "$ref": "EnergyPlanContractFull.json"
+          "$ref": "EnergyPlanContractFull"
         },
         "electricityContract": {
           "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-          "$ref": "EnergyPlanContractFull.json"
+          "$ref": "EnergyPlanContractFull"
         }
       }
     }
@@ -3591,10 +3591,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -3610,10 +3610,10 @@
       "$ref": "EnergyPlanDetail"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -4514,10 +4514,10 @@
       "$ref": "EnergyServicePointDetail"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -4543,10 +4543,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [
@@ -4574,10 +4574,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "LinksPaginated.json"
+      "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "$ref": "MetaPaginated"
     }
   },
   "required": [

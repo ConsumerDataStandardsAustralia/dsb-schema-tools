@@ -6,16 +6,13 @@
 // One for each sector listed in the "const sectors" array
 // Some manual processing MAY be required after running this program.
 // This is to ensure that the Postman collection runner can consume the generated files
-// In the generated output files do the following:
-// 1. remove all .json and set blank
-// 2. change all "$ref": "../common/<FILENAME> to "$ref": "<FILENAME>
 
 
 var fs = require('fs');
 var path = require('path');
 
-//const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common'];
-const sectors = ['energy'];
+const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common'];
+//const sectors = ['energy'];
 const version = '1.19.0';
 
 sectors.forEach(sector => {
@@ -41,8 +38,7 @@ sectors.forEach(sector => {
     cnt++;
     
     let fileString = fs.readFileSync(filePath).toString();
-   // var data = JSON.parse(fs.readFileSync(filePath));
-    var data = JSON.parse(fileString.replace('.json', ''));
+    var data = JSON.parse(fileString.replaceAll('.json', ''));
 
     var fileName = file.substr(0, file.indexOf('.'));
     var idSt = file.split('.')[0];

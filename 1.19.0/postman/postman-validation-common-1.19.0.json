@@ -170,7 +170,7 @@
           "type": "array",
           "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
           "items": {
-            "$ref": "CommonPhysicalAddressWithPurpose.json"
+            "$ref": "CommonPhysicalAddressWithPurpose"
           }
         }
       }
@@ -427,21 +427,21 @@
           "type": "array",
           "description": "Array is mandatory but may be empty if no phone numbers are held",
           "items": {
-            "$ref": "CommonPhoneNumber.json"
+            "$ref": "CommonPhoneNumber"
           }
         },
         "emailAddresses": {
           "type": "array",
           "description": "May be empty",
           "items": {
-            "$ref": "CommonEmailAddress.json"
+            "$ref": "CommonEmailAddress"
           }
         },
         "physicalAddresses": {
           "type": "array",
           "description": "Array is mandatory but may be empty if no valid addresses are held. One and only one address may have the purpose of REGISTERED. Zero or one, and no more than one, record may have the purpose of MAIL. If zero then the REGISTERED address is to be used for mail",
           "items": {
-            "$ref": "CommonPhysicalAddressWithPurpose.json"
+            "$ref": "CommonPhysicalAddressWithPurpose"
           }
         }
       }
@@ -525,7 +525,7 @@
       "$ref": "CommonPAFAddress"
     },
     "simple": {
-      "$ref": "CommonSimpleAddress.json"
+      "$ref": "CommonSimpleAddress"
     }
   },
   "required": [
@@ -705,7 +705,7 @@
           "$ref": "CommonOrganisation"
         },
         "person": {
-          "$ref": "CommonPerson.json"
+          "$ref": "CommonPerson"
         }
       },
       "required": [
@@ -718,10 +718,10 @@
       ]
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -746,7 +746,7 @@
           "$ref": "CommonOrganisationDetailV2"
         },
         "person": {
-          "$ref": "CommonPersonDetailV2.json"
+          "$ref": "CommonPersonDetailV2"
         }
       },
       "required": [
@@ -759,10 +759,10 @@
       ]
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -827,7 +827,7 @@
       "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
@@ -854,10 +854,10 @@
       "type": "object"
     },
     "links": {
-      "$ref": "Links.json"
+      "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "$ref": "Meta"
     }
   },
   "required": [
