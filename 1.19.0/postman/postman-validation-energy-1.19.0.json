@@ -2879,6 +2879,64 @@
     "variation",
     "controlledLoad"
   ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pricingModel ": {
+            "const": "TIME_OF_USE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "timeZone"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pricingModel": {
+            "const": "SINGLE_RATE_CONT_LOAD"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "controlledLoad"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pricingModel": {
+            "const": "TIME_OF_USE_CONT_LOAD"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "controlledLoad"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pricingModel": {
+            "const": "FLEXIBLE_CONT_LOAD"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "controlledLoad"
+        ]
+      }
+    }
+  ],
   "$id": "EnergyPlanContract"
 },"EnergyPlanContractFull" :{
   "allOf": [
