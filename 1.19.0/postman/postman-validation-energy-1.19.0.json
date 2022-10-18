@@ -3216,7 +3216,52 @@
           "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
           "$ref": "EnergyPlanContractFull"
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "fuelType": {
+                "const": "ELECTRICITY"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "electricityContract"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fuelType": {
+                "const": "DUAL"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "electricityContract",
+              "gasContract"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fuelType": {
+                "const": "GAS"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "gasContract"
+            ]
+          }
+        }
+      ]
     }
   ],
   "$id": "EnergyPlanDetail"
