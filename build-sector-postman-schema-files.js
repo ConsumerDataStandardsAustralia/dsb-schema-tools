@@ -14,7 +14,8 @@
 var fs = require('fs');
 var path = require('path');
 
-const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common'];
+//const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common'];
+const sectors = ['energy'];
 const version = '1.19.0';
 
 sectors.forEach(sector => {
@@ -38,13 +39,16 @@ sectors.forEach(sector => {
       stream.write(',');
     }
     cnt++;
-          
-    var data = JSON.parse(fs.readFileSync(filePath));
-    var fileName = file.substr(0, file.indexOf('.'));
+    
+    let fileString = fs.readFileSync(filePath).toString();
+   // var data = JSON.parse(fs.readFileSync(filePath));
+    var data = JSON.parse(fileString.replace('.json', ''));
 
-    data.$id =  file;   
+    var fileName = file.substr(0, file.indexOf('.'));
+    var idSt = file.split('.')[0];
+    data.$id =  idSt;   
     stream.write('"' + fileName + '" :')
-    stream.write(JSON.stringify(data));
+    stream.write(JSON.stringify(data, null, 2));
     console.log("Processed " + file);  
   
     if (cnt == files.length) {
