@@ -122,6 +122,16 @@
     "x-conditional": [
       "singleTariff",
       "timeVaryingTariffs"
+    ],
+    "allOf" : [
+      {
+        "if":   {"properties": {"tariffUType": { "const": "timeVaryingTariffs" }}},
+        "then": { "required": ["timeVaryingTariffs"]}
+      },
+      {
+        "if":   {  "properties": { "tariffUType" : {"const": "singleTariff"}}},
+        "then": { "required": ["singleTariff"]}
+      }      
     ]
   },
   "type": "array"

@@ -3530,6 +3530,50 @@
       "percentOfUse",
       "fixedAmount",
       "percentOverThreshold"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "methodUType": {
+              "const": "percentOfBill"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "percentOfUse"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "methodUType": {
+              "const": "fixedAmount"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "fixedAmount"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "methodUType": {
+              "const": "percentOverThreshold"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "percentOverThreshold"
+          ]
+        }
+      }
     ]
   },
   "type": "array",
@@ -3650,6 +3694,40 @@
     "x-conditional": [
       "amount",
       "rate"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "term": {
+              "const": "PERCENT_OF_BILL"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "rate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "term": {
+              "not": {
+                "enum": [
+                  "PERCENT_OF_BILL"
+                ]
+              }
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "amount"
+          ]
+        }
+      }
     ]
   },
   "type": "array",
@@ -3724,7 +3802,93 @@
       "type",
       "tiers"
     ],
-    "type": "object"
+    "type": "object",
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "PERCENT_OF_USE"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "rate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "PERCENT_OF_BILL"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "rate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "FIXED_PER_DAY"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "amount"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "FIXED_PER_MONTH"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "amount"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "FIXED_PER_WEEK"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "amount"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "type": {
+              "const": "FIXED_PER_UNIT"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "amount"
+          ]
+        }
+      }
+    ]
   },
   "type": "array",
   "$id": "EnergyPlanGreenPowerCharges"
@@ -3936,6 +4100,36 @@
     "x-conditional": [
       "singleTariff",
       "timeVaryingTariffs"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "tariffUType": {
+              "const": "timeVaryingTariffs"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "timeVaryingTariffs"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "tariffUType": {
+              "const": "singleTariff"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "singleTariff"
+          ]
+        }
+      }
     ]
   },
   "type": "array",
@@ -4129,7 +4323,19 @@
         "type": "object",
         "x-conditional": [
           "generalUnitPrice"
-        ]
+        ],
+        "if": {
+          "properties": {
+            "pricingModel": {
+              "const": "QUOTA"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "generalUnitPrice"
+          ]
+        }
       },
       "startDate": {
         "description": "The start date of the tariff period in a calendar year.  Formatted in mm-dd format",
@@ -4278,6 +4484,50 @@
       "singleRate",
       "timeOfUseRates",
       "demandCharges"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "singleRate"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "singleRate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "timeOfUseRates"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "timeOfUseRates"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "demandCharges"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "demandCharges"
+          ]
+        }
+      }
     ]
   },
   "type": "array",

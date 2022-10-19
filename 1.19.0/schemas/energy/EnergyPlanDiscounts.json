@@ -118,6 +118,20 @@
       "percentOfUse",
       "fixedAmount",
       "percentOverThreshold"
+    ],
+    "allOf": [
+      {
+        "if":   {"properties": {"methodUType": { "const": "percentOfBill" }}},
+        "then": { "required": ["percentOfUse"]}
+      },
+      {
+        "if":   {"properties": {"methodUType": { "const": "fixedAmount" }}},
+        "then": { "required": ["fixedAmount"]}
+      },
+      {
+        "if":   {"properties": {"methodUType": { "const": "percentOverThreshold" }}},
+        "then": { "required": ["percentOverThreshold"]}
+      }
     ]
   },
   "type": "array"
