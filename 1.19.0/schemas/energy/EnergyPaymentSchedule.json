@@ -154,6 +154,19 @@
       "x-conditional": [
         "bsb",
         "accountNumber"
+      ],
+
+      "allOf": [
+        {
+          "if":   {"properties": {"isTokenised": { "const": false }}},
+          "then": { "required": ["bsb", "accountNumber"]}
+        },
+        {
+          "not": {
+            "dependentRequired": {
+                "isTokenised":  ["bsb", "accountNumber"]
+            }}
+        }       
       ]
     },
     "manualPayment": {
@@ -193,5 +206,23 @@
     "directDebit",
     "manualPayment",
     "digitalWallet"
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "cardDebit" }}},
+      "then": { "required": ["cardDebit"]}
+    },
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "directDebit" }}},
+      "then": { "required": ["directDebit"]}
+    },
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "digitalWallet" }}},
+      "then": { "required": ["digitalWallet"]}
+    },
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "manualPayment" }}},
+      "then": { "required": ["manualPayment"]}
+    }
   ]
 }

@@ -59,5 +59,7 @@
   "type": "object",
   "x-conditional": [
     "postcode"
-  ]
+  ],
+  "if":   {"properties": {"country": { "const": "AUS" }}},
+  "then": { "required": ["postcode"]}
 }
