@@ -56,7 +56,9 @@
                   }
                 }
               }
-            }
+            },
+            "if":   {"properties": {"openStatus": { "const": "OPEN" }}},
+            "then": { "required": ["planOverview"]}
           }
         }
       }

@@ -388,6 +388,18 @@
   "x-conditional": [
     "creationDate"
   ],
+  "if": {
+    "properties": {
+      "openStatus": {
+        "const": "OPEN"
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "creationDate"
+    ]
+  },
   "$id": "EnergyAccountBaseV2"
 },"EnergyAccountDetail" :{
   "allOf": [
@@ -724,7 +736,52 @@
                     "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
                     "$ref": "EnergyPlanContract"
                   }
-                }
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "fuelType": {
+                          "const": "ELECTRICITY"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "electricityContract"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "fuelType": {
+                          "const": "DUAL"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "electricityContract",
+                        "gasContract"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "fuelType": {
+                          "const": "GAS"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "gasContract"
+                      ]
+                    }
+                  }
+                ]
               },
               "authorisedContacts": {
                 "description": "An array of additional contacts that are authorised to act on this account",
@@ -761,7 +818,37 @@
                   }
                 }
               }
-            }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "openStatus": {
+                      "const": "OPEN"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "planOverview"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "openStatus": {
+                      "const": "OPEN"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "planDetail"
+                  ]
+                }
+              }
+            ]
           }
         }
       }
@@ -888,6 +975,18 @@
                   }
                 }
               }
+            },
+            "if": {
+              "properties": {
+                "openStatus": {
+                  "const": "OPEN"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "planOverview"
+              ]
             }
           }
         }
@@ -1775,6 +1874,22 @@
               "type": "object",
               "x-conditional": [
                 "nominalStorageCapacity"
+              ],
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "type": {
+                        "const": "STORAGE"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "nominalStorageCapacity"
+                    ]
+                  }
+                }
               ]
             },
             "type": "array"
@@ -1826,6 +1941,25 @@
           "inverterSeries",
           "inverterModelNumber",
           "inverterDeviceCapacity"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "equipmentType": {
+                  "const": "INVERTER"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "manufacturerName",
+                "inverterModelNumber",
+                "inverterSeries",
+                "inverterDeviceCapacity"
+              ]
+            }
+          }
         ]
       },
       "type": "array"
@@ -1991,6 +2125,24 @@
   "type": "object",
   "x-conditional": [
     "protectionMode"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "hasCentralProtectionControl": {
+            "enum": [
+              true
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "protectionMode"
+        ]
+      }
+    }
   ],
   "$id": "EnergyDerRecord"
 },"EnergyInvoice" :{
@@ -5198,6 +5350,36 @@
   "x-conditional": [
     "basicRead",
     "intervalRead"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "readUType": {
+            "const": "basicRead"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "basicRead"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "readUType": {
+            "const": "intervalRead"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "intervalRead"
+        ]
+      }
+    }
   ],
   "$id": "EnergyUsageRead"
 },"ErrorListResponse" :{

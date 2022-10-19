@@ -82,6 +82,12 @@
               "type": "object",
               "x-conditional": [
                 "nominalStorageCapacity"
+              ],
+              "allOf": [
+                {
+                  "if":   {"properties": {"type": { "const": "STORAGE" }}},
+                  "then": { "required": ["nominalStorageCapacity"]}
+                }
               ]
             },
             "type": "array"
@@ -133,6 +139,12 @@
           "inverterSeries",
           "inverterModelNumber",
           "inverterDeviceCapacity"
+        ],
+        "allOf": [
+          {
+            "if":   {"properties": {"equipmentType": { "const": "INVERTER" }}},
+            "then": { "required": ["manufacturerName", "inverterModelNumber","inverterSeries", "inverterDeviceCapacity"]}
+          }
         ]
       },
       "type": "array"
@@ -298,5 +310,11 @@
   "type": "object",
   "x-conditional": [
     "protectionMode"
+  ],
+  "allOf" : [
+    {
+      "if":   {"properties": {"hasCentralProtectionControl": { "enum": [true] }}},
+      "then": { "required": ["protectionMode"]}
+    }
   ]
 }
