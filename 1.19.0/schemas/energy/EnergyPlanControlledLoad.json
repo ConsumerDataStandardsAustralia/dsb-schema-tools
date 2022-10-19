@@ -180,7 +180,18 @@
                   "startTime",
                   "endTime",
                   "additionalInfo"
-                ]
+                ],
+                "dependentRequired": {
+                  "startTime": [
+                    "endTime"
+                  ],
+                  "endTime": [
+                    "startTime"
+                  ],
+                  "additionalInfoUri": [
+                    "additionalInfo"
+                  ]
+                }
               },
               "type": "array"
             },
@@ -214,6 +225,36 @@
     "x-conditional": [
       "singleRate",
       "timeOfUseRates"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "singleRate"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "singleRate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "timeOfUseRates"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "timeOfUseRates"
+          ]
+        }
+      }
     ]
   },
   "type": "array"

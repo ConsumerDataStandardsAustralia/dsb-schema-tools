@@ -133,6 +133,20 @@
       }
     },
     {
+      "if": {
+        "properties": {
+          "isFixed ": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "variation"
+        ]
+      }
+    },      
+    {
       "if":   {"properties": {"pricingModel": { "const": "SINGLE_RATE_CONT_LOAD" }}},
       "then": { "required": ["controlledLoad"]}
     },

@@ -2897,6 +2897,20 @@
     {
       "if": {
         "properties": {
+          "isFixed ": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "variation"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
           "pricingModel": {
             "const": "SINGLE_RATE_CONT_LOAD"
           }
@@ -2994,7 +3008,39 @@
             "type": "string"
           }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "termType": {
+                "const": "ONGOING"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "benefitPeriod"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MARKET"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "coolingOffDays"
+            ]
+          }
+        }
+      ]
     }
   ],
   "$id": "EnergyPlanContractFull"
@@ -3180,7 +3226,18 @@
                   "startTime",
                   "endTime",
                   "additionalInfo"
-                ]
+                ],
+                "dependentRequired": {
+                  "startTime": [
+                    "endTime"
+                  ],
+                  "endTime": [
+                    "startTime"
+                  ],
+                  "additionalInfoUri": [
+                    "additionalInfo"
+                  ]
+                }
               },
               "type": "array"
             },
@@ -3214,6 +3271,36 @@
     "x-conditional": [
       "singleRate",
       "timeOfUseRates"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "singleRate"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "singleRate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "timeOfUseRates"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "timeOfUseRates"
+          ]
+        }
+      }
     ]
   },
   "type": "array",
