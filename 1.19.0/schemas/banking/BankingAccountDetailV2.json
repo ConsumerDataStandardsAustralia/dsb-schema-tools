@@ -19,7 +19,7 @@
           "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
         },
         "specificAccountUType": {
-          "type": "string",
+          "type": ["string","null"],
           "description": "The type of structure to present account specific fields.",
           "enum": [
             "creditCard",
@@ -105,6 +105,30 @@
         "termDeposit",
         "creditCard",
         "loan"
+      ],
+      "allOf": [
+        {
+          
+          "if":   {
+            "properties": {"specificAccountUType": { "const": "termDeposit" }},
+            "required": ["specificAccountUType"]
+          },
+          "then": { "required": ["termDeposit"]}
+        },
+        {
+          "if":   {
+            "properties": {"specificAccountUType": { "const": "creditCard" }},
+            "required": ["specificAccountUType"]
+          },
+          "then": { "required": ["creditCard"]}
+        },
+        {
+          "if":   {
+            "properties": {"specificAccountUType": { "const": "loan" }},
+            "required": ["specificAccountUType"]
+          },
+          "then": { "required": ["loan"]}
+        }
       ]
     }
   ]

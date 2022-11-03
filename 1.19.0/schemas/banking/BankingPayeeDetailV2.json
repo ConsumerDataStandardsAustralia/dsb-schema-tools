@@ -37,6 +37,24 @@
         "digitalWallet",
         "domestic",
         "international"
+      ],
+      "allOf": [
+        {
+          "if":   {"properties": {"payeeUType": { "const": "biller" }}},
+          "then": { "required": ["biller"]}
+        },
+        {
+          "if":   {"properties": {"payeeUType": { "const": "digitalWallet" }}},
+          "then": { "required": ["digitalWallet"]}
+        },
+        {
+          "if":   {"properties": {"payeeUType": { "const": "domestic" }}},
+          "then": { "required": ["domestic"]}
+        },
+        {
+          "if":   {"properties": {"payeeUType": { "const": "international" }}},
+          "then": { "required": ["international"]}
+        }
       ]
     }
   ]

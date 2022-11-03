@@ -88,7 +88,10 @@
           "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
         },
         "specificAccountUType": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "The type of structure to present account specific fields.",
           "enum": [
             "creditCard",
@@ -174,6 +177,59 @@
         "termDeposit",
         "creditCard",
         "loan"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "termDeposit"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "termDeposit"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "creditCard"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "creditCard"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "loan"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "loan"
+            ]
+          }
+        }
       ]
     }
   ],
@@ -459,6 +515,50 @@
     "account",
     "card",
     "payId"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "payeeAccountUType": {
+            "const": "account"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "account"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "payeeAccountUType": {
+            "const": "card"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "card"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "payeeAccountUType": {
+            "const": "payId"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "payId"
+        ]
+      }
+    }
   ],
   "$id": "BankingDomesticPayee"
 },"BankingDomesticPayeeAccount" :{
@@ -817,6 +917,64 @@
         "digitalWallet",
         "domestic",
         "international"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "payeeUType": {
+                "const": "biller"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "biller"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payeeUType": {
+                "const": "digitalWallet"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "digitalWallet"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payeeUType": {
+                "const": "domestic"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "domestic"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "payeeUType": {
+                "const": "international"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "international"
+            ]
+          }
+        }
       ]
     }
   ],
@@ -966,6 +1124,43 @@
     "eligibilityUri",
     "feesAndPricingUri",
     "bundleUri"
+  ],
+  "allOf": [
+    {
+      "dependentRequired": {
+        "additionalOverviewUris": [
+          "overviewUri"
+        ]
+      }
+    },
+    {
+      "dependentRequired": {
+        "additionalTermsUris": [
+          "termsUri"
+        ]
+      }
+    },
+    {
+      "dependentRequired": {
+        "additionalEligibilityUris": [
+          "eligibilityUri"
+        ]
+      }
+    },
+    {
+      "dependentRequired": {
+        "additionalFeesAndPricingUris": [
+          "feesAndPricingUri"
+        ]
+      }
+    },
+    {
+      "dependentRequired": {
+        "additionalBundleUris": [
+          "bundleUri"
+        ]
+      }
+    }
   ],
   "$id": "BankingProductAdditionalInformationV2"
 },"BankingProductAdditionalInformationV2_additionalInformationUris" :{
@@ -2079,6 +2274,64 @@
     "lastWeekDay",
     "eventBased"
   ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "recurrenceUType": {
+            "const": "eventBased"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "eventBased"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "recurrenceUType": {
+            "const": "intervalSchedule"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "intervalSchedule"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "recurrenceUType": {
+            "const": "lastWeekDay"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "lastWeekDay"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "recurrenceUType": {
+            "const": "onceOff"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "onceOff"
+        ]
+      }
+    }
+  ],
   "$id": "BankingScheduledPaymentRecurrence"
 },"BankingScheduledPaymentRecurrenceEventBased" :{
   "description": "Indicates that the schedule of payments is defined according to an external event that cannot be predetermined. Mandatory if recurrenceUType is set to eventBased",
@@ -2251,6 +2504,42 @@
   "x-conditional": [
     "amount"
   ],
+  "anyOf": [
+    {
+      "if": {
+        "properties": {
+          "isAmountCalculated": {
+            "enum": [
+              true
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "amount"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "isAmountCalculated": {
+            "enum": [
+              false
+            ]
+          }
+        }
+      },
+      "then": {
+        "not": {
+          "required": [
+            "amount"
+          ]
+        }
+      }
+    }
+  ],
   "$id": "BankingScheduledPaymentSet"
 },"BankingScheduledPaymentTo" :{
   "description": "Object containing details of the destination of the payment. Used to specify a variety of payment destination types",
@@ -2318,6 +2607,78 @@
     "international",
     "nickname",
     "payeeReference"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "toUType": {
+            "const": "accountId"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "accountId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "toUType": {
+            "const": "payeeId"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "payeeId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "toUType": {
+            "const": "biller"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "biller"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "toUType": {
+            "const": "domestic"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "domestic"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "toUType": {
+            "const": "international"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "international"
+        ]
+      }
+    }
   ],
   "$id": "BankingScheduledPaymentTo"
 },"BankingTermDepositAccount" :{
@@ -2509,6 +2870,36 @@
     "transactionId",
     "postingDateTime",
     "crn"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "isDetailAvailable": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "transactionId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "POSTED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "postingDateTime"
+        ]
+      }
+    }
   ],
   "$id": "BankingTransaction"
 },"BankingTransactionDetail" :{
@@ -2765,6 +3156,36 @@
     "simple",
     "paf"
   ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "addressUType": {
+            "const": "paf"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "paf"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "addressUType": {
+            "const": "simple"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "simple"
+        ]
+      }
+    }
+  ],
   "$id": "CommonPhysicalAddress"
 },"CommonSimpleAddress" :{
   "properties": {
@@ -2827,6 +3248,18 @@
   "x-conditional": [
     "postcode"
   ],
+  "if": {
+    "properties": {
+      "country": {
+        "const": "AUS"
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "postcode"
+    ]
+  },
   "$id": "CommonSimpleAddress"
 },"Links" :{
   "properties": {

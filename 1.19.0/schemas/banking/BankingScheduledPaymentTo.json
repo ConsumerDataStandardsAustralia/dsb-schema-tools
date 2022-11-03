@@ -64,5 +64,27 @@
     "international",
     "nickname",
     "payeeReference"
+  ],
+  "allOf": [
+    {          
+      "if":   {"properties": {"toUType": { "const": "accountId"}}},
+      "then": { "required": ["accountId"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "payeeId"}}},
+      "then": { "required": ["payeeId"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "biller"}}},
+      "then": { "required": ["biller"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "domestic"}}},
+      "then": { "required": ["domestic"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "international"}}},
+      "then": { "required": ["international"]}
+    } 
   ]
 }

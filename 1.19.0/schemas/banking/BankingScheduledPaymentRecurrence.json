@@ -41,5 +41,23 @@
     "intervalSchedule",
     "lastWeekDay",
     "eventBased"
+  ],
+  "allOf": [
+    {          
+      "if":   {"properties": {"recurrenceUType": { "const": "eventBased"}}},
+      "then": { "required": ["eventBased"]}
+    },
+    {          
+      "if":   {"properties": {"recurrenceUType": { "const": "intervalSchedule"}}},
+      "then": { "required": ["intervalSchedule"]}
+    },
+    {          
+      "if":   {"properties": {"recurrenceUType": { "const": "lastWeekDay"}}},
+      "then": { "required": ["lastWeekDay"]}
+    },
+    {          
+      "if":   {"properties": {"recurrenceUType": { "const": "onceOff"}}},
+      "then": { "required": ["onceOff"]}
+    }
   ]
 }
