@@ -27,5 +27,19 @@
     "account",
     "card",
     "payId"
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"payeeAccountUType": { "const": "account" }}},
+      "then": { "required": ["account"]}
+    },
+    {
+      "if":   {"properties": {"payeeAccountUType": { "const": "card" }}},
+      "then": { "required": ["card"]}
+    },
+    {
+      "if":   {"properties": {"payeeAccountUType": { "const": "payId" }}},
+      "then": { "required": ["payId"]}
+    }
   ]
 }

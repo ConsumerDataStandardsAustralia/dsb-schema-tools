@@ -142,5 +142,15 @@
     "transactionId",
     "postingDateTime",
     "crn"
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"isDetailAvailable": { "const": true }}},
+      "then": { "required": ["transactionId"]}
+    },
+    {
+      "if":   {"properties": {"status": { "const": "POSTED" }}},
+      "then": { "required": ["postingDateTime"]}
+    }
   ]
 }

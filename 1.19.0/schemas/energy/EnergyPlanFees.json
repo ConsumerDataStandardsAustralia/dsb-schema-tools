@@ -66,6 +66,16 @@
     "x-conditional": [
       "amount",
       "rate"
+    ],
+    "allOf": [
+      {
+        "if":   {"properties": {"term": { "const": "PERCENT_OF_BILL" }}},
+        "then": { "required": ["rate"]}
+      },
+      {
+        "if":   {  "properties": { "term" : {"not" : {"enum": ["PERCENT_OF_BILL" ]}}}},
+        "then": { "required": ["amount"]}
+      }      
     ]
   },
   "type": "array"

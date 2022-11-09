@@ -35,5 +35,15 @@
   "type": "object",
   "x-conditional": [
     "amount"
-  ]
+  ],
+  "anyOf": [
+    {          
+      "if":   {"properties": {"isAmountCalculated": { "enum": [true] }}},
+      "then": { "required": ["amount"]}
+    },
+    {          
+      "if":   {"properties": {"isAmountCalculated": { "enum": [false] }}},
+      "then": { "not": {"required": ["amount"]}}
+    }  
+]
 }

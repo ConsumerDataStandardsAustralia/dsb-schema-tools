@@ -99,5 +99,22 @@
     "eligibilityUri",
     "feesAndPricingUri",
     "bundleUri"
+  ],
+  "allOf": [
+    {
+      "dependentRequired": {"additionalOverviewUris": ["overviewUri"] }
+    },
+    {
+      "dependentRequired": {"additionalTermsUris": ["termsUri"] }
+    },
+    {
+      "dependentRequired": {"additionalEligibilityUris": ["eligibilityUri"] }
+    },
+    {
+      "dependentRequired": {"additionalFeesAndPricingUris": ["feesAndPricingUri"] }
+    },
+    {
+      "dependentRequired": {"additionalBundleUris": ["bundleUri"] }
+    }
   ]
 }

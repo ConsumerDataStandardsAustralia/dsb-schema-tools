@@ -54,7 +54,41 @@
             "type": "string"
           }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "termType": {
+                "const": "ONGOING"
+              }
+            }
+          },
+          "then": {
+    
+            "not": {
+              "required": [
+                "benefitPeriod"
+              ]
+    
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "MARKET"
+              }
+            }
+          },
+          "then": {
+              "required": [
+                "coolingOffDays"
+              ]
+          }
+        }
+      ]      
     }
   ]
 }

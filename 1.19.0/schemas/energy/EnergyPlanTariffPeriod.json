@@ -187,7 +187,9 @@
         "type": "object",
         "x-conditional": [
           "generalUnitPrice"
-        ]
+        ],
+        "if":   {  "properties": { "pricingModel" :{"const": "QUOTA" }}},
+        "then": { "required": ["generalUnitPrice"]}
       },
       "startDate": {
         "description": "The start date of the tariff period in a calendar year.  Formatted in mm-dd format",
@@ -336,6 +338,20 @@
       "singleRate",
       "timeOfUseRates",
       "demandCharges"
+    ],
+    "allOf": [
+      {
+        "if":   {"properties": {"rateBlockUType": { "const": "singleRate" }}},
+        "then": { "required": ["singleRate"]}
+      },
+      {
+        "if":   {  "properties": { "rateBlockUType" :{"const": "timeOfUseRates" }}},
+        "then": { "required": ["timeOfUseRates"]}
+      },
+      {
+        "if":   {  "properties": { "rateBlockUType" :{"const": "demandCharges" }}},
+        "then": { "required": ["demandCharges"]}
+      }     
     ]
   },
   "type": "array"
