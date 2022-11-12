@@ -1,0 +1,67 @@
+{
+  "allOf": [
+    {
+      "$ref": "EnergyAccountBaseV2.json"
+    },
+    {
+      "description": "The array of plans containing service points and associated plan details",
+      "type": "object",
+      "required": [
+        "plans"
+      ],
+      "properties": {
+        "plans": {
+          "description": "The array of plans containing service points and associated plan details",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "servicePointIds"
+            ],
+            "x-conditional": [
+              "planOverview"
+            ],
+            "properties": {
+              "nickname": {
+                "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+                "type": "string"
+              },
+              "servicePointIds": {
+                "description": "An array of servicePointIds, representing NMIs, that this plan is linked to.  If there are no service points allocated to this plan then an empty array would be expected",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "planOverview": {
+                "description": "Mandatory if openStatus is OPEN",
+                "type": "object",
+                "required": [
+                  "startDate"
+                ],
+                "properties": {
+                  "displayName": {
+                    "description": "The name of the plan if one exists",
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "description": "The start date of the applicability of this plan",
+                    "type": "string",
+                    "x-cds-type": "DateString"
+                  },
+                  "endDate": {
+                    "description": "The end date of the applicability of this plan",
+                    "type": "string",
+                    "x-cds-type": "DateString"
+                  }
+                }
+              }
+            },
+            "if":   {"properties": {"openStatus": { "const": "OPEN" }}},
+            "then": { "required": ["planOverview"]}
+          }
+        }
+      }
+    }
+  ]
+}

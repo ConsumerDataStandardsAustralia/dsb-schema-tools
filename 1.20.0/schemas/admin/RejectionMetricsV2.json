@@ -1,0 +1,64 @@
+{
+  "description": "Number of calls rejected due to traffic thresholds over time",
+  "properties": {
+    "authenticated": {
+      "description": "Rejection counts for all authenticated end points",
+      "properties": {
+        "currentDay": {
+          "description": "Number of calls rejected for current day",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "unauthenticated": {
+      "description": "Rejection counts for all uauthenticated end points",
+      "properties": {
+        "currentDay": {
+          "description": "Number of calls rejected for current day",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Number of calls rejected for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available.",
+          "items": {
+            "type": "number"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    }
+  },
+  "required": [
+    "authenticated",
+    "unauthenticated"
+  ],
+  "type": "object"
+}

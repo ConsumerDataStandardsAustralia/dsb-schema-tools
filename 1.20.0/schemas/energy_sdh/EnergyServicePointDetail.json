@@ -1,0 +1,311 @@
+{
+  "properties": {
+    "consumerProfile": {
+      "properties": {
+        "classification": {
+          "description": "A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments",
+          "enum": [
+            "BUSINESS",
+            "RESIDENTIAL"
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "threshold": {
+          "description": "A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        }
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "distributionLossFactor": {
+      "properties": {
+        "code": {
+          "description": "A code used to identify data loss factor for the service point values.  Refer to AEMO distribution loss factor documents for each financial year to interpret",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the data loss factor code and value",
+          "type": "string"
+        },
+        "lossValue": {
+          "description": "The value associated with the loss factor code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "description",
+        "lossValue"
+      ],
+      "type": "object"
+    },
+    "isGenerator": {
+      "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "jurisdictionCode": {
+      "description": "Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>",
+      "enum": [
+        "ALL",
+        "ACT",
+        "NEM",
+        "NSW",
+        "QLD",
+        "SA",
+        "TAS",
+        "VIC"
+      ],
+      "type": "string"
+    },
+    "lastUpdateDateTime": {
+      "description": "The date and time that the information for this service point was modified",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "location": {
+      "$ref": "CommonPhysicalAddress.json",
+      "description": "Location of the servicepoint",
+      "type": "object"
+    },
+    "meters": {
+      "description": "The meters associated with the service point. This may be empty where there are no meters physically installed at the service point",
+      "items": {
+        "properties": {
+          "meterId": {
+            "description": "The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique",
+            "type": "string"
+          },
+          "registers": {
+            "description": "Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point",
+            "items": {
+              "properties": {
+                "averagedDailyLoad": {
+                  "description": "The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.",
+                  "type": "number"
+                },
+                "consumptionType": {
+                  "description": "Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>",
+                  "enum": [
+                    "ACTUAL",
+                    "CUMULATIVE"
+                  ],
+                  "type": "string"
+                },
+                "controlledLoad": {
+                  "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime",
+                  "type": "boolean"
+                },
+                "multiplier": {
+                  "description": "Multiplier required to take a register value and turn it into a value representing billable energy",
+                  "type": "number"
+                },
+                "networkTariffCode": {
+                  "description": "The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider",
+                  "type": "string"
+                },
+                "registerConsumptionType": {
+                  "description": "Indicates the consumption type of register",
+                  "enum": [
+                    "INTERVAL",
+                    "BASIC",
+                    "PROFILE_DATA",
+                    "ACTIVE_IMPORT",
+                    "ACTIVE",
+                    "REACTIVE_IMPORT",
+                    "REACTIVE"
+                  ],
+                  "type": "string"
+                },
+                "registerId": {
+                  "description": "Unique identifier of the register within this service point.  Is not globally unique",
+                  "type": "string"
+                },
+                "registerSuffix": {
+                  "description": "Register suffix of the meter register where the meter reads are obtained",
+                  "type": "string"
+                },
+                "timeOfDay": {
+                  "description": "Code to identify the time validity of register contents",
+                  "enum": [
+                    "ALLDAY",
+                    "INTERVAL",
+                    "PEAK",
+                    "BUSINESS",
+                    "SHOULDER",
+                    "EVENING",
+                    "OFFPEAK",
+                    "CONTROLLED",
+                    "DEMAND"
+                  ],
+                  "type": "string"
+                },
+                "unitOfMeasure": {
+                  "description": "The unit of measure for data held in this register",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "registerId",
+                "registerConsumptionType"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "specifications": {
+            "description": "Technical characteristics of the meter",
+            "properties": {
+              "installationType": {
+                "description": "The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>",
+                "enum": [
+                  "BASIC",
+                  "COMMS1",
+                  "COMMS2",
+                  "COMMS3",
+                  "COMMS4",
+                  "COMMS4C",
+                  "COMMS4D",
+                  "MRAM",
+                  "MRIM",
+                  "PROF",
+                  "SAMPLE",
+                  "UMCP",
+                  "VICAMI",
+                  "NCOLNUML"
+                ],
+                "type": "string"
+              },
+              "manufacturer": {
+                "description": "Free text field to identify the manufacturer of the installed meter",
+                "type": "string"
+              },
+              "model": {
+                "description": "Free text field to identify the meter manufacturer’s designation for the meter model",
+                "type": "string"
+              },
+              "nextScheduledReadDate": {
+                "description": "This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required",
+                "type": "string",
+                "x-cds-type": "DateString"
+              },
+              "readType": {
+                "description": "Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>",
+                "type": "string"
+              },
+              "status": {
+                "description": "A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>",
+                "enum": [
+                  "CURRENT",
+                  "DISCONNECTED"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "installationType"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "meterId",
+          "specifications"
+        ],
+        "type": "object"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "nationalMeteringId": {
+      "description": "The independent ID of the service point, known in the industry as the NMI",
+      "type": "string"
+    },
+    "relatedParticipants": {
+      "items": {
+        "properties": {
+          "party": {
+            "description": "The name of the party/orginsation related to this service point",
+            "type": "string"
+          },
+          "role": {
+            "description": "The role performed by this participant in relation to the service point. Note the details of enumeration values below: <ul><li>**FRMP** - Financially Responsible Market Participant</li><li>**LNSP** - Local Network Service Provider or Embedded Network Manager for child connection points</li><li>**DRSP** - wholesale Demand Response and/or market ancillary Service Provider and note that where it is not relevant for a NMI it will not be included</li></ul>",
+            "enum": [
+              "FRMP",
+              "LNSP",
+              "DRSP"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "party",
+          "role"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "servicePointClassification": {
+      "description": "The classification of the service point as defined in MSATS procedures",
+      "enum": [
+        "EXTERNAL_PROFILE",
+        "GENERATOR",
+        "LARGE",
+        "SMALL",
+        "WHOLESALE",
+        "NON_CONTEST_UNMETERED_LOAD",
+        "NON_REGISTERED_EMBEDDED_GENERATOR",
+        "DISTRIBUTION_WHOLESALE"
+      ],
+      "type": "string"
+    },
+    "servicePointId": {
+      "description": "The independent ID of the service point, known in the industry as the National Meter Identifier (NMI). Note that the servicePointId will be replaced with NMI for all interactions between Data Holder and AEMO.",
+      "type": "string"
+    },
+    "servicePointStatus": {
+      "description": "Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul> ",
+      "enum": [
+        "ACTIVE",
+        "DE_ENERGISED",
+        "EXTINCT",
+        "GREENFIELD",
+        "OFF_MARKET"
+      ],
+      "type": "string"
+    },
+    "validFromDate": {
+      "description": "The latest start date from which the constituent data sets of this service point became valid",
+      "type": "string",
+      "x-cds-type": "DateString"
+    }
+  },
+  "required": [
+    "servicePointId",
+    "nationalMeteringId",
+    "servicePointClassification",
+    "servicePointStatus",
+    "jurisdictionCode",
+    "validFromDate",
+    "lastUpdateDateTime",
+    "distributionLossFactor",
+    "relatedParticipants",
+    "location"
+  ]
+}
