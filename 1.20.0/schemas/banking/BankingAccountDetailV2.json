@@ -50,14 +50,14 @@
           "x-cds-type": "RateString"
         },
         "depositRates": {
-          "type": "array",
+          "type": ["array","null"],
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "items": {
             "$ref": "BankingProductDepositRate.json"
           }
         },
         "lendingRates": {
-          "type": "array",
+          "type": ["array","null"],
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "items": {
             "$ref": "BankingProductLendingRateV2.json"
@@ -87,14 +87,14 @@
           }
         },
         "fees": {
-          "type": "array",
+          "type": ["array", "null"],
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
           "items": {
             "$ref": "BankingProductFee.json"
           }
         },
         "addresses": {
-          "type": "array",
+          "type": ["array", "null"],
           "description": "The addresses for the account to be used for correspondence",
           "items": {
             "$ref": "CommonPhysicalAddress.json"

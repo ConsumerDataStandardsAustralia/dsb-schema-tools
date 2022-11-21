@@ -7,7 +7,10 @@
       "$ref": "Links.json"
     },
     "meta": {
-      "$ref": "Meta.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "Meta.json"}
+      ]    
     }
   },
   "required": [

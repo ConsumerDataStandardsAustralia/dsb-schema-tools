@@ -122,14 +122,20 @@
           "x-cds-type": "RateString"
         },
         "depositRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "items": {
             "$ref": "BankingProductDepositRate"
           }
         },
         "lendingRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
           "items": {
             "$ref": "BankingProductLendingRateV2"
@@ -159,14 +165,20 @@
           }
         },
         "fees": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
           "items": {
             "$ref": "BankingProductFee"
           }
         },
         "addresses": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "The addresses for the account to be used for correspondence",
           "items": {
             "$ref": "CommonPhysicalAddress"
@@ -1375,49 +1387,70 @@
       "type": "object",
       "properties": {
         "bundles": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "An array of bundles that this product participates in.  Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle.  It is assumed that the current product is included in the bundle also",
           "items": {
             "$ref": "BankingProductBundle"
           }
         },
         "features": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Array of features available for the product",
           "items": {
             "$ref": "BankingProductFeatureV2"
           }
         },
         "constraints": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds",
           "items": {
             "$ref": "BankingProductConstraint"
           }
         },
         "eligibility": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Eligibility criteria for the product",
           "items": {
             "$ref": "BankingProductEligibility"
           }
         },
         "fees": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fees applicable for the product",
           "items": {
             "$ref": "BankingProductFee"
           }
         },
         "depositRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Interest rates available for deposits",
           "items": {
             "$ref": "BankingProductDepositRate"
           }
         },
         "lendingRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Interest rates charged against lending balances",
           "items": {
             "$ref": "BankingProductLendingRateV2"
@@ -1985,7 +2018,14 @@
       "x-cds-type": "URIString"
     },
     "applicabilityConditions": {
-      "$ref": "BankingProductRateCondition"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "BankingProductRateCondition"
+        }
+      ]
     },
     "maximumValue": {
       "description": "The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
@@ -2036,7 +2076,14 @@
 },"BankingProductV4" :{
   "properties": {
     "additionalInformation": {
-      "$ref": "BankingProductAdditionalInformationV2"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "BankingProductAdditionalInformationV2"
+        }
+      ]
     },
     "applicationUri": {
       "description": "A link to an application web page where this product can be applied for.",
@@ -3382,7 +3429,14 @@
       "type": "object"
     },
     "meta": {
-      "$ref": "Meta"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "Meta"
+        }
+      ]
     }
   },
   "required": [
@@ -3448,7 +3502,14 @@
       "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "Meta"
+        }
+      ]
     }
   },
   "required": [
@@ -3528,7 +3589,14 @@
       "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "Meta"
+        }
+      ]
     }
   },
   "required": [
@@ -3577,7 +3645,14 @@
       "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "Meta"
+        }
+      ]
     }
   },
   "required": [
@@ -3711,7 +3786,14 @@
             "type": "string"
           },
           "meta": {
-            "$ref": "MetaError"
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "MetaError"
+              }
+            ]
           },
           "title": {
             "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",

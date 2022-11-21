@@ -1,7 +1,10 @@
 {
   "properties": {
     "additionalInformation": {
-      "$ref": "BankingProductAdditionalInformationV2.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "BankingProductAdditionalInformationV2.json"}
+      ]     
     },
     "applicationUri": {
       "description": "A link to an application web page where this product can be applied for.",
