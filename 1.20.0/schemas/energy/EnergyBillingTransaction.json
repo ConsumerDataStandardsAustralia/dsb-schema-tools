@@ -5,7 +5,10 @@
       "type": "string"
     },
     "demand": {
-      "$ref": "EnergyBillingDemandTransaction.json",
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyBillingDemandTransaction.json"}
+     ],
       "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand"
     },
     "executionDateTime": {
@@ -26,7 +29,10 @@
       "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff"
     },
     "otherCharges": {
-      "$ref": "EnergyBillingOtherTransaction.json",
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyBillingOtherTransaction.json"}
+     ],
       "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge"
     },
     "payment": {

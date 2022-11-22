@@ -1452,7 +1452,14 @@
       "type": "string"
     },
     "demand": {
-      "$ref": "EnergyBillingDemandTransaction",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyBillingDemandTransaction"
+        }
+      ],
       "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand"
     },
     "executionDateTime": {
@@ -1473,7 +1480,14 @@
       "description": "Represents a once off charge or credit.  Mandatory if transactionUType is equal to onceOff"
     },
     "otherCharges": {
-      "$ref": "EnergyBillingOtherTransaction",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyBillingOtherTransaction"
+        }
+      ],
       "description": "Represents charge other than usage and once off.  Mandatory if transactionUType is equal to otherCharge"
     },
     "payment": {
@@ -2294,7 +2308,14 @@
 },"EnergyInvoice" :{
   "properties": {
     "accountCharges": {
-      "$ref": "EnergyInvoiceAccountCharges"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyInvoiceAccountCharges"
+        }
+      ]
     },
     "accountId": {
       "description": "The ID of the account for which the invoice was issued",
@@ -2314,11 +2335,25 @@
       "x-cds-type": "DateString"
     },
     "electricity": {
-      "$ref": "EnergyInvoiceElectricityUsageCharges",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyInvoiceElectricityUsageCharges"
+        }
+      ],
       "description": "Object containing charges and credits related to electricity usage"
     },
     "gas": {
-      "$ref": "EnergyInvoiceGasUsageCharges",
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyInvoiceGasUsageCharges"
+        }
+      ],
       "description": "Object containing charges and credits related to gas usage"
     },
     "gstAmount": {
@@ -3156,19 +3191,54 @@
       "$ref": "EnergyPlanControlledLoad"
     },
     "discounts": {
-      "$ref": "EnergyPlanDiscounts"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyPlanDiscounts"
+        }
+      ]
     },
     "eligibility": {
-      "$ref": "EnergyPlanEligibility"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyPlanEligibility"
+        }
+      ]
     },
     "fees": {
-      "$ref": "EnergyPlanFees"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyPlanFees"
+        }
+      ]
     },
     "greenPowerCharges": {
-      "$ref": "EnergyPlanGreenPowerCharges"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyPlanGreenPowerCharges"
+        }
+      ]
     },
     "incentives": {
-      "$ref": "EnergyPlanIncentives"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyPlanIncentives"
+        }
+      ]
     },
     "intrinsicGreenPower": {
       "description": "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
@@ -3226,7 +3296,14 @@
       "type": "string"
     },
     "solarFeedInTariff": {
-      "$ref": "EnergyPlanSolarFeedInTariff"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "EnergyPlanSolarFeedInTariff"
+        }
+      ]
     },
     "tariffPeriod": {
       "$ref": "EnergyPlanTariffPeriod"
@@ -4331,7 +4408,14 @@
       "$ref": "LinksPaginated"
     },
     "meta": {
-      "$ref": "MetaPaginated"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "MetaPaginated"
+        }
+      ]
     }
   },
   "required": [
@@ -5340,7 +5424,14 @@
       "$ref": "Links"
     },
     "meta": {
-      "$ref": "Meta"
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "MetaPaginated"
+        }
+      ]
     }
   },
   "required": [

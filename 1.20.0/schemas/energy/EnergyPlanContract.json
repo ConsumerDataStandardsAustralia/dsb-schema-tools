@@ -8,22 +8,37 @@
       ]
     },
     "controlledLoad": {
-      "$ref": "EnergyPlanControlledLoad.json"
+        "$ref": "EnergyPlanControlledLoad.json"
     },
     "discounts": {
-      "$ref": "EnergyPlanDiscounts.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanDiscounts.json"}
+     ]    
     },
     "eligibility": {
-      "$ref": "EnergyPlanEligibility.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanEligibility.json"}
+     ]    
     },
     "fees": {
-      "$ref": "EnergyPlanFees.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanFees.json"}
+     ]     
     },
     "greenPowerCharges": {
-      "$ref": "EnergyPlanGreenPowerCharges.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanGreenPowerCharges.json"}
+     ]    
     },
     "incentives": {
-      "$ref": "EnergyPlanIncentives.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanIncentives.json"}
+     ]    
     },
     "intrinsicGreenPower": {
       "description": "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
@@ -81,7 +96,10 @@
       "type": "string"
     },
     "solarFeedInTariff": {
-      "$ref": "EnergyPlanSolarFeedInTariff.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanSolarFeedInTariff.json"}
+     ]   
     },
     "tariffPeriod": {
       "$ref": "EnergyPlanTariffPeriod.json"

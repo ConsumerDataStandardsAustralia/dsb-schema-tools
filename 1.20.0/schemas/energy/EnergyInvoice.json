@@ -1,7 +1,10 @@
 {
   "properties": {
     "accountCharges": {
-      "$ref": "EnergyInvoiceAccountCharges.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyInvoiceAccountCharges.json"}
+     ]    
     },
     "accountId": {
       "description": "The ID of the account for which the invoice was issued",
@@ -21,11 +24,17 @@
       "x-cds-type": "DateString"
     },
     "electricity": {
-      "$ref": "EnergyInvoiceElectricityUsageCharges.json",
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyInvoiceElectricityUsageCharges.json"}
+     ],
       "description": "Object containing charges and credits related to electricity usage"
     },
     "gas": {
-      "$ref": "EnergyInvoiceGasUsageCharges.json",
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyInvoiceGasUsageCharges.json"}
+     ],
       "description": "Object containing charges and credits related to gas usage"
     },
     "gstAmount": {

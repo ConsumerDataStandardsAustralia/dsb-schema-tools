@@ -19,7 +19,10 @@
       "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "MetaPaginated.json"}
+     ]  
     }
   },
   "required": [
