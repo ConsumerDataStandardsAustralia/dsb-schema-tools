@@ -2115,7 +2115,10 @@
           },
           "title": {
             "description": "Display label for the specific image",
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [

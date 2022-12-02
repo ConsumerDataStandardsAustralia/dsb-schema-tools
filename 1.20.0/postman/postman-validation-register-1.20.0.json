@@ -88,28 +88,6 @@
   ],
   "type": "object",
   "$id": "DataHolderBrandSummary"
-},"DataHolderStatus" :{
-  "properties": {
-    "legalEntityId": {
-      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
-      "maxLength": 36,
-      "type": "string"
-    },
-    "status": {
-      "description": "Data Holder status in the CDR Register",
-      "enum": [
-        "ACTIVE",
-        "REMOVED"
-      ],
-      "type": "string"
-    }
-  },
-  "required": [
-    "legalEntityId",
-    "status"
-  ],
-  "type": "object",
-  "$id": "DataHolderStatus"
 },"DataHoldersStatusList" :{
   "properties": {
     "data": {
@@ -134,6 +112,28 @@
   ],
   "type": "object",
   "$id": "DataHoldersStatusList"
+},"DataHolderStatus" :{
+  "properties": {
+    "legalEntityId": {
+      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "status": {
+      "description": "Data Holder status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "legalEntityId",
+    "status"
+  ],
+  "type": "object",
+  "$id": "DataHolderStatus"
 },"DataRecipientBrandMetaData" :{
   "description": "Metadata related to Data Recipient Brand",
   "properties": {
@@ -181,30 +181,6 @@
   ],
   "type": "object",
   "$id": "DataRecipientBrandMetaData"
-},"DataRecipientStatus" :{
-  "properties": {
-    "legalEntityId": {
-      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
-      "maxLength": 36,
-      "type": "string"
-    },
-    "status": {
-      "description": "Data Recipient status in the CDR Register",
-      "enum": [
-        "ACTIVE",
-        "SUSPENDED",
-        "REVOKED",
-        "SURRENDERED"
-      ],
-      "type": "string"
-    }
-  },
-  "required": [
-    "legalEntityId",
-    "status"
-  ],
-  "type": "object",
-  "$id": "DataRecipientStatus"
 },"DataRecipientsStatusList" :{
   "properties": {
     "data": {
@@ -229,6 +205,30 @@
   ],
   "type": "object",
   "$id": "DataRecipientsStatusList"
+},"DataRecipientStatus" :{
+  "properties": {
+    "legalEntityId": {
+      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "status": {
+      "description": "Data Recipient status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED",
+        "SURRENDERED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "legalEntityId",
+    "status"
+  ],
+  "type": "object",
+  "$id": "DataRecipientStatus"
 },"JWK" :{
   "description": "Object representing a JSON Web Key",
   "properties": {
@@ -956,29 +956,6 @@
   ],
   "type": "object",
   "$id": "SoftwareProductMetaData"
-},"SoftwareProductStatus" :{
-  "properties": {
-    "softwareProductId": {
-      "description": "Unique id of the software product issued by the CDR Register",
-      "maxLength": 36,
-      "type": "string"
-    },
-    "status": {
-      "description": "Software product status in the CDR Register",
-      "enum": [
-        "ACTIVE",
-        "INACTIVE",
-        "REMOVED"
-      ],
-      "type": "string"
-    }
-  },
-  "required": [
-    "softwareProductId",
-    "status"
-  ],
-  "type": "object",
-  "$id": "SoftwareProductStatus"
 },"SoftwareProductsStatusList" :{
   "properties": {
     "data": {
@@ -1003,4 +980,27 @@
   ],
   "type": "object",
   "$id": "SoftwareProductsStatusList"
+},"SoftwareProductStatus" :{
+  "properties": {
+    "softwareProductId": {
+      "description": "Unique id of the software product issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "status": {
+      "description": "Software product status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "softwareProductId",
+    "status"
+  ],
+  "type": "object",
+  "$id": "SoftwareProductStatus"
 }}

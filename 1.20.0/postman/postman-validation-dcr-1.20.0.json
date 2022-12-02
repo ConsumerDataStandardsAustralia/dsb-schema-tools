@@ -44,6 +44,12 @@
     }
   ],
   "$id": "ClientRegistration"
+},"ClientRegistrationRequest" :{
+  "description": "The registration request JWT to be used to register with a Data Holder.",
+  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "format": "JWT",
+  "type": "string",
+  "$id": "ClientRegistrationRequest"
 },"RegistrationError" :{
   "properties": {
     "error": {
