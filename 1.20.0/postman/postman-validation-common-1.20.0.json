@@ -881,7 +881,14 @@
             "type": "string"
           },
           "meta": {
-            "$ref": "MetaError"
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "MetaError"
+              }
+            ]
           },
           "title": {
             "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
