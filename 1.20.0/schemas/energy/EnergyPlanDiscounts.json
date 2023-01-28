@@ -122,6 +122,10 @@
     "allOf": [
       {
         "if":   {"properties": {"methodUType": { "const": "percentOfBill" }}},
+        "then": { "required": ["percentOfBill"]}
+      },
+      {
+        "if":   {"properties": {"methodUType": { "const": "percentOfUse" }}},
         "then": { "required": ["percentOfUse"]}
       },
       {
