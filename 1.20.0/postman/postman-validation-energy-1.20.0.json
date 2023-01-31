@@ -2147,9 +2147,9 @@
       "type": "number"
     },
     "availablePhasesCount": {
-      "description": "The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.",
+      "description": "The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3.",
       "maximum": 3,
-      "minimum": 1,
+      "minimum": 0,
       "type": "integer",
       "x-cds-type": "PositiveInteger"
     },
@@ -2164,7 +2164,7 @@
     "installedPhasesCount": {
       "description": "The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.",
       "maximum": 3,
-      "minimum": 1,
+      "minimum": 0,
       "type": "integer",
       "x-cds-type": "PositiveInteger"
     },
@@ -2309,9 +2309,7 @@
       "if": {
         "properties": {
           "hasCentralProtectionControl": {
-            "enum": [
-              true
-            ]
+            "const": false
           }
         }
       },
@@ -5461,7 +5459,7 @@
           "type": "null"
         },
         {
-          "$ref": "MetaPaginated"
+          "$ref": "Meta"
         }
       ]
     }
@@ -5608,6 +5606,7 @@
               "quality": {
                 "description": "The quality of the read taken",
                 "enum": [
+                  "ACTUAL",
                   "SUBSTITUTE",
                   "FINAL_SUBSTITUTE"
                 ],

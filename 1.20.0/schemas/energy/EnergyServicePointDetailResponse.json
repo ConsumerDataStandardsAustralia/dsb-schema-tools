@@ -9,7 +9,7 @@
     "meta": {
       "oneOf": [
         {"type": "null"},
-        {"$ref": "MetaPaginated.json"}
+        {"$ref": "Meta.json"}
      ]  
     }
   },
