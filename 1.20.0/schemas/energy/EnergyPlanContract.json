@@ -137,33 +137,13 @@
   ],
   "allOf": [
     {
-      "if": {
-        "properties": {
-          "pricingModel ": {
-            "const": "TIME_OF_USE"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "timeZone"
-        ]
-      }
+      "if":   {"properties": {"pricingModel": { "const": "TIME_OF_USE" }}},
+      "then": { "required": ["timeZone"]}
     },
     {
-      "if": {
-        "properties": {
-          "isFixed ": {
-            "const": false
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "variation"
-        ]
-      }
-    },      
+      "if":   {"properties": {"isFixed": { "const": false }}},
+      "then": { "required": ["variation"]}
+    },       
     {
       "if":   {"properties": {"pricingModel": { "const": "SINGLE_RATE_CONT_LOAD" }}},
       "then": { "required": ["controlledLoad"]}

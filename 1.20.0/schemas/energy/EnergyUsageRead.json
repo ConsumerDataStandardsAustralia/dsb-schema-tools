@@ -73,6 +73,7 @@
               "quality": {
                 "description": "The quality of the read taken",
                 "enum": [
+                  "ACTUAL",
                   "SUBSTITUTE",
                   "FINAL_SUBSTITUTE"
                 ],

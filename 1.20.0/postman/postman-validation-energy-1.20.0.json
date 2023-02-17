@@ -860,39 +860,41 @@
                   }
                 }
               }
-            },
-            "allOf": [
-              {
-                "if": {
-                  "properties": {
-                    "openStatus": {
-                      "const": "OPEN"
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "planOverview"
-                  ]
-                }
-              },
-              {
-                "if": {
-                  "properties": {
-                    "openStatus": {
-                      "const": "OPEN"
-                    }
-                  }
-                },
-                "then": {
-                  "required": [
-                    "planDetail"
-                  ]
-                }
-              }
-            ]
+            }
           }
         }
+      },
+      "if": {
+        "properties": {
+          "openStatus": {
+            "const": "OPEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "plans": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "planOverview": {
+                  "type": "object"
+                },
+                "planDetail": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "planOverview",
+                "planDetail"
+              ]
+            }
+          }
+        },
+        "required": [
+          "plans"
+        ]
       }
     }
   ],
@@ -1017,21 +1019,37 @@
                   }
                 }
               }
-            },
-            "if": {
+            }
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "openStatus": {
+            "const": "OPEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "plans": {
+            "type": "array",
+            "items": {
+              "type": "object",
               "properties": {
-                "openStatus": {
-                  "const": "OPEN"
+                "planOverview": {
+                  "type": "object"
                 }
-              }
-            },
-            "then": {
+              },
               "required": [
                 "planOverview"
               ]
             }
           }
-        }
+        },
+        "required": [
+          "plans"
+        ]
       }
     }
   ],
@@ -2129,9 +2147,9 @@
       "type": "number"
     },
     "availablePhasesCount": {
-      "description": "The number of phases available for the installation of DER. Acceptable values are 1, 2 or 3.",
+      "description": "The number of phases available for the installation of DER. Acceptable values are 0, 1, 2 or 3.",
       "maximum": 3,
-      "minimum": 1,
+      "minimum": 0,
       "type": "integer",
       "x-cds-type": "PositiveInteger"
     },
@@ -2146,7 +2164,7 @@
     "installedPhasesCount": {
       "description": "The number of phases that DER is connected to. Acceptable values are 1, 2 or 3.",
       "maximum": 3,
-      "minimum": 1,
+      "minimum": 0,
       "type": "integer",
       "x-cds-type": "PositiveInteger"
     },
@@ -2291,9 +2309,7 @@
       "if": {
         "properties": {
           "hasCentralProtectionControl": {
-            "enum": [
-              true
-            ]
+            "const": false
           }
         }
       },
@@ -3343,7 +3359,7 @@
     {
       "if": {
         "properties": {
-          "pricingModel ": {
+          "pricingModel": {
             "const": "TIME_OF_USE"
           }
         }
@@ -3357,7 +3373,7 @@
     {
       "if": {
         "properties": {
-          "isFixed ": {
+          "isFixed": {
             "const": false
           }
         }
@@ -4002,6 +4018,20 @@
         },
         "then": {
           "required": [
+            "percentOfBill"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "methodUType": {
+              "const": "percentOfUse"
+            }
+          }
+        },
+        "then": {
+          "required": [
             "percentOfUse"
           ]
         }
@@ -4241,7 +4271,93 @@
             "amount"
           ]
         },
-        "type": "array"
+        "type": "array",
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "PERCENT_OF_USE"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "rate"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "PERCENT_OF_BILL"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "rate"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "FIXED_PER_DAY"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "amount"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "FIXED_PER_MONTH"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "amount"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "FIXED_PER_WEEK"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "amount"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "FIXED_PER_UNIT"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "amount"
+              ]
+            }
+          }
+        ]
       },
       "type": {
         "description": "The type of charge",
@@ -4262,93 +4378,7 @@
       "type",
       "tiers"
     ],
-    "type": "object",
-    "allOf": [
-      {
-        "if": {
-          "properties": {
-            "type": {
-              "const": "PERCENT_OF_USE"
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "rate"
-          ]
-        }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": {
-              "const": "PERCENT_OF_BILL"
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "rate"
-          ]
-        }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": {
-              "const": "FIXED_PER_DAY"
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "amount"
-          ]
-        }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": {
-              "const": "FIXED_PER_MONTH"
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "amount"
-          ]
-        }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": {
-              "const": "FIXED_PER_WEEK"
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "amount"
-          ]
-        }
-      },
-      {
-        "if": {
-          "properties": {
-            "type": {
-              "const": "FIXED_PER_UNIT"
-            }
-          }
-        },
-        "then": {
-          "required": [
-            "amount"
-          ]
-        }
-      }
-    ]
+    "type": "object"
   },
   "type": "array",
   "$id": "EnergyPlanGreenPowerCharges"
@@ -5429,7 +5459,7 @@
           "type": "null"
         },
         {
-          "$ref": "MetaPaginated"
+          "$ref": "Meta"
         }
       ]
     }
@@ -5576,6 +5606,7 @@
               "quality": {
                 "description": "The quality of the read taken",
                 "enum": [
+                  "ACTUAL",
                   "SUBSTITUTE",
                   "FINAL_SUBSTITUTE"
                 ],

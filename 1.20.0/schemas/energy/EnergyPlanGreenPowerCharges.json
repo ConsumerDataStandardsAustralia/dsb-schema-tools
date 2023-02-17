@@ -47,7 +47,33 @@
             "amount"
           ]
         },
-        "type": "array"
+        "type": "array",
+        "allOf": [
+          {
+            "if":   {"properties": {"type": { "const": "PERCENT_OF_USE" }}},
+            "then": { "required": ["rate"]}
+          },
+          {
+            "if":   {"properties": {"type": { "const": "PERCENT_OF_BILL" }}},
+            "then": { "required": ["rate"]}
+          },
+          {
+            "if":   {"properties": {"type": { "const": "FIXED_PER_DAY" }}},
+            "then": { "required": ["amount"]}
+          },
+          {
+            "if":   {"properties": {"type": { "const": "FIXED_PER_MONTH" }}},
+            "then": { "required": ["amount"]}
+          },
+          {
+            "if":   {"properties": {"type": { "const": "FIXED_PER_WEEK" }}},
+            "then": { "required": ["amount"]}
+          },
+          {
+            "if":   {"properties": {"type": { "const": "FIXED_PER_UNIT" }}},
+            "then": { "required": ["amount"]}
+          }
+        ]
       },
       "type": {
         "description": "The type of charge",
@@ -68,33 +94,7 @@
       "type",
       "tiers"
     ],
-    "type": "object",
-    "allOf": [
-      {
-        "if":   {"properties": {"type": { "const": "PERCENT_OF_USE" }}},
-        "then": { "required": ["rate"]}
-      },
-      {
-        "if":   {"properties": {"type": { "const": "PERCENT_OF_BILL" }}},
-        "then": { "required": ["rate"]}
-      },
-      {
-        "if":   {"properties": {"type": { "const": "FIXED_PER_DAY" }}},
-        "then": { "required": ["amount"]}
-      },
-      {
-        "if":   {"properties": {"type": { "const": "FIXED_PER_MONTH" }}},
-        "then": { "required": ["amount"]}
-      },
-      {
-        "if":   {"properties": {"type": { "const": "FIXED_PER_WEEK" }}},
-        "then": { "required": ["amount"]}
-      },
-      {
-        "if":   {"properties": {"type": { "const": "FIXED_PER_UNIT" }}},
-        "then": { "required": ["amount"]}
-      }
-    ]
+    "type": "object"
   },
   "type": "array"
 }

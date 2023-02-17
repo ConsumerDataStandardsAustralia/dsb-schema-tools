@@ -177,20 +177,33 @@
                   }
                 }
               }
-            },
-            "allOf": [
-              {
-                "if":   {"properties": {"openStatus": { "const": "OPEN" }}},
-                "then": { "required": ["planOverview"]}
-              },
-              {
-                "if":   {"properties": {"openStatus": { "const": "OPEN" }}},
-                "then": { "required": ["planDetail"]}
-              }
-            ]
+            }
           }
         }
-      }
+      },
+      "if": {
+        "properties": {
+          "openStatus": {
+            "const": "OPEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {"plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "planOverview": {"type": "object"},
+              "planDetail": {"type": "object"}
+            },
+            "required": ["planOverview", "planDetail"]
+          }
+          }},
+        "required": [
+          "plans"
+        ]
+      }         
     }
   ]
 }
