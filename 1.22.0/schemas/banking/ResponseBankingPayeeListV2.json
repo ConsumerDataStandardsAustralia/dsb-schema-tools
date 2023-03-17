@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "payees": {
+          "description": "The list of payees returned",
+          "items": {
+            "$ref": "BankingPayeeV2.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "payees"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}
