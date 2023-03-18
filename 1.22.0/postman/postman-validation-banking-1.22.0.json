@@ -1,4 +1,252 @@
-{"BankingAccountDetailV2" :{
+{"BankingAccount" :{
+  "properties": {
+    "accountId": {
+      "description": "A unique ID of the account adhering to the standards for ID permanence",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "creationDate": {
+      "description": "Date that the account was created (if known)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "displayName": {
+      "description": "The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the MaskedAccountString common type.",
+      "type": "string"
+    },
+    "isOwned": {
+      "default": true,
+      "description": "Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then 'true' is assumed",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "x-cds-type": "Boolean"
+    },
+    "maskedNumber": {
+      "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number",
+      "type": "string",
+      "x-cds-type": "MaskedAccountString"
+    },
+    "nickname": {
+      "description": "A customer supplied nick name for the account",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openStatus": {
+      "default": "OPEN",
+      "description": "Open or closed status for the account. If not present then OPEN is assumed",
+      "enum": [
+        "CLOSED",
+        "OPEN"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "productCategory": {
+      "$ref": "BankingProductCategory"
+    },
+    "productName": {
+      "description": "The unique identifier of the account as defined by the data holder (akin to model number for the account)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "accountId",
+    "displayName",
+    "maskedNumber",
+    "productCategory",
+    "productName"
+  ],
+  "type": "object",
+  "$id": "BankingAccount"
+},"BankingAccountDetailV2" :{
+  "allOf": [
+    {
+      "$ref": "BankingAccount"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bsb": {
+          "type": "string",
+          "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "bundleName": {
+          "type": "string",
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
+        },
+        "specificAccountUType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The type of structure to present account specific fields.",
+          "enum": [
+            "creditCard",
+            "loan",
+            "termDeposit"
+          ]
+        },
+        "termDeposit": {
+          "type": "array",
+          "items": {
+            "$ref": "BankingTermDepositAccount"
+          }
+        },
+        "creditCard": {
+          "$ref": "BankingCreditCardAccount"
+        },
+        "loan": {
+          "$ref": "BankingLoanAccountV2"
+        },
+        "depositRate": {
+          "type": "string",
+          "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "lendingRate": {
+          "type": "string",
+          "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "depositRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "items": {
+            "$ref": "BankingProductDepositRate"
+          }
+        },
+        "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "items": {
+            "$ref": "BankingProductLendingRateV2"
+          }
+        },
+        "features": {
+          "type": "array",
+          "description": "Array of features of the account based on the equivalent structure in Product Reference with the following additional field",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "BankingProductFeatureV2"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "isActivated": {
+                    "type": "boolean",
+                    "description": "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
+                    "default": true,
+                    "x-cds-type": "Boolean"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "fees": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
+          "items": {
+            "$ref": "BankingProductFee"
+          }
+        },
+        "addresses": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The addresses for the account to be used for correspondence",
+          "items": {
+            "$ref": "CommonPhysicalAddress"
+          }
+        }
+      },
+      "x-conditional": [
+        "termDeposit",
+        "creditCard",
+        "loan"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "termDeposit"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "termDeposit"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "creditCard"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "creditCard"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "loan"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "loan"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "$id": "BankingAccountDetailV2"
+},"BankingAccountDetailV3" :{
   "allOf": [
     {
       "$ref": "BankingAccountV2"
@@ -176,7 +424,7 @@
       ]
     }
   ],
-  "$id": "BankingAccountDetailV2"
+  "$id": "BankingAccountDetailV3"
 },"BankingAccountV2" :{
   "properties": {
     "accountId": {
