@@ -159,14 +159,13 @@
       "allOf": [
         {
           "if":   {"properties": {"isTokenised": { "const": false }}},
-          "then": { "required": ["bsb", "accountNumber"]}
-        },
-        {
-          "not": {
-            "dependentRequired": {
-                "isTokenised":  ["bsb", "accountNumber"]
-            }}
-        }       
+          "then": {
+            "not": {
+              "dependentRequired": {
+                  "isTokenised":  ["bsb", "accountNumber"]
+              }}
+          }
+        }   
       ]
     },
     "manualPayment": {
