@@ -22,8 +22,7 @@
   },
   "required": [
     "data",
-    "links",
-    "meta"
+    "links"
   ],
   "type": "object"
 }

@@ -2,16 +2,16 @@
   "properties": {
     "data": {
       "properties": {
-        "paymentSchedules": {
-          "description": "Array may be empty if no payment schedule exist",
+        "concessions": {
+          "description": "Array may be empty if no concessions exist",
           "items": {
-            "$ref": "EnergyPaymentSchedule.json"
+            "$ref": "EnergyConcession.json"
           },
           "type": "array"
         }
       },
       "required": [
-        "paymentSchedules"
+        "concessions"
       ],
       "type": "object"
     },
@@ -24,8 +24,7 @@
   },
   "required": [
     "data",
-    "links",
-    "meta"
+    "links"
   ],
   "type": "object"
 }
