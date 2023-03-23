@@ -2304,22 +2304,20 @@
   "x-conditional": [
     "protectionMode"
   ],
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "hasCentralProtectionControl": {
-            "const": false
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "protectionMode"
+  "if": {
+    "properties": {
+      "hasCentralProtectionControl": {
+        "enum": [
+          false
         ]
       }
     }
-  ],
+  },
+  "else": {
+    "required": [
+      "protectionMode"
+    ]
+  },
   "$id": "EnergyDerRecord"
 },"EnergyInvoice" :{
   "properties": {
@@ -2861,19 +2859,13 @@
             }
           },
           "then": {
-            "required": [
-              "bsb",
-              "accountNumber"
-            ]
-          }
-        },
-        {
-          "not": {
-            "dependentRequired": {
-              "isTokenised": [
-                "bsb",
-                "accountNumber"
-              ]
+            "not": {
+              "dependentRequired": {
+                "isTokenised": [
+                  "bsb",
+                  "accountNumber"
+                ]
+              }
             }
           }
         }
