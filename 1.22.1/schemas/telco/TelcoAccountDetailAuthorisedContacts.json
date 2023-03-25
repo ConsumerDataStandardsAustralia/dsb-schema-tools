@@ -1,0 +1,43 @@
+{
+  "properties": {
+    "firstName": {
+      "description": "For people with single names this field need not be present. The single name should be in the lastName field",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastName": {
+      "description": "For people with single names the single name should be in this field",
+      "type": "string"
+    },
+    "middleNames": {
+      "description": "Field is mandatory but array may be empty",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "prefix": {
+      "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "suffix": {
+      "description": "Used for a trailing suffix to the name (e.g. Jr)",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "lastName"
+  ],
+  "type": "object"
+}

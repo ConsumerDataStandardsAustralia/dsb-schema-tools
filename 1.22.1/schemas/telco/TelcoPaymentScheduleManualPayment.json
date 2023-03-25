@@ -1,0 +1,14 @@
+{
+  "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
+  "properties": {
+    "billFrequency": {
+      "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "billFrequency"
+  ],
+  "type": "object"
+}

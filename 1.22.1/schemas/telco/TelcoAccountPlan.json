@@ -1,0 +1,48 @@
+{
+  "properties": {
+    "billingType": {
+      "default": "PRE_PAID",
+      "description": "The billing type of then plan",
+      "enum": [
+        "PRE_PAID",
+        "POST_PAID",
+        "UPFRONT_PAID",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "nickname": {
+      "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "planOverview": {
+      "$ref": "TelcoAccountPlanOverview.json"
+    },
+    "serviceIds": {
+      "description": "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "type": {
+      "default": "MOBILE",
+      "description": "The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service",
+      "enum": [
+        "MOBILE",
+        "BROADBAND"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "serviceIds",
+    "type",
+    "billingType",
+    "planOverview"
+  ],
+  "type": "object"
+}

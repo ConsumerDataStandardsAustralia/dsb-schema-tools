@@ -3482,6 +3482,11 @@
             }
           },
           "then": {
+            "required": [
+              "benefitPeriod"
+            ]
+          },
+          "else": {
             "not": {
               "required": [
                 "benefitPeriod"

@@ -1,0 +1,26 @@
+{
+  "description": "Roaming voice calls, Required if roaming is supported",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of roaming voice calls",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs",
+      "type": "string",
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of roaming voice calls",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "duration",
+    "number"
+  ],
+  "type": "object"
+}

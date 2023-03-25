@@ -88,6 +88,29 @@
   ],
   "type": "object",
   "$id": "DataHolderBrandSummary"
+},"DataHolderStatus" :{
+  "properties": {
+    "legalEntityId": {
+      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "status": {
+      "description": "Data Holder status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "REMOVED"
+      ],
+      "type": "string",
+      "x-cds-type": "Enum"
+    }
+  },
+  "required": [
+    "legalEntityId",
+    "status"
+  ],
+  "type": "object",
+  "$id": "DataHolderStatus"
 },"DataHoldersStatusList" :{
   "properties": {
     "data": {
@@ -112,29 +135,6 @@
   ],
   "type": "object",
   "$id": "DataHoldersStatusList"
-},"DataHolderStatus" :{
-  "properties": {
-    "legalEntityId": {
-      "description": "Unique id of the Data Holder Legal Entity issued by the CDR Register.",
-      "maxLength": 36,
-      "type": "string"
-    },
-    "status": {
-      "description": "Data Holder status in the CDR Register",
-      "enum": [
-        "ACTIVE",
-        "REMOVED"
-      ],
-      "type": "string",
-      "x-cds-type": "Enum"
-    }
-  },
-  "required": [
-    "legalEntityId",
-    "status"
-  ],
-  "type": "object",
-  "$id": "DataHolderStatus"
 },"DataRecipientBrandMetaData" :{
   "description": "Metadata related to Data Recipient Brand",
   "properties": {
@@ -183,30 +183,6 @@
   ],
   "type": "object",
   "$id": "DataRecipientBrandMetaData"
-},"DataRecipientsStatusList" :{
-  "properties": {
-    "data": {
-      "description": "Response data for the query",
-      "items": {
-        "$ref": "DataRecipientStatus"
-      },
-      "type": "array",
-      "uniqueItems": true
-    },
-    "links": {
-      "$ref": "Links"
-    },
-    "meta": {
-      "$ref": "Meta"
-    }
-  },
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ],
-  "type": "object",
-  "$id": "DataRecipientsStatusList"
 },"DataRecipientStatus" :{
   "properties": {
     "legalEntityId": {
@@ -232,6 +208,30 @@
   ],
   "type": "object",
   "$id": "DataRecipientStatus"
+},"DataRecipientsStatusList" :{
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "DataRecipientStatus"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "DataRecipientsStatusList"
 },"JWK" :{
   "description": "Object representing a JSON Web Key",
   "properties": {
@@ -981,30 +981,6 @@
   ],
   "type": "object",
   "$id": "SoftwareProductMetaData"
-},"SoftwareProductsStatusList" :{
-  "properties": {
-    "data": {
-      "description": "Response data for the query",
-      "items": {
-        "$ref": "SoftwareProductStatus"
-      },
-      "type": "array",
-      "uniqueItems": true
-    },
-    "links": {
-      "$ref": "Links"
-    },
-    "meta": {
-      "$ref": "Meta"
-    }
-  },
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ],
-  "type": "object",
-  "$id": "SoftwareProductsStatusList"
 },"SoftwareProductStatus" :{
   "properties": {
     "softwareProductId": {
@@ -1029,4 +1005,28 @@
   ],
   "type": "object",
   "$id": "SoftwareProductStatus"
+},"SoftwareProductsStatusList" :{
+  "properties": {
+    "data": {
+      "description": "Response data for the query",
+      "items": {
+        "$ref": "SoftwareProductStatus"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "SoftwareProductsStatusList"
 }}

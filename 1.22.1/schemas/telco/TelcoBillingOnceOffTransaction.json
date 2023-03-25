@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "amount": {
+      "description": "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the item",
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "The ID of the service identifier to which this transaction applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object"
+}

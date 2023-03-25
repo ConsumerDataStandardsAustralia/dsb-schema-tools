@@ -1,0 +1,34 @@
+{
+  "description": "Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan",
+  "properties": {
+    "contractUri": {
+      "description": "URI of the contract conditions",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "description": {
+      "description": "Description of the contract",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Minimum contract duration in months",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "name": {
+      "description": "Name of the contract",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "duration"
+  ],
+  "type": "object"
+}

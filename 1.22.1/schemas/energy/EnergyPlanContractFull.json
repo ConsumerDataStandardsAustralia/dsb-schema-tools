@@ -57,38 +57,11 @@
       },
       "allOf": [
         {
-          "if": {
-            "properties": {
-              "termType": {
-                "const": "ONGOING"
-              }
-            }
-          },
-          "then": {
-    
-            "not": {
-              "required": [
-                "benefitPeriod"
-              ]
-    
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "type": {
-                "const": "MARKET"
-              }
-            }
-          },
-          "then": {
-              "required": [
-                "coolingOffDays"
-              ]
-          }
+          "if": { "properties": {  "termType": { "const": "ONGOING" } } },
+          "then": { "required": ["benefitPeriod"]},
+          "else": {"not": {"required": ["benefitPeriod"]}}
         }
-      ]      
-    }
+      ]     
+      }         
   ]
 }

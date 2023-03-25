@@ -1,0 +1,53 @@
+{
+  "description": "Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet",
+  "properties": {
+    "calculationType": {
+      "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+      "enum": [
+        "STATIC",
+        "BALANCE",
+        "CALCULATED"
+      ],
+      "type": "string"
+    },
+    "identifier": {
+      "description": "The identifier of the digital wallet (dependent on type)",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider",
+      "type": "string"
+    },
+    "paymentFrequency": {
+      "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "provider": {
+      "description": "The provider of the digital wallet",
+      "enum": [
+        "PAYPAL_AU",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of the digital wallet identifier",
+      "enum": [
+        "EMAIL",
+        "CONTACT_NAME",
+        "TELEPHONE"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "calculationType",
+    "identifier",
+    "name",
+    "paymentFrequency",
+    "provider",
+    "type"
+  ],
+  "type": "object"
+}

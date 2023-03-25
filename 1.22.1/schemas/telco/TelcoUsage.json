@@ -1,0 +1,20 @@
+{
+  "description": "Object containing usage summary",
+  "properties": {
+    "data": {
+      "$ref": "TelcoUsageData.json"
+    },
+    "messaging": {
+      "$ref": "TelcoUsageMessaging.json"
+    },
+    "voice": {
+      "$ref": "TelcoUsageVoice.json"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "data",
+    "voice",
+    "messaging"
+  ]
+}
