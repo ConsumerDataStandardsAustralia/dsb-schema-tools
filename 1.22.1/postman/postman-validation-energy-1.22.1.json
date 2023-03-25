@@ -3493,20 +3493,6 @@
               ]
             }
           }
-        },
-        {
-          "if": {
-            "properties": {
-              "type": {
-                "const": "MARKET"
-              }
-            }
-          },
-          "then": {
-            "required": [
-              "coolingOffDays"
-            ]
-          }
         }
       ]
     }
