@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "description": {
+      "description": "The description of the incentive",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the incentive",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the incentive",
+      "items": {
+        "$ref": "TelcoProductDetailIncentiveFeature.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "incentiveUri": {
+      "description": "The URI of the incentive",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object"
+}

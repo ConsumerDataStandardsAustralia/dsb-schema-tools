@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "paymentSchedules": {
+      "description": "Array may be empty if no payment schedule exist",
+      "items": {
+        "$ref": "TelcoPaymentSchedule.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "paymentSchedules"
+  ],
+  "type": "object"
+}

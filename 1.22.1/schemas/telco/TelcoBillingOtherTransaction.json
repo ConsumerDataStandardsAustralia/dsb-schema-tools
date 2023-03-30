@@ -1,0 +1,73 @@
+{
+  "properties": {
+    "adjustments": {
+      "description": "Optional array of adjustments arising for this transaction",
+      "items": {
+        "$ref": "TelcoBillingAccountTransactionAdjustments.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "The amount of the charge",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the item",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "Optional end date for the application of the charge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "The service identifier to which this transaction applies if any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startDate": {
+      "description": "Optional start date for the application of the charge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "type": {
+      "default": "OTHER",
+      "description": "Type of charge. Assumed to be OTHER if absent",
+      "enum": [
+        "SERVICE",
+        "NETWORK",
+        "EQUIPMENT",
+        "METERING",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object"
+}

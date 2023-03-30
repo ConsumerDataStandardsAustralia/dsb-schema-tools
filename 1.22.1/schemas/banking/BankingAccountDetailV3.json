@@ -1,0 +1,135 @@
+{
+  "allOf": [
+    {
+      "$ref": "BankingAccountV2.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bsb": {
+          "type": "string",
+          "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces"
+        },
+        "bundleName": {
+          "type": "string",
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit for to the customer"
+        },
+        "specificAccountUType": {
+          "type": ["string","null"],
+          "description": "The type of structure to present account specific fields.",
+          "enum": [
+            "creditCard",
+            "loan",
+            "termDeposit"
+          ]
+        },
+        "termDeposit": {
+          "type": "array",
+          "items": {
+            "$ref": "BankingTermDepositAccount.json"
+          }
+        },
+        "creditCard": {
+          "$ref": "BankingCreditCardAccount.json"
+        },
+        "loan": {
+          "$ref": "BankingLoanAccountV2.json"
+        },
+        "depositRate": {
+          "type": "string",
+          "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "lendingRate": {
+          "type": "string",
+          "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call",
+          "x-cds-type": "RateString"
+        },
+        "depositRates": {
+          "type": ["array","null"],
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "items": {
+            "$ref": "BankingProductDepositRate.json"
+          }
+        },
+        "lendingRates": {
+          "type": ["array","null"],
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference",
+          "items": {
+            "$ref": "BankingProductLendingRateV2.json"
+          }
+        },
+        "features": {
+          "type": "array",
+          "description": "Array of features of the account based on the equivalent structure in Product Reference with the following additional field",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "BankingProductFeatureV2.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "isActivated": {
+                    "type": "boolean",
+                    "description": "True if the feature is already activated and false if the feature is available for activation. Defaults to true if absent. (note this is an additional field appended to the feature object defined in the Product Reference payload)",
+                    "default": true,
+                    "x-cds-type": "Boolean"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "fees": {
+          "type": ["array", "null"],
+          "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference",
+          "items": {
+            "$ref": "BankingProductFee.json"
+          }
+        },
+        "addresses": {
+          "type": ["array", "null"],
+          "description": "The addresses for the account to be used for correspondence",
+          "items": {
+            "$ref": "CommonPhysicalAddress.json"
+          }
+        }
+      },
+      "x-conditional": [
+        "termDeposit",
+        "creditCard",
+        "loan"
+      ],
+      "allOf": [
+        {
+          
+          "if":   {
+            "properties": {"specificAccountUType": { "const": "termDeposit" }},
+            "required": ["specificAccountUType"]
+          },
+          "then": { "required": ["termDeposit"]}
+        },
+        {
+          "if":   {
+            "properties": {"specificAccountUType": { "const": "creditCard" }},
+            "required": ["specificAccountUType"]
+          },
+          "then": { "required": ["creditCard"]}
+        },
+        {
+          "if":   {
+            "properties": {"specificAccountUType": { "const": "loan" }},
+            "required": ["specificAccountUType"]
+          },
+          "then": { "required": ["loan"]}
+        }
+      ]
+    }
+  ]
+}

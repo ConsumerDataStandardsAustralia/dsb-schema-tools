@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "accountIds": {
+          "items": {
+            "description": "Array of specific accountIds to obtain authorisations for",
+            "type": "string",
+            "x-cds-type": "ASCIIString"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "accountIds"
+      ],
+      "type": "object"
+    },
+    "meta": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "Meta.json"}
+      ]     
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Summary of messaging. Required if messaging services is included in the product plan",
+  "properties": {
+    "mms": {
+      "$ref": "TelcoServiceBalanceMessagingMms.json"
+    },
+    "planType": {
+      "$ref": "TelcoPlanType.json"
+    },
+    "sms": {
+      "$ref": "TelcoServiceBalanceMessagingSms.json"
+    }
+  },
+  "required": [
+    "sms",
+    "mms"
+  ],
+  "type": "object"
+}

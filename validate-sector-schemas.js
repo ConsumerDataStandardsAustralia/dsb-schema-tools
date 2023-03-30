@@ -11,7 +11,7 @@ const { Console } = require("console");
 
 
 const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'admin', 'dcr'];
-const version = '1.20.0';
+const version = '1.22.1';
 
 
 sectors.forEach(sector => {
@@ -42,7 +42,7 @@ sectors.forEach(sector => {
     data.$id = file;
     dsbSchemas.push(data);
   });
-  var ajv = new Ajv({ strictSchema: false });
+  var ajv = new Ajv({strictSchema: false});
   addFormats(ajv);
   // Configure the validator by adding the schema arrays
   var validate = ajv.addSchema(dsbSchemas);
