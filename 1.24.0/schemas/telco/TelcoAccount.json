@@ -1,0 +1,16 @@
+{
+  "description": "The array of plans containing services and associated plan details",
+  "properties": {
+    "plans": {
+      "description": "The array of plans containing service and associated plan details",
+      "items": {
+        "$ref": "TelcoAccountPlan.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "plans"
+  ],
+  "type": "object"
+}
