@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "EnergyAccountBaseV3.json"
+      "$ref": "EnergyAccountBaseV2.json"
     },
     {
       "description": "The array of plans containing service points and associated plan details",
