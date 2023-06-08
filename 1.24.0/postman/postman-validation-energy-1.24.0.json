@@ -919,7 +919,7 @@
 },"EnergyAccountDetailV3" :{
   "allOf": [
     {
-      "$ref": "EnergyAccountBaseV3"
+      "$ref": "EnergyAccountBaseV2"
     },
     {
       "description": "The array of plans containing service points and associated plan details",
