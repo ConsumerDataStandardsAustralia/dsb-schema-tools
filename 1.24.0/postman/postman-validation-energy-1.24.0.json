@@ -633,7 +633,7 @@
 },"EnergyAccountDetailResponseV2" :{
   "properties": {
     "data": {
-      "$ref": "EnergyAccountDetailV2"
+      "$ref": "EnergyAccountDetailV3"
     },
     "links": {
       "$ref": "Links"
@@ -3115,21 +3115,26 @@
       "allOf": [
         {
           "if": {
-            "properties": {
-              "isTokenised": {
-                "const": false
-              }
-            }
-          },
-          "then": {
-            "not": {
-              "dependentRequired": {
-                "isTokenised": [
-                  "bsb",
-                  "accountNumber"
+            "allOf": [
+              {
+                "required": [
+                  "isTokenised"
                 ]
+              },
+              {
+                "properties": {
+                  "isTokenised": {
+                    "const": true
+                  }
+                }
               }
-            }
+            ]
+          },
+          "else": {
+            "required": [
+              "bsb",
+              "accountNumber"
+            ]
           }
         }
       ]

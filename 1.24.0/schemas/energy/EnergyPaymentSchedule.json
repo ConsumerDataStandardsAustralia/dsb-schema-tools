@@ -158,12 +158,15 @@
 
       "allOf": [
         {
-          "if":   {"properties": {"isTokenised": { "const": false }}},
-          "then": {
-            "not": {
-              "dependentRequired": {
-                  "isTokenised":  ["bsb", "accountNumber"]
-              }}
+          "if":   {
+            "allOf": [
+              {"required": ["isTokenised"]},
+              {"properties": {"isTokenised": { "const": true }}}
+            ]
+          },
+          "else": {
+
+                "required":  ["bsb", "accountNumber"]      
           }
         }   
       ]
