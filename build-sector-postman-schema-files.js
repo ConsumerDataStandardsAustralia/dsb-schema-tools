@@ -13,7 +13,7 @@ var path = require('path');
 
 const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common'];
 //const sectors = ['energy'];
-const version = '1.22.1';
+const version = '1.24.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' +  sector );
@@ -41,9 +41,11 @@ sectors.forEach(sector => {
     var data = JSON.parse(fileString.replaceAll('.json', ''));
 
     var fileName = file.substr(0, file.indexOf('.'));
+    console.log("Processing " + file);  
     var idSt = file.split('.')[0];
     data.$id =  idSt;   
     stream.write('"' + fileName + '" :')
+    console.log("Writing " + data); 
     stream.write(JSON.stringify(data, null, 2));
     console.log("Processed " + file);  
   

@@ -1,0 +1,209 @@
+{
+  "allOf": [
+    {
+      "$ref": "EnergyAccountBaseV2.json"
+    },
+    {
+      "description": "The array of plans containing service points and associated plan details",
+      "type": "object",
+      "required": [
+        "plans"
+      ],
+      "properties": {
+        "plans": {
+          "description": "The array of plans containing service points and associated plan details",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "servicePointIds"
+            ],
+            "x-conditional": [
+              "planOverview",
+              "planDetail"
+            ],
+            "properties": {
+              "nickname": {
+                "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+                "type": "string"
+              },
+              "servicePointIds": {
+                "description": "An array of servicePointIds, representing NMIs, that this account is linked to",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "planOverview": {
+                "description": "Mandatory if openStatus is OPEN",
+                "type": "object",
+                "required": [
+                  "startDate"
+                ],
+                "properties": {
+                  "displayName": {
+                    "description": "The name of the plan if one exists",
+                    "type": "string"
+                  },
+                  "startDate": {
+                    "description": "The start date of the applicability of this plan",
+                    "type": "string",
+                    "x-cds-type": "DateString"
+                  },
+                  "endDate": {
+                    "description": "The end date of the applicability of this plan",
+                    "type": "string",
+                    "x-cds-type": "DateString"
+                  }
+                }
+              },
+              "planDetail": {
+                "description": "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
+                "type": "object",
+                "required": [
+                  "fuelType"
+                ],
+                "x-conditional": [
+                  "gasContract",
+                  "electricityContract"
+                ],
+                "properties": {
+                  "fuelType": {
+                    "type": "string",
+                    "description": "The fuel types covered by the plan",
+                    "enum": [
+                      "ELECTRICITY",
+                      "GAS",
+                      "DUAL"
+                    ]
+                  },
+                  "isContingentPlan": {
+                    "type": "boolean",
+                    "description": "Flag that indicates that the plan is contingent on the customer taking up an alternate fuel plan from the same retailer (for instance, if the fuelType is ELECTRICITY then a GAS plan from the same retailer must be taken up). Has no meaning if the plan has a fuelType of DUAL. If absent the value is assumed to be false",
+                    "default": false
+                  },
+                  "meteringCharges": {
+                    "description": "Charges for metering included in the plan",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "displayName",
+                        "minimumValue"
+                      ],
+                      "properties": {
+                        "displayName": {
+                          "type": "string",
+                          "description": "Display name of the charge"
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Description of the charge"
+                        },
+                        "minimumValue": {
+                          "type": "string",
+                          "x-cds-type": "AmountString",
+                          "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
+                        },
+                        "maximumValue": {
+                          "type": "string",
+                          "x-cds-type": "AmountString",
+                          "description": "The upper limit of the charge if the charge could occur in a range"
+                        },
+                        "period": {
+                          "type": "string",
+                          "x-cds-type": "ExternalRef",
+                          "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
+                        }
+                      }
+                    }
+                  },
+                  "gasContract": {
+                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
+                    "$ref": "EnergyPlanContractV2.json"
+                  },
+                  "electricityContract": {
+                    "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
+                    "$ref": "EnergyPlanContractV2.json"
+                  }
+                },
+                "allOf": [
+                  {
+                    "if": { "properties": { "fuelType": { "const": "ELECTRICITY" } }},
+                    "then": {"required": ["electricityContract" ]}
+                  },
+                  {
+                    "if": { "properties": { "fuelType": {"const": "DUAL" }}},
+                    "then": {"required": [ "electricityContract", "gasContract"] }
+                  },
+                  {
+                    "if": { "properties": {"fuelType": { "const": "GAS"}} },
+                    "then": {"required": ["gasContract"]}
+                  }
+                ]
+              },
+              "authorisedContacts": {
+                "description": "An array of additional contacts that are authorised to act on this account",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "lastName"
+                  ],
+                  "properties": {
+                    "firstName": {
+                      "description": "For people with single names this field need not be present. The single name should be in the lastName field",
+                      "type": "string"
+                    },
+                    "lastName": {
+                      "description": "For people with single names the single name should be in this field",
+                      "type": "string"
+                    },
+                    "middleNames": {
+                      "description": "Field is mandatory but array may be empty",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "prefix": {
+                      "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+                      "type": "string"
+                    },
+                    "suffix": {
+                      "description": "Used for a trailing suffix to the name (e.g. Jr)",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "openStatus": {
+            "const": "OPEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {"plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "planOverview": {"type": "object"},
+              "planDetail": {"type": "object"}
+            },
+            "required": ["planOverview", "planDetail"]
+          }
+          }},
+        "required": [
+          "plans"
+        ]
+      }         
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "properties": {
+    "additionalInformation": {
+      "$ref": "TelcoAdditionalInformation.json"
+    },
+    "applicationUri": {
+      "description": "A link to an application web page where this plan can be applied for",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "billingType": {
+      "default": "PRE_PAID",
+      "description": "The type of product",
+      "enum": [
+        "PRE_PAID",
+        "POST_PAID",
+        "UPFRONT_PAID",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "brand": {
+      "description": "The ID of the brand under which this product is offered",
+      "type": "string"
+    },
+    "brandName": {
+      "description": "The display name of the brand under which this product is offered",
+      "type": "string"
+    },
+    "bundle": {
+      "description": "Required if part of a bundle. If not present FALSE is assumed",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "contract": {
+      "$ref": "TelcoContract.json"
+    },
+    "description": {
+      "description": "A description of the product",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the product",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "effectiveFrom": {
+      "description": "The date and time from which this product is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "effectiveTo": {
+      "description": "The date and time at which this product will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "lastUpdated": {
+      "description": "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "pricing": {
+      "description": "List of pricing details for the product plan",
+      "items": {
+        "$ref": "TelcoProductPricing.json"
+      },
+      "type": "array"
+    },
+    "productId": {
+      "description": "The ID of the specific product",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "purpose": {
+      "default": "PERSONAL",
+      "description": "The purpose type of the product. If absent, then the value PERSONAL is assumed",
+      "enum": [
+        "PERSONAL",
+        "BUSINESS",
+        "ALL"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thirdPartyAgentId": {
+      "description": "The ID of the Third Party through which this product may be originated",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thirdPartyAgentName": {
+      "description": "The display name of the Third Party through which this product may be originated",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "default": "MOBILE",
+      "description": "The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service",
+      "enum": [
+        "MOBILE",
+        "BROADBAND"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "brand",
+    "brandName",
+    "name",
+    "pricing",
+    "productId",
+    "type",
+    "usage",
+    "billingType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "contract"
+  ]
+}

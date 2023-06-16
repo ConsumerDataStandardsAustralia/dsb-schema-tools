@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "description": {
+      "description": "The description name of the product plan",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "discountUri": {
+      "description": "The URI of the discount",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "displayName": {
+      "description": "The display name of the product plan",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the discount",
+      "items": {
+        "$ref": "TelcoProductDetailDiscountFeature.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object"
+}

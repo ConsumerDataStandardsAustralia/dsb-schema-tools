@@ -1,0 +1,230 @@
+{
+  "properties": {
+    "amount": {
+      "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "cardDebit": {
+      "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
+      "properties": {
+        "calculationType": {
+          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+          "enum": [
+            "STATIC",
+            "BALANCE",
+            "CALCULATED"
+          ],
+          "type": "string"
+        },
+        "cardScheme": {
+          "description": "The type of credit card held on file",
+          "enum": [
+            "VISA",
+            "MASTERCARD",
+            "AMEX",
+            "DINERS",
+            "OTHER",
+            "UNKNOWN"
+          ],
+          "type": "string"
+        },
+        "paymentFrequency": {
+          "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+          "type": "string",
+          "x-cds-type": "ExternalRef"
+        }
+      },
+      "required": [
+        "cardScheme",
+        "paymentFrequency",
+        "calculationType"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "digitalWallet": {
+      "description": "Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet",
+      "properties": {
+        "calculationType": {
+          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+          "enum": [
+            "STATIC",
+            "BALANCE",
+            "CALCULATED"
+          ],
+          "type": "string"
+        },
+        "identifier": {
+          "description": "The identifier of the digital wallet (dependent on type)",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name assigned to the digital wallet by the owner of the wallet, else the display name provided by the digital wallet provider",
+          "type": "string"
+        },
+        "paymentFrequency": {
+          "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+          "type": "string",
+          "x-cds-type": "ExternalRef"
+        },
+        "provider": {
+          "description": "The provider of the digital wallet",
+          "enum": [
+            "PAYPAL_AU",
+            "OTHER"
+          ],
+          "type": "string"
+        },
+        "type": {
+          "description": "The type of the digital wallet identifier",
+          "enum": [
+            "EMAIL",
+            "CONTACT_NAME",
+            "TELEPHONE"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "identifier",
+        "type",
+        "provider",
+        "paymentFrequency",
+        "calculationType"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "directDebit": {
+      "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
+      "properties": {
+        "accountNumber": {
+          "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bsb": {
+          "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "calculationType": {
+          "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+          "enum": [
+            "STATIC",
+            "BALANCE",
+            "CALCULATED"
+          ],
+          "type": "string"
+        },
+        "isTokenised": {
+          "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "paymentFrequency": {
+          "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+          "type": "string",
+          "x-cds-type": "ExternalRef"
+        }
+      },
+      "required": [
+        "paymentFrequency",
+        "calculationType"
+      ],
+      "type": [
+        "object",
+        "null"
+      ],
+      "x-conditional": [
+        "bsb",
+        "accountNumber"
+      ],
+
+      "allOf": [
+        {
+          "if":   {
+            "allOf": [
+              {"required": ["isTokenised"]},
+              {"properties": {"isTokenised": { "const": true }}}
+            ]
+          },
+          "else": {
+
+                "required":  ["bsb", "accountNumber"]      
+          }
+        }   
+      ]
+    },
+    "manualPayment": {
+      "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
+      "properties": {
+        "billFrequency": {
+          "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+          "type": "string",
+          "x-cds-type": "ExternalRef"
+        }
+      },
+      "required": [
+        "billFrequency"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "paymentScheduleUType": {
+      "description": "The type of object present in this response",
+      "enum": [
+        "cardDebit",
+        "directDebit",
+        "manualPayment",
+        "digitalWallet"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "paymentScheduleUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "cardDebit",
+    "directDebit",
+    "manualPayment",
+    "digitalWallet"
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "cardDebit" }}},
+      "then": { "required": ["cardDebit"]}
+    },
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "directDebit" }}},
+      "then": { "required": ["directDebit"]}
+    },
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "digitalWallet" }}},
+      "then": { "required": ["digitalWallet"]}
+    },
+    {
+      "if":   {"properties": {"paymentScheduleUType": { "const": "manualPayment" }}},
+      "then": { "required": ["manualPayment"]}
+    }
+  ]
+}
