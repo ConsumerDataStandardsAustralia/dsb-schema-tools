@@ -45,7 +45,7 @@
         }
       },
       "type": [
-        "String",
+        "object",
         "null"
       ]
     },
