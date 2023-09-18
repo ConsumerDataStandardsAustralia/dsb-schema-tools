@@ -3313,7 +3313,7 @@
         }
       },
       "type": [
-        "object",
+        "String",
         "null"
       ]
     },

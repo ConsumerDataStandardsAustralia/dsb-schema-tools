@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "category": {
+      "description": "The type of the feature",
+      "enum": [
+        "DATA",
+        "VOICE",
+        "MESSAGING",
+        "HANDSET",
+        "DEVICE",
+        "NETWORK",
+        "ENTERTAINMENT",
+        "SUBSCRIPTION",
+        "SOFTWARE",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "The description of the feature",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the feature",
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object"
+}

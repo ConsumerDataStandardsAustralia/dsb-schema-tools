@@ -1,0 +1,117 @@
+{
+  "properties": {
+    "adjustments": {
+      "description": "Optional array of adjustments arising for this transaction",
+      "items": {
+        "properties": {
+          "amount": {
+            "description": "The amount of the adjustment",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "description": {
+            "description": "A free text description of the adjustment",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "description"
+        ],
+        "type": "object"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "The amount of the charge",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "calculationFactors": {
+      "description": "Additional calculation factors that inform the transaction",
+      "items": {
+        "properties": {
+          "type": {
+            "description": "The type of the calculation factor",
+            "enum": [
+              "DLF",
+              "MLF"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "description": "The value of the calculation factor",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "type"
+        ],
+        "type": "object"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "A free text description of the item",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "Optional end date for the application of the charge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "servicePointId": {
+      "description": "The ID of the service point to which this transaction applies if any",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startDate": {
+      "description": "Optional start date for the application of the charge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "type": {
+      "description": "Type of charge. Assumed to be other if absent",
+      "enum": [
+        "ENVIRONMENTAL",
+        "REGULATED",
+        "NETWORK",
+        "METERING",
+        "RETAIL_SERVICE",
+        "RCTI",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object"
+}

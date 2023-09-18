@@ -1,0 +1,160 @@
+{
+  "properties": {
+    "additionalFeeInformation": {
+      "description": "Free text field containing additional information of the fees for this contract",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "controlledLoad": {
+        "$ref": "EnergyPlanControlledLoad.json"
+    },
+    "discounts": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanDiscounts.json"}
+     ]    
+    },
+    "eligibility": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanEligibility.json"}
+     ]    
+    },
+    "fees": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanFees.json"}
+     ]     
+    },
+    "greenPowerCharges": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanGreenPowerCharges.json"}
+     ]    
+    },
+    "incentives": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanIncentives.json"}
+     ]    
+    },
+    "intrinsicGreenPower": {
+      "description": "Describes intrinsic green power for the plan.  If present then the plan includes a percentage of green power in the base plan. Should not be present for gas contracts",
+      "properties": {
+        "greenPercentage": {
+          "description": "Percentage of green power intrinsically included in the plan",
+          "type": "string",
+          "x-cds-type": "RateString"
+        }
+      },
+      "required": [
+        "greenPercentage"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "isFixed": {
+      "description": "Flag indicating whether prices are fixed or variable",
+      "type": "boolean"
+    },
+    "onExpiryDescription": {
+      "description": "Free text field that describes what will occur on or prior to expiry of the fixed contract term or benefit period",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "paymentOption": {
+      "description": "Payment options for this contract",
+      "items": {
+        "enum": [
+          "PAPER_BILL",
+          "CREDIT_CARD",
+          "DIRECT_DEBIT",
+          "BPAY",
+          "OTHER"
+        ],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "pricingModel": {
+      "description": "The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>",
+      "enum": [
+        "SINGLE_RATE",
+        "SINGLE_RATE_CONT_LOAD",
+        "TIME_OF_USE",
+        "TIME_OF_USE_CONT_LOAD",
+        "FLEXIBLE",
+        "FLEXIBLE_CONT_LOAD",
+        "QUOTA"
+      ],
+      "type": "string"
+    },
+    "solarFeedInTariff": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyPlanSolarFeedInTariff.json"}
+     ]   
+    },
+    "tariffPeriod": {
+      "$ref": "EnergyPlanTariffPeriod.json"
+    },
+    "timeZone": {
+      "description": "Required if pricingModel is set to TIME_OF_USE.  Defines the time zone to use for calculation of the time of use thresholds. Defaults to AEST if absent",
+      "enum": [
+        "LOCAL",
+        "AEST"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "variation": {
+      "description": "Free text description of price variation policy and conditions for the contract.  Mandatory if `isFixed` is false",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "pricingModel",
+    "isFixed",
+    "paymentOption",
+    "tariffPeriod"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "timeZone",
+    "variation",
+    "controlledLoad"
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"pricingModel": { "const": "TIME_OF_USE" }}},
+      "then": { "required": ["timeZone"]}
+    },
+    {
+      "if":   {"properties": {"isFixed": { "const": false }}},
+      "then": { "required": ["variation"]}
+    },       
+    {
+      "if":   {"properties": {"pricingModel": { "const": "SINGLE_RATE_CONT_LOAD" }}},
+      "then": { "required": ["controlledLoad"]}
+    },
+    {
+      "if":   {"properties": {"pricingModel": { "const": "TIME_OF_USE_CONT_LOAD" }}},
+      "then": { "required": ["controlledLoad"]}
+    },
+    {
+      "if":   {"properties": {"pricingModel": { "const": "FLEXIBLE_CONT_LOAD" }}},
+      "then": { "required": ["controlledLoad"]}
+    }
+  ]
+}

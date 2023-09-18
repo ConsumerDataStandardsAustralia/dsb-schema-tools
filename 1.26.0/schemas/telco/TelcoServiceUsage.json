@@ -1,0 +1,46 @@
+{
+  "properties": {
+    "displayName": {
+      "description": "Optional description of the service used for display purposes",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "Date when the usage period ends",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "phoneNumber": {
+      "description": "Required if the service includes a phone number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "Date when the usage period started",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "usage": {
+      "$ref": "TelcoUsage.json"
+    }
+  },
+  "required": [
+    "serviceId",
+    "startDate"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "phoneNumber"
+  ]
+}
