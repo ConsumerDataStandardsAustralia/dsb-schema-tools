@@ -1,0 +1,26 @@
+{
+  "description": "International voice calls. Requied if international calling is supported",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of international voice calls",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs",
+      "type": "string",
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of international voice calls",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "duration",
+    "number"
+  ],
+  "type": "object"
+}

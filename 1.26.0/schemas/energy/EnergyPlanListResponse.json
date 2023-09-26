@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "plans": {
+          "description": "Array of plans",
+          "items": {
+            "$ref": "EnergyPlan.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "plans"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "MetaPaginated.json"}
+     ]  
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

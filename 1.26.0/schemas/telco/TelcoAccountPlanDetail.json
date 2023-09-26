@@ -1,0 +1,24 @@
+{
+  "description": "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
+  "properties": {
+    "planDetail": {
+      "properties": {
+        "charges": {
+          "description": "Charges for metering included in the plan",
+          "items": {
+            "$ref": "TelcoProductDetailMeteringCharges.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "charges"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "planDetail"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "balances": {
+      "description": "Array of account balances",
+      "items": {
+        "$ref": "TelcoBalanceResponseData.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "balances"
+  ],
+  "type": "object"
+}

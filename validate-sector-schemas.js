@@ -11,7 +11,7 @@ const { Console } = require("console");
 
 
 const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'admin', 'dcr'];
-const version = '1.24.0';
+const version = '1.26.0';
 
 
 sectors.forEach(sector => {
