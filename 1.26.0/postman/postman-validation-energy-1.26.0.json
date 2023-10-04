@@ -5939,7 +5939,6 @@
           }
         },
         "required": [
-          "amount",
           "timeVariations"
         ],
         "type": "object"
