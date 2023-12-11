@@ -1,0 +1,55 @@
+{
+  "properties": {
+    "bundles": {
+      "description": "Bundles the product can be part of",
+      "items": {
+        "$ref": "TelcoProductDetailBundles.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "discounts": {
+      "description": "Discounts associated to the product",
+      "items": {
+        "$ref": "TelcoProductDetailDiscounts.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "incentives": {
+      "description": "Incentives associated to the product",
+      "items": {
+        "$ref": "TelcoProductDetailIncentives.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "meteringCharges": {
+      "description": "Charges for metering included in the plan",
+      "items": {
+        "$ref": "TelcoProductDetailMeteringCharges.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "plans": {
+      "description": "Plans associated to the product",
+      "items": {
+        "$ref": "TelcoProductDetailPlan.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "type": "object"
+}

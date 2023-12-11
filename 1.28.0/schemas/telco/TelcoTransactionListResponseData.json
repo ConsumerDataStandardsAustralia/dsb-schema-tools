@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "transactions": {
+      "description": "Array of transactions sorted by date and time in descending order",
+      "items": {
+        "$ref": "TelcoBillingTransaction.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "transactions"
+  ],
+  "type": "object"
+}

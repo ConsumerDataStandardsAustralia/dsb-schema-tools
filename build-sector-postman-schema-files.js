@@ -13,7 +13,7 @@ var path = require('path');
 
 const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common', 'telco'];
 //const sectors = ['energy'];
-const version = '1.26.0';
+const version = '1.28.0';
 
 sectors.forEach(sector => {
   const directoryPath = path.join(__dirname, version + '/schemas/' +  sector );

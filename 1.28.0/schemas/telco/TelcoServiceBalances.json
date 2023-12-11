@@ -1,0 +1,20 @@
+{
+  "description": "A summary of Service balances",
+  "properties": {
+    "data": {
+      "$ref": "TelcoServiceBalanceData.json"
+    },
+    "messaging": {
+      "$ref": "TelcoServiceBalanceMessaging.json"
+    },
+    "voice": {
+      "$ref": "TelcoServiceBalanceVoice.json"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "data",
+    "voice",
+    "messaging"
+  ]
+}

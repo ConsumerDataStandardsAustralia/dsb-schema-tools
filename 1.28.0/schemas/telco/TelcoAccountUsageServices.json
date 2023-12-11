@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "service": {
+      "$ref": "TelcoServiceUsage.json"
+    }
+  },
+  "required": [
+    "service"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,548 @@
+{
+  "description": "Authorisation counts for the data holder",
+  "properties": {
+    "abandonedConsentFlowCount": {
+      "description": "The number of consents flows that were not successfully authorised",
+      "properties": {
+        "currentDay": {
+          "description": "Number of consents flows that were not successfully authorised for the current day",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "x-cds-type": "NaturalNumber"
+        },
+        "previousDays": {
+          "description": "Number of consents flows that were not successfully authorised for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "type": "integer",
+            "x-cds-type": "NaturalNumber"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "abandonmentsByStage": {
+      "description": "Customer abandonment count per stage of the consent flow.  Note that the aggregated abandonment count for all stages for a period should equal the count in `abandonedConsentFlowCount` for the same period (ie. each abandoned consent should assigned to one, and only one, stage)",
+      "properties": {
+        "failedTokenExchange": {
+          "description": "The number of authorisations that completed the interactive flow with the consumer authorising the consent, but the ADR failed to - or was unable to - obtain a refresh or access token using the authorisation code",
+          "properties": {
+            "currentDay": {
+              "description": "Number of abandoned consent flows for this stage for the current day",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "x-cds-type": "NaturalNumber"
+            },
+            "previousDays": {
+              "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+              "items": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "preAccountSelection": {
+          "description": "The number of authorisations where the customer successfully authenticated with a valid OTP or equivalent but abandoned the process before selecting accounts",
+          "properties": {
+            "currentDay": {
+              "description": "Number of abandoned consent flows for this stage for the current day",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "x-cds-type": "NaturalNumber"
+            },
+            "previousDays": {
+              "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+              "items": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "preAuthentication": {
+          "description": "The number of authorisations where the customer identified themselves (ie. they successfully identify the customer profile to use for the authorisation) but failed to provide a valid OTP or equivalent",
+          "properties": {
+            "currentDay": {
+              "description": "Number of abandoned consent flows for this stage for the current day",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "x-cds-type": "NaturalNumber"
+            },
+            "previousDays": {
+              "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+              "items": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "preAuthorisation": {
+          "description": "The number of authorisations where the customer has passed the account selection step but abandoned the process before approving or rejecting the consent being requested",
+          "properties": {
+            "currentDay": {
+              "description": "Number of abandoned consent flows for this stage for the current day",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "x-cds-type": "NaturalNumber"
+            },
+            "previousDays": {
+              "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+              "items": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "preIdentification": {
+          "description": "The number of authorisations that commenced with the data holder but the customer did not successfully identify their profile or user ID",
+          "properties": {
+            "currentDay": {
+              "description": "Number of abandoned consent flows for this stage for the current day",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "x-cds-type": "NaturalNumber"
+            },
+            "previousDays": {
+              "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+              "items": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        },
+        "rejected": {
+          "description": "The number of authorisations where the customer actively rejected the authorisation rather than abandoning the process",
+          "properties": {
+            "currentDay": {
+              "description": "Number of abandoned consent flows for this stage for the current day",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "x-cds-type": "NaturalNumber"
+            },
+            "previousDays": {
+              "description": "Number of abandoned consent flows for this stage for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+              "items": {
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          "type": "object",
+          "x-conditional": [
+            "currentDay",
+            "previousDays"
+          ]
+        }
+      },
+      "required": [
+        "preIdentification",
+        "preAuthentication",
+        "preAccountSelection",
+        "preAuthorisation",
+        "rejected",
+        "failedTokenExchange"
+      ],
+      "type": "object"
+    },
+    "activeAuthorisationCount": {
+      "description": "The number of active ongoing authorisations",
+      "properties": {
+        "individual": {
+          "description": "Active ongoing authorisation count for individual customers",
+          "type": "integer",
+          "x-cds-type": "NaturalNumber"
+        },
+        "nonIndividual": {
+          "description": "Active ongoing authorisation count for non-individual customers",
+          "type": "integer",
+          "x-cds-type": "NaturalNumber"
+        }
+      },
+      "required": [
+        "individual",
+        "nonIndividual"
+      ],
+      "type": "object"
+    },
+    "amendedAuthorisationCount": {
+      "description": "The number of amended ongoing authorisations",
+      "properties": {
+        "currentDay": {
+          "description": "Number of amended authorisations for the current day",
+          "properties": {
+            "individual": {
+              "description": "Amended authorisation count for individual customers",
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            },
+            "nonIndividual": {
+              "description": "Amended authorisation count for non-individual customers",
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            }
+          },
+          "required": [
+            "individual",
+            "nonIndividual"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Number of amended authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "properties": {
+              "individual": {
+                "description": "Amended authorisation count for individual customers",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "nonIndividual": {
+                "description": "Amended authorisation count for non-individual customers",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              }
+            },
+            "required": [
+              "individual",
+              "nonIndividual"
+            ],
+            "type": "object"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "expiredAuthorisationCount": {
+      "description": "The number of expired ongoing authorisations",
+      "properties": {
+        "currentDay": {
+          "description": "Number of expired authorisations for the current day",
+          "properties": {
+            "individual": {
+              "description": "Expired authorisation count for individual customers",
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            },
+            "nonIndividual": {
+              "description": "Expired authorisation count for non-individual customers",
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            }
+          },
+          "required": [
+            "individual",
+            "nonIndividual"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Number of expired authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "properties": {
+              "individual": {
+                "description": "Expired authorisation count for individual customers",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "nonIndividual": {
+                "description": "Expired authorisation count for non-individual customers",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              }
+            },
+            "required": [
+              "individual",
+              "nonIndividual"
+            ],
+            "type": "object"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "newAuthorisationCount": {
+      "description": "The number of new authorisations",
+      "properties": {
+        "currentDay": {
+          "description": "Number of new authorisations for the current day",
+          "properties": {
+            "onceOff": {
+              "description": "New authorisation count for once-off authorisations",
+              "properties": {
+                "individual": {
+                  "description": "New authorisation count for individual customers",
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
+                },
+                "nonIndividual": {
+                  "description": "New authorisation count for non-individual customers",
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
+                }
+              },
+              "required": [
+                "individual",
+                "nonIndividual"
+              ],
+              "type": "object"
+            },
+            "ongoing": {
+              "description": "New authorisation count for ongoing authorisations",
+              "properties": {
+                "individual": {
+                  "description": "New authorisation count for individual customers",
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
+                },
+                "nonIndividual": {
+                  "description": "New authorisation count for non-individual customers",
+                  "type": "integer",
+                  "x-cds-type": "NaturalNumber"
+                }
+              },
+              "required": [
+                "individual",
+                "nonIndividual"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "onceOff",
+            "ongoing"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Number of new authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "properties": {
+              "onceOff": {
+                "description": "New authorisation count for once-off authorisations",
+                "properties": {
+                  "individual": {
+                    "description": "New authorisation count for individual customers",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber"
+                  },
+                  "nonIndividual": {
+                    "description": "New authorisation count for non-individual customers",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber"
+                  }
+                },
+                "required": [
+                  "individual",
+                  "nonIndividual"
+                ],
+                "type": "object"
+              },
+              "ongoing": {
+                "description": "New authorisation count for ongoing authorisations",
+                "properties": {
+                  "individual": {
+                    "description": "New authorisation count for individual customers",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber"
+                  },
+                  "nonIndividual": {
+                    "description": "New authorisation count for non-individual customers",
+                    "type": "integer",
+                    "x-cds-type": "NaturalNumber"
+                  }
+                },
+                "required": [
+                  "individual",
+                  "nonIndividual"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "onceOff",
+              "ongoing"
+            ],
+            "type": "object"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "revokedAuthorisationCount": {
+      "description": "The number of revoked authorisations",
+      "properties": {
+        "currentDay": {
+          "description": "Number of revoked authorisations for the current day",
+          "properties": {
+            "individual": {
+              "description": "Revoked authorisation count for individual customers",
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            },
+            "nonIndividual": {
+              "description": "Revoked authorisation count for non-individual customers",
+              "type": "integer",
+              "x-cds-type": "NaturalNumber"
+            }
+          },
+          "required": [
+            "individual",
+            "nonIndividual"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Number of revoked authorisations for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available",
+          "items": {
+            "properties": {
+              "individual": {
+                "description": "Revoked authorisation count for individual customers",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              },
+              "nonIndividual": {
+                "description": "Revoked authorisation count for non-individual customers",
+                "type": "integer",
+                "x-cds-type": "NaturalNumber"
+              }
+            },
+            "required": [
+              "individual",
+              "nonIndividual"
+            ],
+            "type": "object"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    }
+  },
+  "required": [
+    "activeAuthorisationCount",
+    "newAuthorisationCount",
+    "revokedAuthorisationCount",
+    "amendedAuthorisationCount",
+    "expiredAuthorisationCount",
+    "abandonedConsentFlowCount",
+    "abandonmentsByStage"
+  ],
+  "type": "object"
+}
