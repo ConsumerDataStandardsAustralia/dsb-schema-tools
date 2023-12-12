@@ -1,0 +1,108 @@
+{
+  "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
+  "properties": {
+    "abn": {
+      "description": "Australian Business Number for the organisation",
+      "maxLength": 11,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "acn": {
+      "description": "Australian Company Number for the organisation",
+      "maxLength": 9,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "anzsicDivision": {
+      "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
+      "maxLength": 100,
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "arbn": {
+      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+      "maxLength": 9,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "legalEntityId": {
+      "description": "Unique id of the organisation issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "legalEntityName": {
+      "description": "Unique legal name of the organisation",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "logoUri": {
+      "description": "Legal Entity logo URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "organisationType": {
+      "description": "Legal organisation type",
+      "enum": [
+        "SOLE_TRADER",
+        "COMPANY",
+        "PARTNERSHIP",
+        "TRUST",
+        "GOVERNMENT_ENTITY",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "Enum"
+    },
+    "registeredCountry": {
+      "description": "Country of registeration (if the company is registered outside Australia)",
+      "maxLength": 100,
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "registrationDate": {
+      "description": "Date of registration (if the company is registered outside Australia)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "registrationNumber": {
+      "description": "Unique registration number (if the company is registered outside Australia)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "REMOVED"
+      ],
+      "type": "string",
+      "x-cds-type": "Enum"
+    }
+  },
+  "required": [
+    "legalEntityId",
+    "legalEntityName",
+    "logoUri",
+    "status"
+  ],
+  "type": "object"
+}

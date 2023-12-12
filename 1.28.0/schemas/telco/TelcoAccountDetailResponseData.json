@@ -1,0 +1,13 @@
+{
+  "allOf": [
+    {
+      "$ref": "TelcoAccountBase.json"
+    },
+    {
+      "$ref": "TelcoAccount.json"
+    },
+    {
+      "$ref": "TelcoAccountDetail.json"
+    }
+  ]
+}

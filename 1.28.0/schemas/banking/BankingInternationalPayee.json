@@ -1,0 +1,118 @@
+{
+  "properties": {
+    "bankDetails": {
+      "properties": {
+        "accountNumber": {
+          "description": "Account Targeted for payment",
+          "type": "string"
+        },
+        "bankAddress": {
+          "properties": {
+            "address": {
+              "description": "Address of the recipient Bank",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the recipient Bank",
+              "type": "string"
+            }
+          },
+          "required": [
+            "address",
+            "name"
+          ],
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "beneficiaryBankBIC": {
+          "description": "Swift bank code.  Aligns with standard [ISO 9362](https://www.iso.org/standard/60390.html)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-cds-type": "ExternalRef"
+        },
+        "chipNumber": {
+          "description": "Number for the Clearing House Interbank Payments System",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "country": {
+          "description": "Country of the recipient institution. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
+          "type": "string",
+          "x-cds-type": "ExternalRef"
+        },
+        "fedWireNumber": {
+          "description": "Number for Fedwire payment (Federal Reserve Wire Network)",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "legalEntityIdentifier": {
+          "description": "The legal entity identifier (LEI) for the beneficiary.  Aligns with [ISO 17442](https://www.iso.org/standard/59771.html)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-cds-type": "ExternalRef"
+        },
+        "routingNumber": {
+          "description": "International bank routing number",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortCode": {
+          "description": "Sort code used for account identification in some jurisdictions",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "accountNumber",
+        "country"
+      ],
+      "type": "object"
+    },
+    "beneficiaryDetails": {
+      "properties": {
+        "country": {
+          "description": "Country where the beneficiary resides. A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code",
+          "type": "string",
+          "x-cds-type": "ExternalRef"
+        },
+        "message": {
+          "description": "Response message for the payment",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "Name of the beneficiary",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "country"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "bankDetails",
+    "beneficiaryDetails"
+  ],
+  "type": "object"
+}

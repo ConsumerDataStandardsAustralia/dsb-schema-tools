@@ -1,0 +1,41 @@
+{
+  "properties": {
+    "description": {
+      "description": "Description of the charge",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "Display name of the charge",
+      "type": "string"
+    },
+    "maximumValue": {
+      "description": "The upper limit of the charge if the charge could occur in a range",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "minimumValue": {
+      "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "period": {
+      "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "displayName",
+    "minimumValue"
+  ],
+  "type": "object"
+}

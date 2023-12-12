@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "accountId": {
+      "description": "Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": "string"
+    },
+    "services": {
+      "description": "List of services that are part of the account",
+      "items": {
+        "$ref": "TelcoAccountUsageServices.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "services"
+  ],
+  "type": "object"
+}
