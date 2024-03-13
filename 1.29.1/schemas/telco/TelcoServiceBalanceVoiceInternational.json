@@ -1,0 +1,43 @@
+{
+  "description": "International voice calls",
+  "properties": {
+    "amount": {
+      "description": "Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of international voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "amount"
+  ]
+}

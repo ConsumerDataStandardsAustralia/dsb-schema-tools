@@ -1,0 +1,69 @@
+{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the feature. Mandatory if the [feature type](#tocSproductfeaturetypedoc) is set to OTHER",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this feature",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [featureType](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [featureType.](#tocSproductfeaturetypedoc)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "featureType": {
+      "description": "The type of feature described",
+      "enum": [
+        "ADDITIONAL_CARDS",
+        "BALANCE_TRANSFERS",
+        "BILL_PAYMENT",
+        "BONUS_REWARDS",
+        "CARD_ACCESS",
+        "CASHBACK_OFFER",
+        "COMPLEMENTARY_PRODUCT_DISCOUNTS",
+        "DIGITAL_BANKING",
+        "DIGITAL_WALLET",
+        "DONATE_INTEREST",
+        "EXTRA_REPAYMENTS",
+        "FRAUD_PROTECTION",
+        "FREE_TXNS",
+        "FREE_TXNS_ALLOWANCE",
+        "GUARANTOR",
+        "INSURANCE",
+        "INSTALMENT_PLAN",
+        "INTEREST_FREE",
+        "INTEREST_FREE_TRANSFERS",
+        "LOYALTY_PROGRAM",
+        "NOTIFICATIONS",
+        "NPP_ENABLED",
+        "NPP_PAYID",
+        "OFFSET",
+        "OTHER",
+        "OVERDRAFT",
+        "REDRAW",
+        "RELATIONSHIP_MANAGEMENT",
+        "UNLIMITED_TXNS"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "featureType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "additionalInfo"
+  ]
+}

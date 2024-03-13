@@ -1,0 +1,86 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "authorisations": {
+          "$ref": "AuthorisationMetricsV2.json"
+        },
+        "availability": {
+          "$ref": "AvailabilityMetricsV2.json"
+        },
+        "averageResponse": {
+          "$ref": "AverageResponseMetricsV2.json"
+        },
+        "averageTps": {
+          "$ref": "AverageTPSMetricsV2.json"
+        },
+        "customerCount": {
+          "description": "Number of customers with active authorisations at the time of the call",
+          "type": "integer",
+          "x-cds-type": "NaturalNumber"
+        },
+        "errors": {
+          "$ref": "ErrorMetricsV2.json"
+        },
+        "invocations": {
+          "$ref": "InvocationMetricsV3.json"
+        },
+        "peakTps": {
+          "$ref": "PeakTPSMetricsV2.json"
+        },
+        "performance": {
+          "$ref": "PerformanceMetricsV3.json"
+        },
+        "recipientCount": {
+          "description": "Number of Data Recipient Software Products with active authorisations at the time of the call",
+          "type": "integer",
+          "x-cds-type": "NaturalNumber"
+        },
+        "rejections": {
+          "$ref": "RejectionMetricsV3.json"
+        },
+        "requestTime": {
+          "description": "The date and time that the metrics in this payload were requested.",
+          "type": "string",
+          "x-cds-type": "DateTimeString"
+        },
+        "secondaryHolder": {
+          "$ref": "SecondaryHolderMetricsV2.json"
+        },
+        "sessionCount": {
+          "$ref": "SessionCountMetricsV2.json"
+        }
+      },
+      "required": [
+        "availability",
+        "averageResponse",
+        "averageTps",
+        "customerCount",
+        "errors",
+        "invocations",
+        "peakTps",
+        "performance",
+        "recipientCount",
+        "rejections",
+        "requestTime",
+        "sessionCount",
+        "authorisations"
+      ],
+      "type": "object",
+      "x-conditional": [
+        "secondaryHolder"
+      ]
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "invoices": {
+      "description": "Array of invoices sorted by issue date in descending order",
+      "items": {
+        "$ref": "TelcoInvoice.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "invoices"
+  ],
+  "type": "object"
+}

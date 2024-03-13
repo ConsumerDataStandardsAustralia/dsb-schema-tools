@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "additionalInfoUri": {
+      "description": "The URI describing the additional information",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "description": {
+      "description": "Display text providing more information about the document URI",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "additionalInfoUri"
+  ],
+  "type": "object"
+}
