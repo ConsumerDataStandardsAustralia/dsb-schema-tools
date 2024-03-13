@@ -2,16 +2,16 @@
   "properties": {
     "data": {
       "properties": {
-        "accounts": {
-          "description": "Array of accounts",
+        "plans": {
+          "description": "Array of plans",
           "items": {
-            "$ref": "EnergyAccount.json"
+            "$ref": "EnergyPlan.json"
           },
           "type": "array"
         }
       },
       "required": [
-        "accounts"
+        "plans"
       ],
       "type": "object"
     },
@@ -19,7 +19,10 @@
       "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "$ref": "MetaPaginated.json"
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "MetaPaginated.json"}
+     ]  
     }
   },
   "required": [
