@@ -20,7 +20,7 @@
       "type": "array"
     },
     "kid": {
-      "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed unique and additional parameters should be used to progressively to identify a key within a set",
+      "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed to be unique and additional parameters should be used to progressively identify a key within a set",
       "type": "string",
       "x-cds-type": "ExternalRef"
     },

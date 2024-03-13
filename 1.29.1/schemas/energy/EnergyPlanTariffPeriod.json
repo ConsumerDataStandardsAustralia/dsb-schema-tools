@@ -51,9 +51,9 @@
               "type": "string"
             },
             "endTime": {
-              "description": "End of the period",
+              "description": "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
               "type": "string",
-              "x-cds-type": "TimeString"
+              "x-cds-type": "ExternalRef"
             },
             "maxDemand": {
               "description": "Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field",
