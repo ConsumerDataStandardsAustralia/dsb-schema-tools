@@ -7,7 +7,7 @@
     "demand": {
       "oneOf": [
         {"type": "null"},
-        {"$ref": "EnergyBillingDemandTransaction.json"}
+        {"$ref": "EnergyBillingDemandTransactionV2.json"}
      ],
       "description": "Represents a demand charge or generation credit.  Mandatory if transactionUType is equal to demand"
     },
