@@ -55,8 +55,6 @@ sectors.forEach(sector => {
     }catch(e) {
         console.log('ERROR in file ' + file + ': ' + e.message);
     }
-    
-
   });
   console.log("Validated " + sector);
 
