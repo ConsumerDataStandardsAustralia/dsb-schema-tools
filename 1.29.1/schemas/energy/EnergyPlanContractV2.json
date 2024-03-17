@@ -137,7 +137,7 @@
   ],
   "allOf": [
     {
-      "if":   {"properties": {"pricingModel": { "const": "TIME_OF_USE" }}},
+      "if":   { "properties": {"pricingModel": { "const": "TIME_OF_USE" }}},
       "then": { "required": ["timeZone"]}
     },
     {
