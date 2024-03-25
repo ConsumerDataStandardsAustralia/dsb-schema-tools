@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "amount": {
+      "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "cardDebit": {
+      "$ref": "TelcoPaymentScheduleCardDebit.json"
+    },
+    "digitalWallet": {
+      "$ref": "TelcoPaymentScheduleDigitalWallet.json"
+    },
+    "directDebit": {
+      "$ref": "TelcoPaymentScheduleDirectDebit.json"
+    },
+    "manualPayment": {
+      "$ref": "TelcoPaymentScheduleManualPayment.json"
+    },
+    "paymentScheduleUType": {
+      "description": "The type of object present in this response",
+      "enum": [
+        "cardDebit",
+        "directDebit",
+        "manualPayment",
+        "digitalWallet"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "paymentScheduleUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "cardDebit",
+    "directDebit",
+    "manualPayment",
+    "digitalWallet"
+  ]
+}

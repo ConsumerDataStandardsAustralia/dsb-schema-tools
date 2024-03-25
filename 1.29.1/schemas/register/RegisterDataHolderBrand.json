@@ -1,0 +1,73 @@
+{
+  "properties": {
+    "authDetails": {
+      "items": {
+        "$ref": "RegisterDataHolderAuth.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "brandName": {
+      "description": "The name of Data Holder Brand",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "dataHolderBrandId": {
+      "description": "Unique id of the Data Holder Brand issued by the CDR Register",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "endpointDetail": {
+      "$ref": "RegisterDataHolderBrandServiceEndpoint.json"
+    },
+    "industries": {
+      "description": "The industries the Data Holder Brand belongs to",
+      "items": {
+        "enum": [
+          "banking",
+          "energy",
+          "telco"
+        ],
+        "type": "string",
+        "x-cds-type": "Enum"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "lastUpdated": {
+      "description": "The date/time that the Data Holder Brand data was last updated in the Register",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "legalEntity": {
+      "$ref": "LegalEntityDetail.json"
+    },
+    "logoUri": {
+      "description": "Brand logo URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "status": {
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string",
+      "x-cds-type": "Enum"
+    }
+  },
+  "required": [
+    "authDetails",
+    "brandName",
+    "dataHolderBrandId",
+    "endpointDetail",
+    "industries",
+    "lastUpdated",
+    "legalEntity",
+    "logoUri",
+    "status"
+  ],
+  "type": "object"
+}

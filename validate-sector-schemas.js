@@ -11,7 +11,7 @@ const { Console } = require("console");
 
 
 const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'admin', 'dcr'];
-const version = '1.28.0';
+const version = '1.29.1';
 
 
 sectors.forEach(sector => {
@@ -55,8 +55,6 @@ sectors.forEach(sector => {
     }catch(e) {
         console.log('ERROR in file ' + file + ': ' + e.message);
     }
-    
-
   });
   console.log("Validated " + sector);
 

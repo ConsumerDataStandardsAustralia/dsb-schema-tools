@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "identifier": {
+      "description": "The identifier of the digital wallet (dependent on type)",
+      "type": "string"
+    },
+    "name": {
+      "description": "The display name of the wallet as given by the customer, else a default value defined by the data holder",
+      "type": "string"
+    },
+    "provider": {
+      "description": "The provider of the digital wallet",
+      "enum": [
+        "PAYPAL_AU",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of the digital wallet identifier",
+      "enum": [
+        "EMAIL",
+        "CONTACT_NAME",
+        "TELEPHONE"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "identifier",
+    "name",
+    "provider",
+    "type"
+  ],
+  "type": "object"
+}
