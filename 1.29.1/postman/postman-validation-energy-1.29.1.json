@@ -1546,6 +1546,37 @@
   ],
   "type": "object",
   "$id": "EnergyBillingListResponseV2"
+},"EnergyBillingListResponseV3" :{
+  "properties": {
+    "data": {
+      "properties": {
+        "transactions": {
+          "description": "Array of transactions sorted by date and time in descending order",
+          "items": {
+            "$ref": "EnergyBillingTransactionV3"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "transactions"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "EnergyBillingListResponseV3"
 },"EnergyBillingOnceOffTransaction" :{
   "properties": {
     "amount": {
