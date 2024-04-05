@@ -703,6 +703,7 @@
   "type": "object",
   "$id": "EnergyServicePoint"
 },"EnergyServicePointDetail" :{
+  "type": "object",
   "properties": {
     "consumerProfile": {
       "properties": {
