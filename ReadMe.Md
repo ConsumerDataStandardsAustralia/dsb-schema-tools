@@ -1,5 +1,5 @@
 
-# DSB Postman Collection
+# JSON Schema Tool
 
 ## Overview
 
