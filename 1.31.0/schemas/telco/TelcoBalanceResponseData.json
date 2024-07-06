@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "accountId": {
+      "description": "The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "balance": {
+      "$ref": "TelcoBalance.json"
+    }
+  },
+  "required": [
+    "accountId, balance"
+  ],
+  "type": "object"
+}

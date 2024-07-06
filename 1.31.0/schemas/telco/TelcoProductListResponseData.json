@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "plans": {
+      "description": "Array of Products",
+      "items": {
+        "$ref": "TelcoProduct.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "plans"
+  ],
+  "type": "object"
+}

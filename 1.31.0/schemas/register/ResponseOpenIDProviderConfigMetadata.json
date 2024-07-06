@@ -1,0 +1,104 @@
+{
+  "description": "Response containing the Open ID Provider Configuration Metadata",
+  "properties": {
+    "claims_supported": {
+      "description": "JSON array containing a list of the Claim Names of the Claims that the CDR Register supplies values for",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "code_challenge_methods_supported": {
+      "description": "JSON array containing a list of Proof Key for Code Exchange (PKCE) **[[RFC7636]](#nref-RFC7636)** code challenge methods supported by this authorization server. Given the CDR Register does not support PKCE, this field can be safely ignored",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "grant_types_supported": {
+      "description": "JSON array containing a list of the OAuth 2.0 Grant Type values that the CDR Register supports",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "id_token_signing_alg_values_supported": {
+      "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the CDR Register for the ID Token to encode the Claims in a JWT. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "issuer": {
+      "description": "URL using the https scheme with no query or fragment component that the CDR Register asserts as its Issuer Identifier",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "jwks_uri": {
+      "description": "URL of the CDR Register's JSON Web Key Set **[[JWK]](#nref-JWK)** document. This contains the signing key(s) used to validate access tokens issued from the CDR Register. Note that this differs from the JWKS endpoint used to validate SSAs and CDR Register client authentication",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "response_types_supported": {
+      "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "scopes_supported": {
+      "description": "JSON array containing a list of the OAuth 2.0 **[[RFC6749]](#nref-RFC6749)** scope values that the CDR Register supports",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "subject_types_supported": {
+      "description": "JSON array containing a list of the Subject Identifier types that the CDR Register supports. Given the CDR Register does not issue ID tokens, this field can be safely ignored",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "tls_client_certificate_bound_access_tokens": {
+      "description": "Boolean value indicating server support for mutual TLS client certificate bound access tokens",
+      "type": "boolean",
+      "x-cds-type": "boolean"
+    },
+    "token_endpoint": {
+      "description": "URL of the CDR Register's OAuth 2.0 Token Endpoint",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "token_endpoint_auth_methods_supported": {
+      "description": "JSON array containing a list of Client Authentication methods supported by this Token Endpoint",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "token_endpoint_auth_signing_alg_values_supported": {
+      "description": "JSON array containing a list of the JWS signing algorithms (alg values) supported by the token endpoint for the signature on the JWT **[[JWT]](#nref-JWT)** used to authenticate the client at the token endpoint for the \"private_key_jwt\" authentication method",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "claims_supported",
+    "code_challenge_methods_supported",
+    "grant_types_supported",
+    "id_token_signing_alg_values_supported",
+    "issuer",
+    "jwks_uri",
+    "response_types_supported",
+    "scopes_supported",
+    "subject_types_supported",
+    "tls_client_certificate_bound_access_tokens",
+    "token_endpoint",
+    "token_endpoint_auth_methods_supported",
+    "token_endpoint_auth_signing_alg_values_supported"
+  ],
+  "type": "object"
+}
