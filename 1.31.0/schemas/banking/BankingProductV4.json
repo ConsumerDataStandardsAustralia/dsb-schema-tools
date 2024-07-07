@@ -3,7 +3,7 @@
     "additionalInformation": {
       "oneOf": [
         {"type": "null"},
-      "$ref": "BankingProductAdditionalInformationV2.json"
+        {"$ref": "BankingProductAdditionalInformationV2.json"}
       ]     
     },
     "applicationUri": {
