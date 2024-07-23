@@ -1,0 +1,47 @@
+{
+  "description": "Object representing a JSON Web Key",
+  "properties": {
+    "alg": {
+      "description": "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "e": {
+      "description": "The \"e\" RSA public exponent parameter",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "key_ops": {
+      "description": "The \"key_ops\" (key operations) parameter identifies the operation(s) for which the key is intended to be used",
+      "items": {
+        "type": "string",
+        "x-cds-type": "ExternalRef"
+      },
+      "type": "array"
+    },
+    "kid": {
+      "description": "The \"kid\" (key ID) parameter is partially used to match a specific key. Note the \"kid\" parameter is not guaranteed to be unique and additional parameters should be used to progressively identify a key within a set",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "kty": {
+      "description": "The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "n": {
+      "description": "The \"n\" RSA public modulus parameter",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "alg",
+    "e",
+    "key_ops",
+    "kid",
+    "kty",
+    "n"
+  ],
+  "type": "object"
+}

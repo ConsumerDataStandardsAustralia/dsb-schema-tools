@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "data": {
+      "$ref": "TelcoPaymentScheduleResponseData.json"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

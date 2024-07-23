@@ -1,0 +1,26 @@
+{
+  "description": "Summary of voice balances. Required if voice calls are included in product plan",
+  "properties": {
+    "international": {
+      "$ref": "TelcoServiceBalanceVoiceInternational.json"
+    },
+    "national": {
+      "$ref": "TelcoServiceBalanceVoiceNational.json"
+    },
+    "planType": {
+      "$ref": "TelcoPlanType.json"
+    },
+    "roaming": {
+      "$ref": "TelcoServiceBalanceVoiceRoaming.json"
+    }
+  },
+  "required": [
+    "planType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "national",
+    "international",
+    "roaming"
+  ]
+}

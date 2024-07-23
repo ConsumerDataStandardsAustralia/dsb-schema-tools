@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "accounts": {
+      "description": "Array of usage on accounts",
+      "items": {
+        "$ref": "TelcoAccountUsage.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accounts"
+  ],
+  "type": "object"
+}

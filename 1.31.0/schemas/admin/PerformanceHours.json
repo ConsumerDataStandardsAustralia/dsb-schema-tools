@@ -1,0 +1,5 @@
+{
+  "description": "Percentage of calls within the performance threshold for the specified hour. 0.0 means 0%. 1.0 means 100%. Must be a positive value or zero",
+  "type": "string",
+  "x-cds-type": "RateString"
+}

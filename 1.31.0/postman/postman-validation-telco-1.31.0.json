@@ -1,0 +1,3293 @@
+{"CommonPAFAddress" :{
+  "description": "Australian address formatted according to the file format defined by the [PAF file format](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). Required if addressUType is set to paf",
+  "properties": {
+    "buildingName1": {
+      "description": "Building/Property name 1",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "buildingName2": {
+      "description": "Building/Property name 2",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dpid": {
+      "description": "Unique identifier for an address as defined by Australia Post.  Also known as Delivery Point Identifier",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "flatUnitNumber": {
+      "description": "Unit number (including suffix, if applicable)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "flatUnitType": {
+      "description": "Type of flat or unit for the address",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "floorLevelNumber": {
+      "description": "Floor or level number (including alpha characters)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "floorLevelType": {
+      "description": "Type of floor or level for the address",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "localityName": {
+      "description": "Full name of locality",
+      "type": "string"
+    },
+    "lotNumber": {
+      "description": "Allotment number for the address",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postalDeliveryNumber": {
+      "description": "Postal delivery number if the address is a postal delivery type",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "x-cds-type": "PositiveInteger"
+    },
+    "postalDeliveryNumberPrefix": {
+      "description": "Postal delivery number prefix related to the postal delivery number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postalDeliveryNumberSuffix": {
+      "description": "Postal delivery number suffix related to the postal delivery number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postalDeliveryType": {
+      "description": "Postal delivery type. (eg. PO BOX). Valid enumeration defined by Australia Post PAF code file",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postcode": {
+      "description": "Postcode for the locality",
+      "type": "string"
+    },
+    "state": {
+      "description": "State in which the address belongs. Valid enumeration defined by Australia Post PAF code file [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf). NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
+      "type": "string"
+    },
+    "streetName": {
+      "description": "The name of the street",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "streetSuffix": {
+      "description": "The street type suffix. Valid enumeration defined by Australia Post PAF code file",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "streetType": {
+      "description": "The street type. Valid enumeration defined by Australia Post PAF code file",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thoroughfareNumber1": {
+      "description": "Thoroughfare number for a property (first number in a property ranged address)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "x-cds-type": "PositiveInteger"
+    },
+    "thoroughfareNumber1Suffix": {
+      "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thoroughfareNumber2": {
+      "description": "Second thoroughfare number (only used if the property has a ranged address eg 23-25)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "x-cds-type": "PositiveInteger"
+    },
+    "thoroughfareNumber2Suffix": {
+      "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "localityName",
+    "postcode",
+    "state"
+  ],
+  "type": "object",
+  "$id": "CommonPAFAddress"
+},"CommonPhysicalAddress" :{
+  "properties": {
+    "addressUType": {
+      "description": "The type of address object present",
+      "enum": [
+        "paf",
+        "simple"
+      ],
+      "type": "string"
+    },
+    "paf": {
+      "$ref": "CommonPAFAddress"
+    },
+    "simple": {
+      "$ref": "CommonSimpleAddress"
+    }
+  },
+  "required": [
+    "addressUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "simple",
+    "paf"
+  ],
+  "$id": "CommonPhysicalAddress"
+},"CommonSimpleAddress" :{
+  "description": "Required if addressUType is set to simple",
+  "properties": {
+    "addressLine1": {
+      "description": "First line of the standard address object",
+      "type": "string"
+    },
+    "addressLine2": {
+      "description": "Second line of the standard address object",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "addressLine3": {
+      "description": "Third line of the standard address object",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "city": {
+      "description": "Name of the city or locality",
+      "type": "string"
+    },
+    "country": {
+      "default": "AUS",
+      "description": "A valid [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country code. Australia (AUS) is assumed if country is not present.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "mailingName": {
+      "description": "Name of the individual or business formatted for inclusion in an address used for physical mail",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postcode": {
+      "description": "Mandatory for Australian addresses",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "state": {
+      "description": "Free text if the country is not Australia. If country is Australia then must be one of the values defined by the [State Type Abbreviation](https://auspost.com.au/content/dam/auspost_corp/media/documents/australia-post-data-guide.pdf) in the PAF file format. NSW, QLD, VIC, NT, WA, SA, TAS, ACT, AAT",
+      "type": "string"
+    }
+  },
+  "required": [
+    "addressLine1",
+    "city",
+    "state"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "postcode"
+  ],
+  "$id": "CommonSimpleAddress"
+},"Links" :{
+  "properties": {
+    "self": {
+      "description": "Fully qualified link that generated the current response document",
+      "type": "string",
+      "x-cds-type": "URIString"
+    }
+  },
+  "required": [
+    "self"
+  ],
+  "type": "object",
+  "$id": "Links"
+},"LinksPaginated" :{
+  "properties": {
+    "first": {
+      "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "last": {
+      "description": "URI to the last page of this set. Mandatory if this response is not the last page",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "next": {
+      "description": "URI to the next page of this set. Mandatory if this response is not the last page",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "prev": {
+      "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "self": {
+      "description": "Fully qualified link that generated the current response document",
+      "type": "string",
+      "x-cds-type": "URIString"
+    }
+  },
+  "required": [
+    "self"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "first",
+    "prev",
+    "next",
+    "last"
+  ],
+  "$id": "LinksPaginated"
+},"Meta" :{
+  "type": "object",
+  "$id": "Meta"
+},"MetaError" :{
+  "description": "Additional data for customised error codes",
+  "properties": {
+    "urn": {
+      "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "urn"
+  ],
+  "$id": "MetaError"
+},"MetaPaginated" :{
+  "properties": {
+    "totalPages": {
+      "description": "The total number of pages in the full set. See [pagination](#pagination).",
+      "type": "integer",
+      "x-cds-type": "NaturalNumber"
+    },
+    "totalRecords": {
+      "description": "The total number of records in the full set. See [pagination](#pagination).",
+      "type": "integer",
+      "x-cds-type": "NaturalNumber"
+    }
+  },
+  "required": [
+    "totalPages",
+    "totalRecords"
+  ],
+  "type": "object",
+  "$id": "MetaPaginated"
+},"ResponseErrorListV2" :{
+  "properties": {
+    "errors": {
+      "description": "",
+      "items": {
+        "properties": {
+          "code": {
+            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
+            "type": "string"
+          },
+          "detail": {
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "MetaError"
+          },
+          "title": {
+            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "detail",
+          "title"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "errors"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "meta"
+  ],
+  "$id": "ResponseErrorListV2"
+},"TelcoAccount" :{
+  "description": "The array of plans containing services and associated plan details",
+  "properties": {
+    "plans": {
+      "description": "The array of plans containing service and associated plan details",
+      "items": {
+        "$ref": "TelcoAccountPlan"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "plans"
+  ],
+  "type": "object",
+  "$id": "TelcoAccount"
+},"TelcoAccountBase" :{
+  "properties": {
+    "accountId": {
+      "description": "The ID of the account. To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "accountNumber": {
+      "description": "Masked identifier of the account as defined by the data holder. This must be the value presented on physical statements (required if it exists) and must not be used for the value of the accountId",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brand": {
+      "description": "The retail name of the brand",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "creationDate": {
+      "description": "The date that the account was created or opened. Mandatory if openStatus is OPEN",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "displayName": {
+      "description": "An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastUpdated": {
+      "description": "The date and time which the account was last updated",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "openStatus": {
+      "default": "OPEN",
+      "description": "Open or closed status for the account. If not present then OPEN is assumed",
+      "enum": [
+        "CLOSED",
+        "OPEN"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "accountId, creationDate, lastUpdateDateTime"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "accountNumber"
+  ],
+  "$id": "TelcoAccountBase"
+},"TelcoAccountDetail" :{
+  "description": "The array of plans containing services and associated plan details",
+  "properties": {
+    "plans": {
+      "description": "The array of plans containing services and associated plan details",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "TelcoAccountPlan"
+          },
+          {
+            "$ref": "TelcoAccountPlanDetail"
+          }
+        ]
+      },
+      "required": [
+        "planOverview",
+        "planDetail"
+      ],
+      "type": "array"
+    }
+  },
+  "required": [
+    "plans"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountDetail"
+},"TelcoAccountDetailAuthorisedContacts" :{
+  "properties": {
+    "firstName": {
+      "description": "For people with single names this field need not be present. The single name should be in the lastName field",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastName": {
+      "description": "For people with single names the single name should be in this field",
+      "type": "string"
+    },
+    "middleNames": {
+      "description": "Field is mandatory but array may be empty",
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "prefix": {
+      "description": "Also known as title or salutation. The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "suffix": {
+      "description": "Used for a trailing suffix to the name (e.g. Jr)",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "lastName"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountDetailAuthorisedContacts"
+},"TelcoAccountDetailResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoAccountDetailResponseData"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountDetailResponse"
+},"TelcoAccountDetailResponseData" :{
+  "allOf": [
+    {
+      "$ref": "TelcoAccountBase"
+    },
+    {
+      "$ref": "TelcoAccount"
+    },
+    {
+      "$ref": "TelcoAccountDetail"
+    }
+  ],
+  "$id": "TelcoAccountDetailResponseData"
+},"TelcoAccountListResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoAccountListResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountListResponse"
+},"TelcoAccountListResponseData" :{
+  "properties": {
+    "accounts": {
+      "description": "Array of accounts",
+      "items": {
+        "$ref": "TelcoAccountResponseData"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accounts"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountListResponseData"
+},"TelcoAccountPlan" :{
+  "properties": {
+    "billingType": {
+      "default": "PRE_PAID",
+      "description": "The billing type of then plan",
+      "enum": [
+        "PRE_PAID",
+        "POST_PAID",
+        "UPFRONT_PAID",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "nickname": {
+      "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "planOverview": {
+      "$ref": "TelcoAccountPlanOverview"
+    },
+    "serviceIds": {
+      "description": "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirement",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "type": {
+      "default": "MOBILE",
+      "description": "The type of the plan. The type of plan. A [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service",
+      "enum": [
+        "MOBILE",
+        "BROADBAND"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "serviceIds",
+    "type",
+    "billingType",
+    "planOverview"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountPlan"
+},"TelcoAccountPlanDetail" :{
+  "description": "Detail on the plan applicable to this account. Mandatory if openStatus is OPEN",
+  "properties": {
+    "planDetail": {
+      "properties": {
+        "charges": {
+          "description": "Charges for metering included in the plan",
+          "items": {
+            "$ref": "TelcoProductDetailMeteringCharges"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "charges"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "planDetail"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountPlanDetail"
+},"TelcoAccountPlanOverview" :{
+  "description": "Mandatory if openStatus is OPEN",
+  "properties": {
+    "displayName": {
+      "description": "The name of the plan if one exists",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "The end date of the applicability of this plan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "startDate": {
+      "description": "The start date of the applicability of this plan",
+      "type": "string",
+      "x-cds-type": "DateString"
+    }
+  },
+  "required": [
+    "startDate"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountPlanOverview"
+},"TelcoAccountResponseData" :{
+  "allOf": [
+    {
+      "$ref": "TelcoAccountBase"
+    },
+    {
+      "$ref": "TelcoAccount"
+    }
+  ],
+  "$id": "TelcoAccountResponseData"
+},"TelcoAccountUsage" :{
+  "properties": {
+    "accountId": {
+      "description": "Tokenised ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": "string"
+    },
+    "services": {
+      "description": "List of services that are part of the account",
+      "items": {
+        "$ref": "TelcoAccountUsageServices"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "services"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountUsage"
+},"TelcoAccountUsageServices" :{
+  "properties": {
+    "service": {
+      "$ref": "TelcoServiceUsage"
+    }
+  },
+  "required": [
+    "service"
+  ],
+  "type": "object",
+  "$id": "TelcoAccountUsageServices"
+},"TelcoAdditionalInformation" :{
+  "description": "Object that contains links to additional information on specific topics",
+  "properties": {
+    "bundleUri": {
+      "description": "A link to detail on bundles that this plan can be a part of",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "eligibilityUri": {
+      "description": "A link to detail on eligibility criteria for the plan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "overviewUri": {
+      "description": "A link to a general overview of the plan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "pricingUri": {
+      "description": "A link to detail on pricing for the plan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "termsUri": {
+      "description": "A link to terms and conditions for the plan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "type": "object",
+  "$id": "TelcoAdditionalInformation"
+},"TelcoBalance" :{
+  "description": "Object containing account service usage summary",
+  "properties": {
+    "services": {
+      "description": "Summary of balances",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "TelcoServiceBalance"
+          }
+        ]
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "services"
+  ],
+  "type": "object",
+  "$id": "TelcoBalance"
+},"TelcoBalanceListResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoBalanceListResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoBalanceListResponse"
+},"TelcoBalanceListResponseData" :{
+  "properties": {
+    "balances": {
+      "description": "Array of account balances",
+      "items": {
+        "$ref": "TelcoBalanceResponseData"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "balances"
+  ],
+  "type": "object",
+  "$id": "TelcoBalanceListResponseData"
+},"TelcoBalanceResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoBalance"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoBalanceResponse"
+},"TelcoBalanceResponseData" :{
+  "properties": {
+    "accountId": {
+      "description": "The ID of the account. In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "balance": {
+      "$ref": "TelcoBalance"
+    }
+  },
+  "required": [
+    "accountId, balance"
+  ],
+  "type": "object",
+  "$id": "TelcoBalanceResponseData"
+},"TelcoBillingAccountTransaction" :{
+  "properties": {
+    "adjustments": {
+      "description": "Optional array of adjustments arising for this transaction",
+      "items": {
+        "$ref": "TelcoBillingAccountTransactionAdjustments"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "Optional description of the transaction that can be used for display purposes",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "Date and time when the usage period ends",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceIds": {
+      "description": "Array list of services identifiers to which this transaction applies if any. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startDate": {
+      "description": "Date and time when the usage period starts",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    }
+  },
+  "required": [
+    "amount",
+    "endDate",
+    "startDate"
+  ],
+  "type": "object",
+  "$id": "TelcoBillingAccountTransaction"
+},"TelcoBillingAccountTransactionAdjustments" :{
+  "properties": {
+    "amount": {
+      "description": "The amount of the adjustment",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the adjustment",
+      "type": "string"
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object",
+  "$id": "TelcoBillingAccountTransactionAdjustments"
+},"TelcoBillingOnceOffTransaction" :{
+  "properties": {
+    "amount": {
+      "description": "The amount of the charge or credit.  A positive value indicates a charge and a negative value indicates a credit",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the item",
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "The ID of the service identifier to which this transaction applies if any. E.g a [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object",
+  "$id": "TelcoBillingOnceOffTransaction"
+},"TelcoBillingOtherTransaction" :{
+  "properties": {
+    "adjustments": {
+      "description": "Optional array of adjustments arising for this transaction",
+      "items": {
+        "$ref": "TelcoBillingAccountTransactionAdjustments"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "The amount of the charge",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the item",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "Optional end date for the application of the charge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "invoiceNumber": {
+      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "The service identifier to which this transaction applies if any. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startDate": {
+      "description": "Optional start date for the application of the charge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "type": {
+      "default": "OTHER",
+      "description": "Type of charge. Assumed to be OTHER if absent",
+      "enum": [
+        "SERVICE",
+        "NETWORK",
+        "EQUIPMENT",
+        "METERING",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object",
+  "$id": "TelcoBillingOtherTransaction"
+},"TelcoBillingPaymentTransaction" :{
+  "properties": {
+    "amount": {
+      "description": "The amount paid",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "method": {
+      "description": "The method of payment",
+      "enum": [
+        "DIRECT_DEBIT",
+        "CARD",
+        "TRANSFER",
+        "BPAY",
+        "CASH",
+        "CHEQUE",
+        "VOUCHER",
+        "OTHER"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "amount",
+    "method"
+  ],
+  "type": "object",
+  "$id": "TelcoBillingPaymentTransaction"
+},"TelcoBillingTransaction" :{
+  "properties": {
+    "account": {
+      "$ref": "TelcoBillingAccountTransaction"
+    },
+    "accountId": {
+      "description": "The ID of the account for which the transaction occurred. accountId must comply in accordance with [CDR ID permanence](#id-permanence)",
+      "type": "string"
+    },
+    "executionDateTime": {
+      "description": "The date and time that the transaction occurred",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "gst": {
+      "description": "The GST incurred in the transaction.  Should not be included for credits or payments.  If absent zero is assumed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "onceOff": {
+      "$ref": "TelcoBillingOnceOffTransaction"
+    },
+    "otherCharges": {
+      "$ref": "TelcoBillingOtherTransaction"
+    },
+    "payment": {
+      "$ref": "TelcoBillingPaymentTransaction"
+    },
+    "transactionUType": {
+      "description": "Indicator of the type of transaction object present in this record",
+      "enum": [
+        "account",
+        "onceOff",
+        "otherCharges",
+        "payment"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "accountId",
+    "executionDateTime",
+    "transactionUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "usage",
+    "onceOff",
+    "payment"
+  ],
+  "$id": "TelcoBillingTransaction"
+},"TelcoConcession" :{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the concession",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Optional link to additional information regarding the concession",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "amount": {
+      "description": "Conditional attribute for the amount of discount for the concession- required if type is FIXED_AMOUNT",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "appliedTo": {
+      "description": "Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed",
+      "items": {
+        "enum": [
+          "INVOICE",
+          "USAGE"
+        ],
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "discountFrequency": {
+      "description": "Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "displayName": {
+      "description": "The display name of the concession",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "Optional end date for the application of the concession",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "percentage": {
+      "description": "Conditional attribute for the percentage of discount of concession - required if type is FIXED_PERCENTAGE",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "startDate": {
+      "description": "Optional start date for the application of the concession",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "type": {
+      "default": "CONCESSION",
+      "description": "The concession type",
+      "enum": [
+        "CONCESSION",
+        "REBATE",
+        "GRANT"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName",
+    "startDate",
+    "type"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "discountFrequency",
+    "amount",
+    "percentage"
+  ],
+  "$id": "TelcoConcession"
+},"TelcoConcessionsResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoConcessionsResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoConcessionsResponse"
+},"TelcoConcessionsResponseData" :{
+  "properties": {
+    "concessions": {
+      "description": "Array may be empty if no concessions exist",
+      "items": {
+        "$ref": "TelcoConcession"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "concessions"
+  ],
+  "type": "object",
+  "$id": "TelcoConcessionsResponseData"
+},"TelcoContract" :{
+  "description": "Summary of the contract details. Mandatory if the billing type is POST_PAID and a contract agreement is required with the service provider for the plan",
+  "properties": {
+    "contractUri": {
+      "description": "URI of the contract conditions",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "description": {
+      "description": "Description of the contract",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Minimum contract duration in months",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "name": {
+      "description": "Name of the contract",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "duration"
+  ],
+  "type": "object",
+  "$id": "TelcoContract"
+},"TelcoInvoice" :{
+  "properties": {
+    "accountCharges": {
+      "$ref": "TelcoInvoiceAccountCharges"
+    },
+    "accountId": {
+      "description": "The ID of the account for which the invoice was issued. accountId must comply in accordance with [CDR ID permanence](#id-permanence)",
+      "type": "string"
+    },
+    "accountUsage": {
+      "$ref": "TelcoUsage"
+    },
+    "balanceAtIssue": {
+      "description": "The account balance at the time the invoice was issued",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "dueDate": {
+      "description": "The date that the invoice is due to be paid",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "gstAmount": {
+      "description": "The total GST amount for this invoice.  If absent then zero is assumed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "invoiceAmount": {
+      "description": "The net amount due for this invoice regardless of previous balance",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "invoiceNumber": {
+      "description": "The number assigned to this invoice by the telco Retailer",
+      "type": "string"
+    },
+    "issueDate": {
+      "description": "The date that the invoice was actually issued (as opposed to generated or calculated)",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "payOnTimeDiscount": {
+      "$ref": "TelcoInvoicePayOnTimeDiscount"
+    },
+    "paymentStatus": {
+      "default": "NOT_PAID",
+      "description": "Indicator of the payment status for the invoice",
+      "enum": [
+        "PAID",
+        "PARTIALLY_PAID",
+        "NOT_PAID"
+      ],
+      "type": "string"
+    },
+    "period": {
+      "$ref": "TelcoInvoicePeriod"
+    },
+    "services": {
+      "description": "An array of service IDs to which this invoice applies. May be empty if the invoice contains no usage related charges",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "balanceAtIssue",
+    "invoiceNumber",
+    "issueDate",
+    "paymentStatus",
+    "services"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "period"
+  ],
+  "$id": "TelcoInvoice"
+},"TelcoInvoiceAccountCharges" :{
+  "description": "Object contain charges and credits related to usage",
+  "properties": {
+    "otherCharges": {
+      "$ref": "TelcoInvoiceAccountChargesOtherCharges"
+    },
+    "totalDiscounts": {
+      "description": "The aggregate total of account level discounts or credits for the period covered by the invoice",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "totalGst": {
+      "description": "The total GST for all account level charges.  If absent then zero is assumed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "totalOnceOffCharges": {
+      "description": "The aggregate total of any once off charges arising from usage for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "totalUsageCharges": {
+      "description": "The aggregate total of usage charges for the period covered by the invoice (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    }
+  },
+  "required": [
+    "totalDiscounts",
+    "totalOnceOffCharges",
+    "totalUsageCharges"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoiceAccountCharges"
+},"TelcoInvoiceAccountChargesOtherCharges" :{
+  "description": "Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST)",
+  "properties": {
+    "amount": {
+      "description": "The aggregate total of charges for this item (exclusive of GST)",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the charge",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "type": {
+      "description": "A free text description of the charge",
+      "enum": [
+        "SERVICE",
+        "EQUIPMENT",
+        "NETWORK",
+        "HANDSET",
+        "DEVICE",
+        "ENTERTAINMENT",
+        "SUBSCRIPTION",
+        "SOFTWARE",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoiceAccountChargesOtherCharges"
+},"TelcoInvoiceListResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoInvoiceListResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoiceListResponse"
+},"TelcoInvoiceListResponseData" :{
+  "properties": {
+    "invoices": {
+      "description": "Array of invoices sorted by issue date in descending order",
+      "items": {
+        "$ref": "TelcoInvoice"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "invoices"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoiceListResponseData"
+},"TelcoInvoicePayOnTimeDiscount" :{
+  "description": "A discount for on time payment",
+  "properties": {
+    "date": {
+      "description": "The date by which the invoice must be paid to receive the pay on time discount",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "discountAmount": {
+      "description": "The amount that will be discounted if the invoice is paid by the date specified",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "gstAmount": {
+      "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    }
+  },
+  "required": [
+    "date",
+    "discountAmount"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoicePayOnTimeDiscount"
+},"TelcoInvoicePeriod" :{
+  "description": "Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice",
+  "properties": {
+    "endDate": {
+      "description": "The end date of the period covered by this invoice",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "startDate": {
+      "description": "The start date of the period covered by this invoice",
+      "type": "string",
+      "x-cds-type": "DateString"
+    }
+  },
+  "required": [
+    "endDate",
+    "startDate"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoicePeriod"
+},"TelcoInvoiceResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoInvoiceListResponseData"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoInvoiceResponse"
+},"TelcoPaymentSchedule" :{
+  "properties": {
+    "amount": {
+      "description": "Optional payment amount indicating that a constant payment amount is scheduled to be paid (used in bill smoothing scenarios)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "cardDebit": {
+      "$ref": "TelcoPaymentScheduleCardDebit"
+    },
+    "digitalWallet": {
+      "$ref": "TelcoPaymentScheduleDigitalWallet"
+    },
+    "directDebit": {
+      "$ref": "TelcoPaymentScheduleDirectDebit"
+    },
+    "manualPayment": {
+      "$ref": "TelcoPaymentScheduleManualPayment"
+    },
+    "paymentScheduleUType": {
+      "description": "The type of object present in this response",
+      "enum": [
+        "cardDebit",
+        "directDebit",
+        "manualPayment",
+        "digitalWallet"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "paymentScheduleUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "cardDebit",
+    "directDebit",
+    "manualPayment",
+    "digitalWallet"
+  ],
+  "$id": "TelcoPaymentSchedule"
+},"TelcoPaymentScheduleCardDebit" :{
+  "description": "Represents a regular credit card payment schedule. Mandatory if paymentScheduleUType is set to cardDebit",
+  "properties": {
+    "calculationType": {
+      "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+      "enum": [
+        "STATIC",
+        "BALANCE",
+        "CALCULATED"
+      ],
+      "type": "string"
+    },
+    "cardScheme": {
+      "description": "The type of credit card held on file",
+      "enum": [
+        "VISA",
+        "MASTERCARD",
+        "AMEX",
+        "DINERS",
+        "OTHER",
+        "UNKNOWN"
+      ],
+      "type": "string"
+    },
+    "paymentFrequency": {
+      "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "calculationType",
+    "cardScheme",
+    "paymentFrequency"
+  ],
+  "type": "object",
+  "$id": "TelcoPaymentScheduleCardDebit"
+},"TelcoPaymentScheduleDigitalWallet" :{
+  "description": "Represents a regular payment from a digital wallet. Mandatory if paymentScheduleUType is set to digitalWallet",
+  "properties": {
+    "calculationType": {
+      "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+      "enum": [
+        "STATIC",
+        "BALANCE",
+        "CALCULATED"
+      ],
+      "type": "string"
+    },
+    "identifier": {
+      "description": "The identifier of the digital wallet (dependent on type)",
+      "type": "string"
+    },
+    "name": {
+      "description": "The display name of the wallet as given by the customer, else a default value defined by the data holder",
+      "type": "string"
+    },
+    "paymentFrequency": {
+      "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "provider": {
+      "description": "The provider of the digital wallet",
+      "enum": [
+        "PAYPAL_AU",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of the digital wallet identifier",
+      "enum": [
+        "EMAIL",
+        "CONTACT_NAME",
+        "TELEPHONE"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "calculationType",
+    "identifier",
+    "name",
+    "paymentFrequency",
+    "provider",
+    "type"
+  ],
+  "type": "object",
+  "$id": "TelcoPaymentScheduleDigitalWallet"
+},"TelcoPaymentScheduleDirectDebit" :{
+  "description": "Represents a regular direct debit from a specified bank account. Mandatory if paymentScheduleUType is set to directDebit",
+  "properties": {
+    "accountNumber": {
+      "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bsb": {
+      "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces.  Is required if isTokenised is absent or false",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "calculationType": {
+      "description": "The mechanism by which the payment amount is calculated.  Explanation of values are as follows:<br/><ul><li>**STATIC** - Indicates a consistent, static amount, per payment</li><li>**BALANCE** - Indicates that the outstanding balance for the account is paid per period</li><li>**CALCULATED** - Indicates that the payment amount is variable and calculated using a pre-defined algorithm</li></ul>",
+      "enum": [
+        "STATIC",
+        "BALANCE",
+        "CALCULATED"
+      ],
+      "type": "string"
+    },
+    "isTokenised": {
+      "description": "Flag indicating that the account details are tokenised and cannot be shared.  False if absent",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "paymentFrequency": {
+      "description": "The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "calculationType",
+    "paymentFrequency"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "bsb",
+    "accountNumber"
+  ],
+  "$id": "TelcoPaymentScheduleDirectDebit"
+},"TelcoPaymentScheduleManualPayment" :{
+  "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if paymentScheduleUType is set to manualPayment",
+  "properties": {
+    "billFrequency": {
+      "description": "The frequency with which a bill will be issued.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "billFrequency"
+  ],
+  "type": "object",
+  "$id": "TelcoPaymentScheduleManualPayment"
+},"TelcoPaymentScheduleResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoPaymentScheduleResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoPaymentScheduleResponse"
+},"TelcoPaymentScheduleResponseData" :{
+  "properties": {
+    "paymentSchedules": {
+      "description": "Array may be empty if no payment schedule exist",
+      "items": {
+        "$ref": "TelcoPaymentSchedule"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "paymentSchedules"
+  ],
+  "type": "object",
+  "$id": "TelcoPaymentScheduleResponseData"
+},"TelcoPlanType" :{
+  "description": "Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported",
+  "enum": [
+    "METERED",
+    "UNMETERED",
+    "LIMITED",
+    "UNSUPPORTED"
+  ],
+  "type": "string",
+  "$id": "TelcoPlanType"
+},"TelcoProduct" :{
+  "properties": {
+    "additionalInformation": {
+      "$ref": "TelcoAdditionalInformation"
+    },
+    "applicationUri": {
+      "description": "A link to an application web page where this plan can be applied for",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "billingType": {
+      "default": "PRE_PAID",
+      "description": "The type of product",
+      "enum": [
+        "PRE_PAID",
+        "POST_PAID",
+        "UPFRONT_PAID",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "brand": {
+      "description": "The ID of the brand under which this product is offered",
+      "type": "string"
+    },
+    "brandName": {
+      "description": "The display name of the brand under which this product is offered",
+      "type": "string"
+    },
+    "bundle": {
+      "description": "Required if part of a bundle. If not present FALSE is assumed",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "contract": {
+      "$ref": "TelcoContract"
+    },
+    "description": {
+      "description": "A description of the product",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the product",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "effectiveFrom": {
+      "description": "The date and time from which this product is effective (ie. is available for origination). Used to enable the articulation of products to the regime before they are available for customers to originate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "effectiveTo": {
+      "description": "The date and time at which this product will be retired and will no longer be offered. Used to enable the managed deprecation of plans",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "lastUpdated": {
+      "description": "The last date and time that the information for this plan was changed (or the creation date for the plan if it has never been altered)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "pricing": {
+      "description": "List of pricing details for the product plan",
+      "items": {
+        "$ref": "TelcoProductPricing"
+      },
+      "type": "array"
+    },
+    "productId": {
+      "description": "The ID of the specific product",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "purpose": {
+      "default": "PERSONAL",
+      "description": "The purpose type of the product. If absent, then the value PERSONAL is assumed",
+      "enum": [
+        "PERSONAL",
+        "BUSINESS",
+        "ALL"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thirdPartyAgentId": {
+      "description": "The ID of the Third Party through which this product may be originated",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thirdPartyAgentName": {
+      "description": "The display name of the Third Party through which this product may be originated",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "default": "MOBILE",
+      "description": "The type of product. [MOBILE](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or BROADBAND fixed internet service",
+      "enum": [
+        "MOBILE",
+        "BROADBAND"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "brand",
+    "brandName",
+    "name",
+    "pricing",
+    "productId",
+    "type",
+    "usage",
+    "billingType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "contract"
+  ],
+  "$id": "TelcoProduct"
+},"TelcoProductDetail" :{
+  "properties": {
+    "bundles": {
+      "description": "Bundles the product can be part of",
+      "items": {
+        "$ref": "TelcoProductDetailBundles"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "discounts": {
+      "description": "Discounts associated to the product",
+      "items": {
+        "$ref": "TelcoProductDetailDiscounts"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "incentives": {
+      "description": "Incentives associated to the product",
+      "items": {
+        "$ref": "TelcoProductDetailIncentives"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "meteringCharges": {
+      "description": "Charges for metering included in the plan",
+      "items": {
+        "$ref": "TelcoProductDetailMeteringCharges"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "plans": {
+      "description": "Plans associated to the product",
+      "items": {
+        "$ref": "TelcoProductDetailPlan"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$id": "TelcoProductDetail"
+},"TelcoProductDetailBundles" :{
+  "properties": {
+    "bundleUri": {
+      "description": "The URI of the product bundle",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "description": {
+      "description": "The description of the product bundle",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the product bundle",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the bundle",
+      "items": {
+        "$ref": "TelcoProductDetailFeature"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailBundles"
+},"TelcoProductDetailDiscountFeature" :{
+  "properties": {
+    "description": {
+      "description": "The description of the discount feature",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the discount feature",
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailDiscountFeature"
+},"TelcoProductDetailDiscounts" :{
+  "properties": {
+    "description": {
+      "description": "The description name of the product plan",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "discountUri": {
+      "description": "The URI of the discount",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "displayName": {
+      "description": "The display name of the product plan",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the discount",
+      "items": {
+        "$ref": "TelcoProductDetailDiscountFeature"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailDiscounts"
+},"TelcoProductDetailFeature" :{
+  "properties": {
+    "category": {
+      "description": "The type of the feature",
+      "enum": [
+        "DATA",
+        "VOICE",
+        "MESSAGING",
+        "HANDSET",
+        "DEVICE",
+        "NETWORK",
+        "ENTERTAINMENT",
+        "SUBSCRIPTION",
+        "SOFTWARE",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "The description of the feature",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the feature",
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailFeature"
+},"TelcoProductDetailIncentiveFeature" :{
+  "properties": {
+    "description": {
+      "description": "The description of the incentive feature",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the incentive feature",
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailIncentiveFeature"
+},"TelcoProductDetailIncentives" :{
+  "properties": {
+    "description": {
+      "description": "The description of the incentive",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the incentive",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the incentive",
+      "items": {
+        "$ref": "TelcoProductDetailIncentiveFeature"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "incentiveUri": {
+      "description": "The URI of the incentive",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailIncentives"
+},"TelcoProductDetailMeteringCharges" :{
+  "properties": {
+    "description": {
+      "description": "Description of the charge",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "Display name of the charge",
+      "type": "string"
+    },
+    "maximumValue": {
+      "description": "The upper limit of the charge if the charge could occur in a range",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "minimumValue": {
+      "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "period": {
+      "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "displayName",
+    "minimumValue"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailMeteringCharges"
+},"TelcoProductDetailPlan" :{
+  "properties": {
+    "description": {
+      "description": "The display name of the product plan",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the product plan",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the plan",
+      "items": {
+        "$ref": "TelcoProductDetailPlanFeature"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "planUri": {
+      "description": "The URI of the product plan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailPlan"
+},"TelcoProductDetailPlanFeature" :{
+  "properties": {
+    "description": {
+      "description": "The description of the feature",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the feature",
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object",
+  "$id": "TelcoProductDetailPlanFeature"
+},"TelcoProductListResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoProductListResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoProductListResponse"
+},"TelcoProductListResponseData" :{
+  "properties": {
+    "plans": {
+      "description": "Array of Products",
+      "items": {
+        "$ref": "TelcoProduct"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "plans"
+  ],
+  "type": "object",
+  "$id": "TelcoProductListResponseData"
+},"TelcoProductPricing" :{
+  "properties": {
+    "amount": {
+      "description": "The amount charged for the duration period",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "The description of the pricing",
+      "type": "string"
+    },
+    "name": {
+      "description": "The display name of the pricing",
+      "type": "string"
+    },
+    "period": {
+      "description": "The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "amount",
+    "description",
+    "name"
+  ],
+  "type": "object",
+  "$id": "TelcoProductPricing"
+},"TelcoProductResponse" :{
+  "properties": {
+    "data": {
+      "allOf": [
+        {
+          "$ref": "TelcoProduct"
+        },
+        {
+          "$ref": "TelcoProductDetail"
+        }
+      ]
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "TelcoProductResponse"
+},"TelcoServiceBalance" :{
+  "description": "Telco balances for a service",
+  "properties": {
+    "balance": {
+      "$ref": "TelcoServiceBalances"
+    },
+    "displayName": {
+      "description": "Optional description of the service used for display purposes",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "Date when the balance period ends",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "phoneNumber": {
+      "description": "Required if the service includes a phone number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "The serviceId representing a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). In accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startDate": {
+      "description": "Date when the balance period started",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    }
+  },
+  "required": [
+    "serviceId, startDate, balance"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "phoneNumber"
+  ],
+  "$id": "TelcoServiceBalance"
+},"TelcoServiceBalanceData" :{
+  "description": "Summary of data balances",
+  "properties": {
+    "amount": {
+      "description": "Remaining value amount of data available. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "download": {
+      "description": "Remaining download data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "planType": {
+      "$ref": "TelcoPlanType"
+    },
+    "roaming": {
+      "$ref": "TelcoServiceBalanceDataRoaming"
+    },
+    "upload": {
+      "description": "Remaining upload data in megabytes (MB). Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "planType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "download",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceData"
+},"TelcoServiceBalanceDataRoaming" :{
+  "description": "Balance of data roaming charges. Required unless planType is UNSUPPORTED",
+  "properties": {
+    "amount": {
+      "description": "Amount value of data roaming charges. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "download": {
+      "description": "Amount of data used overseas in megabytes (MB). Required unless planType is UNSUPPORTED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "download",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceDataRoaming"
+},"TelcoServiceBalanceMessaging" :{
+  "description": "Summary of messaging. Required if messaging services is included in the product plan",
+  "properties": {
+    "mms": {
+      "$ref": "TelcoServiceBalanceMessagingMms"
+    },
+    "planType": {
+      "$ref": "TelcoPlanType"
+    },
+    "sms": {
+      "$ref": "TelcoServiceBalanceMessagingSms"
+    }
+  },
+  "required": [
+    "sms",
+    "mms"
+  ],
+  "type": "object",
+  "$id": "TelcoServiceBalanceMessaging"
+},"TelcoServiceBalanceMessagingMms" :{
+  "description": "Summary of MMS Balance. Required if the service plan supports MMS messaging",
+  "properties": {
+    "amount": {
+      "description": "Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "international": {
+      "description": "Number of international MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "roaming",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceMessagingMms"
+},"TelcoServiceBalanceMessagingSms" :{
+  "description": "Summary of SMS Balance. Required if the service plan supports SMS messaging",
+  "properties": {
+    "amount": {
+      "description": "Amount value of SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "international": {
+      "description": "Number of international SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming SMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "roaming",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceMessagingSms"
+},"TelcoServiceBalanceVoice" :{
+  "description": "Summary of voice balances. Required if voice calls are included in product plan",
+  "properties": {
+    "international": {
+      "$ref": "TelcoServiceBalanceVoiceInternational"
+    },
+    "national": {
+      "$ref": "TelcoServiceBalanceVoiceNational"
+    },
+    "planType": {
+      "$ref": "TelcoPlanType"
+    },
+    "roaming": {
+      "$ref": "TelcoServiceBalanceVoiceRoaming"
+    }
+  },
+  "required": [
+    "planType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "national",
+    "international",
+    "roaming"
+  ],
+  "$id": "TelcoServiceBalanceVoice"
+},"TelcoServiceBalanceVoiceInternational" :{
+  "description": "International voice calls",
+  "properties": {
+    "amount": {
+      "description": "Amount value of international calls available. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of international voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of international voice calls available Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceVoiceInternational"
+},"TelcoServiceBalanceVoiceNational" :{
+  "description": "National voice calls",
+  "properties": {
+    "amount": {
+      "description": "Amount balance of national calls. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of national voice calls. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "duration",
+    "number",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceVoiceNational"
+},"TelcoServiceBalanceVoiceRoaming" :{
+  "description": "Roaming voice calls",
+  "properties": {
+    "amount": {
+      "description": "Amount value of roaming calls available. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of roaming voice calls available. Not limited to 24hrs. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of roaming voice calls available Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "amount"
+  ],
+  "$id": "TelcoServiceBalanceVoiceRoaming"
+},"TelcoServiceBalances" :{
+  "description": "A summary of Service balances",
+  "properties": {
+    "data": {
+      "$ref": "TelcoServiceBalanceData"
+    },
+    "messaging": {
+      "$ref": "TelcoServiceBalanceMessaging"
+    },
+    "voice": {
+      "$ref": "TelcoServiceBalanceVoice"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "data",
+    "voice",
+    "messaging"
+  ],
+  "$id": "TelcoServiceBalances"
+},"TelcoServiceDetail" :{
+  "properties": {
+    "serviceId": {
+      "description": "The tokenised ID of the service identifier for use in the CDR APIs. E.g a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf).  Created according to the CDR rules for [CDR ID permanence](#id-permanence)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "serviceId"
+  ],
+  "$id": "TelcoServiceDetail"
+},"TelcoServiceUsage" :{
+  "properties": {
+    "displayName": {
+      "description": "Optional description of the service used for display purposes",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "Date when the usage period ends",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "phoneNumber": {
+      "description": "Required if the service includes a phone number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "description": "Tokenised ID of the service identifier. E.g. a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf). To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "Date when the usage period started",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "usage": {
+      "$ref": "TelcoUsage"
+    }
+  },
+  "required": [
+    "serviceId",
+    "startDate"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "phoneNumber"
+  ],
+  "$id": "TelcoServiceUsage"
+},"TelcoServiceUsageListResponse" :{
+  "properties": {
+    "data": {
+      "items": {
+        "$ref": "TelcoServiceUsage"
+      },
+      "type": "array"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoServiceUsageListResponse"
+},"TelcoServiceUsageResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoServiceUsage"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoServiceUsageResponse"
+},"TelcoTransactionListResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoTransactionListResponseData"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoTransactionListResponse"
+},"TelcoTransactionListResponseData" :{
+  "properties": {
+    "transactions": {
+      "description": "Array of transactions sorted by date and time in descending order",
+      "items": {
+        "$ref": "TelcoBillingTransaction"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "transactions"
+  ],
+  "type": "object",
+  "$id": "TelcoTransactionListResponseData"
+},"TelcoUsage" :{
+  "description": "Object containing usage summary",
+  "properties": {
+    "data": {
+      "$ref": "TelcoUsageData"
+    },
+    "messaging": {
+      "$ref": "TelcoUsageMessaging"
+    },
+    "voice": {
+      "$ref": "TelcoUsageVoice"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "data",
+    "voice",
+    "messaging"
+  ],
+  "$id": "TelcoUsage"
+},"TelcoUsageDatRoaming" :{
+  "description": "Roaming Data Usage",
+  "properties": {
+    "amount": {
+      "description": "Amount value of data roaming charges",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "download": {
+      "description": "Amount of data used while roaming in megabytes (MB)",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "download",
+    "amount"
+  ],
+  "$id": "TelcoUsageDatRoaming"
+},"TelcoUsageData" :{
+  "description": "Summary of data usage",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of data usage",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "download": {
+      "description": "Amount of data downloaded in megabytes (MB)",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "$ref": "TelcoUsageDatRoaming",
+      "description": "Required if roaming is suipported"
+    },
+    "sessions": {
+      "description": "Number of data sessions",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "upload": {
+      "description": "Amount of data uploaded in megabytes (MB)",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "download",
+    "upload"
+  ],
+  "type": "object",
+  "x-condional": "roaming",
+  "$id": "TelcoUsageData"
+},"TelcoUsageListResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoUsageListResponseData"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageListResponse"
+},"TelcoUsageListResponseData" :{
+  "properties": {
+    "accounts": {
+      "description": "Array of usage on accounts",
+      "items": {
+        "$ref": "TelcoAccountUsage"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accounts"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageListResponseData"
+},"TelcoUsageMessaging" :{
+  "description": "Summary of messaging. Required if messaging services is included in the product plan",
+  "properties": {
+    "mms": {
+      "$ref": "TelcoUsageMessagingMms"
+    },
+    "sms": {
+      "$ref": "TelcoUsageMessagingSms"
+    }
+  },
+  "required": [
+    "sms",
+    "mms"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageMessaging"
+},"TelcoUsageMessagingMms" :{
+  "description": "Summary of MMS usage",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of MMS messages",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "international": {
+      "description": "ber of international MMS messages sent",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national MMS messages sent",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming SMS messages sent. Including premium SMS services",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "national"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "international",
+    "roaming"
+  ],
+  "$id": "TelcoUsageMessagingMms"
+},"TelcoUsageMessagingSms" :{
+  "description": "Summary of SMS usage",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of SMS messages. Including premium SMS services",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "international": {
+      "description": "Number of international SMS messages sent. Including premium SMS services",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national SMS messages sent. Including premium SMS services",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming SMS messages sent. Including premium SMS services",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "national"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "international",
+    "roaming"
+  ],
+  "$id": "TelcoUsageMessagingSms"
+},"TelcoUsageResponse" :{
+  "properties": {
+    "data": {
+      "$ref": "TelcoAccountUsage"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageResponse"
+},"TelcoUsageVoice" :{
+  "description": "Summary of voice calls. Required if voice calls are included in product plan",
+  "properties": {
+    "international": {
+      "$ref": "TelcoUsageVoiceInternational"
+    },
+    "national": {
+      "$ref": "TelcoUsageVoiceNational"
+    },
+    "roaming": {
+      "$ref": "TelcoUsageVoiceRoaming"
+    }
+  },
+  "required": [
+    "amount",
+    "international",
+    "national",
+    "roaming"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "international",
+    "roaming"
+  ],
+  "$id": "TelcoUsageVoice"
+},"TelcoUsageVoiceInternational" :{
+  "description": "International voice calls. Requied if international calling is supported",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of international voice calls",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of international voice calls. Not limited to 24hrs",
+      "type": "string",
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of international voice calls",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "duration",
+    "number"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageVoiceInternational"
+},"TelcoUsageVoiceNational" :{
+  "description": "National voice calls",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of national calls",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs",
+      "type": "string",
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of national voice calls",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "duration",
+    "number"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageVoiceNational"
+},"TelcoUsageVoiceRoaming" :{
+  "description": "Roaming voice calls, Required if roaming is supported",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of roaming voice calls",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of roaming voice calls. Not limited to 24hrs",
+      "type": "string",
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of roaming voice calls",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "duration",
+    "number"
+  ],
+  "type": "object",
+  "$id": "TelcoUsageVoiceRoaming"
+}}

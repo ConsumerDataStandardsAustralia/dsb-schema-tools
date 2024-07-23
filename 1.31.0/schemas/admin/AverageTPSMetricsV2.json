@@ -1,0 +1,92 @@
+{
+  "description": "Average transactions per second over time",
+  "properties": {
+    "aggregate": {
+      "description": "Aggregate average transactions per second over time for all endpoints",
+      "properties": {
+        "currentDay": {
+          "description": "Average TPS for current day. Must be a positive value or zero",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+          "items": {
+            "type": "number"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "authenticated": {
+      "description": "Average transactions per second over time for authenticated endpoints",
+      "properties": {
+        "currentDay": {
+          "description": "Average TPS for current day. Must be a positive value or zero",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+          "items": {
+            "type": "number"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    },
+    "unauthenticated": {
+      "description": "Average transactions per second over time for unauthenticated endpoints",
+      "properties": {
+        "currentDay": {
+          "description": "Average TPS for current day. Must be a positive value or zero",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "previousDays": {
+          "description": "Average TPS for previous days. The first element indicates yesterday and so on. A maximum of seven entries is required if available. Values must be a positive or zero",
+          "items": {
+            "type": "number"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object",
+      "x-conditional": [
+        "currentDay",
+        "previousDays"
+      ]
+    }
+  },
+  "required": [
+    "aggregate",
+    "unauthenticated",
+    "authenticated"
+  ],
+  "type": "object"
+}

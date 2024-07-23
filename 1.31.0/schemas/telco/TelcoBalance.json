@@ -1,0 +1,20 @@
+{
+  "description": "Object containing account service usage summary",
+  "properties": {
+    "services": {
+      "description": "Summary of balances",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "TelcoServiceBalance.json"
+          }
+        ]
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "services"
+  ],
+  "type": "object"
+}

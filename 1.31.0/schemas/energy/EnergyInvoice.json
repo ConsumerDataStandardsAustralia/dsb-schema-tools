@@ -1,0 +1,148 @@
+{
+  "properties": {
+    "accountCharges": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyInvoiceAccountCharges.json"}
+     ]    
+    },
+    "accountId": {
+      "description": "The ID of the account for which the invoice was issued",
+      "type": "string"
+    },
+    "balanceAtIssue": {
+      "description": "The account balance at the time the invoice was issued",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "dueDate": {
+      "description": "The date that the invoice is due to be paid",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "electricity": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyInvoiceElectricityUsageCharges.json"}
+     ],
+      "description": "Object containing charges and credits related to electricity usage"
+    },
+    "gas": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "EnergyInvoiceGasUsageCharges.json"}
+     ],
+      "description": "Object containing charges and credits related to gas usage"
+    },
+    "gstAmount": {
+      "description": "The total GST amount for this invoice.  If absent then zero is assumed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "invoiceAmount": {
+      "description": "The net amount due for this invoice regardless of previous balance",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "invoiceNumber": {
+      "description": "The number assigned to this invoice by the energy Retailer",
+      "type": "string"
+    },
+    "issueDate": {
+      "description": "The date that the invoice was actually issued (as opposed to generated or calculated)",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "payOnTimeDiscount": {
+      "description": "A discount for on time payment",
+      "properties": {
+        "date": {
+          "description": "The date by which the invoice must be paid to receive the pay on time discount",
+          "type": "string",
+          "x-cds-type": "DateString"
+        },
+        "discountAmount": {
+          "description": "The amount that will be discounted if the invoice is paid by the date specified",
+          "type": "string",
+          "x-cds-type": "AmountString"
+        },
+        "gstAmount": {
+          "description": "The GST amount that will be discounted if the invoice is paid by the date specified.  If absent then zero is assumed",
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-cds-type": "AmountString"
+        }
+      },
+      "required": [
+        "discountAmount",
+        "date"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "paymentStatus": {
+      "description": "Indicator of the payment status for the invoice",
+      "enum": [
+        "PAID",
+        "PARTIALLY_PAID",
+        "NOT_PAID"
+      ],
+      "type": "string"
+    },
+    "period": {
+      "description": "Object containing the start and end date for the period covered by the invoice.  Mandatory if any usage or demand based charges are included in the invoice",
+      "properties": {
+        "endDate": {
+          "description": "The end date of the period covered by this invoice",
+          "type": "string",
+          "x-cds-type": "DateString"
+        },
+        "startDate": {
+          "description": "The start date of the period covered by this invoice",
+          "type": "string",
+          "x-cds-type": "DateString"
+        }
+      },
+      "required": [
+        "startDate",
+        "endDate"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "servicePoints": {
+      "description": "Array of service point IDs to which this invoice applies. May be empty if the invoice contains no electricity usage related charges",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "invoiceNumber",
+    "issueDate",
+    "balanceAtIssue",
+    "servicePoints",
+    "paymentStatus"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "period"
+  ]
+}
