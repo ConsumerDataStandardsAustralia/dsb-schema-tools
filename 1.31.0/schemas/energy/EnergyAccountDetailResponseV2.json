@@ -1,7 +1,7 @@
 {
   "properties": {
     "data": {
-      "$ref": "EnergyAccountDetailV3.json"
+      "$ref": "EnergyAccountDetailV2.json"
     },
     "links": {
       "$ref": "Links.json"
