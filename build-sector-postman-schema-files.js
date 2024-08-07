@@ -11,7 +11,7 @@
 var fs = require('fs');
 var path = require('path');
 
-const sectors = [ 'energy'];
+const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common', 'telco'];
 //const sectors = ['energy'];
 const version = '1.31.0';
 
