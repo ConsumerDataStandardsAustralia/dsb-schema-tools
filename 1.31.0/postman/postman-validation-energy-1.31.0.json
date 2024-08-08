@@ -352,7 +352,7 @@
 },"EnergyAccountDetailResponseV2" :{
   "properties": {
     "data": {
-      "$ref": "EnergyAccountDetailV3"
+      "$ref": "EnergyAccountDetailV2"
     },
     "links": {
       "$ref": "Links"
@@ -6852,7 +6852,6 @@
           }
         },
         "required": [
-          "amount",
           "timeVariations"
         ],
         "type": "object"
@@ -7097,7 +7096,6 @@
             }
           },
           "required": [
-            "amount",
             "timeVariations",
             "displayName"
           ],
