@@ -1,0 +1,227 @@
+{
+  "description": "Array of feed in tariffs for solar power",
+  "items": {
+    "properties": {
+      "description": {
+        "description": "A description of the tariff",
+        "type": "string"
+      },
+      "displayName": {
+        "description": "The name of the tariff",
+        "type": "string"
+      },
+      "endDate": {
+        "description": "The end date of the application of the feed in tariff",
+        "type": "string",
+        "x-cds-type": "DateString"
+      },
+      "payerType": {
+        "description": "The type of the payer",
+        "enum": [
+          "GOVERNMENT",
+          "RETAILER"
+        ],
+        "type": "string"
+      },
+      "scheme": {
+        "description": "The applicable scheme",
+        "enum": [
+          "PREMIUM",
+          "CURRENT",
+          "VARIABLE",
+          "OTHER"
+        ],
+        "type": "string"
+      },
+      "singleTariff": {
+        "description": "Represents a constant tariff.  Mandatory if tariffUType is set to singleTariff",
+        "properties": {
+          "period": {
+            "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+            "type": "string",
+            "x-cds-type": "ExternalRef"
+          },
+          "rates": {
+            "description": "Array of feed in rates",
+            "items": {
+              "properties": {
+                "measureUnit": {
+                  "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                  "enum": [
+                    "KWH",
+                    "KVA",
+                    "KVAR",
+                    "KVARH",
+                    "KW",
+                    "DAYS",
+                    "METER",
+                    "MONTH"
+                  ],
+                  "type": "string"
+                },
+                "unitPrice": {
+                  "description": "Unit price of usage per measure unit (exclusive of GST)",
+                  "type": "string",
+                  "x-cds-type": "AmountString"
+                },
+                "volume": {
+                  "description": "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "unitPrice"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "rates"
+        ],
+        "type": "object"
+      },
+      "startDate": {
+        "description": "The start date of the application of the feed in tariff",
+        "type": "string",
+        "x-cds-type": "DateString"
+      },
+      "tariffUType": {
+        "description": "The type of the payer",
+        "enum": [
+          "singleTariff",
+          "timeVaryingTariffs"
+        ],
+        "type": "string"
+      },
+      "timeVaryingTariffs": {
+        "description": "Represents a tariff based on time.  Mandatory if tariffUType is set to timeVaryingTariffs",
+        "items": {
+          "properties": {
+            "displayName": {
+              "description": "Display name of the tariff",
+              "type": "string"
+            },
+            "period": {
+              "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
+              "type": "string",
+              "x-cds-type": "ExternalRef"
+            },
+            "rates": {
+              "description": "Array of feed in rates",
+              "items": {
+                "properties": {
+                  "measureUnit": {
+                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                    "enum": [
+                      "KWH",
+                      "KVA",
+                      "KVAR",
+                      "KVARH",
+                      "KW",
+                      "DAYS",
+                      "METER",
+                      "MONTH"
+                    ],
+                    "type": "string"
+                  },
+                  "unitPrice": {
+                    "description": "Unit price of usage per measure unit (exclusive of GST)",
+                    "type": "string",
+                    "x-cds-type": "AmountString"
+                  },
+                  "volume": {
+                    "description": "Volume that this rate applies to. Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "unitPrice"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "timeVariations": {
+              "description": "Array of time periods for which this tariff is applicable",
+              "items": {
+                "properties": {
+                  "days": {
+                    "description": "The days that the tariff applies to. At least one entry required",
+                    "items": {
+                      "enum": [
+                        "SUN",
+                        "MON",
+                        "TUE",
+                        "WED",
+                        "THU",
+                        "FRI",
+                        "SAT",
+                        "PUBLIC_HOLIDAYS"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "endTime": {
+                    "description": "The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                    "type": "string",
+                    "x-cds-type": "ExternalRef"
+                  },
+                  "startTime": {
+                    "description": "The beginning of the time period per day for which the tariff applies.  If absent assumes start of day (ie. midnight).\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                    "type": "string",
+                    "x-cds-type": "ExternalRef"
+                  }
+                },
+                "required": [
+                  "days"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "type": {
+              "description": "The type of the charging time period. If absent applies to all periods",
+              "enum": [
+                "PEAK",
+                "OFF_PEAK",
+                "SHOULDER"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "timeVariations",
+            "displayName"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "displayName",
+      "scheme",
+      "payerType",
+      "tariffUType"
+    ],
+    "type": "object",
+    "x-conditional": [
+      "singleTariff",
+      "timeVaryingTariffs"
+    ],
+    "allOf" : [
+      {
+        "if":   {"properties": {"tariffUType": { "const": "timeVaryingTariffs" }}},
+        "then": { "required": ["timeVaryingTariffs"]}
+      },
+      {
+        "if":   {  "properties": { "tariffUType" : {"const": "singleTariff"}}},
+        "then": { "required": ["singleTariff"]}
+      }      
+    ]
+  },
+  "type": "array"
+}

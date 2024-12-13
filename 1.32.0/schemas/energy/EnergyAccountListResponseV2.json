@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "accounts": {
+          "description": "Array of accounts",
+          "items": {
+            "$ref": "EnergyAccountV2.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "accounts"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}
