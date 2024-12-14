@@ -845,7 +845,7 @@
       "x-cds-type": "Boolean"
     },
     "offsetAccountIds": {
-      "description": "The accountIDs of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.",
+      "description": "The _accountId_ values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.",
       "items": {
         "type": "string",
         "x-cds-type": "ASCIIString"
@@ -1271,7 +1271,7 @@
 },"BankingProductConstraint" :{
   "properties": {
     "additionalInfo": {
-      "description": "Display text providing more information the constraint.",
+      "description": "Display text providing more information on the constraint.",
       "type": [
         "string",
         "null"
@@ -2192,71 +2192,11 @@
   ],
   "type": "object",
   "$id": "BankingProductV4"
-},"BankingScheduledPayment" :{
-  "properties": {
-    "from": {
-      "$ref": "BankingScheduledPaymentFrom"
-    },
-    "nickname": {
-      "description": "The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "payeeReference": {
-      "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "payerReference": {
-      "description": "The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided",
-      "type": "string"
-    },
-    "paymentSet": {
-      "items": {
-        "$ref": "BankingScheduledPaymentSet"
-      },
-      "type": "array"
-    },
-    "recurrence": {
-      "$ref": "BankingScheduledPaymentRecurrence"
-    },
-    "scheduledPaymentId": {
-      "description": "A unique ID of the scheduled payment adhering to the standards for ID permanence",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
-    },
-    "status": {
-      "description": "Indicates whether the schedule is currently active. The value SKIP is equivalent to ACTIVE except that the customer has requested the next normal occurrence to be skipped.",
-      "enum": [
-        "ACTIVE",
-        "INACTIVE",
-        "SKIP"
-      ],
-      "type": "string"
-    }
-  },
-  "required": [
-    "from",
-    "payerReference",
-    "paymentSet",
-    "recurrence",
-    "scheduledPaymentId",
-    "status"
-  ],
-  "type": "object",
-  "x-conditional": [
-    "payeeReference"
-  ],
-  "$id": "BankingScheduledPayment"
 },"BankingScheduledPaymentFrom" :{
-  "description": "Object containing details of the source of the payment. Currently only specifies an account ID but provided as an object to facilitate future extensibility and consistency with the _to_ object.",
+  "description": "Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object.",
   "properties": {
     "accountId": {
-      "description": "ID of the account that is the source of funds for the payment.",
+      "description": "_accountId_ of the account that is the source of funds for the payment.",
       "type": "string",
       "x-cds-type": "ASCIIString"
     }
@@ -2523,81 +2463,6 @@
   ],
   "type": "object",
   "$id": "BankingScheduledPaymentRecurrenceOnceOff"
-},"BankingScheduledPaymentSet" :{
-  "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry",
-  "properties": {
-    "amount": {
-      "description": "The amount of the next payment if known. Mandatory unless the isAmountCalculated field is set to true. Must be zero or positive if present",
-      "type": [
-        "string",
-        "null"
-      ],
-      "x-cds-type": "AmountString"
-    },
-    "currency": {
-      "description": "The currency for the payment. AUD assumed if not present",
-      "type": [
-        "string",
-        "null"
-      ],
-      "x-cds-type": "CurrencyString"
-    },
-    "isAmountCalculated": {
-      "description": "Flag indicating whether the amount of the payment is calculated based on the context of the event. For instance a payment to reduce the balance of a credit card to zero. If absent then false is assumed",
-      "type": [
-        "boolean",
-        "null"
-      ],
-      "x-cds-type": "Boolean"
-    },
-    "to": {
-      "$ref": "BankingScheduledPaymentTo"
-    }
-  },
-  "required": [
-    "to"
-  ],
-  "type": "object",
-  "x-conditional": [
-    "amount"
-  ],
-  "anyOf": [
-    {
-      "if": {
-        "properties": {
-          "isAmountCalculated": {
-            "enum": [
-              true
-            ]
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "amount"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "isAmountCalculated": {
-            "enum": [
-              false
-            ]
-          }
-        }
-      },
-      "then": {
-        "not": {
-          "required": [
-            "amount"
-          ]
-        }
-      }
-    }
-  ],
-  "$id": "BankingScheduledPaymentSet"
 },"BankingScheduledPaymentSetV2" :{
   "description": "The set of payment amounts and destination accounts for this payment accommodating multi-part payments. A single entry indicates a simple payment with one destination account. Must have at least one entry.",
   "properties": {
@@ -2673,146 +2538,6 @@
     }
   ],
   "$id": "BankingScheduledPaymentSetV2"
-},"BankingScheduledPaymentTo" :{
-  "description": "Object containing details of the destination of the payment. Used to specify a variety of payment destination types",
-  "properties": {
-    "accountId": {
-      "description": "Present if toUType is set to accountId. Indicates that the payment is to another account that is accessible under the current consent",
-      "type": [
-        "string",
-        "null"
-      ],
-      "x-cds-type": "ASCIIString"
-    },
-    "biller": {
-      "$ref": "BankingBillerPayee"
-    },
-    "domestic": {
-      "$ref": "BankingDomesticPayee"
-    },
-    "international": {
-      "$ref": "BankingInternationalPayee"
-    },
-    "nickname": {
-      "description": "The short display name of the payee as provided by the customer unless toUType is set to payeeId. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "payeeId": {
-      "description": "Present if toUType is set to payeeId. Indicates that the payment is to registered payee that can be accessed using the payee end point. If the Bank Payees scope has not been consented to then a payeeId should not be provided and the full payee details should be provided instead",
-      "type": [
-        "string",
-        "null"
-      ],
-      "x-cds-type": "ASCIIString"
-    },
-    "payeeReference": {
-      "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.",
-      "type": [
-        "string",
-        "null"
-      ]
-    },
-    "toUType": {
-      "description": "The type of object provided that specifies the destination of the funds for the payment.",
-      "enum": [
-        "accountId",
-        "biller",
-        "domestic",
-        "international",
-        "payeeId"
-      ],
-      "type": "string"
-    }
-  },
-  "required": [
-    "toUType"
-  ],
-  "type": "object",
-  "x-conditional": [
-    "accountId",
-    "payeeId",
-    "domestic",
-    "biller",
-    "international",
-    "nickname",
-    "payeeReference"
-  ],
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "toUType": {
-            "const": "accountId"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "accountId"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "toUType": {
-            "const": "payeeId"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "payeeId"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "toUType": {
-            "const": "biller"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "biller"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "toUType": {
-            "const": "domestic"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "domestic"
-        ]
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "toUType": {
-            "const": "international"
-          }
-        }
-      },
-      "then": {
-        "required": [
-          "international"
-        ]
-      }
-    }
-  ],
-  "$id": "BankingScheduledPaymentTo"
 },"BankingScheduledPaymentToV2" :{
   "description": "Object containing details of the destination of the payment. Used to specify a variety of payment destination types.",
   "properties": {
@@ -3453,7 +3178,7 @@
       "x-cds-type": "PositiveInteger"
     },
     "thoroughfareNumber1Suffix": {
-      "description": "Suffix for the thoroughfare number. Only relevant is _thoroughfareNumber1_ is populated.",
+      "description": "Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated.",
       "type": [
         "string",
         "null"
@@ -3468,7 +3193,7 @@
       "x-cds-type": "PositiveInteger"
     },
     "thoroughfareNumber2Suffix": {
-      "description": "Suffix for the second thoroughfare number. Only relevant is _thoroughfareNumber2_ is populated.",
+      "description": "Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated.",
       "type": [
         "string",
         "null"
@@ -3740,6 +3465,7 @@
     "data": {
       "properties": {
         "accountIds": {
+          "description": "Array of _accountId_ values.",
           "items": {
             "description": "Array of specific accountIds to obtain authorisations for.",
             "type": "string",
@@ -3991,7 +3717,7 @@
     "data": {
       "properties": {
         "products": {
-          "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
+          "description": "The list of products returned. If the filter results in an empty set then this array may have no records.",
           "items": {
             "$ref": "BankingProductV4"
           },
@@ -4017,37 +3743,6 @@
   ],
   "type": "object",
   "$id": "ResponseBankingProductListV2"
-},"ResponseBankingScheduledPaymentsList" :{
-  "properties": {
-    "data": {
-      "properties": {
-        "scheduledPayments": {
-          "description": "The list of scheduled payments to return",
-          "items": {
-            "$ref": "BankingScheduledPayment"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "scheduledPayments"
-      ],
-      "type": "object"
-    },
-    "links": {
-      "$ref": "LinksPaginated"
-    },
-    "meta": {
-      "$ref": "MetaPaginated"
-    }
-  },
-  "required": [
-    "data",
-    "links",
-    "meta"
-  ],
-  "type": "object",
-  "$id": "ResponseBankingScheduledPaymentsList"
 },"ResponseBankingScheduledPaymentsListV2" :{
   "properties": {
     "data": {

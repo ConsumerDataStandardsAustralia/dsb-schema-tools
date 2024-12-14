@@ -825,7 +825,7 @@
       "x-cds-type": "URIString"
     },
     "response_types_supported": {
-      "description": "JSON array containing a list of the OAuth 2.0 response_type values that the CDR Registrer supports",
+      "description": "JSON array containing a list of the OAuth 2.0 _response_type_ values that the CDR Register supports.",
       "items": {
         "type": "string"
       },
