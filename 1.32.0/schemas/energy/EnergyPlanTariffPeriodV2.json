@@ -43,7 +43,7 @@
         "x-cds-type": "AmountString"
       },
       "dailySupplyChargeType": {
-        "description": "Specifies if daily supply charge is single or banded. Default value is SINGLE if field not provided",
+        "description": "Specifies if daily supply charge is single or banded.",
         "enum": [
           "SINGLE",
           "BAND"

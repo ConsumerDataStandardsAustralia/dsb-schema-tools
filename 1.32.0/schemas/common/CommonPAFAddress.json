@@ -128,7 +128,7 @@
       "x-cds-type": "PositiveInteger"
     },
     "thoroughfareNumber1Suffix": {
-      "description": "Suffix for the thoroughfare number. Only relevant is thoroughfareNumber1 is populated",
+      "description": "Suffix for the thoroughfare number. Only relevant if _thoroughfareNumber1_ is populated",
       "type": [
         "string",
         "null"
@@ -143,7 +143,7 @@
       "x-cds-type": "PositiveInteger"
     },
     "thoroughfareNumber2Suffix": {
-      "description": "Suffix for the second thoroughfare number. Only relevant is thoroughfareNumber2 is populated",
+      "description": "Suffix for the second thoroughfare number. Only relevant if _thoroughfareNumber2_ is populated",
       "type": [
         "string",
         "null"

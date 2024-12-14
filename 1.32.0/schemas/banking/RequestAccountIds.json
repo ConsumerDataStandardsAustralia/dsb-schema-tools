@@ -3,6 +3,7 @@
     "data": {
       "properties": {
         "accountIds": {
+          "description": "Array of _accountId_ values.",
           "items": {
             "description": "Array of specific accountIds to obtain authorisations for.",
             "type": "string",

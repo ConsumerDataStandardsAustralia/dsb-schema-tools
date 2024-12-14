@@ -88,7 +88,7 @@
         "x-cds-type": "DateString"
       },
       "tariffUType": {
-        "description": "The type of the payer",
+        "description": "Reference to the applicable tariff structure",
         "enum": [
           "singleTariff",
           "timeVaryingTariffs"

@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "products": {
-          "description": "The list of products returned.  If the filter results in an empty set then this array may have no records",
+          "description": "The list of products returned. If the filter results in an empty set then this array may have no records.",
           "items": {
             "$ref": "BankingProductV4.json"
           },

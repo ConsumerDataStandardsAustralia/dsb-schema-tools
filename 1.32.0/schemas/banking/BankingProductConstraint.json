@@ -1,7 +1,7 @@
 {
   "properties": {
     "additionalInfo": {
-      "description": "Display text providing more information the constraint.",
+      "description": "Display text providing more information on the constraint.",
       "type": [
         "string",
         "null"
