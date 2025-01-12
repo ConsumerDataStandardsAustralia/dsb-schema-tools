@@ -1,0 +1,52 @@
+{
+  "description": "Summary of MMS Balance. Required if the service plan supports MMS messaging",
+  "properties": {
+    "amount": {
+      "description": "Amount value of MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless planType is UNSUPPORTED",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "international": {
+      "description": "Number of international MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming MMS messages remaining. Required unless planType is UNSUPPORTED or UNMETERED",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "roaming",
+    "amount"
+  ]
+}
