@@ -1,0 +1,43 @@
+{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the bundle.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on the bundle criteria and benefits.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "description": {
+      "description": "Description of the bundle.",
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the bundle.",
+      "type": "string"
+    },
+    "productIds": {
+      "description": "Array of product IDs for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.",
+      "items": {
+        "type": "string",
+        "x-cds-type": "ASCIIString"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "description",
+    "name"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,25 @@
+{
+  "description": "Summary of voice calls. Required if voice calls are included in product plan",
+  "properties": {
+    "international": {
+      "$ref": "TelcoUsageVoiceInternational.json"
+    },
+    "national": {
+      "$ref": "TelcoUsageVoiceNational.json"
+    },
+    "roaming": {
+      "$ref": "TelcoUsageVoiceRoaming.json"
+    }
+  },
+  "required": [
+    "amount",
+    "international",
+    "national",
+    "roaming"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "international",
+    "roaming"
+  ]
+}

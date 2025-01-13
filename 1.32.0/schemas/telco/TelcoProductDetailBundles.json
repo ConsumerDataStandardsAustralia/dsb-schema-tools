@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "bundleUri": {
+      "description": "The URI of the product bundle",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "description": {
+      "description": "The description of the product bundle",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the product bundle",
+      "type": "string"
+    },
+    "features": {
+      "description": "Optional list of features of the bundle",
+      "items": {
+        "$ref": "TelcoProductDetailFeature.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object"
+}

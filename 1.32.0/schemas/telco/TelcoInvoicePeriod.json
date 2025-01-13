@@ -1,0 +1,20 @@
+{
+  "description": "Object containing the start and end date for the period covered by the invoice. Mandatory if any usage based charges are included in the invoice",
+  "properties": {
+    "endDate": {
+      "description": "The end date of the period covered by this invoice",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "startDate": {
+      "description": "The start date of the period covered by this invoice",
+      "type": "string",
+      "x-cds-type": "DateString"
+    }
+  },
+  "required": [
+    "endDate",
+    "startDate"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,261 @@
+{
+  "description": "Required if pricing model is SINGLE_RATE_CONT_LOAD or TIME_OF_USE_CONT_LOAD or FLEXIBLE_CONT_LOAD",
+  "items": {
+    "properties": {
+      "displayName": {
+        "description": "A display name for the controlled load",
+        "type": "string"
+      },
+      "endDate": {
+        "description": "Optional end date of the application of the controlled load rate",
+        "type": "string",
+        "x-cds-type": "DateString"
+      },
+      "rateBlockUType": {
+        "description": "Specifies the type of controlloed load rate ",
+        "enum": [
+          "singleRate",
+          "timeOfUseRates"
+        ],
+        "type": "string"
+      },
+      "singleRate": {
+        "description": "Object representing a single controlled load rate.  Required if rateBlockUType is singleRate",
+        "properties": {
+          "dailySupplyCharge": {
+            "description": "The daily supply charge (exclusive of GST) for this controlled load tier",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "description": {
+            "description": "Description of the controlled load rate",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Display name of the controlled load rate",
+            "type": "string"
+          },
+          "rates": {
+            "description": "Array of controlled load rates in order of usage volume",
+            "items": {
+              "properties": {
+                "measureUnit": {
+                  "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                  "enum": [
+                    "KWH",
+                    "KVA",
+                    "KVAR",
+                    "KVARH",
+                    "KW",
+                    "DAYS",
+                    "METER",
+                    "MONTH"
+                  ],
+                  "type": "string"
+                },
+                "unitPrice": {
+                  "description": "Unit price of usage per  measure unit (exclusive of GST)",
+                  "type": "string",
+                  "x-cds-type": "AmountString"
+                },
+                "volume": {
+                  "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "unitPrice"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "displayName",
+          "rates"
+        ],
+        "type": "object"
+      },
+      "startDate": {
+        "description": "Optional start date of the application of the controlled load rate",
+        "type": "string",
+        "x-cds-type": "DateString"
+      },
+      "timeOfUseRates": {
+        "description": "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
+        "items": {
+          "properties": {
+            "dailySupplyCharge": {
+              "description": "The daily supply charge (exclusive of GST) for this controlled load tier",
+              "type": "string",
+              "x-cds-type": "AmountString"
+            },
+            "description": {
+              "description": "Description of the controlled load rate",
+              "type": "string"
+            },
+            "displayName": {
+              "description": "Display name of the controlled load rate",
+              "type": "string"
+            },
+            "rates": {
+              "description": "Array of controlled load rates in order of usage volume",
+              "items": {
+                "properties": {
+                  "measureUnit": {
+                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
+                    "enum": [
+                      "KWH",
+                      "KVA",
+                      "KVAR",
+                      "KVARH",
+                      "KW",
+                      "DAYS",
+                      "METER",
+                      "MONTH"
+                    ],
+                    "type": "string"
+                  },
+                  "unitPrice": {
+                    "description": "Unit price of usage per  measure unit (exclusive of GST)",
+                    "type": "string",
+                    "x-cds-type": "AmountString"
+                  },
+                  "volume": {
+                    "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "unitPrice"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "timeOfUse": {
+              "description": "Array of times of use.",
+              "items": {
+                "properties": {
+                  "additionalInfo": {
+                    "description": "Display text providing more information on the contrlled load, for e.g. controlled load availability if specific day/time is not known. Required if startTime and endTime absent or if additionalInfoUri provided",
+                    "type": "string"
+                  },
+                  "additionalInfoUri": {
+                    "description": "Optional link to additional information regarding the controlled load",
+                    "type": "string",
+                    "x-cds-type": "URIString"
+                  },
+                  "days": {
+                    "description": "The days that the rate applies to",
+                    "items": {
+                      "enum": [
+                        "SUN",
+                        "MON",
+                        "TUE",
+                        "WED",
+                        "THU",
+                        "FRI",
+                        "SAT",
+                        "PUBLIC_HOLIDAYS"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "endTime": {
+                    "description": "The end of the time period per day for which the controlled load rate applies. Required if startTime provided.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                    "type": "string",
+                    "x-cds-type": "ExternalRef"
+                  },
+                  "startTime": {
+                    "description": "The beginning of the time period per day for which the controlled load rate applies. Required if endTime provided.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                    "type": "string",
+                    "x-cds-type": "ExternalRef"
+                  }
+                },
+                "type": "object",
+                "x-conditional": [
+                  "startTime",
+                  "endTime",
+                  "additionalInfo"
+                ],
+                "dependentRequired": {
+                  "startTime": [
+                    "endTime"
+                  ],
+                  "endTime": [
+                    "startTime"
+                  ],
+                  "additionalInfoUri": [
+                    "additionalInfo"
+                  ]
+                }
+              },
+              "type": "array"
+            },
+            "type": {
+              "description": "The type of usage that the rate applies to",
+              "enum": [
+                "PEAK",
+                "OFF_PEAK",
+                "SHOULDER",
+                "SOLAR_SPONGE"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "displayName",
+            "type",
+            "rates",
+            "timeOfUse"
+          ],
+          "type": "object"
+        },
+        "type": "array"
+      }
+    },
+    "required": [
+      "displayName",
+      "rateBlockUType"
+    ],
+    "type": "object",
+    "x-conditional": [
+      "singleRate",
+      "timeOfUseRates"
+    ],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "singleRate"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "singleRate"
+          ]
+        }
+      },
+      {
+        "if": {
+          "properties": {
+            "rateBlockUType": {
+              "const": "timeOfUseRates"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "timeOfUseRates"
+          ]
+        }
+      }
+    ]
+  },
+  "type": "array"
+}

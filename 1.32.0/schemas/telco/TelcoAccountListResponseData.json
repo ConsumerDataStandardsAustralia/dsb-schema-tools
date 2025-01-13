@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "accounts": {
+      "description": "Array of accounts",
+      "items": {
+        "$ref": "TelcoAccountResponseData.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accounts"
+  ],
+  "type": "object"
+}

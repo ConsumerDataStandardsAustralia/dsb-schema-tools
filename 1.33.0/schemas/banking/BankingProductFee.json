@@ -1,0 +1,116 @@
+{
+  "properties": {
+    "accrualFrequency": {
+      "description": "The indicative frequency with which the fee is calculated on the account. Only applies if _balanceRate_ or _accruedRate_ is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "accruedRate": {
+      "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "additionalInfo": {
+      "description": "Display text providing more information on the fee.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this fee.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_feeType_](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [_feeType_](#tocSproductfeetypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "The amount charged for the fee. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "balanceRate": {
+      "description": "A fee rate calculated based on a proportion of the balance. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "currency": {
+      "description": "The currency the fee will be charged in. Assumes `AUD` if absent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "discounts": {
+      "description": "An optional list of discounts to this fee that may be available.",
+      "items": {
+        "$ref": "BankingProductDiscount.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "feeType": {
+      "description": "The type of fee. For further details, refer to [Product Fee Types](#tocSproductfeetypedoc).",
+      "enum": [
+        "DEPOSIT",
+        "EVENT",
+        "EXIT",
+        "PAYMENT",
+        "PERIODIC",
+        "PURCHASE",
+        "TRANSACTION",
+        "UPFRONT",
+        "VARIABLE",
+        "WITHDRAWAL"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the fee.",
+      "type": "string"
+    },
+    "transactionRate": {
+      "description": "A fee rate calculated based on a proportion of a transaction. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    }
+  },
+  "required": [
+    "feeType",
+    "name"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "amount",
+    "balanceRate",
+    "transactionRate",
+    "accruedRate"
+  ]
+}

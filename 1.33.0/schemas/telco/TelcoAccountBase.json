@@ -1,0 +1,67 @@
+{
+  "properties": {
+    "accountId": {
+      "description": "The ID of the account. To be created in accordance with [CDR ID permanence](#id-permanence) requirements",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "accountNumber": {
+      "description": "Masked identifier of the account as defined by the data holder. This must be the value presented on physical statements (required if it exists) and must not be used for the value of the accountId",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brand": {
+      "description": "The retail name of the brand",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "creationDate": {
+      "description": "The date that the account was created or opened. Mandatory if openStatus is OPEN",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "displayName": {
+      "description": "An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastUpdated": {
+      "description": "The date and time which the account was last updated",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "openStatus": {
+      "default": "OPEN",
+      "description": "Open or closed status for the account. If not present then OPEN is assumed",
+      "enum": [
+        "CLOSED",
+        "OPEN"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "accountId, creationDate, lastUpdateDateTime"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "accountNumber"
+  ]
+}

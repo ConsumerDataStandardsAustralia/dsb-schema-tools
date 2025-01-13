@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "concessions": {
+      "description": "Array may be empty if no concessions exist",
+      "items": {
+        "$ref": "TelcoConcession.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "concessions"
+  ],
+  "type": "object"
+}
