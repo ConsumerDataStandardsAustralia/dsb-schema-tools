@@ -6151,7 +6151,7 @@
   "description": "Array of tariff periods",
   "items": {
     "properties": {
-      "dailySupplyCharges": {
+      "dailySupplyCharge": {
         "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST.",
         "type": "string",
         "x-cds-type": "AmountString"
