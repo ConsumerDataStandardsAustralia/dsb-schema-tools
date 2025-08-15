@@ -1,0 +1,31 @@
+{
+  "allOf": [
+    {
+      "$ref": "TelcoAccountPlanBase.json"
+    },
+    {
+      "properties": {
+        "planDetail": {
+          "description": "Detail on the plan applicable to this account. Mandatory if _openStatus_ is `OPEN`.",
+          "properties": {
+            "charges": {
+              "description": "Charges for metering included in the plan.",
+              "items": {
+                "$ref": "TelcoProductDetailMeteringCharges.json"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object",
+          "required": [
+            "charges"
+          ]
+        }
+      },
+      "x-conditional": [
+        "planDetail"
+      ],
+      "type": "object"
+    }
+  ]
+}

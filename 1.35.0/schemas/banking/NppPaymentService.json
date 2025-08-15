@@ -1,0 +1,11 @@
+{
+    "description": "Identifier of the applicable overlay service. The _service_ is used in conjunction with the _serviceVersion_. See [here](#npp-services) for more details.",
+    "enum": [
+      "X2P1",
+      "IFTI",
+      "BSCT",
+      "CATSCT"
+    ],
+    "example": "X2P1",
+    "type": "string"
+  }

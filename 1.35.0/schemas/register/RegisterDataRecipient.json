@@ -1,0 +1,68 @@
+{
+  "properties": {
+    "accreditationLevel": {
+      "description": "Accreditation level of the Data Recipient in the CDR Register",
+      "enum": [
+        "UNRESTRICTED",
+        "SPONSORED"
+      ],
+      "type": "string"
+    },
+    "accreditationNumber": {
+      "description": "CDR Register issued human readable unique number given to Data Recipients upon accreditation",
+      "maxLength": 100,
+      "type": "string"
+    },
+    "dataRecipientBrands": {
+      "items": {
+        "$ref": "DataRecipientBrandMetaData.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true
+    },
+    "lastUpdated": {
+      "description": "The date/time that the Legal Entity was last updated in the CDR Register",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "legalEntityId": {
+      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register.",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "legalEntityName": {
+      "description": "Legal name of the Data Recipient",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "logoUri": {
+      "description": "Legal Entity logo URI",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "status": {
+      "description": "Data Recipient status in the CDR Register",
+      "enum": [
+        "ACTIVE",
+        "SUSPENDED",
+        "REVOKED",
+        "SURRENDERED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "accreditationLevel",
+    "accreditationNumber",
+    "lastUpdated",
+    "legalEntityId",
+    "legalEntityName",
+    "logoUri",
+    "status"
+  ],
+  "type": "object"
+}

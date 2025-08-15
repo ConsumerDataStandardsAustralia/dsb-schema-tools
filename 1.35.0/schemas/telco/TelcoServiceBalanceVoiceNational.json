@@ -1,0 +1,43 @@
+{
+  "description": "National voice calls.",
+  "properties": {
+    "amount": {
+      "description": "Amount balance of national calls. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of national voice calls. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "duration",
+    "number",
+    "amount"
+  ]
+}

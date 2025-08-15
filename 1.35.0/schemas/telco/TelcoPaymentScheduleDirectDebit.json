@@ -1,0 +1,49 @@
+{
+  "description": "Represents a regular direct debit from a specified bank account. Mandatory if _paymentScheduleUType_ is set to `directDebit`.",
+  "properties": {
+    "accountNumber": {
+      "description": "The unmasked account number for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if _isTokenised_ is absent or `false`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bsb": {
+      "description": "The unmasked BSB for the account to be debited. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces. Is required if _isTokenised_ is absent or `false`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "calculationType": {
+      "description": "The mechanism by which the payment amount is calculated. Explanation of values are as follows:<br/><ul><li>`STATIC`: Indicates a consistent, static amount, per payment</li><li>`BALANCE`: Indicates that the outstanding balance for the account is paid per period</li><li>`CALCULATED`: Indicates that the payment amount is variable and calculated using a pre-defined algorithm.</li></ul>",
+      "enum": [
+        "STATIC",
+        "BALANCE",
+        "CALCULATED"
+      ],
+      "type": "string"
+    },
+    "isTokenised": {
+      "description": "Flag indicating that the account details are tokenised and cannot be shared. `false` if absent.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "paymentFrequency": {
+      "description": "The frequency that payments will occur. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "calculationType",
+    "paymentFrequency"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "bsb",
+    "accountNumber"
+  ]
+}

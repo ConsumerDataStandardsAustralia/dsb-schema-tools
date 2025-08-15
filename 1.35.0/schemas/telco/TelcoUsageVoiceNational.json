@@ -1,0 +1,26 @@
+{
+  "description": "National voice calls.",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of national calls.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "duration": {
+      "description": "Total duration (hours, minutes, and seconds) of national voice calls. Not limited to 24hrs.",
+      "type": "string",
+      "x-cds-type": "TimeString"
+    },
+    "number": {
+      "description": "Number of national voice calls.",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "duration",
+    "number"
+  ],
+  "type": "object"
+}

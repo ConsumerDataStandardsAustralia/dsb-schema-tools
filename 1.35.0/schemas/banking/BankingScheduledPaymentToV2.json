@@ -1,0 +1,99 @@
+{
+  "description": "Object containing details of the destination of the payment. Used to specify a variety of payment destination types.",
+  "properties": {
+    "accountId": {
+      "description": "Present if _toUType_ is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ASCIIString"
+    },
+    "biller": {
+      "$ref": "BankingBillerPayee.json"
+    },
+    "digitalWallet": {
+      "$ref": "BankingDigitalWalletPayee.json"
+    },
+    "domestic": {
+      "$ref": "BankingDomesticPayee.json"
+    },
+    "international": {
+      "$ref": "BankingInternationalPayee.json"
+    },
+    "nickname": {
+      "description": "The short display name of the payee as provided by the customer unless _toUType_ is set to `payeeId`. Where a customer has not provided a nickname, a display name derived by the bank for payee should be provided that is consistent with existing digital banking channels.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payeeId": {
+      "description": "Present if _toUType_ is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a _payeeId_ should not be provided and the full payee details should be provided instead.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ASCIIString"
+    },
+    "payeeReference": {
+      "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "toUType": {
+      "description": "The type of object provided that specifies the destination of the funds for the payment.",
+      "enum": [
+        "accountId",
+        "biller",
+        "digitalWallet",
+        "domestic",
+        "international",
+        "payeeId"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "toUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "accountId",
+    "payeeId",
+    "digitalWallet",
+    "domestic",
+    "biller",
+    "international",
+    "nickname",
+    "payeeReference"
+  ],
+  "allOf": [
+    {          
+      "if":   {"properties": {"toUType": { "const": "accountId"}}},
+      "then": { "required": ["accountId"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "payeeId"}}},
+      "then": { "required": ["payeeId"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "biller"}}},
+      "then": { "required": ["biller"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "domestic"}}},
+      "then": { "required": ["domestic"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "international"}}},
+      "then": { "required": ["international"]}
+    },
+    {          
+      "if":   {"properties": {"toUType": { "const": "digitalWallet"}}},
+      "then": { "required": ["digitalWallet"]}
+    }
+  ]
+}

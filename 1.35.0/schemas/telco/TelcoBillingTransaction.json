@@ -1,0 +1,59 @@
+{
+  "properties": {
+    "account": {
+      "$ref": "TelcoBillingAccountTransaction.json"
+    },
+    "accountId": {
+      "allOf": [
+        {
+          "$ref": "TelcoAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
+    },
+    "executionDateTime": {
+      "description": "The date and time that the transaction occurred.",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    },
+    "gst": {
+      "default": "0.00",
+      "description": "The GST incurred in the transaction. Should not be included for credits or payments. If absent then zero is assumed.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "onceOff": {
+      "$ref": "TelcoBillingOnceOffTransaction.json"
+    },
+    "otherCharges": {
+      "$ref": "TelcoBillingOtherTransaction.json"
+    },
+    "payment": {
+      "$ref": "TelcoBillingPaymentTransaction.json"
+    },
+    "transactionUType": {
+      "description": "Indicator of the type of transaction object present in this record.",
+      "enum": [
+        "account",
+        "onceOff",
+        "otherCharges",
+        "payment"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "accountId",
+    "executionDateTime",
+    "transactionUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "usage",
+    "onceOff",
+    "payment"
+  ]
+}

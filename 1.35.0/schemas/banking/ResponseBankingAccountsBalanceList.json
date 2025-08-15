@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "balances": {
+          "description": "The list of balances returned.",
+          "items": {
+            "$ref": "BankingBalance.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "balances"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

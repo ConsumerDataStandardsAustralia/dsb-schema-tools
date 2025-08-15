@@ -1,0 +1,34 @@
+{
+  "description": "Balance of data roaming charges. Required unless _planType_ is `UNSUPPORTED`.",
+  "properties": {
+    "amount": {
+      "description": "Amount value of data roaming charges. Required unless _planType_ is `UNSUPPORTED`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "download": {
+      "description": "Amount of data used overseas in megabytes (MB). Required unless _planType_ is `UNSUPPORTED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "download",
+    "amount"
+  ]
+}

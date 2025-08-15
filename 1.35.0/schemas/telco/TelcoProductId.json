@@ -1,0 +1,5 @@
+{
+  "description": "A data holder-specific unique identifier for a Telco product. This identifier must be unique to a product but does not otherwise need to adhere to ID permanence guidelines.",
+  "type": "string",
+  "x-cds-type": "ASCIIString"
+}

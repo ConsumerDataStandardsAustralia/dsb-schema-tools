@@ -1,0 +1,26 @@
+{
+  "description": "Roaming Data Usage.",
+  "properties": {
+    "amount": {
+      "description": "Amount value of data roaming charges.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "download": {
+      "description": "Amount of data used while roaming in megabytes (MB).",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "download",
+    "amount"
+  ]
+}

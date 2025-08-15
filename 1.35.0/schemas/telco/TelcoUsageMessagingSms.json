@@ -1,0 +1,40 @@
+{
+  "description": "Summary of SMS usage.",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of SMS messages. Including premium SMS services.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "international": {
+      "description": "Number of international SMS messages sent. Including premium SMS services.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national SMS messages sent. Including premium SMS services.",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming SMS messages sent. Including premium SMS services.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "national"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "international",
+    "roaming"
+  ]
+}
