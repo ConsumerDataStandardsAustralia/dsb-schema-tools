@@ -1,0 +1,22 @@
+{
+  "description": "A minimum or maximum fee amount where a specific fixed amount is not known until the fee is incurred.",
+  "properties": {
+    "feeMaximum": {
+      "description": "The maximum fee that will be charged per occurrence.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "feeMinimum": {
+      "description": "The minimum fee that will be charged per occurrence.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    }
+  },
+  "type": "object"
+}

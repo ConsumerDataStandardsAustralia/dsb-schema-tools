@@ -1,0 +1,135 @@
+{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the fee. Mandatory if the [_feeType_](#tocSproductfeetypedoc) value is `OTHER`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this fee.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_feeType_](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [_feeType_](#tocSproductfeetypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currency": {
+      "default": "AUD",
+      "description": "The currency the fee will be charged in. Assumes `AUD` if absent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "discounts": {
+      "description": "An optional list of discounts to this fee that may be available.",
+      "items": {
+        "$ref": "BankingProductDiscountV2.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "feeCap": {
+      "description": "The cap amount if multiple occurrences of the fee are capped to a limit.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "feeCapPeriod": {
+      "description": "Specifies a duration over which multiple occurrences of the fee will be capped. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "feeMethodUType": {
+      "description": "Reference to the applicable fee charging method structure.",
+      "enum": [
+        "fixedAmount",
+        "rateBased",
+        "variable"
+      ],
+      "type": "string"
+    },
+    "feeType": {
+      "description": "The type of fee. For further details, refer to [Product Fee Types](#tocSproductfeetypedoc).",
+      "enum": [
+        "CASH_ADVANCE",
+        "DEPOSIT",
+        "DISHONOUR",
+        "ENQUIRY",
+        "EVENT",
+        "EXIT",
+        "LATE_PAYMENT",
+        "OTHER",
+        "PAYMENT",
+        "PERIODIC",
+        "PURCHASE",
+        "REPLACEMENT",
+        "TRANSACTION",
+        "UPFRONT",
+        "UPFRONT_PER_PLAN",
+        "VARIATION",
+        "WITHDRAWAL"
+      ],
+      "example": "CASH_ADVANCE",
+      "type": "string"
+    },
+    "fixedAmount": {
+      "allOf": [
+        {
+          "$ref": "BankingFeeAmount.json"
+        }
+      ],
+      "description": "Mandatory if the _feeMethodUType_ value is `fixedAmount`. Where the fee is a specific amount."
+    },
+    "name": {
+      "description": "Name of the fee.",
+      "type": "string"
+    },
+    "rateBased": {
+      "allOf": [
+        {
+          "$ref": "BankingFeeRate.json"
+        }
+      ],
+      "description": "Mandatory if the _feeMethodUType_ value is `rateBased`. Where the fee is based on a type of rate."
+    },
+    "variable": {
+      "allOf": [
+        {
+          "$ref": "BankingFeeRange.json"
+        }
+      ],
+      "description": "Mandatory if the _feeMethodUType_ value is `variable`. Where the amount or rate may not be known until the fee is incurred."
+    }
+  },
+  "required": [
+    "name",
+    "feeType",
+    "feeMethodUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "fixedAmount",
+    "rateBased",
+    "variable",
+    "additionalValue",
+    "additionalInfo"
+  ]
+}

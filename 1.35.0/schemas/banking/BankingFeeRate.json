@@ -1,0 +1,39 @@
+{
+  "properties": {
+    "accrualFrequency": {
+      "description": "The indicative frequency with which the fee is calculated on the account if applicable. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "amountRange": {
+      "$ref": "BankingFeeRange.json"
+    },
+    "rate": {
+      "description": "The fee rate calculated according to the _rateType_.",
+      "type": "string",
+      "x-cds-type": "RateString"
+    },
+    "rateType": {
+      "description": "Type of fee rate calculation.<ul><li>`BALANCE` A fee rate based on a balance</li><li>`INTEREST_ACCRUED` A fee rate based on interest accrued</li><li>`TRANSACTION` A fee rate based on a transaction.</li></ul>",
+      "enum": [
+        "BALANCE",
+        "INTEREST_ACCRUED",
+        "TRANSACTION"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "rateType",
+    "rate"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "balanceRate",
+    "transactionRate",
+    "accruedRate"
+  ]
+}

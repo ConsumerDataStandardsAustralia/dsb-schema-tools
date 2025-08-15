@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "accountIds": {
+          "description": "Array of _accountId_ values to obtain data for.",
+          "items": {
+            "$ref": "BankingAccountId.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "accountIds"
+      ],
+      "type": "object"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "type": "object"
+}

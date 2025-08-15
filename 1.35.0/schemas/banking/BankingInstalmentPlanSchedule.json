@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "amountDue": {
+      "description": "Amount due with this repayment.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "dueDate": {
+      "description": "Date this repayment is or was due.",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "isPaid": {
+      "default": false,
+      "description": "Whether the associated _amountDue_ has been paid or is otherwise considered as not outstanding. `false` is assumed if absent.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amountDue",
+    "dueDate"
+  ],
+  "type": "object"
+}

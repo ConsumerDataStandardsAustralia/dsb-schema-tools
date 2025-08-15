@@ -1,0 +1,22 @@
+{
+  "description": "A minimum or maximum fee discount amount where a specific fixed amount is not known until the fee is incurred.",
+  "properties": {
+    "discountMaximum": {
+      "description": "The maximum fee discount that will be applied per occurrence.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "discountMinimum": {
+      "description": "The minimum fee discount that will be applied per occurrence.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,54 @@
+{
+  "description": "Details of instalment features on the account.",
+  "properties": {
+    "instalmentsLimit": {
+      "description": "Maximum combined limit of all instalment plans that may be created on the account. If `null` or not present, an opened account balance _creditLimit_ may be assumed to provide a maximum limit for instalments.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "maximumConcurrentPlans": {
+      "description": "Maximum number of concurrent active instalment plans that may be created on the account. If `null`, there is no predetermined maximum number.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "x-cds-type": "NaturalNumber"
+    },
+    "maximumPlanValue": {
+      "description": "Maximum value that can be opened as an instalment plan. If `null` or not present, _instalmentsLimit_ is assumed to be the maximum individual plan value.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "maximumSplit": {
+      "description": "Maximum number of instalment payments a plan can be created with.",
+      "example": 4,
+      "type": "integer",
+      "x-cds-type": "PositiveInteger"
+    },
+    "minimumPlanValue": {
+      "description": "Minimum value that can be opened as an instalment plan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "minimumSplit": {
+      "description": "Minimum number of instalment payments a plan can be created with.",
+      "example": 4,
+      "type": "integer",
+      "x-cds-type": "PositiveInteger"
+    }
+  },
+  "required": [
+    "minimumSplit",
+    "maximumSplit"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,42 @@
+{
+  "properties": {
+    "cardScheme": {
+      "description": "Card scheme available with the account.",
+      "enum": [
+        "AMEX",
+        "EFTPOS",
+        "MASTERCARD",
+        "VISA",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "cardType": {
+      "description": "Card type available with the account.",
+      "enum": [
+        "CHARGE",
+        "CREDIT",
+        "DEBIT"
+      ],
+      "type": "string"
+    },
+    "imageUri": {
+      "description": "URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**.",
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "title": {
+      "description": "Display label for the specific image.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "cardScheme",
+    "cardType",
+    "imageUri"
+  ],
+  "type": "object"
+}

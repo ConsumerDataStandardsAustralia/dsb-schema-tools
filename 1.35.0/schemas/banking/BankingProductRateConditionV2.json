@@ -1,0 +1,54 @@
+{
+  "description": "Defines a condition for the applicability of a rate.",
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the condition. Mandatory if the [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc) value is `OTHER`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this condition.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the _rateApplicabilityType_ specified. Whether mandatory or not is dependent on the value of [_rateApplicabilityType_](#tocSbankingproductrateconditiondoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rateApplicabilityType": {
+      "description": "Category of applicability condition associated with the rate. For more information refer to [Rate and Tier Applicability Types](#tocSbankingproductrateconditiondoc).",
+      "enum": [
+        "MIN_DEPOSITS",
+        "MIN_DEPOSIT_AMOUNT",
+        "DEPOSIT_BALANCE_INCREASED",
+        "EXISTING_CUST",
+        "NEW_ACCOUNTS",
+        "NEW_CUSTOMER",
+        "NEW_CUSTOMER_TO_GROUP",
+        "ONLINE_ONLY",
+        "OTHER",
+        "MIN_PURCHASES",
+        "MAX_WITHDRAWALS",
+        "MAX_WITHDRAWAL_AMOUNT"
+      ],
+      "example": "NEW_CUSTOMER",
+      "type": "string"
+    }
+  },
+  "required": [
+    "rateApplicabilityType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "additionalInfo"
+  ]
+}

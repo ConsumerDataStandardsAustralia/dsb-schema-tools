@@ -1,0 +1,88 @@
+{
+  "description": "Note that the currency of the fee discount is expected to be the same as the currency of the fee itself.",
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the discount.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this discount.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_discountType_](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [_discountType_](#tocSproductdiscounttypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "Description of the discount.",
+      "type": "string"
+    },
+    "discountMethodUType": {
+      "description": "Reference to the applicable fee discount method structure.",
+      "enum": [
+        "fixedAmount",
+        "rateBased"
+      ],
+      "type": "string"
+    },
+    "discountType": {
+      "description": "The type of discount. For further details, refer to [Product Discount Types](#tocSproductdiscounttypedoc).",
+      "enum": [
+        "BALANCE",
+        "DEPOSITS",
+        "ELIGIBILITY_ONLY",
+        "FEE_CAP",
+        "PAYMENTS"
+      ],
+      "type": "string"
+    },
+    "eligibility": {
+      "description": "Eligibility constraints that apply to this discount. Mandatory if the [_discountType_](#tocSproductdiscounttypedoc) value is `ELIGIBILITY_ONLY`.",
+      "items": {
+        "$ref": "BankingProductDiscountEligibility.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "fixedAmount": {
+      "allOf": [
+        {
+          "$ref": "BankingFeeDiscountAmount.json"
+        }
+      ],
+      "description": "Mandatory if the _discountMethodUType_ value is `fixedAmount`. Where the discount is a specific amount."
+    },
+    "rateBased": {
+      "allOf": [
+        {
+          "$ref": "BankingFeeDiscountRate.json"
+        }
+      ],
+      "description": "Mandatory if the _discountMethodUType_ value is `rateBased`. Where the discount is based on a type of rate. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee."
+    }
+  },
+  "required": [
+    "description",
+    "discountType",
+    "discountMethodUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "fixedAmount",
+    "rateBased",
+    "additionalValue",
+    "eligibility"
+  ]
+}
