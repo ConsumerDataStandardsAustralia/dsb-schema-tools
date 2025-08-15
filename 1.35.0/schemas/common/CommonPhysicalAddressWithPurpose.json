@@ -11,7 +11,7 @@
       "properties": {
         "purpose": {
           "type": "string",
-          "description": "Enumeration of values indicating the purpose of the physical address",
+          "description": "Enumeration of values indicating the purpose of the physical address.",
           "enum": [
             "MAIL",
             "OTHER",

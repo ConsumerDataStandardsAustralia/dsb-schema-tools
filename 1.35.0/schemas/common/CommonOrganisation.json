@@ -1,40 +1,40 @@
 {
   "properties": {
     "abn": {
-      "description": "Australian Business Number for the organisation",
+      "description": "Australian Business Number for the organisation.",
       "type": [
         "string",
         "null"
       ]
     },
     "acn": {
-      "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type",
+      "description": "Australian Company Number for the organisation. Required only if an ACN is applicable for the organisation type.",
       "type": [
         "string",
         "null"
       ]
     },
     "agentFirstName": {
-      "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present.  The single name should be in the lastName field",
+      "description": "The first name of the individual providing access on behalf of the organisation. For people with single names this field need not be present. The single name should be in the _lastName_ field.",
       "type": [
         "string",
         "null"
       ]
     },
     "agentLastName": {
-      "description": "The last name of the individual providing access on behalf of the organisation. For people with single names the single name should be in this field",
+      "description": "The last name of the individual providing access on behalf of the organisation. For people with single names, the single name should be in this field.",
       "type": "string"
     },
     "agentRole": {
-      "description": "The role of the individual identified as the agent who is providing authorisation.  Expected to be used for display. Default to Unspecified if the role is not known",
+      "description": "The role of the individual identified as the agent who is providing authorisation. Expected to be used for display. Default to \"Unspecified\" if the role is not known.",
       "type": "string"
     },
     "businessName": {
-      "description": "Name of the organisation",
+      "description": "Name of the organisation.",
       "type": "string"
     },
     "establishmentDate": {
-      "description": "The date the organisation described was established",
+      "description": "The date the organisation described was established.",
       "type": [
         "string",
         "null"
@@ -51,7 +51,7 @@
     },
     "industryCodeVersion": {
       "default": "ANZSIC_1292.0_2006_V2.0",
-      "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``",
+      "description": "The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if _industryCode_ is also supplied. If _industryCode_ is supplied but _industryCodeVersion_ is absent, default is `ANZSIC_1292.0_2006_V2.0`.",
       "enum": [
         "ANZSIC_1292.0_2006_V1.0",
         "ANZSIC_1292.0_2006_V2.0"
@@ -62,7 +62,7 @@
       ]
     },
     "isACNCRegistered": {
-      "description": "True if registered with the ACNC.  False if not. Absent or null if not confirmed.",
+      "description": "`true` if registered with the ACNC. `false` if not. Absent or `null` if not confirmed.",
       "type": [
         "boolean",
         "null"
@@ -70,7 +70,7 @@
       "x-cds-type": "Boolean"
     },
     "lastUpdateTime": {
-      "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data",
+      "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data.",
       "type": [
         "string",
         "null"
@@ -78,14 +78,14 @@
       "x-cds-type": "DateTimeString"
     },
     "legalName": {
-      "description": "Legal name, if different to the business name",
+      "description": "Legal name, if different to the business name.",
       "type": [
         "string",
         "null"
       ]
     },
     "organisationType": {
-      "description": "Legal organisation type",
+      "description": "Legal organisation type.",
       "enum": [
         "COMPANY",
         "GOVERNMENT_ENTITY",
@@ -97,7 +97,7 @@
       "type": "string"
     },
     "registeredCountry": {
-      "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent",
+      "description": "Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes. Assumed to be `AUS` if absent.",
       "type": [
         "string",
         "null"
@@ -105,7 +105,7 @@
       "x-cds-type": "ExternalRef"
     },
     "shortName": {
-      "description": "Short name used for communication, if different to the business name",
+      "description": "Short name used for communication, if different to the business name.",
       "type": [
         "string",
         "null"

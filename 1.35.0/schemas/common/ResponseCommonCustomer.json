@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "customerUType": {
-          "description": "The type of customer object that is present",
+          "description": "The type of customer object that is present.",
           "enum": [
             "organisation",
             "person"

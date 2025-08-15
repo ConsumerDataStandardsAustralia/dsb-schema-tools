@@ -1,33 +1,33 @@
 {
   "properties": {
     "areaCode": {
-      "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading 0 should be omitted.",
+      "description": "Required for non Mobile Phones, if field is present and refers to Australian code - the leading `0` should be omitted.",
       "type": [
         "string",
         "null"
       ]
     },
     "countryCode": {
-      "description": "If absent, assumed to be Australia (+61). The + should be included",
+      "description": "If absent, assumed to be Australia (`+61`). The `+` should be included.",
       "type": [
         "string",
         "null"
       ]
     },
     "extension": {
-      "description": "An extension number (if applicable)",
+      "description": "An extension number (if applicable).",
       "type": [
         "string",
         "null"
       ]
     },
     "fullNumber": {
-      "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**",
+      "description": "Fully formatted phone number with country code, area code, number and extension incorporated. Formatted according to section 5.1.4. of **[[RFC3966]](#iref-RFC3966)**.",
       "type": "string",
       "x-cds-type": "ExternalRef"
     },
     "isPreferred": {
-      "description": "May be true for one and only one entry to indicate the preferred phone number. Assumed to be 'false' if not present",
+      "description": "May be `true` for one and only one entry to indicate the preferred phone number. Assumed to be `false` if not present.",
       "type": [
         "boolean",
         "null"
@@ -35,11 +35,11 @@
       "x-cds-type": "Boolean"
     },
     "number": {
-      "description": "The actual phone number, with leading zeros as appropriate",
+      "description": "The actual phone number, with leading zeros as appropriate.",
       "type": "string"
     },
     "purpose": {
-      "description": "The purpose of the number as specified by the customer",
+      "description": "The purpose of the number as specified by the customer.",
       "enum": [
         "HOME",
         "INTERNATIONAL",

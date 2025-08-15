@@ -1,12 +1,12 @@
 {
   "properties": {
     "address": {
-      "description": "A correctly formatted email address, as defined by the addr-spec format in **[[RFC5322]](#nref-RFC5322)**",
+      "description": "A correctly formatted email address, as defined by the addr-spec format in **[[RFC5322]](#nref-RFC5322)**.",
       "type": "string",
       "x-cds-type": "ExternalRef"
     },
     "isPreferred": {
-      "description": "May be true for one and only one email record in the collection. Denotes the default email address",
+      "description": "May be `true` for one and only one email record in the collection. Denotes the default email address.",
       "type": [
         "boolean",
         "null"
@@ -14,7 +14,7 @@
       "x-cds-type": "Boolean"
     },
     "purpose": {
-      "description": "The purpose for the email, as specified by the customer (Enumeration)",
+      "description": "The purpose for the email, as specified by the customer.",
       "enum": [
         "HOME",
         "OTHER",

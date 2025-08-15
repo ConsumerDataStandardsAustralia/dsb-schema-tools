@@ -13,10 +13,7 @@
             "type": "string"
           },
           "meta": {
-            "oneOf": [
-              {"type": "null"},
-              {"$ref": "MetaError.json"}
-           ]    
+            "$ref": "MetaError.json"
           },
           "title": {
             "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",

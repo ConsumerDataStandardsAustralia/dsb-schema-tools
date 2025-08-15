@@ -1,7 +1,7 @@
 {
   "properties": {
     "addressUType": {
-      "description": "The type of address object present",
+      "description": "The type of address object present.",
       "enum": [
         "paf",
         "simple"
