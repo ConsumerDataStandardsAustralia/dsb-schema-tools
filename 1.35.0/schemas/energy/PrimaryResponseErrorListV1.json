@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "errors": {
+      "description": "List of errors.",
+      "items": {
+        "$ref": "PrimaryErrorV1.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "errors"
+  ],
+  "type": "object"
+}

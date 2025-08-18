@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "servicePointIds": {
+          "description": "Array of _servicePointId_ values to obtain data for.",
+          "items": {
+            "$ref": "EnergyServicePointId.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "servicePointIds"
+      ],
+      "type": "object"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data"
+  ],
+  "type": "object"
+}

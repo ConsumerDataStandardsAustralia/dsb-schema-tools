@@ -1,0 +1,18 @@
+{
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "isSecondaryDataHolderError": {
+          "type": "boolean",
+          "description": "Indicates the error was propagated from a designated secondary data holder.",
+          "default": false
+        }
+      }
+    },
+    {
+      "$ref": "ErrorV2.json"
+    }
+  ],
+  "type": "object"
+}

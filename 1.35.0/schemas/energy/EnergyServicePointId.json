@@ -1,0 +1,5 @@
+{
+  "description": "A unique identifier for an Energy service point, generated according to [CDR ID Permanence](#id-permanence) requirements.",
+  "type": "string",
+  "x-cds-type": "ASCIIString"
+}

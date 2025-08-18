@@ -1,0 +1,13 @@
+{
+  "enum": [
+    "SUN",
+    "MON",
+    "TUE",
+    "WED",
+    "THU",
+    "FRI",
+    "SAT",
+    "PUBLIC_HOLIDAYS"
+  ],
+  "type": "string"
+}
