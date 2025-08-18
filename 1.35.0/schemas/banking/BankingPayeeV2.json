@@ -20,9 +20,12 @@
       "type": "string"
     },
     "payeeId": {
-      "description": "ID of the payee adhering to the rules of ID permanence.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingPayeeId.json"
+        }
+      ],
+      "description": "Unique identifier for the payee."
     },
     "type": {
       "description": "The type of payee.<ul><li>`DOMESTIC` means a registered payee for domestic payments including NPP.<li>`INTERNATIONAL` means a registered payee for international payments.<li>`BILLER` means a registered payee for BPAY.<li>`DIGITAL_WALLET` means a registered payee for a bank's digital wallet.</ul>",

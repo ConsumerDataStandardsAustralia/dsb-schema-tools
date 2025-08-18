@@ -6,6 +6,7 @@
       "x-cds-type": "AmountString"
     },
     "paymentCurrency": {
+      "default": "AUD",
       "description": "If absent assumes `AUD`.",
       "type": [
         "string",

@@ -1,11 +1,15 @@
 {
   "properties": {
     "accountId": {
-      "description": "A unique ID of the account adhering to the standards for ID permanence.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
     },
     "amortisedLimit": {
+      "default": "0.00",
       "description": "Object representing the available limit amortised according to payment schedule. Assumed to be zero if absent.",
       "type": [
         "string",
@@ -19,6 +23,7 @@
       "x-cds-type": "AmountString"
     },
     "creditLimit": {
+      "default": "0.00",
       "description": "Object representing the maximum amount of credit that is available for this account. Assumed to be zero if absent.",
       "type": [
         "string",
@@ -27,6 +32,7 @@
       "x-cds-type": "AmountString"
     },
     "currency": {
+      "default": "AUD",
       "description": "The currency for the balance amounts. If absent assumed to be `AUD`.",
       "type": [
         "string",

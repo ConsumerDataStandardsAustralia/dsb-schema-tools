@@ -2,12 +2,12 @@
   "description": "Object containing details of the destination of the payment. Used to specify a variety of payment destination types.",
   "properties": {
     "accountId": {
-      "description": "Present if _toUType_ is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent.",
-      "type": [
-        "string",
-        "null"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
       ],
-      "x-cds-type": "ASCIIString"
+      "description": "Present if _toUType_ is set to `accountId`. Indicates that the payment is to another account that is accessible under the current consent."
     },
     "biller": {
       "$ref": "BankingBillerPayee.json"
@@ -29,12 +29,12 @@
       ]
     },
     "payeeId": {
-      "description": "Present if _toUType_ is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a _payeeId_ should not be provided and the full payee details should be provided instead.",
-      "type": [
-        "string",
-        "null"
+      "allOf": [
+        {
+          "$ref": "BankingPayeeId.json"
+        }
       ],
-      "x-cds-type": "ASCIIString"
+      "description": "Present if _toUType_ is set to `payeeId`. Indicates that the payment is to registered payee that can be accessed using the payee endpoint. If the Bank Payees scope has not been consented to then a _payeeId_ should not be provided and the full payee details should be provided instead."
     },
     "payeeReference": {
       "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for the specific payment. If not empty, it overrides the value provided at the BankingScheduledPayment level.",

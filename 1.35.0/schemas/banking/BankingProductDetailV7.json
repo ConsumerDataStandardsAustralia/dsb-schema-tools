@@ -1,0 +1,64 @@
+{
+  "allOf": [
+    {
+      "$ref": "BankingProductV6.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bundles": {
+          "type": "array",
+          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of _productID_ values of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+          "items": {
+            "$ref": "BankingProductBundle.json"
+          }
+        },
+        "features": {
+          "type": "array",
+          "description": "Array of features and limitations of the product.",
+          "items": {
+            "$ref": "BankingProductFeatureV4.json"
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "description": "Constraints on the application for the product such as minimum balances or limit thresholds.",
+          "items": {
+            "$ref": "BankingProductConstraintV3.json"
+          }
+        },
+        "eligibility": {
+          "type": "array",
+          "description": "Eligibility criteria for the product.",
+          "items": {
+            "$ref": "BankingProductEligibilityV2.json"
+          }
+        },
+        "fees": {
+          "type": "array",
+          "description": "Fees applicable to the product.",
+          "items": {
+            "$ref": "BankingProductFeeV2.json"
+          }
+        },
+        "depositRates": {
+          "type": "array",
+          "description": "Interest rates available for deposits.",
+          "items": {
+            "$ref": "BankingProductDepositRateV2.json"
+          }
+        },
+        "lendingRates": {
+          "type": "array",
+          "description": "Interest rates charged against lending balances.",
+          "items": {
+            "$ref": "BankingProductLendingRateV3.json"
+          }
+        },
+        "instalments": {
+          "$ref": "BankingProductInstalments.json"
+        }
+      }
+    }
+  ]
+}

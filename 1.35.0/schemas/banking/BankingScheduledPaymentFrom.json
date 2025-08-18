@@ -2,9 +2,12 @@
   "description": "Object containing details of the source of the payment. Currently only specifies an _accountId_ but provided as an object to facilitate future extensibility and consistency with the _to_ object.",
   "properties": {
     "accountId": {
-      "description": "_accountId_ of the account that is the source of funds for the payment.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
     }
   },
   "required": [

@@ -1,4 +1,5 @@
 {
+  "description": "Mandatory if the _addressUType_ value is `simple`.",
   "properties": {
     "addressLine1": {
       "description": "First line of the standard address object.",

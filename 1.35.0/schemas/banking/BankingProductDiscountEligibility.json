@@ -1,7 +1,7 @@
 {
   "properties": {
     "additionalInfo": {
-      "description": "Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc).",
+      "description": "Display text providing more information on this eligibility constraint. Mandatory if the [_discountEligibilityType_](#tocSproductdiscounteligibilitydoc) value is `OTHER`.",
       "type": [
         "string",
         "null"

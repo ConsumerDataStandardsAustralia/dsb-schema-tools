@@ -14,6 +14,7 @@
       "x-cds-type": "AmountString"
     },
     "maturityCurrency": {
+      "default": "AUD",
       "description": "If absent assumes `AUD`.",
       "type": [
         "string",

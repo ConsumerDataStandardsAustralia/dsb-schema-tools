@@ -31,9 +31,12 @@
       "$ref": "BankingScheduledPaymentRecurrence.json"
     },
     "scheduledPaymentId": {
-      "description": "A unique ID of the scheduled payment adhering to the standards for ID permanence.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingScheduledPaymentId.json"
+        }
+      ],
+      "description": "Unique identifier for the scheduled payment."
     },
     "status": {
       "description": "Indicates whether the schedule is currently active. The value `SKIP` is equivalent to `ACTIVE` except that the customer has requested the next normal occurrence to be skipped.",

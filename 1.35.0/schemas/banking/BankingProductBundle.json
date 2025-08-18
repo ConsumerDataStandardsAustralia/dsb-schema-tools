@@ -24,10 +24,9 @@
       "type": "string"
     },
     "productIds": {
-      "description": "Array of product IDs for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.",
+      "description": "Array of _productID_ values for products included in the bundle that are available via the product endpoints. Note that this array is not intended to represent a comprehensive model of the products included in the bundle and some products available for the bundle may not be available via the product reference endpoints.",
       "items": {
-        "type": "string",
-        "x-cds-type": "ASCIIString"
+        "$ref": "BankingProductId.json"
       },
       "type": [
         "array",

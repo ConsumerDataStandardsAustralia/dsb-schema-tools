@@ -1,9 +1,12 @@
 {
   "properties": {
     "accountId": {
-      "description": "A unique ID of the account adhering to the standards for ID permanence.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
     },
     "authorisedEntity": {
       "$ref": "BankingAuthorisedEntity.json"
