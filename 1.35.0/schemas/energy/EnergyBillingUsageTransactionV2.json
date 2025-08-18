@@ -1,16 +1,16 @@
 {
   "properties": {
     "adjustments": {
-      "description": "Optional array of adjustments arising for this transaction",
+      "description": "Optional array of adjustments arising for this transaction.",
       "items": {
         "properties": {
           "amount": {
-            "description": "The amount of the adjustment",
+            "description": "The amount of the adjustment.",
             "type": "string",
             "x-cds-type": "AmountString"
           },
           "description": {
-            "description": "A free text description of the adjustment",
+            "description": "A free text description of the adjustment.",
             "type": "string"
           }
         },
@@ -26,16 +26,16 @@
       ]
     },
     "amount": {
-      "description": "The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit",
+      "description": "The amount charged or credited for this transaction prior to any adjustments being applied. A negative value indicates a credit.",
       "type": "string",
       "x-cds-type": "AmountString"
     },
     "calculationFactors": {
-      "description": "Additional calculation factors that inform the transaction",
+      "description": "Additional calculation factors that inform the transaction.",
       "items": {
         "properties": {
           "type": {
-            "description": "The type of the calculation factor",
+            "description": "The type of the calculation factor.",
             "enum": [
               "DLF",
               "MLF"
@@ -43,7 +43,7 @@
             "type": "string"
           },
           "value": {
-            "description": "The value of the calculation factor",
+            "description": "The value of the calculation factor.",
             "type": "number"
           }
         },
@@ -59,62 +59,60 @@
       ]
     },
     "description": {
-      "description": "Optional description of the transaction that can be used for display purposes",
+      "description": "Optional description of the transaction that can be used for display purposes.",
       "type": [
         "string",
         "null"
       ]
     },
     "endDate": {
-      "description": "Date and time when the usage period ends",
+      "description": "Date and time when the usage period ends.",
       "type": "string",
       "x-cds-type": "DateTimeString"
     },
     "invoiceNumber": {
-      "description": "The number of the invoice in which this transaction is included if it has been issued",
+      "description": "The number of the invoice in which this transaction is included if it has been issued.",
       "type": [
         "string",
         "null"
       ]
     },
     "isEstimate": {
-      "description": "Flag indicating if the usage is estimated or actual.  True indicates estimate.  False or absent indicates actual",
+      "default": false,
+      "description": "Flag indicating if the usage is estimated or actual. `true` indicates estimate. `false` or absent indicates actual.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "measureUnit": {
-      "description": "The measurement unit of rate. Assumed to be KWH if absent",
-      "enum": [
-        "KWH",
-        "KVA",
-        "KVAR",
-        "KVARH",
-        "KW",
-        "DAYS",
-        "METER",
-        "MONTH"
+      "allOf": [
+        {
+          "$ref": "MeasureUnitEnum.json"
+        }
       ],
+      "default": "KWH",
+      "description": "The measurement unit of rate. Assumed to be `KWH` if absent.",
       "type": [
         "string",
         "null"
       ]
     },
     "servicePointId": {
-      "description": "The ID of the service point to which this transaction applies if any",
-      "type": [
-        "string",
-        "null"
-      ]
+      "allOf": [
+        {
+          "$ref": "EnergyServicePointId.json"
+        }
+      ],
+      "description": "Unique identifier for the service point."
     },
     "startDate": {
-      "description": "Date and time when the usage period starts",
+      "description": "Date and time when the usage period starts.",
       "type": "string",
       "x-cds-type": "DateTimeString"
     },
     "timeOfUseType": {
-      "description": "The time of use type that the transaction applies to",
+      "description": "The time of use type that the transaction applies to.",
       "enum": [
         "PEAK",
         "OFF_PEAK",
@@ -130,7 +128,7 @@
       "type": "string"
     },
     "usage": {
-      "description": "The usage for the period in measure unit.  A negative value indicates power generated",
+      "description": "The usage for the period in measure unit. A negative value indicates power generated.",
       "type": "number"
     }
   },

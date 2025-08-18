@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "balance": {
-          "description": "The current balance of the account.  A positive value indicates that amount is owing to be paid.  A negative value indicates that the account is in credit",
+          "description": "The current balance of the account. A positive value indicates that amount is owing to be paid. A negative value indicates that the account is in credit.",
           "type": "string",
           "x-cds-type": "AmountString"
         }

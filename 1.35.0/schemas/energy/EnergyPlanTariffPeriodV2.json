@@ -1,217 +1,281 @@
 {
-  "description": "Array of tariff periods",
-  "items": {
-    "properties": {
-      "bandedDailySupplyCharges": {
-        "description": "Array representing banded daily supply charge rates.  Mandatory if dailySupplyChargeType is BAND",
-        "items": {
-          "properties": {
-            "measureUnit": {
-              "description": "The measurement unit of rate. Assumed to be DAYS if absent",
-              "enum": [
-                "KWH",
-                "KVA",
-                "KVAR",
-                "KVARH",
-                "KW",
-                "DAYS",
-                "METER",
-                "MONTH"
-              ],
-              "type": "string"
-            },
-            "unitPrice": {
-              "description": "The amount of daily supply charge for the band, in dollars per day exclusive of GST",
-              "type": "string",
-              "x-cds-type": "AmountString"
-            },
-            "volume": {
-              "description": "Volume the charge applies to",
-              "type": "number"
-            }
-          },
-          "required": [
-            "unitPrice"
-          ],
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "dailySupplyCharge": {
-        "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if dailySupplyChargeType is SINGLE",
-        "type": "string",
-        "x-cds-type": "AmountString"
-      },
-      "dailySupplyChargeType": {
-        "description": "Specifies if daily supply charge is single or banded.",
-        "enum": [
-          "SINGLE",
-          "BAND"
-        ],
-        "type": "string"
-      },
-      "demandCharges": {
-        "description": "Array of demand charges.  Required if rateBlockUType is demandCharges",
-        "items": {
-          "properties": {
-            "amount": {
-              "description": "The charge amount per  measure unit exclusive of GST",
-              "type": "string",
-              "x-cds-type": "AmountString"
-            },
-            "chargePeriod": {
-              "description": "Charge period for the demand tariff",
-              "enum": [
-                "DAY",
-                "MONTH",
-                "TARIFF_PERIOD"
-              ],
-              "type": "string"
-            },
-            "days": {
-              "description": "The days that the demand tariff applies to",
-              "items": {
-                "enum": [
-                  "SUN",
-                  "MON",
-                  "TUE",
-                  "WED",
-                  "THU",
-                  "FRI",
-                  "SAT",
-                  "PUBLIC_HOLIDAYS"
-                ],
-                "type": "string"
-              },
-              "type": "array"
-            },
-            "description": {
-              "description": "Description of the charge",
-              "type": "string"
-            },
-            "displayName": {
-              "description": "Display name of the charge",
-              "type": "string"
-            },
-            "endTime": {
-              "description": "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            },
-            "maxDemand": {
-              "description": "Maximum demand for this demand tariff in kW.  If present, must be higher than the value of the minDemand field",
-              "type": "string",
-              "x-cds-type": "AmountString"
-            },
-            "measureUnit": {
-              "description": "The measurement unit of charge amount. Assumed to be KWH if absent",
-              "enum": [
-                "KWH",
-                "KVA",
-                "KVAR",
-                "KVARH",
-                "KW",
-                "DAYS",
-                "METER",
-                "MONTH"
-              ],
-              "type": "string"
-            },
-            "measurementPeriod": {
-              "description": "Application period for the demand tariff",
-              "enum": [
-                "DAY",
-                "MONTH",
-                "TARIFF_PERIOD"
-              ],
-              "type": "string"
-            },
-            "minDemand": {
-              "description": "Minimum demand for this demand tariff in kW.  If absent then 0 is assumed",
-              "type": "string",
-              "x-cds-type": "AmountString"
-            },
-            "startTime": {
-              "description": "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            }
-          },
-          "required": [
-            "displayName",
-            "amount",
-            "startTime",
-            "endTime",
-            "measurementPeriod",
-            "chargePeriod"
-          ],
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "displayName": {
-        "description": "The name of the tariff period",
-        "type": "string"
-      },
-      "endDate": {
-        "description": "The end date of the tariff period in a calendar year.  Formatted in mm-dd format",
-        "type": "string"
-      },
-      "rateBlockUType": {
-        "description": "Specifies the type of rate applicable to this tariff period",
-        "enum": [
-          "singleRate",
-          "timeOfUseRates",
-          "demandCharges"
-        ],
-        "type": "string"
-      },
-      "singleRate": {
-        "description": "Object representing a single rate.  Required if rateBlockUType is singleRate",
+  "properties": {
+    "bandedDailySupplyCharges": {
+      "description": "Array representing banded daily supply charge rates. Mandatory if _dailySupplyChargeType_ is `BAND`.",
+      "items": {
         "properties": {
-          "description": {
-            "description": "Description of the rate",
+          "measureUnit": {
+            "allOf": [
+              {
+                "$ref": "MeasureUnitEnum.json"
+              }
+            ],
+            "default": "DAYS",
+            "description": "The measurement unit of rate. Assumed to be `DAYS` if absent.",
             "type": "string"
           },
-          "displayName": {
-            "description": "Display name of the rate",
-            "type": "string"
-          },
-          "generalUnitPrice": {
-            "description": "The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST.  Only required if pricingModel field is ‘QUOTA’",
+          "unitPrice": {
+            "description": "The amount of daily supply charge for the band, in dollars per day exclusive of GST.",
             "type": "string",
             "x-cds-type": "AmountString"
           },
+          "volume": {
+            "description": "Volume the charge applies to.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "unitPrice"
+        ],
+        "type": "object"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "dailySupplyCharge": {
+      "description": "The amount of access charge for the tariff period, in dollars per day exclusive of GST. Mandatory if _dailySupplyChargeType_ is `SINGLE`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "dailySupplyChargeType": {
+      "description": "Specifies if daily supply charge is single or banded.",
+      "enum": [
+        "SINGLE",
+        "BAND"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "demandCharges": {
+      "description": "Array of demand charges. Required if _rateBlockUType_ is `demandCharges`.",
+      "items": {
+        "properties": {
+          "amount": {
+            "description": "The charge amount per measure unit exclusive of GST.",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "chargePeriod": {
+            "description": "Charge period for the demand tariff.",
+            "enum": [
+              "DAY",
+              "MONTH",
+              "TARIFF_PERIOD"
+            ],
+            "type": "string"
+          },
+          "days": {
+            "description": "The days that the demand tariff applies to.",
+            "items": {
+              "$ref": "EnergyDaysEnum.json"
+            },
+            "type": "array"
+          },
+          "description": {
+            "description": "Description of the charge.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Display name of the charge.",
+            "type": "string"
+          },
+          "endTime": {
+            "description": "End of the period. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+            "type": "string",
+            "x-cds-type": "ExternalRef"
+          },
+          "maxDemand": {
+            "description": "Maximum demand for this demand tariff in kW. If present, must be higher than the value of the _minDemand_ field.",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "measureUnit": {
+            "allOf": [
+              {
+                "$ref": "MeasureUnitEnum.json"
+              }
+            ],
+            "default": "KWH",
+            "description": "The measurement unit of charge amount. Assumed to be `KWH` if absent.",
+            "type": "string"
+          },
+          "measurementPeriod": {
+            "description": "Application period for the demand tariff.",
+            "enum": [
+              "DAY",
+              "MONTH",
+              "TARIFF_PERIOD"
+            ],
+            "type": "string"
+          },
+          "minDemand": {
+            "default": "0.00",
+            "description": "Minimum demand for this demand tariff in kW. If absent then `0.00` is assumed.",
+            "type": "string",
+            "x-cds-type": "AmountString"
+          },
+          "startTime": {
+            "description": "Start of the period. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+            "type": "string",
+            "x-cds-type": "ExternalRef"
+          }
+        },
+        "required": [
+          "displayName",
+          "amount",
+          "startTime",
+          "endTime",
+          "measurementPeriod",
+          "chargePeriod"
+        ],
+        "type": "object"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The name of the tariff period.",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "The end date of the tariff period in a calendar year. Formatted in mm-dd format.",
+      "type": "string"
+    },
+    "rateBlockUType": {
+      "description": "Specifies the type of rate applicable to this tariff period.",
+      "enum": [
+        "singleRate",
+        "timeOfUseRates",
+        "demandCharges"
+      ],
+      "type": "string"
+    },
+    "singleRate": {
+      "description": "Object representing a single rate. Required if _rateBlockUType_ is `singleRate`.",
+      "properties": {
+        "description": {
+          "description": "Description of the rate.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "displayName": {
+          "description": "Display name of the rate.",
+          "type": "string"
+        },
+        "generalUnitPrice": {
+          "description": "The block rate (unit price) for any usage above the included fixed usage, in dollars per kWh inclusive of GST. Only required if _pricingModel_ field is `QUOTA`.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-cds-type": "AmountString"
+        },
+        "period": {
+          "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "x-cds-type": "ExternalRef"
+        },
+        "rates": {
+          "description": "Array of rates in order of usage volume.",
+          "items": {
+            "properties": {
+              "measureUnit": {
+                "allOf": [
+                  {
+                    "$ref": "MeasureUnitEnum.json"
+                  }
+                ],
+                "default": "KWH",
+                "description": "The measurement unit of rate. Assumed to be `KWH` if absent.",
+                "type": "string"
+              },
+              "unitPrice": {
+                "description": "Unit price of usage per measure unit (exclusive of GST).",
+                "type": "string",
+                "x-cds-type": "AmountString"
+              },
+              "volume": {
+                "description": "Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "unitPrice"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "displayName",
+        "rates"
+      ],
+      "type": [
+        "object",
+        "null"
+      ],
+      "x-conditional": [
+        "generalUnitPrice"
+      ]
+    },
+    "startDate": {
+      "description": "The start date of the tariff period in a calendar year. Formatted in mm-dd format.",
+      "type": "string"
+    },
+    "timeOfUseRates": {
+      "description": "Array of objects representing time of use rates that apply throughout the _tariffPeriod_. Required if _rateBlockUType_ is `timeOfUseRates`.",
+      "items": {
+        "properties": {
+          "description": {
+            "description": "Description of the rate.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Display name of the rate.",
+            "type": "string"
+          },
           "period": {
-            "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+            "default": "P1Y",
+            "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to `P1Y` if absent.",
             "type": "string",
             "x-cds-type": "ExternalRef"
           },
           "rates": {
-            "description": "Array of controlled load rates in order of usage volume",
+            "description": "Array of rates in order of usage volume.",
             "items": {
               "properties": {
                 "measureUnit": {
-                  "description": "The measurement unit of rate. Assumed to be KWH if absent",
-                  "enum": [
-                    "KWH",
-                    "KVA",
-                    "KVAR",
-                    "KVARH",
-                    "KW",
-                    "DAYS",
-                    "METER",
-                    "MONTH"
+                  "allOf": [
+                    {
+                      "$ref": "MeasureUnitEnum.json"
+                    }
                   ],
+                  "default": "KWH",
+                  "description": "The measurement unit of rate. Assumed to be `KWH` if absent.",
                   "type": "string"
                 },
                 "unitPrice": {
-                  "description": "Unit price of usage per measure unit (exclusive of GST)",
+                  "description": "Unit price of usage per measure unit (exclusive of GST).",
                   "type": "string",
                   "x-cds-type": "AmountString"
                 },
                 "volume": {
-                  "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
+                  "description": "Volume in kWh that this rate applies to. Only applicable for 'stepped' rates where different rates apply for different volumes of usage in a period.",
                   "type": "number"
                 }
               },
@@ -221,187 +285,104 @@
               "type": "object"
             },
             "type": "array"
+          },
+          "timeOfUse": {
+            "description": "Array of time windows for which this time of use rate applies.",
+            "items": {
+              "properties": {
+                "days": {
+                  "description": "The days that this time window applies to.",
+                  "items": {
+                    "$ref": "EnergyDaysEnum.json"
+                  },
+                  "type": "array"
+                },
+                "endTime": {
+                  "description": "The end of the time window per day for which the rate applies. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                  "type": "string",
+                  "x-cds-type": "ExternalRef"
+                },
+                "startTime": {
+                  "description": "The beginning of the time window per day for which the rate applies. Formatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
+                  "type": "string",
+                  "x-cds-type": "ExternalRef"
+                }
+              },
+              "required": [
+                "days",
+                "startTime",
+                "endTime"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "type": {
+            "description": "The type of usage that the rate applies to.",
+            "enum": [
+              "PEAK",
+              "OFF_PEAK",
+              "SHOULDER",
+              "SHOULDER1",
+              "SHOULDER2"
+            ],
+            "type": "string"
           }
         },
         "required": [
           "displayName",
-          "rates"
+          "type",
+          "rates",
+          "timeOfUse"
         ],
-        "type": "object",
-        "x-conditional": [
-          "generalUnitPrice"
-        ]
+        "type": "object"
       },
-      "startDate": {
-        "description": "The start date of the tariff period in a calendar year.  Formatted in mm-dd format",
-        "type": "string"
-      },
-      "timeOfUseRates": {
-        "description": "Array of objects representing time of use rates.  Required if rateBlockUType is timeOfUseRates",
-        "items": {
-          "properties": {
-            "description": {
-              "description": "Description of the rate",
-              "type": "string"
-            },
-            "displayName": {
-              "description": "Display name of the rate",
-              "type": "string"
-            },
-            "period": {
-              "description": "Usage period for which the block rate applies. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Defaults to P1Y if absent",
-              "type": "string",
-              "x-cds-type": "ExternalRef"
-            },
-            "rates": {
-              "description": "Array of controlled load rates in order of usage volume",
-              "items": {
-                "properties": {
-                  "measureUnit": {
-                    "description": "The measurement unit of rate. Assumed to be KWH if absent",
-                    "enum": [
-                      "KWH",
-                      "KVA",
-                      "KVAR",
-                      "KVARH",
-                      "KW",
-                      "DAYS",
-                      "METER",
-                      "MONTH"
-                    ],
-                    "type": "string"
-                  },
-                  "unitPrice": {
-                    "description": "Unit price of usage per  measure unit (exclusive of GST)",
-                    "type": "string",
-                    "x-cds-type": "AmountString"
-                  },
-                  "volume": {
-                    "description": "Volume in kWh that this rate applies to.  Only applicable for ‘stepped’ rates where different rates apply for different volumes of usage in a period",
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "unitPrice"
-                ],
-                "type": "object"
-              },
-              "type": "array"
-            },
-            "timeOfUse": {
-              "description": "Array of times of use",
-              "items": {
-                "properties": {
-                  "days": {
-                    "description": "The days that the rate applies to",
-                    "items": {
-                      "enum": [
-                        "SUN",
-                        "MON",
-                        "TUE",
-                        "WED",
-                        "THU",
-                        "FRI",
-                        "SAT",
-                        "PUBLIC_HOLIDAYS"
-                      ],
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "endTime": {
-                    "description": "End of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                    "type": "string",
-                    "x-cds-type": "ExternalRef"
-                  },
-                  "startTime": {
-                    "description": "Start of the period.\n\nFormatted according to [ISO 8601 Times](https://en.wikipedia.org/wiki/ISO_8601#Times). If the time is provided without a UTC offset, the time zone will be determined by the value of EnergyPlanContract.timeZone.",
-                    "type": "string",
-                    "x-cds-type": "ExternalRef"
-                  }
-                },
-                "required": [
-                  "days",
-                  "startTime",
-                  "endTime"
-                ],
-                "type": "object"
-              },
-              "type": "array"
-            },
-            "type": {
-              "description": "The type of usage that the rate applies to",
-              "enum": [
-                "PEAK",
-                "OFF_PEAK",
-                "SHOULDER",
-                "SHOULDER1",
-                "SHOULDER2"
-              ],
-              "type": "string"
-            }
-          },
-          "required": [
-            "displayName",
-            "type",
-            "rates",
-            "timeOfUse"
-          ],
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "timeZone": {
-        "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
-        "enum": [
-          "LOCAL",
-          "AEST"
-        ],
-        "type": "string"
-      },
-      "type": {
-        "description": "Type of charge. Assumed to be other if absent",
-        "enum": [
-          "ENVIRONMENTAL",
-          "REGULATED",
-          "NETWORK",
-          "METERING",
-          "RETAIL_SERVICE",
-          "RCTI",
-          "OTHER"
-        ],
-        "type": "string"
-      }
+      "type": [
+        "array",
+        "null"
+      ]
     },
-    "required": [
-      "displayName",
-      "startDate",
-      "endDate",
-      "rateBlockUType"
-    ],
-    "type": "object",
-    "x-conditional": [
-      "singleRate",
-      "timeOfUseRates",
-      "demandCharges",
-      "dailySupplyCharge",
-      "bandedDailySupplyCharges"
-      
-    ],
-    "allOf": [
-      {
-        "if":   {"properties": {"rateBlockUType": { "const": "singleRate" }}},
-        "then": { "required": ["singleRate"]}
-      },
-      {
-        "if":   {  "properties": { "rateBlockUType" :{"const": "timeOfUseRates" }}},
-        "then": { "required": ["timeOfUseRates"]}
-      },
-      {
-        "if":   {  "properties": { "rateBlockUType" :{"const": "demandCharges" }}},
-        "then": { "required": ["demandCharges"]}
-      }     
-    ]
+    "timeZone": {
+      "description": "Specifies the charge specific time zone for calculation of the time of use thresholds. If absent, timezone value in EnergyPlanContract is assumed.",
+      "enum": [
+        "LOCAL",
+        "AEST"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "default": "OTHER",
+      "description": "Type of charge. Assumed to be `OTHER` if absent.",
+      "enum": [
+        "ENVIRONMENTAL",
+        "REGULATED",
+        "NETWORK",
+        "METERING",
+        "RETAIL_SERVICE",
+        "RCTI",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
   },
-  "type": "array"
+  "required": [
+    "displayName",
+    "startDate",
+    "endDate",
+    "rateBlockUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "singleRate",
+    "timeOfUseRates",
+    "demandCharges",
+    "dailySupplyCharge",
+    "bandedDailySupplyCharges"
+  ]
 }

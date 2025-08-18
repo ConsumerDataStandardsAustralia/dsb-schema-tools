@@ -1,12 +1,12 @@
 {
   "properties": {
     "amount": {
-      "description": "The amount paid",
+      "description": "The amount paid.",
       "type": "string",
       "x-cds-type": "AmountString"
     },
     "method": {
-      "description": "The method of payment",
+      "description": "The method of payment.",
       "enum": [
         "DIRECT_DEBIT",
         "CARD",

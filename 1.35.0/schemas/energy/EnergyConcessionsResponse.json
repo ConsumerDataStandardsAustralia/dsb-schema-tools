@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "concessions": {
-          "description": "Array may be empty if no concessions exist",
+          "description": "Array may be empty if no concessions exist.",
           "items": {
             "$ref": "EnergyConcession.json"
           },

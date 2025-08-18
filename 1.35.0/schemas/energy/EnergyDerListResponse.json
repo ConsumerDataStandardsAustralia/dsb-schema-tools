@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "derRecords": {
-          "description": "Array of meter reads",
+          "description": "Array of meter reads.",
           "items": {
             "$ref": "EnergyDerRecord.json"
           },

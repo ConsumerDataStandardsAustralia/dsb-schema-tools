@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "reads": {
-          "description": "Array of meter reads sorted by NMI in ascending order followed by readStartDate in descending order",
+          "description": "Array of meter reads sorted by NMI in ascending order followed by _readStartDate_ in descending order.",
           "items": {
             "$ref": "EnergyUsageRead.json"
           },

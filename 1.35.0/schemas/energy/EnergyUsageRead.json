@@ -1,11 +1,11 @@
 {
   "properties": {
     "basicRead": {
-      "description": "Mandatory if readUType is set to basicRead",
+      "description": "Mandatory if _readUType_ is set to `basicRead`.",
       "properties": {
         "quality": {
           "default": "ACTUAL",
-          "description": "The quality of the read taken.  If absent then assumed to be ACTUAL",
+          "description": "The quality of the read taken. If absent then assumed to be `ACTUAL`.",
           "enum": [
             "ACTUAL",
             "SUBSTITUTE",
@@ -17,7 +17,7 @@
           ]
         },
         "value": {
-          "description": "Meter read value.  If positive then it means consumption, if negative it means export",
+          "description": "Meter read value. If positive then it means consumption, if negative it means export.",
           "type": "number"
         }
       },
@@ -30,21 +30,21 @@
       ]
     },
     "controlledLoad": {
-      "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime",
+      "description": "Indicates whether the energy recorded by this register is created under a Controlled Load regime.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "intervalRead": {
-      "description": "Mandatory if readUType is set to intervalRead",
+      "description": "Mandatory if _readUType_ is set to `intervalRead`.",
       "properties": {
         "aggregateValue": {
-          "description": "The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export",
+          "description": "The aggregate sum of the interval read values. If positive then it means net consumption, if negative it means net export.",
           "type": "number"
         },
         "intervalReads": {
-          "description": "Array of Interval read values. If positive then it means consumption, if negative it means export. Required when interval-reads query parameter equals FULL or  MIN_30.<br>Each read value indicates the read for the interval specified by readIntervalLength beginning at midnight of readStartDate (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval)",
+          "description": "Array of Interval read values. If positive then it means consumption, if negative it means export. Required when _interval-reads_ query parameter equals `FULL` or `MIN_30`.<br>Each read value indicates the read for the interval specified by _readIntervalLength_ beginning at midnight of _readStartDate_ (for example 00:00 to 00:30 would be the first reading in a 30 minute Interval).",
           "items": {
             "type": "number"
           },
@@ -54,7 +54,7 @@
           ]
         },
         "readIntervalLength": {
-          "description": "Read interval length in minutes. Required when interval-reads query parameter equals FULL or MIN_30",
+          "description": "Read interval length in minutes. Required when _interval-reads_ query parameter equals `FULL` or `MIN_30`.",
           "type": [
             "integer",
             "null"
@@ -62,16 +62,17 @@
           "x-cds-type": "PositiveInteger"
         },
         "readQualities": {
-          "description": " Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30",
+          "description": " Specifies quality of reads that are not `ACTUAL`. For read indices that are not specified, quality is assumed to be `ACTUAL`. If not present, all quality of all reads are assumed to be actual. Required when _interval-reads_ query parameter equals `FULL` or `MIN_30`.",
           "items": {
             "properties": {
               "endInterval": {
-                "description": "End interval for read quality flag",
+                "description": "End interval for read quality flag.",
+                "example": 1,
                 "type": "integer",
                 "x-cds-type": "PositiveInteger"
               },
               "quality": {
-                "description": "The quality of the read taken",
+                "description": "The quality of the read taken.",
                 "enum": [
                   "SUBSTITUTE",
                   "FINAL_SUBSTITUTE"
@@ -79,7 +80,8 @@
                 "type": "string"
               },
               "startInterval": {
-                "description": "Start interval for read quality flag. First read begins at 1",
+                "description": "Start interval for read quality flag. First read begins at `1`.",
+                "example": 1,
                 "type": "integer",
                 "x-cds-type": "PositiveInteger"
               }
@@ -111,14 +113,14 @@
       ]
     },
     "meterId": {
-      "description": "Meter id/serial number as it appears in customer’s bill. ID permanence rules do not apply.",
+      "description": "Meter id/serial number as it appears in customer's bill. ID permanence rules do not apply.",
       "type": [
         "string",
         "null"
       ]
     },
     "readEndDate": {
-      "description": "Date when the meter reads end in AEST.  If absent then assumed to be equal to readStartDate.  In this case the entry represents data for a single date specified by readStartDate.",
+      "description": "Date when the meter reads end in AEST. If absent then assumed to be equal to _readStartDate_. In this case the entry represents data for a single date specified by _readStartDate_.",
       "type": [
         "string",
         "null"
@@ -126,12 +128,12 @@
       "x-cds-type": "DateString"
     },
     "readStartDate": {
-      "description": "Date when the meter reads start in AEST and assumed to start from 12:00 am AEST.",
+      "description": "Date when the meter reads start in AEST and assumed to start from 12:00am AEST.",
       "type": "string",
       "x-cds-type": "DateString"
     },
     "readUType": {
-      "description": "Specify the type of the meter read data",
+      "description": "Specify the type of the meter read data.",
       "enum": [
         "basicRead",
         "intervalRead"
@@ -139,19 +141,23 @@
       "type": "string"
     },
     "registerId": {
-      "description": "Register ID of the meter register where the meter reads are obtained",
+      "description": "Register ID of the meter register where the meter reads are obtained.",
       "type": [
         "string",
         "null"
       ]
     },
     "registerSuffix": {
-      "description": "Register suffix of the meter register where the meter reads are obtained",
+      "description": "Register suffix of the meter register where the meter reads are obtained.",
       "type": "string"
     },
     "servicePointId": {
-      "description": "Tokenised ID of the service point to be used for referring to the service point in the CDR API suite.  To be created in accordance with CDR ID permanence requirements",
-      "type": "string"
+      "allOf": [
+        {
+          "$ref": "EnergyServicePointId.json"
+        }
+      ],
+      "description": "Unique identifier for the service point."
     },
     "unitOfMeasure": {
       "description": "Unit of measure of the meter reads. Refer to Appendix B of <a href='https://www.aemo.com.au/-/media/files/stakeholder_consultation/consultations/nem-consultations/2019/5ms-metering-package-2/final-determination/mdff-specification-nem12-nem13-v21-final-determination-clean.pdf?la=en&hash=03FCBA0D60E091DE00F2361AE76206EA'>MDFF Specification NEM12 NEM13 v2.1</a> for a list of possible values.",
@@ -172,15 +178,5 @@
   "x-conditional": [
     "basicRead",
     "intervalRead"
-  ],
-  "allOf": [
-    {
-      "if":   {"properties": {"readUType": { "const": "basicRead" }}},
-      "then": { "required": ["basicRead"]}
-    },
-    {
-      "if":   {"properties": {"readUType": { "const": "intervalRead" }}},
-      "then": { "required": ["intervalRead"]}
-    }   
   ]
 }

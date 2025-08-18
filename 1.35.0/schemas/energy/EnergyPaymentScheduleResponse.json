@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "paymentSchedules": {
-          "description": "Array may be empty if no payment schedule exist",
+          "description": "Array may be empty if no payment schedules exist.",
           "items": {
             "$ref": "EnergyPaymentSchedule.json"
           },

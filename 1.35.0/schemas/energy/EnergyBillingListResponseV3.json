@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "transactions": {
-          "description": "Array of transactions sorted by date and time in descending order",
+          "description": "Array of transactions sorted by date and time in descending order.",
           "items": {
             "$ref": "EnergyBillingTransactionV3.json"
           },

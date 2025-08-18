@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "accounts": {
-          "description": "Array of accounts",
+          "description": "Array of accounts.",
           "items": {
             "$ref": "EnergyAccountV2.json"
           },

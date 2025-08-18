@@ -11,7 +11,7 @@
       ],
       "properties": {
         "meteringCharges": {
-          "description": "Charges for metering included in the plan",
+          "description": "Charges for metering included in the plan.",
           "type": "array",
           "items": {
             "type": "object",
@@ -22,83 +22,47 @@
             "properties": {
               "displayName": {
                 "type": "string",
-                "description": "Display name of the charge"
+                "description": "Display name of the charge."
               },
               "description": {
                 "type": "string",
-                "description": "Description of the charge"
+                "description": "Description of the charge."
               },
               "minimumValue": {
                 "type": "string",
                 "x-cds-type": "AmountString",
-                "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified"
+                "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified."
               },
               "maximumValue": {
                 "type": "string",
                 "x-cds-type": "AmountString",
-                "description": "The upper limit of the charge if the charge could occur in a range"
+                "description": "The upper limit of the charge if the charge could occur in a range."
               },
               "period": {
                 "type": "string",
                 "x-cds-type": "ExternalRef",
-                "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)"
+                "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)."
               }
             }
           }
         },
         "gasContract": {
-          "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to GAS or DUAL",
-          "$ref": "EnergyPlanContractFullV3.json"
+          "description": "The details of the terms for the supply of electricity under this plan. Is mandatory if _fuelType_ is set to `GAS` or `DUAL`.",
+          "allOf": [
+            {
+              "$ref": "EnergyPlanContractFullV3.json"
+            }
+          ]
         },
         "electricityContract": {
-          "description": "The details of the terms for the supply of electricity under this plan.  Is mandatory if fuelType is set to ELECTRICITY or DUAL",
-          "$ref": "EnergyPlanContractFullV3.json"
+          "description": "The details of the terms for the supply of electricity under this plan. Is mandatory if _fuelType_ is set to `ELECTRICITY` or `DUAL`.",
+          "allOf": [
+            {
+              "$ref": "EnergyPlanContractFullV3.json"
+            }
+          ]
         }
-      },
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "fuelType": {
-                "const": "ELECTRICITY"
       }
-            }
-          },
-          "then": {
-            "required": [
-              "electricityContract"
-            ]
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "fuelType": {
-                "const": "DUAL"
-              }
-            }
-          },
-          "then": {
-            "required": [
-              "electricityContract", "gasContract"
-            ]
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "fuelType": {
-                "const": "GAS"
-              }
-            }
-          },
-          "then": {
-            "required": [
-              "gasContract"
-            ]
-          }
-        }
-      ]
     }
   ]
 }

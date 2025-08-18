@@ -1,7 +1,7 @@
 {
   "properties": {
     "self": {
-      "description": "Fully qualified link that generated the current response document",
+      "description": "Fully qualified link that generated the current response document.",
       "type": "string",
       "x-cds-type": "URIString"
     }

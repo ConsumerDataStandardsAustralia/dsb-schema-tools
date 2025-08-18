@@ -3,7 +3,7 @@
     "data": {
       "properties": {
         "plans": {
-          "description": "Array of plans",
+          "description": "Array of plans.",
           "items": {
             "$ref": "EnergyPlan.json"
           },
@@ -19,10 +19,7 @@
       "$ref": "LinksPaginated.json"
     },
     "meta": {
-      "oneOf": [
-        {"type": "null"},
-        {"$ref": "MetaPaginated.json"}
-     ]  
+      "$ref": "MetaPaginated.json"
     }
   },
   "required": [

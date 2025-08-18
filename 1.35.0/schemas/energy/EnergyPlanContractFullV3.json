@@ -16,7 +16,7 @@
       "properties": {
         "termType": {
           "type": "string",
-          "description": "The term for the contract.  If absent assumes no specified term",
+          "description": "The term for the contract. If absent assumes no specified term.",
           "enum": [
             "1_YEAR",
             "2_YEAR",
@@ -29,14 +29,14 @@
         },
         "benefitPeriod": {
           "type": "string",
-          "description": "Description of the benefit period.  Should only be present if termType has the value ONGOING"
+          "description": "Description of the benefit period. Should only be present if _termType_ has the value `ONGOING`."
         },
         "terms": {
           "type": "string",
-          "description": "Free text description of the terms for the contract"
+          "description": "Free text description of the terms for the contract."
         },
         "meterTypes": {
-          "description": "An array of the meter types that this contract is available for",
+          "description": "An array of the meter types that this contract is available for.",
           "type": "array",
           "items": {
             "type": "string"
@@ -45,10 +45,10 @@
         "coolingOffDays": {
           "type": "integer",
           "x-cds-type": "PositiveInteger",
-          "description": "Number of days in the cooling off period for the contract.  Mandatory for plans with type of MARKET "
+          "description": "Number of days in the cooling off period for the contract. Mandatory for plans with type of `MARKET`."
         },
         "billFrequency": {
-          "description": "An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)",
+          "description": "An array of the available billing schedules for this contract. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
           "type": "array",
           "items": {
             "type": "string"

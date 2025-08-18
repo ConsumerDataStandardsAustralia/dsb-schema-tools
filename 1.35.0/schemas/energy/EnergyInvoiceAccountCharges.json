@@ -1,18 +1,19 @@
 {
-  "description": "Object contains account level charges and credits related to electricity usage",
+  "description": "Object contains account level charges and credits related to electricity usage.",
   "properties": {
     "totalCharges": {
-      "description": "The aggregate total of account level charges for the period covered by the invoice",
+      "description": "The aggregate total of account level charges for the period covered by the invoice.",
       "type": "string",
       "x-cds-type": "AmountString"
     },
     "totalDiscounts": {
-      "description": "The aggregate total of account level discounts or credits for the period covered by the invoice",
+      "description": "The aggregate total of account level discounts or credits for the period covered by the invoice.",
       "type": "string",
       "x-cds-type": "AmountString"
     },
     "totalGst": {
-      "description": "The total GST for all account level charges.  If absent then zero is assumed",
+      "default": "0.00",
+      "description": "The total GST for all account level charges. If absent then zero is assumed.",
       "type": [
         "string",
         "null"
