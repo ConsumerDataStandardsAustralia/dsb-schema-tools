@@ -59,7 +59,27 @@
             }
           }
         }
-      }
+      },
+      "if": {
+        "properties": {
+          "openStatus": {
+            "const": "OPEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {"plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {"planOverview": {"type": "object"}},
+            "required": ["planOverview"]
+          }
+          }},
+        "required": [
+          "plans"
+        ]
+      }      
     }
   ]
 }

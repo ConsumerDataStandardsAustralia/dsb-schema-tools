@@ -86,5 +86,23 @@
     "payment",
     "demand",
     "otherCharges"
-  ]
+  ],
+      "allOf": [
+      {
+        "if":   {"properties": {"transactionUType": { "const": "usage" }}},
+        "then": { "required": ["usage"]}
+      },
+      {
+        "if":   {"properties": {"transactionUType": { "const": "demand" }}},
+        "then": { "required": ["demand"]}
+      },
+      {
+        "if":   {"properties": {"transactionUType": { "const": "onceOff" }}},
+        "then": { "required": ["onceOff"]}
+      },
+      {
+        "if":   {"properties": {"transactionUType": { "const": "payment" }}},
+        "then": { "required": ["payment"]}
+      }
+    ]
 }

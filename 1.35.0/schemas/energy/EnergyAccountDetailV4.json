@@ -133,7 +133,52 @@
                         "$ref": "EnergyPlanContractV3.json"
                       }
                     ]
-                  }
+                  },
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "fuelType": {
+                            "const": "ELECTRICITY"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "electricityContract"
+                        ]
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "fuelType": {
+                            "const": "DUAL"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "electricityContract",
+                          "gasContract"
+                        ]
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "fuelType": {
+                            "const": "GAS"
+                          }
+                        }
+                      },
+                      "then": {
+                        "required": [
+                          "gasContract"
+                        ]
+                      }
+                    }
+                  ]
                 }
               },
               "authorisedContacts": {
@@ -174,6 +219,38 @@
             }
           }
         }
+      },
+      "if": {
+        "properties": {
+          "openStatus": {
+            "const": "OPEN"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "plans": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "planOverview": {
+                  "type": "object"
+                },
+                "planDetail": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "planOverview",
+                "planDetail"
+              ]
+            }
+          }
+        },
+        "required": [
+          "plans"
+        ]
       }
     }
   ]

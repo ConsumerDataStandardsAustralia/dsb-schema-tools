@@ -61,7 +61,7 @@
             "properties": {
               "fuelType": {
                 "const": "ELECTRICITY"
-      }
+              }
             }
           },
           "then": {
@@ -80,7 +80,8 @@
           },
           "then": {
             "required": [
-              "electricityContract", "gasContract"
+              "electricityContract",
+              "gasContract"
             ]
           }
         },

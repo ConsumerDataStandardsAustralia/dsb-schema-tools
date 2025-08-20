@@ -155,7 +155,21 @@
       "x-conditional": [
         "bsb",
         "accountNumber"
-      ]
+      ],
+      "allOf": [
+        {
+          "if":   {
+            "allOf": [
+              {"required": ["isTokenised"]},
+              {"properties": {"isTokenised": { "const": true }}}
+            ]
+          },
+          "else": {
+
+                "required":  ["bsb", "accountNumber"]      
+          }
+        }   
+      ]      
     },
     "manualPayment": {
       "description": "Represents a manual payment schedule where the customer pays in response to a delivered statement. Mandatory if _paymentScheduleUType_ is set to `manualPayment`.",

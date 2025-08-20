@@ -49,5 +49,7 @@
   "type": "object",
   "x-conditional": [
     "creationDate"
-  ]
+  ],
+  "if":   {"properties": {"openStatus": { "const": "OPEN" }}},
+  "then": { "required": ["creationDate"]}
 }

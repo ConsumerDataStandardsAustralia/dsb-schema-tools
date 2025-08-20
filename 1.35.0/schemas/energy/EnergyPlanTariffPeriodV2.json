@@ -384,5 +384,19 @@
     "demandCharges",
     "dailySupplyCharge",
     "bandedDailySupplyCharges"
-  ]
+  ],
+    "allOf": [
+      {
+        "if":   {"properties": {"rateBlockUType": { "const": "singleRate" }}},
+        "then": { "required": ["singleRate"]}
+      },
+      {
+        "if":   {  "properties": { "rateBlockUType" :{"const": "timeOfUseRates" }}},
+        "then": { "required": ["timeOfUseRates"]}
+      },
+      {
+        "if":   {  "properties": { "rateBlockUType" :{"const": "demandCharges" }}},
+        "then": { "required": ["demandCharges"]}
+      }     
+    ]  
 }

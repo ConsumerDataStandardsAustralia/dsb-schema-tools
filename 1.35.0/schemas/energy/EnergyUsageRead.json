@@ -178,5 +178,15 @@
   "x-conditional": [
     "basicRead",
     "intervalRead"
-  ]
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"readUType": { "const": "basicRead" }}},
+      "then": { "required": ["basicRead"]}
+    },
+    {
+      "if":   {"properties": {"readUType": { "const": "intervalRead" }}},
+      "then": { "required": ["intervalRead"]}
+    }   
+  ]  
 }

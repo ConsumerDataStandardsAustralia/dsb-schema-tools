@@ -134,7 +134,13 @@
           "inverterSeries",
           "inverterModelNumber",
           "inverterDeviceCapacity"
-        ]
+        ],
+        "allOf": [
+          {
+            "if":   {"properties": {"equipmentType": { "const": "INVERTER" }}},
+            "then": { "required": ["manufacturerName", "inverterModelNumber","inverterSeries", "inverterDeviceCapacity"]}
+          }
+        ]	
       },
       "type": "array"
     },

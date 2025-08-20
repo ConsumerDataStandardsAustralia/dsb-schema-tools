@@ -22,5 +22,15 @@
   "x-conditional": [
     "simple",
     "paf"
+  ],
+  "allOf": [
+    {
+      "if":   {"properties": {"addressUType": { "const": "paf" }}},
+      "then": { "required": ["paf"]}
+    },
+    {
+      "if":   {"properties": {"addressUType": { "const": "simple" }}},
+      "then": { "required": ["simple"]}
+    }
   ]
 }

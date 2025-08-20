@@ -190,7 +190,18 @@
                 "startTime",
                 "endTime",
                 "additionalInfo"
-              ]
+              ],
+                "dependentRequired": {
+                  "startTime": [
+                    "endTime"
+                  ],
+                  "endTime": [
+                    "startTime"
+                  ],
+                  "additionalInfoUri": [
+                    "additionalInfo"
+                ]
+                }	      
             },
             "type": "array"
           },

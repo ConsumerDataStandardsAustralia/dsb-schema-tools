@@ -98,5 +98,19 @@
     "discountFrequency",
     "amount",
     "percentage"
-  ]
+  ],
+  "allOf":[
+    {
+      "if":   {"properties": {"type": { "const": "VARIABLE" }}},
+      "then": { "required": ["additionalInfo"]}
+    },
+    {
+      "if":   {"properties": {"type": { "const": "FIXED_AMOUNT" }}},
+      "then": { "required": ["discountFrequency", "amount"]}
+    },
+    {
+      "if":   {"properties": {"type": { "const": "FIXED_PERCENTAGE" }}},
+      "then": { "required": ["discountFrequency", "percentage"]}
+    }
+  ]  
 }
