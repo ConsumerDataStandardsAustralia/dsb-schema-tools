@@ -1,4 +1,183 @@
-{"BankingAccountDetailV5" :{
+{"BankingAccountDetailV3" :{
+  "allOf": [
+    {
+      "$ref": "BankingAccountV2"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bsb": {
+          "type": "string",
+          "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces."
+        },
+        "bundleName": {
+          "type": "string",
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer."
+        },
+        "specificAccountUType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The type of structure to present account specific fields.",
+          "enum": [
+            "creditCard",
+            "loan",
+            "termDeposit"
+          ]
+        },
+        "termDeposit": {
+          "type": "array",
+          "items": {
+            "$ref": "BankingTermDepositAccount"
+          }
+        },
+        "creditCard": {
+          "$ref": "BankingCreditCardAccount"
+        },
+        "loan": {
+          "$ref": "BankingLoanAccountV2"
+        },
+        "depositRate": {
+          "type": "string",
+          "description": "current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.",
+          "x-cds-type": "RateString"
+        },
+        "lendingRate": {
+          "type": "string",
+          "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call.",
+          "x-cds-type": "RateString"
+        },
+        "depositRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference.",
+          "items": {
+            "$ref": "BankingProductDepositRate"
+          }
+        },
+        "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fully described lending rates for this account based on the equivalent structure in Product Reference.",
+          "items": {
+            "$ref": "BankingProductLendingRateV2"
+          }
+        },
+        "features": {
+          "type": "array",
+          "description": "Array of features of the account based on the equivalent structure in Product Reference with the following additional field.",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "BankingProductFeatureV2"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "isActivated": {
+                    "type": "boolean",
+                    "description": "`true` if the feature is already activated and `false` if the feature is available for activation. Defaults to `true` if absent.<br>Note: this is an additional field appended to the feature object defined in the Product Reference payload.",
+                    "default": true,
+                    "x-cds-type": "Boolean"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "fees": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference.",
+          "items": {
+            "$ref": "BankingProductFee"
+          }
+        },
+        "addresses": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The addresses for the account to be used for correspondence.",
+          "items": {
+            "$ref": "CommonPhysicalAddress"
+          }
+        }
+      },
+      "x-conditional": [
+        "termDeposit",
+        "creditCard",
+        "loan"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "termDeposit"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "termDeposit"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "creditCard"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "creditCard"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "loan"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "loan"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "$id": "BankingAccountDetailV3"
+},"BankingAccountDetailV5" :{
   "allOf": [
     {
       "$ref": "BankingAccountV3"
@@ -132,6 +311,87 @@
   "type": "string",
   "x-cds-type": "ASCIIString",
   "$id": "BankingAccountId"
+},"BankingAccountV2" :{
+  "properties": {
+    "accountId": {
+      "description": "A unique ID of the account adhering to the standards for ID permanence.",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "accountOwnership": {
+      "description": "Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers.",
+      "enum": [
+        "UNKNOWN",
+        "ONE_PARTY",
+        "TWO_PARTY",
+        "MANY_PARTY",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "creationDate": {
+      "description": "Date that the account was created (if known).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "displayName": {
+      "description": "The display name of the account as defined by the bank. This should not incorporate account numbers or PANs. If it does the values should be masked according to the rules of the [MaskedAccountString](#common-field-types) common type.",
+      "type": "string"
+    },
+    "isOwned": {
+      "default": true,
+      "description": "Flag indicating that the customer associated with the authorisation is an owner of the account. Does not indicate sole ownership, however. If not present then `true` is assumed.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "x-cds-type": "Boolean"
+    },
+    "maskedNumber": {
+      "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number.",
+      "type": "string",
+      "x-cds-type": "MaskedAccountString"
+    },
+    "nickname": {
+      "description": "A customer supplied nick name for the account.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openStatus": {
+      "default": "OPEN",
+      "description": "Open or closed status for the account. If not present then `OPEN` is assumed.",
+      "enum": [
+        "CLOSED",
+        "OPEN"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "productCategory": {
+      "$ref": "BankingProductCategory"
+    },
+    "productName": {
+      "description": "The unique identifier of the account as defined by the data holder (akin to model number for the account).",
+      "type": "string"
+    }
+  },
+  "required": [
+    "accountId",
+    "displayName",
+    "accountOwnership",
+    "maskedNumber",
+    "productCategory",
+    "productName"
+  ],
+  "type": "object",
+  "$id": "BankingAccountV2"
 },"BankingAccountV3" :{
   "properties": {
     "accountId": {
@@ -1549,6 +1809,24 @@
   ],
   "type": "object",
   "$id": "BankingProductCardArt"
+},"BankingProductCategory" :{
+  "description": "The category to which a product or account belongs. See [here](#product-categories) for more details.",
+  "enum": [
+    "BUSINESS_LOANS",
+    "CRED_AND_CHRG_CARDS",
+    "LEASES",
+    "MARGIN_LOANS",
+    "OVERDRAFTS",
+    "PERS_LOANS",
+    "REGULATED_TRUST_ACCOUNTS",
+    "RESIDENTIAL_MORTGAGES",
+    "TERM_DEPOSITS",
+    "TRADE_FINANCE",
+    "TRANS_AND_SAVINGS_ACCOUNTS",
+    "TRAVEL_CARDS"
+  ],
+  "type": "string",
+  "$id": "BankingProductCategory"
 },"BankingProductCategoryV2" :{
   "description": "The category to which a product or account belongs. See [here](#product-categories) for more details.",
   "enum": [
@@ -1717,6 +1995,170 @@
     "applicationFrequency"
   ],
   "$id": "BankingProductDepositRateV2"
+},"BankingProductDetailV4" :{
+  "allOf": [
+    {
+      "$ref": "BankingProductV4"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bundles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+          "items": {
+            "$ref": "BankingProductBundle"
+          }
+        },
+        "features": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Array of features available for the product.",
+          "items": {
+            "$ref": "BankingProductFeatureV2"
+          }
+        },
+        "constraints": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
+          "items": {
+            "$ref": "BankingProductConstraint"
+          }
+        },
+        "eligibility": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Eligibility criteria for the product.",
+          "items": {
+            "$ref": "BankingProductEligibility"
+          }
+        },
+        "fees": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees applicable for the product.",
+          "items": {
+            "$ref": "BankingProductFee"
+          }
+        },
+        "depositRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Interest rates available for deposits.",
+          "items": {
+            "$ref": "BankingProductDepositRate"
+          }
+        },
+        "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Interest rates charged against lending balances.",
+          "items": {
+            "$ref": "BankingProductLendingRateV2"
+          }
+        }
+      }
+    }
+  ],
+  "$id": "BankingProductDetailV4"
+},"BankingProductDetailV5" :{
+  "allOf": [
+    {
+      "$ref": "BankingProductV4"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bundles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+          "items": {
+            "$ref": "BankingProductBundle"
+          }
+        },
+        "features": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Array of features available for the product.",
+          "items": {
+            "$ref": "BankingProductFeatureV2"
+          }
+        },
+        "constraints": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
+          "items": {
+            "$ref": "BankingProductConstraintV2"
+          }
+        },
+        "eligibility": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Eligibility criteria for the product.",
+          "items": {
+            "$ref": "BankingProductEligibility"
+          }
+        },
+        "fees": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees applicable for the product.",
+          "items": {
+            "$ref": "BankingProductFee"
+          }
+        },
+        "depositRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Interest rates available for deposits.",
+          "items": {
+            "$ref": "BankingProductDepositRate"
+          }
+        },
+        "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Interest rates charged against lending balances.",
+          "items": {
+            "$ref": "BankingProductLendingRateV2"
+          }
+        }
+      }
+    }
+  ],
+  "$id": "BankingProductDetailV5"
 },"BankingProductDetailV7" :{
   "allOf": [
     {
@@ -3221,6 +3663,252 @@
   ],
   "type": "object",
   "$id": "BankingTermDepositAccount"
+},"BankingTransaction" :{
+  "properties": {
+    "accountId": {
+      "description": "ID of the account for which transactions are provided.",
+      "type": "string",
+      "x-cds-type": "ASCIIString"
+    },
+    "amount": {
+      "description": "The value of the transaction. Negative values mean money was outgoing from the account.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "apcaNumber": {
+      "description": "6 Digit APCA number for the initiating institution. The field is fixed-width and padded with leading zeros if applicable.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "billerCode": {
+      "description": "BPAY Biller Code for the transaction (if available).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "billerName": {
+      "description": "Name of the BPAY biller for the transaction (if available).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "crn": {
+      "description": "BPAY CRN for the transaction (if available).<br/>Where the CRN contains sensitive information, it should be masked in line with how the Data Holder currently displays account identifiers in their existing online banking channels. If the contents of the CRN match the format of a Credit Card PAN they should be masked according to the rules applicable for [MaskedPANString](#common-field-types). If the contents are otherwise sensitive, then it should be masked using the rules applicable for the [MaskedAccountString](#common-field-types) common type.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currency": {
+      "description": "The currency for the transaction amount. `AUD` assumed if not present.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "description": {
+      "description": "The transaction description as applied by the financial institution.",
+      "type": "string"
+    },
+    "executionDateTime": {
+      "description": "The time the transaction was executed by the originating customer, if available.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "isDetailAvailable": {
+      "description": "`true` if extended information is available using the transaction detail endpoint. `false` if extended data is not available.",
+      "type": "boolean",
+      "x-cds-type": "Boolean"
+    },
+    "merchantCategoryCode": {
+      "description": "The merchant category code (or MCC) for an outgoing payment to a merchant.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "merchantName": {
+      "description": "Name of the merchant for an outgoing payment to a merchant.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postingDateTime": {
+      "description": "The time the transaction was posted. This field is Mandatory if the transaction has status `POSTED`. This is the time that appears on a standard statement.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "reference": {
+      "description": "The reference for the transaction provided by the originating institution. Empty string if no data provided.",
+      "type": "string"
+    },
+    "status": {
+      "description": "Status of the transaction whether pending or posted. Note that there is currently no provision in the standards to guarantee the ability to correlate a pending transaction with an associated posted transaction.",
+      "enum": [
+        "PENDING",
+        "POSTED"
+      ],
+      "type": "string"
+    },
+    "transactionId": {
+      "description": "A unique ID of the transaction adhering to the standards for ID permanence. This is mandatory (through hashing if necessary) unless there are specific and justifiable technical reasons why a transaction cannot be uniquely identified for a particular account type. It is mandatory if _isDetailAvailable_ is set to `true`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ASCIIString"
+    },
+    "type": {
+      "description": "The type of the transaction.",
+      "enum": [
+        "DIRECT_DEBIT",
+        "FEE",
+        "INTEREST_CHARGED",
+        "INTEREST_PAID",
+        "OTHER",
+        "PAYMENT",
+        "TRANSFER_INCOMING",
+        "TRANSFER_OUTGOING"
+      ],
+      "type": "string"
+    },
+    "valueDateTime": {
+      "description": "Date and time at which assets become available to the account owner in case of a credit entry, or cease to be available to the account owner in case of a debit transaction entry.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    }
+  },
+  "required": [
+    "accountId",
+    "amount",
+    "description",
+    "isDetailAvailable",
+    "reference",
+    "status",
+    "type"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "transactionId",
+    "postingDateTime",
+    "crn"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "isDetailAvailable": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "transactionId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "POSTED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "postingDateTime"
+        ]
+      }
+    }
+  ],
+  "$id": "BankingTransaction"
+},"BankingTransactionDetail" :{
+  "allOf": [
+    {
+      "$ref": "BankingTransaction"
+    },
+    {
+      "required": [
+        "extendedData"
+      ],
+      "type": "object",
+      "properties": {
+        "extendedData": {
+          "required": [
+            "service"
+          ],
+          "type": "object",
+          "properties": {
+            "payer": {
+              "type": "string",
+              "description": "Label of the originating payer. Mandatory for inbound payment."
+            },
+            "payee": {
+              "type": "string",
+              "description": "Label of the target PayID. Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)."
+            },
+            "extensionUType": {
+              "type": "string",
+              "description": "Optional extended data specific to transactions originated via NPP.",
+              "enum": [
+                "x2p101Payload"
+              ]
+            },
+            "x2p101Payload": {
+              "x-conditional": [
+                "extendedDescription"
+              ],
+              "type": "object",
+              "properties": {
+                "extendedDescription": {
+                  "type": "string",
+                  "description": "An extended string description. Required if the _extensionUType_ field is `x2p101Payload`."
+                },
+                "endToEndId": {
+                  "type": "string",
+                  "description": "An end to end ID for the payment created at initiation."
+                },
+                "purposeCode": {
+                  "type": "string",
+                  "description": "Purpose of the payment. Format is defined by NPP standards for the x2p1.01 overlay service."
+                }
+              }
+            },
+            "service": {
+              "type": "string",
+              "description": "Identifier of the applicable overlay service. Valid values are: `X2P1.01`.",
+              "enum": [
+                "X2P1.01"
+              ]
+            }
+          },
+          "x-conditional": [
+            "payer",
+            "payee",
+            "x2p101Payload"
+          ]
+        }
+      }
+    }
+  ],
+  "$id": "BankingTransactionDetail"
 },"BankingTransactionDetailV3" :{
   "allOf": [
     {
@@ -3950,6 +4638,37 @@
   ],
   "type": "object",
   "$id": "ResponseBankingAccountByIdV5"
+},"ResponseBankingAccountListV2" :{
+  "properties": {
+    "data": {
+      "properties": {
+        "accounts": {
+          "description": "The list of accounts returned. If the filter results in an empty set then this array may have no records.",
+          "items": {
+            "$ref": "BankingAccountV2"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "accounts"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingAccountListV2"
 },"ResponseBankingAccountListV3" :{
   "properties": {
     "data": {
@@ -4235,6 +4954,24 @@
   ],
   "type": "object",
   "$id": "ResponseBankingScheduledPaymentsListV2"
+},"ResponseBankingTransactionById" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingTransactionDetail"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingTransactionById"
 },"ResponseBankingTransactionByIdV3" :{
   "properties": {
     "data": {
@@ -4253,6 +4990,36 @@
   ],
   "type": "object",
   "$id": "ResponseBankingTransactionByIdV3"
+},"ResponseBankingTransactionList" :{
+  "properties": {
+    "data": {
+      "properties": {
+        "transactions": {
+          "items": {
+            "$ref": "BankingTransaction"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "transactions"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginatedTransaction"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingTransactionList"
 },"ResponseBankingTransactionListV2" :{
   "properties": {
     "data": {
