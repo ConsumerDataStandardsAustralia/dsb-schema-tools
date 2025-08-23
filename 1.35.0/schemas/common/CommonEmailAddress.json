@@ -10,8 +10,7 @@
       "type": [
         "boolean",
         "null"
-      ],
-      "x-cds-type": "Boolean"
+      ]
     },
     "purpose": {
       "description": "The purpose for the email, as specified by the customer.",

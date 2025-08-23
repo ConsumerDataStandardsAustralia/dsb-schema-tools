@@ -1,7 +1,7 @@
 {
   "properties": {
     "self": {
-      "description": "Fully qualified link to this API call",
+      "description": "Fully qualified link to this API call.",
       "type": "string",
       "x-cds-type": "URIString"
     }

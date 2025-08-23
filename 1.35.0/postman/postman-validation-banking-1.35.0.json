@@ -314,9 +314,12 @@
 },"BankingAccountV2" :{
   "properties": {
     "accountId": {
-      "description": "A unique ID of the account adhering to the standards for ID permanence.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId"
+        }
+      ],
+      "description": "Unique identifier for the account."
     },
     "accountOwnership": {
       "description": "Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers.",
@@ -347,8 +350,7 @@
       "type": [
         "boolean",
         "null"
-      ],
-      "x-cds-type": "Boolean"
+      ]
     },
     "maskedNumber": {
       "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number.",
@@ -3666,9 +3668,12 @@
 },"BankingTransaction" :{
   "properties": {
     "accountId": {
-      "description": "ID of the account for which transactions are provided.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId"
+        }
+      ],
+      "description": "Unique identifier for the account."
     },
     "amount": {
       "description": "The value of the transaction. Negative values mean money was outgoing from the account.",

@@ -1,8 +1,8 @@
 {
-  "description": "Additional data for customised error codes",
+  "description": "Additional data for customised error codes.",
   "properties": {
     "urn": {
-      "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error `code` is an application-specific error rather than a standardised error code.",
+      "description": "The CDR error code URN which the application-specific error code extends. Mandatory if the error _code_ is an application-specific error rather than a standardised error code.",
       "type": [
         "string",
         "null"

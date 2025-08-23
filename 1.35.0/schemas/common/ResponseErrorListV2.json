@@ -1,31 +1,9 @@
 {
   "properties": {
     "errors": {
-      "description": "",
+      "description": "List of errors.",
       "items": {
-        "properties": {
-          "code": {
-            "description": "The code of the error encountered. Where the error is specific to the respondent, an application-specific error code, expressed as a string value. If the error is application-specific, the URN code that the specific error extends must be provided in the meta object. Otherwise, the value is the error code URN.",
-            "type": "string"
-          },
-          "detail": {
-            "description": "A human-readable explanation specific to this occurrence of the problem.",
-            "type": "string"
-          },
-          "meta": {
-            "$ref": "MetaError.json"
-          },
-          "title": {
-            "description": "A short, human-readable summary of the problem that MUST NOT change from occurrence to occurrence of the problem represented by the error code.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "code",
-          "detail",
-          "title"
-        ],
-        "type": "object"
+        "$ref": "ErrorV2.json"
       },
       "type": "array"
     }
@@ -33,8 +11,5 @@
   "required": [
     "errors"
   ],
-  "type": "object",
-  "x-conditional": [
-    "meta"
-  ]
+  "type": "object"
 }

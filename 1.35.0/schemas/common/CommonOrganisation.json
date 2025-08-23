@@ -66,8 +66,7 @@
       "type": [
         "boolean",
         "null"
-      ],
-      "x-cds-type": "Boolean"
+      ]
     },
     "lastUpdateTime": {
       "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data.",

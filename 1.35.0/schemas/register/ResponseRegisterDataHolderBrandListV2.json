@@ -1,8 +1,8 @@
 {
-  "description": "Response containing a list of CDR Register Data Holder Brand objects",
+  "description": "Response containing a list of CDR Register Data Holder Brand objects.",
   "properties": {
     "data": {
-      "description": "Response data for the query",
+      "description": "Response data for the query.",
       "items": {
         "$ref": "RegisterDataHolderBrandV2.json"
       },

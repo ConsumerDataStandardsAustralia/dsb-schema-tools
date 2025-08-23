@@ -8,6 +8,7 @@
       ]
     },
     "countryCode": {
+      "default": "+61",
       "description": "If absent, assumed to be Australia (`+61`). The `+` should be included.",
       "type": [
         "string",
@@ -27,12 +28,12 @@
       "x-cds-type": "ExternalRef"
     },
     "isPreferred": {
+      "default": false,
       "description": "May be `true` for one and only one entry to indicate the preferred phone number. Assumed to be `false` if not present.",
       "type": [
         "boolean",
         "null"
-      ],
-      "x-cds-type": "Boolean"
+      ]
     },
     "number": {
       "description": "The actual phone number, with leading zeros as appropriate.",

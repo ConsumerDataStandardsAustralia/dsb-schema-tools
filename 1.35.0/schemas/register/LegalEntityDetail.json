@@ -1,8 +1,8 @@
 {
-  "description": "The data that is common to all organisations, regardless of the type (e.g. company, trust, partnership, government)",
+  "description": "The data that is common to all organisations, regardless of the type (e.g., company, trust, partnership, government).",
   "properties": {
     "abn": {
-      "description": "Australian Business Number for the organisation",
+      "description": "Australian Business Number for the organisation.",
       "maxLength": 11,
       "type": [
         "string",
@@ -10,7 +10,7 @@
       ]
     },
     "acn": {
-      "description": "Australian Company Number for the organisation",
+      "description": "Australian Company Number for the organisation.",
       "maxLength": 9,
       "type": [
         "string",
@@ -18,7 +18,7 @@
       ]
     },
     "anzsicDivision": {
-      "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**",
+      "description": "ANZSIC division of the organisation. **[[ANZSIC-2006]](#iref-ANZSIC-2006)**.",
       "maxLength": 100,
       "type": [
         "string",
@@ -27,7 +27,7 @@
       "x-cds-type": "ExternalRef"
     },
     "arbn": {
-      "description": "Australian Registered Body Number.  ARBNs are issued to registrable Australian bodies and foreign companies",
+      "description": "Australian Registered Body Number. ARBNs are issued to registrable Australian bodies and foreign companies.",
       "maxLength": 9,
       "type": [
         "string",
@@ -35,23 +35,23 @@
       ]
     },
     "legalEntityId": {
-      "description": "Unique id of the organisation issued by the CDR Register",
+      "description": "Unique id of the organisation issued by the CDR Register.",
       "maxLength": 36,
       "type": "string"
     },
     "legalEntityName": {
-      "description": "Unique legal name of the organisation",
+      "description": "Unique legal name of the organisation.",
       "maxLength": 36,
       "type": "string"
     },
     "logoUri": {
-      "description": "Legal Entity logo URI",
+      "description": "Legal Entity logo URI.",
       "maxLength": 1000,
       "type": "string",
       "x-cds-type": "URIString"
     },
     "organisationType": {
-      "description": "Legal organisation type",
+      "description": "Legal organisation type.",
       "enum": [
         "SOLE_TRADER",
         "COMPANY",
@@ -66,7 +66,7 @@
       ]
     },
     "registeredCountry": {
-      "description": "Country of registration (if the company is registered outside Australia)",
+      "description": "Country of registration (if the company is registered outside Australia).",
       "maxLength": 100,
       "type": [
         "string",
@@ -74,7 +74,7 @@
       ]
     },
     "registrationDate": {
-      "description": "Date of registration (if the company is registered outside Australia)",
+      "description": "Date of registration (if the company is registered outside Australia).",
       "type": [
         "string",
         "null"
@@ -82,7 +82,7 @@
       "x-cds-type": "DateString"
     },
     "registrationNumber": {
-      "description": "Unique registration number (if the company is registered outside Australia)",
+      "description": "Unique registration number (if the company is registered outside Australia).",
       "type": [
         "string",
         "null"

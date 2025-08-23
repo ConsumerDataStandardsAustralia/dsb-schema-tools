@@ -1,9 +1,12 @@
 {
   "properties": {
     "accountId": {
-      "description": "ID of the account for which transactions are provided.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
     },
     "amount": {
       "description": "The value of the transaction. Negative values mean money was outgoing from the account.",

@@ -1,12 +1,12 @@
 {
   "properties": {
     "totalPages": {
-      "description": "The total number of pages in the full set",
+      "description": "The total number of pages in the full set.",
       "type": "integer",
       "x-cds-type": "NaturalNumber"
     },
     "totalRecords": {
-      "description": "The total number of records in the full set",
+      "description": "The total number of records in the full set.",
       "type": "integer",
       "x-cds-type": "NaturalNumber"
     }

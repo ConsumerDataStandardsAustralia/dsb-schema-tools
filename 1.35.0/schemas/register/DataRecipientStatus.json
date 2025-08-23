@@ -1,12 +1,12 @@
 {
   "properties": {
     "legalEntityId": {
-      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register",
+      "description": "Unique id of the Data Recipient Legal Entity issued by the CDR Register.",
       "maxLength": 36,
       "type": "string"
     },
     "status": {
-      "description": "Data Recipient status in the CDR Register",
+      "description": "Data Recipient status in the CDR Register.",
       "enum": [
         "ACTIVE",
         "SUSPENDED",

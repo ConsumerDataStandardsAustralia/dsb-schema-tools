@@ -1,7 +1,7 @@
 {
   "properties": {
     "first": {
-      "description": "URI to the first page of this set. Mandatory if this response is not the first page",
+      "description": "URI to the first page of this set. Mandatory if this response is not the first page.",
       "type": [
         "string",
         "null"
@@ -9,7 +9,7 @@
       "x-cds-type": "URIString"
     },
     "last": {
-      "description": "URI to the last page of this set. Mandatory if this response is not the last page",
+      "description": "URI to the last page of this set. Mandatory if this response is not the last page.",
       "type": [
         "string",
         "null"
@@ -17,7 +17,7 @@
       "x-cds-type": "URIString"
     },
     "next": {
-      "description": "URI to the next page of this set. Mandatory if this response is not the last page",
+      "description": "URI to the next page of this set. Mandatory if this response is not the last page.",
       "type": [
         "string",
         "null"
@@ -25,7 +25,7 @@
       "x-cds-type": "URIString"
     },
     "prev": {
-      "description": "URI to the previous page of this set. Mandatory if this response is not the first page",
+      "description": "URI to the previous page of this set. Mandatory if this response is not the first page.",
       "type": [
         "string",
         "null"
@@ -33,7 +33,7 @@
       "x-cds-type": "URIString"
     },
     "self": {
-      "description": "Fully qualified link to this API call",
+      "description": "Fully qualified link to this API call.",
       "type": "string",
       "x-cds-type": "URIString"
     }

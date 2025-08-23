@@ -14,8 +14,7 @@
       "type": [
         "boolean",
         "null"
-      ],
-      "x-cds-type": "Boolean"
+      ]
     },
     "outageTime": {
       "description": "Date and time that the outage is scheduled to begin.",

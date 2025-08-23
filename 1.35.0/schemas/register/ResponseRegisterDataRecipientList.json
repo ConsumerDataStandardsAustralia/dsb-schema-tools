@@ -1,8 +1,8 @@
 {
-  "description": "Response containing a list of Data Recipients in the CDR Register",
+  "description": "Response containing a list of Data Recipients in the CDR Register.",
   "properties": {
     "data": {
-      "description": "Response data for the query",
+      "description": "Response data for the query.",
       "items": {
         "$ref": "RegisterDataRecipient.json"
       },

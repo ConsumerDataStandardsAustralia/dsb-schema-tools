@@ -1,12 +1,12 @@
 {
   "properties": {
     "softwareProductId": {
-      "description": "Unique id of the software product issued by the CDR Register",
+      "description": "Unique id of the software product issued by the CDR Register.",
       "maxLength": 36,
       "type": "string"
     },
     "status": {
-      "description": "Software product status in the CDR Register",
+      "description": "Software product status in the CDR Register.",
       "enum": [
         "ACTIVE",
         "INACTIVE",

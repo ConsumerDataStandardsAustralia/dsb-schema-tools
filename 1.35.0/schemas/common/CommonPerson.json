@@ -1,7 +1,7 @@
 {
   "properties": {
     "firstName": {
-      "description": "For people with single names this field need not be present. The single name should be in the _lastName_ field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names MAY be provided.",
+      "description": "For people with single names this field need not be present. The single name should be in the _lastName_ field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names **MAY** be provided.",
       "type": [
         "string",
         "null"

@@ -1,7 +1,7 @@
 {
   "properties": {
     "data": {
-      "description": "Response data for the query",
+      "description": "Response data for the query.",
       "items": {
         "$ref": "DataRecipientStatus.json"
       },

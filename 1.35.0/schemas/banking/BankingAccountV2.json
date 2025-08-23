@@ -1,9 +1,12 @@
 {
   "properties": {
     "accountId": {
-      "description": "A unique ID of the account adhering to the standards for ID permanence.",
-      "type": "string",
-      "x-cds-type": "ASCIIString"
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
     },
     "accountOwnership": {
       "description": "Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers.",
@@ -34,8 +37,7 @@
       "type": [
         "boolean",
         "null"
-      ],
-      "x-cds-type": "Boolean"
+      ]
     },
     "maskedNumber": {
       "description": "A masked version of the account. Whether BSB/Account Number, Credit Card PAN or another number.",

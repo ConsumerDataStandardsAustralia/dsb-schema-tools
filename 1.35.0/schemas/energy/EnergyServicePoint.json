@@ -3,7 +3,7 @@
     "consumerProfile": {
       "properties": {
         "classification": {
-          "description": "A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments",
+          "description": "A code that defines the consumer class as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments.",
           "enum": [
             "BUSINESS",
             "RESIDENTIAL"
@@ -14,7 +14,7 @@
           ]
         },
         "threshold": {
-          "description": "A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>**LOW** - Consumption is less than the ‘lower consumption threshold’ as defined in the National Energy Retail Regulations</li><li>**MEDIUM** - Consumption is equal to or greater than the ‘lower consumption threshold’, but less than the ‘upper consumption threshold’, as defined in the National Energy Retail Regulations</li><li>**HIGH** - Consumption is equal to or greater than the ‘upper consumption threshold’ as defined in the National Energy Retail Regulations</li></ul>",
+          "description": "A code that defines the consumption threshold as defined in the National Energy Retail Regulations, or in overriding Jurisdictional instruments. Note the details of enumeration values below: <ul><li>`LOW`: Consumption is less than the 'lower consumption threshold' as defined in the National Energy Retail Regulations</li><li>`MEDIUM`: Consumption is equal to or greater than the 'lower consumption threshold', but less than the 'upper consumption threshold', as defined in the National Energy Retail Regulations</li><li>`HIGH`: Consumption is equal to or greater than the 'upper consumption threshold' as defined in the National Energy Retail Regulations.</li></ul>",
           "enum": [
             "LOW",
             "MEDIUM",
@@ -28,14 +28,14 @@
       ]
     },
     "isGenerator": {
-      "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit(this may include generator auxiliary loads). If absent defaults to false. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer",
+      "description": "This flag determines whether the energy at this connection point is to be treated as consumer load or as a generating unit (this may include generator auxiliary loads). If absent defaults to `false`. <br>**Note:** Only applicable for scheduled or semischeduled generators, does not indicate on site generation by consumer.",
       "type": [
         "boolean",
         "null"
       ]
     },
     "jurisdictionCode": {
-      "description": "Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>",
+      "description": "Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>`ALL`: All Jurisdictions</li><li>`ACT`: Australian Capital Territory</li><li>`NEM`: National Electricity Market</li><li>`NSW`: New South Wales</li><li>`QLD`: Queensland</li><li>`SA`: South Australia</li><li>`TAS`: Tasmania</li><li>`VIC`: Victoria.</li></ul>",
       "enum": [
         "ALL",
         "ACT",
@@ -49,16 +49,16 @@
       "type": "string"
     },
     "lastUpdateDateTime": {
-      "description": "The date and time that the information for this service point was modified",
+      "description": "The date and time that the information for this service point was modified.",
       "type": "string",
       "x-cds-type": "DateTimeString"
     },
     "nationalMeteringId": {
-      "description": "The independent ID of the service point, known in the industry as the NMI",
+      "description": "The independent ID of the service point, known in the industry as the NMI.",
       "type": "string"
     },
     "servicePointClassification": {
-      "description": "The classification of the service point as defined in MSATS procedures",
+      "description": "The classification of the service point as defined in MSATS procedures.",
       "enum": [
         "EXTERNAL_PROFILE",
         "GENERATOR",
@@ -72,11 +72,11 @@
       "type": "string"
     },
     "servicePointId": {
-      "description": "Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements",
+      "description": "Tokenised ID of the service point to be used for referring to the service point in the CDR API suite. To be created in accordance with CDR ID permanence requirements.",
       "type": "string"
     },
     "servicePointStatus": {
-      "description": "Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul> ",
+      "description": "Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>`ACTIVE`: An active, energised, service point</li><li>`DE_ENERGISED`: The service point exists but is deenergised</li><li>`EXTINCT`: The service point has been permanently decommissioned</li><li>`GREENFIELD`: Applies to a service point that has never been energised</li><li>`OFF_MARKET`: Applies when the service point is no longer settled in the NEM.</li></ul>",
       "enum": [
         "ACTIVE",
         "DE_ENERGISED",
@@ -87,7 +87,7 @@
       "type": "string"
     },
     "validFromDate": {
-      "description": "The latest start date from which the constituent data sets of this service point became valid",
+      "description": "The latest start date from which the constituent data sets of this service point became valid.",
       "type": "string",
       "x-cds-type": "DateString"
     }
