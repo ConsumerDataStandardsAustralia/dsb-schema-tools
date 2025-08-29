@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "BankingTransactionV2.json"
+      "$ref": "BankingTransaction.json"
     },
     {
       "required": [
@@ -38,7 +38,7 @@
             },
             "nppPayload": {
               "type": "object",
-              "description": "Mandatory if the _extensionUType_ value is `nppPayload`.",
+              "description": "Required if the _extensionUType_ value is `nppPayload`.",
               "required": [
                 "service",
                 "serviceVersion"

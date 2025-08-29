@@ -1,7 +1,7 @@
 {
   "allOf": [
     {
-      "$ref": "BankingAccountV3.json"
+      "$ref": "BankingAccountV2.json"
     },
     {
       "type": "object",
@@ -17,9 +17,6 @@
         "bundleName": {
           "type": "string",
           "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer."
-        },
-        "instalments": {
-          "$ref": "BankingProductInstalments.json"
         },
         "specificAccountUType": {
           "type": ["string","null"],
@@ -84,7 +81,7 @@
             "type": "object",
             "allOf": [
               {
-                "$ref": "BankingProductFeatureV4.json"
+                "$ref": "BankingProductFeatureV3.json"
               },
               {
                 "type": "object",
