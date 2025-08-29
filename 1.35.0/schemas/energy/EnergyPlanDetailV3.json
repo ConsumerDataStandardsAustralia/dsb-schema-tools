@@ -12,7 +12,7 @@
       "properties": {
         "meteringCharges": {
           "description": "Charges for metering included in the plan.",
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
             "type": "object",
             "required": [
@@ -25,7 +25,7 @@
                 "description": "Display name of the charge."
               },
               "description": {
-                "type": "string",
+                "type": ["string","null"],
                 "description": "Description of the charge."
               },
               "minimumValue": {
@@ -34,12 +34,12 @@
                 "description": "Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified."
               },
               "maximumValue": {
-                "type": "string",
+                "type": ["string","null"],
                 "x-cds-type": "AmountString",
                 "description": "The upper limit of the charge if the charge could occur in a range."
               },
               "period": {
-                "type": "string",
+                "type": ["string","null"],
                 "x-cds-type": "ExternalRef",
                 "description": "The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)."
               }
