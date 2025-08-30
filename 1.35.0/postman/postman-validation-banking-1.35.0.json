@@ -177,10 +177,10 @@
     }
   ],
   "$id": "BankingAccountDetailV3"
-},"BankingAccountDetailV5" :{
+},"BankingAccountDetailV4" :{
   "allOf": [
     {
-      "$ref": "BankingAccountV3"
+      "$ref": "BankingAccountV2"
     },
     {
       "type": "object",
@@ -197,11 +197,11 @@
           "type": "string",
           "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer."
         },
-        "instalments": {
-          "$ref": "BankingProductInstalments"
-        },
         "specificAccountUType": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "The type of structure to present account specific fields.",
           "enum": [
             "creditCard",
@@ -243,14 +243,217 @@
           "x-cds-type": "RateString"
         },
         "depositRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference.",
           "items": {
             "$ref": "BankingProductDepositRateV2"
           }
         },
         "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fully described lending rates for this account based on the equivalent structure in Product Reference.",
+          "items": {
+            "$ref": "BankingProductLendingRateV3"
+          }
+        },
+        "features": {
           "type": "array",
+          "description": "Array of features of the account based on the equivalent structure in Product Reference with the following additional field.",
+          "items": {
+            "type": "object",
+            "allOf": [
+              {
+                "$ref": "BankingProductFeatureV3"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "isActivated": {
+                    "type": "string",
+                    "description": "<ul><li>`ACTIVATED` if the feature has been activated by the customer or is a standard feature of the product</li><li>`NOT_ACTIVATED` if the feature is not activated but is available for activation</li><li>`UNKNOWN` or absent if the activation state is unknown.</ul>**Note:** This is an additional field appended to the feature structure defined in the Product Reference payload.",
+                    "enum": [
+                      "ACTIVATED",
+                      "NOT_ACTIVATED",
+                      "UNKNOWN"
+                    ],
+                    "default": "UNKNOWN"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "fees": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference.",
+          "items": {
+            "$ref": "BankingProductFeeV2"
+          }
+        },
+        "addresses": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The addresses for the account to be used for correspondence.",
+          "items": {
+            "$ref": "CommonPhysicalAddress"
+          }
+        }
+      },
+      "x-conditional": [
+        "termDeposit",
+        "creditCard",
+        "loan"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "termDeposit"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "termDeposit"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "creditCard"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "creditCard"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "loan"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "loan"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "$id": "BankingAccountDetailV4"
+},"BankingAccountDetailV5" :{
+  "allOf": [
+    {
+      "$ref": "BankingAccountV3"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bsb": {
+          "type": "string",
+          "description": "The unmasked BSB for the account. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces."
+        },
+        "accountNumber": {
+          "type": "string",
+          "description": "The unmasked account number for the account. Should not be supplied if the account number is a PAN requiring PCI compliance. Is expected to be formatted as digits only with leading zeros included and no punctuation or spaces."
+        },
+        "bundleName": {
+          "type": "string",
+          "description": "Optional field to indicate if this account is part of a bundle that is providing additional benefit to the customer."
+        },
+        "instalments": {
+          "$ref": "BankingProductInstalments"
+        },
+        "specificAccountUType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The type of structure to present account specific fields.",
+          "enum": [
+            "creditCard",
+            "loan",
+            "termDeposit"
+          ]
+        },
+        "termDeposit": {
+          "type": "array",
+          "description": "Mandatory if the _specificAccountUType_ value is `termDeposit`.",
+          "items": {
+            "$ref": "BankingTermDepositAccount"
+          }
+        },
+        "creditCard": {
+          "description": "Mandatory if the _specificAccountUType_ value is `creditCard`.",
+          "allOf": [
+            {
+              "$ref": "BankingCreditCardAccount"
+            }
+          ]
+        },
+        "loan": {
+          "description": "Mandatory if the _specificAccountUType_ value is `loan`.",
+          "allOf": [
+            {
+              "$ref": "BankingLoanAccountV3"
+            }
+          ]
+        },
+        "depositRate": {
+          "type": "string",
+          "description": "Current rate to calculate interest earned being applied to deposit balances as it stands at the time of the API call.",
+          "x-cds-type": "RateString"
+        },
+        "lendingRate": {
+          "type": "string",
+          "description": "The current rate to calculate interest payable being applied to lending balances as it stands at the time of the API call.",
+          "x-cds-type": "RateString"
+        },
+        "depositRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fully described deposit rates for this account based on the equivalent structure in Product Reference.",
+          "items": {
+            "$ref": "BankingProductDepositRateV2"
+          }
+        },
+        "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fully described lending rates for this account based on the equivalent structure in Product Reference.",
           "items": {
             "$ref": "BankingProductLendingRateV3"
@@ -284,14 +487,20 @@
           }
         },
         "fees": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Fees and charges applicable to the account based on the equivalent structure in Product Reference.",
           "items": {
             "$ref": "BankingProductFeeV2"
           }
         },
         "addresses": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "The addresses for the account to be used for correspondence.",
           "items": {
             "$ref": "CommonPhysicalAddress"
@@ -302,6 +511,59 @@
         "termDeposit",
         "creditCard",
         "loan"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "termDeposit"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "termDeposit"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "creditCard"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "creditCard"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "specificAccountUType": {
+                "const": "loan"
+              }
+            },
+            "required": [
+              "specificAccountUType"
+            ]
+          },
+          "then": {
+            "required": [
+              "loan"
+            ]
+          }
+        }
       ]
     }
   ],
@@ -2161,6 +2423,88 @@
     }
   ],
   "$id": "BankingProductDetailV5"
+},"BankingProductDetailV6" :{
+  "allOf": [
+    {
+      "$ref": "BankingProductV5"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bundles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+          "items": {
+            "$ref": "BankingProductBundle"
+          }
+        },
+        "features": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Array of features available for the product.",
+          "items": {
+            "$ref": "BankingProductFeatureV3"
+          }
+        },
+        "constraints": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
+          "items": {
+            "$ref": "BankingProductConstraintV3"
+          }
+        },
+        "eligibility": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Eligibility criteria for the product.",
+          "items": {
+            "$ref": "BankingProductEligibilityV2"
+          }
+        },
+        "fees": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees applicable for the product.",
+          "items": {
+            "$ref": "BankingProductFeeV2"
+          }
+        },
+        "depositRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Interest rates available for deposits.",
+          "items": {
+            "$ref": "BankingProductDepositRateV2"
+          }
+        },
+        "lendingRates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Interest rates charged against lending balances.",
+          "items": {
+            "$ref": "BankingProductLendingRateV3"
+          }
+        }
+      }
+    }
+  ],
+  "$id": "BankingProductDetailV6"
 },"BankingProductDetailV7" :{
   "allOf": [
     {
@@ -2170,49 +2514,70 @@
       "type": "object",
       "properties": {
         "bundles": {
-          "type": "array",
-          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of _productID_ values of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
           "items": {
             "$ref": "BankingProductBundle"
           }
         },
         "features": {
-          "type": "array",
-          "description": "Array of features and limitations of the product.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Array of features available for the product.",
           "items": {
             "$ref": "BankingProductFeatureV4"
           }
         },
         "constraints": {
-          "type": "array",
-          "description": "Constraints on the application for the product such as minimum balances or limit thresholds.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
           "items": {
             "$ref": "BankingProductConstraintV3"
           }
         },
         "eligibility": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Eligibility criteria for the product.",
           "items": {
             "$ref": "BankingProductEligibilityV2"
           }
         },
         "fees": {
-          "type": "array",
-          "description": "Fees applicable to the product.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Fees applicable for the product.",
           "items": {
             "$ref": "BankingProductFeeV2"
           }
         },
         "depositRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Interest rates available for deposits.",
           "items": {
             "$ref": "BankingProductDepositRateV2"
           }
         },
         "lendingRates": {
-          "type": "array",
+          "type": [
+            "array",
+            "null"
+          ],
           "description": "Interest rates charged against lending balances.",
           "items": {
             "$ref": "BankingProductLendingRateV3"
@@ -3914,10 +4279,10 @@
     }
   ],
   "$id": "BankingTransactionDetail"
-},"BankingTransactionDetailV3" :{
+},"BankingTransactionDetailV2" :{
   "allOf": [
     {
-      "$ref": "BankingTransactionV2"
+      "$ref": "BankingTransaction"
     },
     {
       "required": [
@@ -3929,15 +4294,24 @@
           "type": "object",
           "properties": {
             "payer": {
-              "type": "string",
+              "type": [
+                "string",
+                "null"
+              ],
               "description": "Label of the originating payer. Mandatory for inbound payment."
             },
             "payee": {
-              "type": "string",
+              "type": [
+                "string",
+                "null"
+              ],
               "description": "Label of the target PayID. Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)."
             },
             "extensionUType": {
-              "type": "string",
+              "type": [
+                "string",
+                "null"
+              ],
               "description": "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
               "enum": [
                 "nppPayload"
@@ -3945,7 +4319,7 @@
             },
             "nppPayload": {
               "type": "object",
-              "description": "Mandatory if the _extensionUType_ value is `nppPayload`.",
+              "description": "Required if the _extensionUType_ value is `nppPayload`.",
               "required": [
                 "service",
                 "serviceVersion"
@@ -3955,15 +4329,24 @@
               ],
               "properties": {
                 "extendedDescription": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
                   "description": "An extended string description. Mandatory if the _extensionUType_ value is `nppPayload`."
                 },
                 "endToEndId": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
                   "description": "An end to end ID for the payment created at initiation."
                 },
                 "purposeCode": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
                   "x-cds-type": "ExternalRef",
                   "description": "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1)."
                 },
@@ -3983,6 +4366,131 @@
             "payer",
             "payee",
             "nppPayload"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "extensionUType ": {
+                    "const": "nppPayload"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "nppPayload"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "$id": "BankingTransactionDetailV2"
+},"BankingTransactionDetailV3" :{
+  "allOf": [
+    {
+      "$ref": "BankingTransactionV2"
+    },
+    {
+      "required": [
+        "extendedData"
+      ],
+      "type": "object",
+      "properties": {
+        "extendedData": {
+          "type": "object",
+          "properties": {
+            "payer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Label of the originating payer. Mandatory for inbound payment."
+            },
+            "payee": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Label of the target PayID. Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)."
+            },
+            "extensionUType": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
+              "enum": [
+                "nppPayload"
+              ]
+            },
+            "nppPayload": {
+              "type": "object",
+              "description": "Mandatory if the _extensionUType_ value is `nppPayload`.",
+              "required": [
+                "service",
+                "serviceVersion"
+              ],
+              "x-conditional": [
+                "extendedDescription"
+              ],
+              "properties": {
+                "extendedDescription": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "An extended string description. Mandatory if the _extensionUType_ value is `nppPayload`."
+                },
+                "endToEndId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "An end to end ID for the payment created at initiation."
+                },
+                "purposeCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "x-cds-type": "ExternalRef",
+                  "description": "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1)."
+                },
+                "service": {
+                  "$ref": "NppPaymentService"
+                },
+                "serviceVersion": {
+                  "type": "string",
+                  "x-cds-type": "ExternalRef",
+                  "description": "Two-digit NPP service overlay version with leading zero.",
+                  "example": "03"
+                }
+              }
+            }
+          },
+          "x-conditional": [
+            "payer",
+            "payee",
+            "nppPayload"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "extensionUType ": {
+                    "const": "nppPayload"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "nppPayload"
+                ]
+              }
+            }
           ]
         }
       }
@@ -4879,6 +5387,60 @@
   ],
   "type": "object",
   "$id": "ResponseBankingPayeeListV2"
+},"ResponseBankingProductByIdV4" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingProductDetailV4"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingProductByIdV4"
+},"ResponseBankingProductByIdV5" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingProductDetailV5"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingProductByIdV5"
+},"ResponseBankingProductByIdV6" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingProductDetailV6"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingProductByIdV6"
 },"ResponseBankingProductByIdV7" :{
   "properties": {
     "data": {
@@ -4897,6 +5459,68 @@
   ],
   "type": "object",
   "$id": "ResponseBankingProductByIdV7"
+},"ResponseBankingProductListV2" :{
+  "properties": {
+    "data": {
+      "properties": {
+        "products": {
+          "description": "The list of products returned. If the filter results in an empty set then this array may have no records.",
+          "items": {
+            "$ref": "BankingProductV4"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "products"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingProductListV2"
+},"ResponseBankingProductListV3" :{
+  "properties": {
+    "data": {
+      "properties": {
+        "products": {
+          "description": "The list of products returned. If the filter results in an empty set then this array may have no records.",
+          "items": {
+            "$ref": "BankingProductV5"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "products"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated"
+    },
+    "meta": {
+      "$ref": "MetaPaginated"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingProductListV3"
 },"ResponseBankingProductListV4" :{
   "properties": {
     "data": {
