@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "amountRange": {
+      "$ref": "BankingFeeDiscountRange.json"
+    },
+    "rate": {
+      "description": "The fee rate discount calculated according to the _rateType_.",
+      "type": "string",
+      "x-cds-type": "RateString"
+    },
+    "rateType": {
+      "description": "Type of fee rate discount calculation.<ul><li>`BALANCE` A fee rate discount based on a balance</li><li>`FEE` A fee rate discount based on the fee to which the discount is attached</li><li>`INTEREST_ACCRUED` A fee rate discount based on interest accrued</li><li>`TRANSACTION` A fee rate discount based on a transaction.</li></ul>",
+      "enum": [
+        "BALANCE",
+        "FEE",
+        "INTEREST_ACCRUED",
+        "TRANSACTION"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "rateType",
+    "rate"
+  ],
+  "type": "object"
+}

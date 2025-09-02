@@ -1,0 +1,10 @@
+{
+  "description": "Plan type for this feature.<ul><li>`METERED`: A plan is charged by usage for the feature<li>`UNMETERED`: A plan with no limits for a feature<li>`LIMITED`: Where plan limit inclusions apply<li>`UNSUPPORTED`: Feature is not supported.</ul>",
+  "enum": [
+    "METERED",
+    "UNMETERED",
+    "LIMITED",
+    "UNSUPPORTED"
+  ],
+  "type": "string"
+}

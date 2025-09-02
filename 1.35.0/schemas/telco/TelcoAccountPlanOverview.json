@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "displayName": {
+      "description": "The name of the plan if one exists.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "The end date of the applicability of this plan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "startDate": {
+      "description": "The start date of the applicability of this plan.",
+      "type": "string",
+      "x-cds-type": "DateString"
+    }
+  },
+  "required": [
+    "startDate"
+  ],
+  "type": "object"
+}

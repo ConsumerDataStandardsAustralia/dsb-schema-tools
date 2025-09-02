@@ -1,0 +1,43 @@
+{
+  "description": "Summary of data usage.",
+  "properties": {
+    "amount": {
+      "description": "Cost amount of data usage.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "download": {
+      "description": "Amount of data downloaded in megabytes (MB).",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "allOf": [
+        {
+          "$ref": "TelcoUsageDataRoaming.json"
+        }
+      ],
+      "description": "Required if roaming is supported."
+    },
+    "sessions": {
+      "description": "Number of data sessions.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "upload": {
+      "description": "Amount of data uploaded in megabytes (MB).",
+      "type": "number",
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "amount",
+    "download",
+    "upload"
+  ],
+  "type": "object",
+  "x-condional": "roaming"
+}

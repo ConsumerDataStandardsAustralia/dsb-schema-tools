@@ -1,0 +1,43 @@
+{
+  "description": "Data Recipient Brand Software Products.",
+  "properties": {
+    "logoUri": {
+      "description": "Software product logo URI.",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "softwareProductDescription": {
+      "description": "Description of the software product.",
+      "maxLength": 4000,
+      "type": "string"
+    },
+    "softwareProductId": {
+      "description": "Unique id of the Data Recipient software product issued by the CDR Register.",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "softwareProductName": {
+      "description": "Name of the software product.",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "status": {
+      "description": "Software Product status in the CDR Register.",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "logoUri",
+    "softwareProductId",
+    "softwareProductName",
+    "softwareProductDescription",
+    "status"
+  ],
+  "type": "object"
+}

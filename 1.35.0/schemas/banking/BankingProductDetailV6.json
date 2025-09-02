@@ -1,0 +1,61 @@
+{
+  "allOf": [
+    {
+      "$ref": "BankingProductV5.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "bundles": {
+          "type": ["array", "null"],
+          "description": "An array of bundles that this product participates in. Each bundle is described by free form information but also by a list of product IDs of the other products that are included in the bundle. It is assumed that the current product is included in the bundle also.",
+          "items": {
+            "$ref": "BankingProductBundle.json"
+          }
+        },
+        "features": {
+          "type": ["array", "null"],
+          "description": "Array of features available for the product.",
+          "items": {
+            "$ref": "BankingProductFeatureV3.json"
+          }
+        },
+        "constraints": {
+          "type": ["array", "null"],
+          "description": "Constraints on the application for or operation of the product such as minimum balances or limit thresholds.",
+          "items": {
+            "$ref": "BankingProductConstraintV3.json"
+          }
+        },
+        "eligibility": {
+          "type": ["array", "null"],
+          "description": "Eligibility criteria for the product.",
+          "items": {
+            "$ref": "BankingProductEligibilityV2.json"
+          }
+        },
+        "fees": {
+          "type": ["array", "null"],
+          "description": "Fees applicable for the product.",
+          "items": {
+            "$ref": "BankingProductFeeV2.json"
+          }
+        },
+        "depositRates": {
+          "type": ["array", "null"],
+          "description": "Interest rates available for deposits.",
+          "items": {
+            "$ref": "BankingProductDepositRateV2.json"
+          }
+        },
+        "lendingRates": {
+          "type": ["array", "null"],
+          "description": "Interest rates charged against lending balances.",
+          "items": {
+            "$ref": "BankingProductLendingRateV3.json"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "properties": {
+    "amount": {
+      "description": "The specific amount discounted from the fee each time it is incurred.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    }
+  },
+  "required": [
+    "amount"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,29 @@
+{
+  "description": "A discount for on time payment.",
+  "properties": {
+    "date": {
+      "description": "The date by which the invoice must be paid to receive the pay on time discount.",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "discountAmount": {
+      "description": "The amount that will be discounted if the invoice is paid by the date specified.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "gstAmount": {
+      "default": "0.00",
+      "description": "The GST amount that will be discounted if the invoice is paid by the date specified. If absent then zero is assumed.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    }
+  },
+  "required": [
+    "date",
+    "discountAmount"
+  ],
+  "type": "object"
+}

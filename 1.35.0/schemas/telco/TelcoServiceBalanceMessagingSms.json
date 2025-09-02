@@ -1,0 +1,52 @@
+{
+  "description": "Summary of SMS Balance. Required if the service plan supports SMS messaging.",
+  "properties": {
+    "amount": {
+      "description": "Amount value of SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "international": {
+      "description": "Number of international SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "national": {
+      "description": "Number of national SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "roaming": {
+      "description": "Number of roaming SMS messages remaining. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "national",
+    "international",
+    "roaming",
+    "amount"
+  ]
+}

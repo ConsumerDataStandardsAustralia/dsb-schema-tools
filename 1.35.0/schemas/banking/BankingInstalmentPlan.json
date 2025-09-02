@@ -1,0 +1,104 @@
+{
+  "properties": {
+    "accountId": {
+      "allOf": [
+        {
+          "$ref": "BankingAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
+    },
+    "amount": {
+      "description": "The original transaction amount the instalment plan was created for, including any upfront payment. E.g., For a $100 purchase split into four repayments, this would be `100.00`.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "creationDate": {
+      "description": "The date the plan was created.",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "duration": {
+      "description": "The expected repayment period as at the creation of the plan. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). E.g., For a further three fortnightly repayments from the _creationDate_, this would be `P6W`.",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "instalmentInterval": {
+      "description": "The expected repayment interval. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). E.g., For fortnightly repayments, this would be `P2W`.",
+      "type": "string",
+      "x-cds-type": "ExternalRef"
+    },
+    "merchantCategoryCode": {
+      "description": "The merchant category code (MCC) for the merchant associated with the instalment plan.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "merchantName": {
+      "description": "Name of the merchant associated with the instalment plan.",
+      "type": "string"
+    },
+    "planCharge": {
+      "description": "Any charges incorporated into the scheduled amounts due, excluding other fees. E.g., If the consumer agrees to repay a $100 purchase plus a $5 charge split across four instalments, this would be `5.00`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "planCurrency": {
+      "default": "AUD",
+      "description": "The currency of the plan amount. If absent assumed to be `AUD`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "planId": {
+      "allOf": [
+        {
+          "$ref": "BankingInstalmentPlanId.json"
+        }
+      ],
+      "description": "Unique identifier for this plan in accordance with ID Permanence requirements."
+    },
+    "planNickname": {
+      "description": "The short display name of the plan as provided by the customer. Where a customer has not provided a nickname, a display name derived by the data holder consistent with other channels.",
+      "type": "string"
+    },
+    "planRate": {
+      "description": "If displayed to the consumer, the percentage value of any charges incorporated into the scheduled amounts due, excluding other fees. E.g., If the consumer agrees to repay a $1000 purchase plus 10% interest split across twelve instalments, this would be `0.1`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "planReference": {
+      "description": "Unique purchase or order number for this plan, aligned to other channels.",
+      "type": "string"
+    },
+    "schedule": {
+      "description": "Array of scheduled repayment amounts and dates.",
+      "items": {
+        "$ref": "BankingInstalmentPlanSchedule.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "planId",
+    "planReference",
+    "merchantName",
+    "planNickname",
+    "creationDate",
+    "amount",
+    "duration",
+    "instalmentInterval",
+    "schedule"
+  ],
+  "type": "object"
+}

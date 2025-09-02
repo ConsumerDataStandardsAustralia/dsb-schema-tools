@@ -1,0 +1,13 @@
+{
+  "enum": [
+    "KWH",
+    "KVA",
+    "KVAR",
+    "KVARH",
+    "KW",
+    "DAYS",
+    "METER",
+    "MONTH"
+  ],
+  "type": "string"
+}

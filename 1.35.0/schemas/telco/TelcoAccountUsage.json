@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "accountId": {
+      "allOf": [
+        {
+          "$ref": "TelcoAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
+    },
+    "services": {
+      "description": "List of services that are part of the account.",
+      "items": {
+        "properties": {
+          "service": {
+            "$ref": "TelcoServiceUsage.json"
+          }
+        },
+        "required": [
+          "service"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "services"
+  ],
+  "type": "object"
+}

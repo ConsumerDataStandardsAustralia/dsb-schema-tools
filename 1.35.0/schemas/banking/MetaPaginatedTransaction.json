@@ -1,0 +1,17 @@
+{
+  "allOf": [
+    {
+      "$ref": "MetaPaginated.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "isQueryParamUnsupported": {
+          "type": "boolean",
+          "description": "`true` if _text_ query parameter is not supported.",
+          "default": false
+        }
+      }
+    }
+  ]
+}

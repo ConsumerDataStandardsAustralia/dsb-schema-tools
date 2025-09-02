@@ -1,0 +1,159 @@
+{
+  "properties": {
+    "category": {
+      "description": "The type of the discount. Mandatory if the discount _type_ is `CONDITIONAL`.",
+      "enum": [
+        "PAY_ON_TIME",
+        "DIRECT_DEBIT",
+        "GUARANTEED_DISCOUNT",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "The description of the discount.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the discount.",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "Optional end date for the discount after which the discount is no longer available.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "fixedAmount": {
+      "description": "Required if _methodUType_ is `fixedAmount`.",
+      "properties": {
+        "amount": {
+          "description": "The amount of the discount.",
+          "type": "string",
+          "x-cds-type": "AmountString"
+        }
+      },
+      "required": [
+        "amount"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "methodUType": {
+      "description": "The method of calculation of the discount.",
+      "enum": [
+        "percentOfBill",
+        "percentOfUse",
+        "fixedAmount",
+        "percentOverThreshold"
+      ],
+      "type": "string"
+    },
+    "percentOfBill": {
+      "description": "Required if _methodUType_ is `percentOfBill`.",
+      "properties": {
+        "rate": {
+          "description": "The rate of the discount applied to the bill amount.",
+          "type": "string",
+          "x-cds-type": "RateString"
+        }
+      },
+      "required": [
+        "rate"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "percentOfUse": {
+      "description": "Required if _methodUType_ is `percentOfUse`.",
+      "properties": {
+        "rate": {
+          "description": "The rate of the discount applied to the _usageamount_.",
+          "type": "string",
+          "x-cds-type": "RateString"
+        }
+      },
+      "required": [
+        "rate"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "percentOverThreshold": {
+      "description": "Required if _methodUType_ is `percentOverThreshold`.",
+      "properties": {
+        "rate": {
+          "description": "The rate of the discount over the usage amount.",
+          "type": "string",
+          "x-cds-type": "RateString"
+        },
+        "usageAmount": {
+          "description": "The usage amount threshold above which the discount applies.",
+          "type": "string",
+          "x-cds-type": "AmountString"
+        }
+      },
+      "required": [
+        "rate",
+        "usageAmount"
+      ],
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "The type of the discount.",
+      "enum": [
+        "CONDITIONAL",
+        "GUARANTEED",
+        "OTHER"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName",
+    "type",
+    "methodUType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "percentOfBill",
+    "percentOfUse",
+    "fixedAmount",
+    "percentOverThreshold"
+  ],
+    "allOf": [
+      {
+        "if":   {"properties": {"methodUType": { "const": "percentOfBill" }}},
+        "then": { "required": ["percentOfBill"]}
+      },
+      {
+        "if":   {"properties": {"methodUType": { "const": "percentOfUse" }}},
+        "then": { "required": ["percentOfUse"]}
+      },
+      {
+        "if":   {"properties": {"methodUType": { "const": "fixedAmount" }}},
+        "then": { "required": ["fixedAmount"]}
+      },
+      {
+        "if":   {"properties": {"methodUType": { "const": "percentOverThreshold" }}},
+        "then": { "required": ["percentOverThreshold"]}
+      }
+    ]  
+}

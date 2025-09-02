@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "firstName": {
+      "description": "For people with single names this field need not be present. The single name should be in the _lastName_ field. Where a data holder cannot determine first and middle names from a collection of given names, a single string representing all given names **MAY** be provided.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastName": {
+      "description": "For people with single names, the single name should be in this field.",
+      "type": "string"
+    },
+    "lastUpdateTime": {
+      "description": "The date and time that this record was last updated by the customer. If no update has occurred then this date should reflect the initial creation date for the data.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "middleNames": {
+      "description": "Field is mandatory but array may be empty.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "occupationCode": {
+      "description": "Value is a valid **[[ANZSCO]](#iref-ANZSCO)** Standard Occupation classification code. If the occupation code held by the data holder is not one of the supported **[[ANZSCO]](#iref-ANZSCO)** versions, then it must not be supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "occupationCodeVersion": {
+      "default": "ANZSCO_1220.0_2013_V1.2",
+      "description": "The applicable **[[ANZSCO]](#iref-ANZSCO)** release version of the occupation code provided. Mandatory if an _occupationCode_ is supplied. If _occupationCode_ is supplied but _occupationCodeVersion_ is absent, default is `ANZSCO_1220.0_2013_V1.2`.",
+      "enum": [
+        "ANZSCO_1220.0_2006_V1.0",
+        "ANZSCO_1220.0_2006_V1.1",
+        "ANZSCO_1220.0_2013_V1.2",
+        "ANZSCO_1220.0_2013_V1.3"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "prefix": {
+      "description": "Also known as title or salutation. The prefix to the name (e.g., Mr, Mrs, Ms, Miss, Sir, etc.)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "suffix": {
+      "description": "Used for a trailing suffix to the name (e.g., Jr.)",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "lastName",
+    "middleNames"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "occupationCodeVersion"
+  ]
+}

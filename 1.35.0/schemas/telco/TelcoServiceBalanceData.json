@@ -1,0 +1,53 @@
+{
+  "description": "Summary of data balances.",
+  "properties": {
+    "amount": {
+      "description": "Remaining value amount of data available. Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "An overview of plan limits. Required unless _planType_ is `UNSUPPORTED`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "download": {
+      "description": "Remaining download data in megabytes (MB). Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "planType": {
+      "$ref": "TelcoPlanType.json"
+    },
+    "roaming": {
+      "$ref": "TelcoServiceBalanceDataRoaming.json"
+    },
+    "upload": {
+      "description": "Remaining upload data in megabytes (MB). Required unless _planType_ is `UNSUPPORTED` or `UNMETERED`.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    }
+  },
+  "required": [
+    "planType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "description",
+    "upload",
+    "download",
+    "amount",
+    "roaming"
+  ]
+}

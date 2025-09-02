@@ -1,0 +1,38 @@
+{
+  "description": "Optional array of charges that may be part of the invoice (for example services fees) (exclusive of GST).",
+  "properties": {
+    "amount": {
+      "description": "The aggregate total of charges for this item (exclusive of GST).",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "A free text description of the charge.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "type": {
+      "description": "Type of charge.",
+      "enum": [
+        "SERVICE",
+        "EQUIPMENT",
+        "NETWORK",
+        "HANDSET",
+        "DEVICE",
+        "ENTERTAINMENT",
+        "SUBSCRIPTION",
+        "SOFTWARE",
+        "OTHER"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "amount",
+    "description"
+  ],
+  "type": "object"
+}

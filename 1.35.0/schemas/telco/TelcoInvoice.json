@@ -1,0 +1,92 @@
+{
+  "properties": {
+    "accountCharges": {
+      "$ref": "TelcoInvoiceAccountCharges.json"
+    },
+    "accountId": {
+      "allOf": [
+        {
+          "$ref": "TelcoAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
+    },
+    "accountUsage": {
+      "$ref": "TelcoUsage.json"
+    },
+    "balanceAtIssue": {
+      "description": "The account balance at the time the invoice was issued.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "dueDate": {
+      "description": "The date that the invoice is due to be paid.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "gstAmount": {
+      "default": "0.00",
+      "description": "The total GST amount for this invoice. If absent then zero is assumed.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "invoiceAmount": {
+      "description": "The net amount due for this invoice regardless of previous balance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "invoiceNumber": {
+      "description": "The number assigned to this invoice by the telco Retailer.",
+      "type": "string"
+    },
+    "issueDate": {
+      "description": "The date that the invoice was actually issued (as opposed to generated or calculated).",
+      "type": "string",
+      "x-cds-type": "DateString"
+    },
+    "payOnTimeDiscount": {
+      "$ref": "TelcoInvoicePayOnTimeDiscount.json"
+    },
+    "paymentStatus": {
+      "default": "NOT_PAID",
+      "description": "Indicator of the payment status for the invoice.",
+      "enum": [
+        "PAID",
+        "PARTIALLY_PAID",
+        "NOT_PAID"
+      ],
+      "type": "string"
+    },
+    "period": {
+      "$ref": "TelcoInvoicePeriod.json"
+    },
+    "services": {
+      "description": "An array of _serviceId_ values to which this invoice applies. May be empty if the invoice contains no usage related charges.",
+      "items": {
+        "$ref": "TelcoServiceId.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "accountId",
+    "balanceAtIssue",
+    "invoiceNumber",
+    "issueDate",
+    "paymentStatus",
+    "services"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "period"
+  ]
+}

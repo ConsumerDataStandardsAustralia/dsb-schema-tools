@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "amount": {
+      "description": "The amount charged for the duration period.",
+      "type": "string",
+      "x-cds-type": "AmountString"
+    },
+    "description": {
+      "description": "The description of the pricing.",
+      "type": "string"
+    },
+    "name": {
+      "description": "The display name of the pricing.",
+      "type": "string"
+    },
+    "period": {
+      "description": "The duration that occurs on a pricing schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    }
+  },
+  "required": [
+    "amount",
+    "description",
+    "name"
+  ],
+  "type": "object"
+}

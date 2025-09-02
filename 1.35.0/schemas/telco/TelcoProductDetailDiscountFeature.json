@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "description": {
+      "description": "The description of the discount feature.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "displayName": {
+      "description": "The display name of the discount feature.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "displayName"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,63 @@
+{
+  "properties": {
+    "from": {
+      "$ref": "BankingScheduledPaymentFrom.json"
+    },
+    "nickname": {
+      "description": "The short display name of the scheduled payment as provided by the customer if provided. Where a customer has not provided a nickname, a display name derived by the bank for the scheduled payment should be provided that is consistent with existing digital banking channels.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payeeReference": {
+      "description": "The reference for the transaction, if applicable, that will be provided by the originating institution for all payments in the payment set. Empty string if no data provided.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payerReference": {
+      "description": "The reference for the transaction that will be used by the originating institution for the purposes of constructing a statement narrative on the payer’s account. Empty string if no data provided.",
+      "type": "string"
+    },
+    "paymentSet": {
+      "items": {
+        "$ref": "BankingScheduledPaymentSetV2.json"
+      },
+      "type": "array"
+    },
+    "recurrence": {
+      "$ref": "BankingScheduledPaymentRecurrence.json"
+    },
+    "scheduledPaymentId": {
+      "allOf": [
+        {
+          "$ref": "BankingScheduledPaymentId.json"
+        }
+      ],
+      "description": "Unique identifier for the scheduled payment."
+    },
+    "status": {
+      "description": "Indicates whether the schedule is currently active. The value `SKIP` is equivalent to `ACTIVE` except that the customer has requested the next normal occurrence to be skipped.",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "SKIP"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "from",
+    "payerReference",
+    "paymentSet",
+    "recurrence",
+    "scheduledPaymentId",
+    "status"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "payeeReference"
+  ]
+}

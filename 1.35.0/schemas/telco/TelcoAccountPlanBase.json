@@ -1,0 +1,53 @@
+{
+  "properties": {
+    "billingType": {
+      "description": "The billing type of the plan.",
+      "enum": [
+        "PRE_PAID",
+        "POST_PAID",
+        "UPFRONT_PAID",
+        "OTHER"
+      ],
+      "type": "string"
+    },
+    "nickname": {
+      "description": "Optional display name for the plan provided by the customer to help differentiate multiple plans.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "planOverview": {
+      "allOf": [
+        {
+          "$ref": "TelcoAccountPlanOverview.json"
+        }
+      ],
+      "description": "Mandatory if _openStatus_ is `OPEN`."
+    },
+    "serviceIds": {
+      "description": "List of _serviceId_ values.",
+      "items": {
+        "$ref": "TelcoServiceId.json"
+      },
+      "type": "array"
+    },
+    "type": {
+      "description": "The type of the plan. The type of plan. A [`MOBILE`](https://www.legislation.gov.au/Details/C2022C00170/Html/Volume_1#_Toc95898745) service or `BROADBAND` fixed internet service.",
+      "enum": [
+        "MOBILE",
+        "BROADBAND"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "serviceIds",
+    "type",
+    "billingType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "planOverview"
+  ]
+}

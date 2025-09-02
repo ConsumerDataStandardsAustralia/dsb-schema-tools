@@ -1,0 +1,25 @@
+{
+  "description": "Response containing a list of Data Recipients in the CDR Register.",
+  "properties": {
+    "data": {
+      "description": "Response data for the query.",
+      "items": {
+        "$ref": "RegisterDataRecipient.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

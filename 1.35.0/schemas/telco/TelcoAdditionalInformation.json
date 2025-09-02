@@ -1,0 +1,46 @@
+{
+  "description": "Object that contains links to additional information on specific topics.",
+  "properties": {
+    "bundleUri": {
+      "description": "A link to detail on bundles that this plan can be a part of.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "eligibilityUri": {
+      "description": "A link to detail on eligibility criteria for the plan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "overviewUri": {
+      "description": "A link to a general overview of the plan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "pricingUri": {
+      "description": "A link to detail on pricing for the plan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "termsUri": {
+      "description": "A link to terms and conditions for the plan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "type": "object"
+}

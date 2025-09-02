@@ -1,0 +1,27 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "serviceIds": {
+          "description": "Array of _serviceId_ values to obtain data for.",
+          "items": {
+            "$ref": "TelcoServiceId.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "serviceIds"
+      ],
+      "type": "object"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "meta"
+  ],
+  "type": "object"
+}

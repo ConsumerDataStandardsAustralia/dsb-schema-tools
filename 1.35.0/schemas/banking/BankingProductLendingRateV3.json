@@ -1,0 +1,147 @@
+{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the rate.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this rate.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_lendingRateType_](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [_lendingRateType_](#tocSproductlendingratetypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicabilityConditions": {
+      "description": "Applicability conditions for the rate.",
+      "items": {
+        "$ref": "BankingProductRateConditionV2.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "applicationFrequency": {
+      "description": "The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax). Mandatory if the _applicationType_ value is `PERIODIC`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "applicationType": {
+      "description": "The type of approach used to apply the rate to the account.",
+      "enum": [
+        "MATURITY",
+        "PERIODIC",
+        "UPFRONT"
+      ],
+      "example": "PERIODIC",
+      "type": "string"
+    },
+    "calculationFrequency": {
+      "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "comparisonRate": {
+      "description": "A comparison rate equivalent for this rate.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "interestPaymentDue": {
+      "description": "When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered.",
+      "enum": [
+        "IN_ADVANCE",
+        "IN_ARREARS"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lendingRateType": {
+      "description": "The type of rate (`FIXED`, `VARIABLE`, etc.) For further details, refer to [Product Lending Rate Types](#tocSproductlendingratetypedoc).",
+      "enum": [
+        "BALANCE_TRANSFER",
+        "BUNDLE_DISCOUNT_FIXED",
+        "BUNDLE_DISCOUNT_VARIABLE",
+        "CASH_ADVANCE",
+        "DISCOUNT",
+        "FIXED",
+        "FLOATING",
+        "INTRODUCTORY",
+        "MARKET_LINKED",
+        "PENALTY",
+        "PURCHASE",
+        "VARIABLE"
+      ],
+      "example": "FIXED",
+      "type": "string"
+    },
+    "loanPurpose": {
+      "description": "The reason for taking out the loan.",
+      "enum": [
+        "INVESTMENT",
+        "OTHER",
+        "OWNER_OCCUPIED",
+        "UNCONSTRAINED"
+      ],
+      "type": "string"
+    },
+    "rate": {
+      "description": "The rate to be applied.",
+      "type": "string",
+      "x-cds-type": "RateString"
+    },
+    "repaymentType": {
+      "description": "Option in place for repayments.",
+      "enum": [
+        "INTEREST_ONLY",
+        "OTHER",
+        "PRINCIPAL_AND_INTEREST",
+        "UNCONSTRAINED"
+      ],
+      "type": "string"
+    },
+    "tiers": {
+      "description": "Qualifying criteria or conditions relevant to the associated rate.",
+      "items": {
+        "$ref": "BankingProductRateTierV4.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "lendingRateType",
+    "rate",
+    "applicationType",
+    "repaymentType",
+    "loanPurpose"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "applicationFrequency"
+  ]
+}

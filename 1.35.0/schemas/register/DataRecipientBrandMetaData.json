@@ -1,0 +1,47 @@
+{
+  "description": "Metadata related to Data Recipient Brand.",
+  "properties": {
+    "brandName": {
+      "description": "Data Recipient Brand name.",
+      "maxLength": 200,
+      "type": "string"
+    },
+    "dataRecipientBrandId": {
+      "description": "Unique id of the Data Recipient brand issued by the CDR Register.",
+      "maxLength": 36,
+      "type": "string"
+    },
+    "logoUri": {
+      "description": "Data Recipient Brand logo URI.",
+      "maxLength": 1000,
+      "type": "string",
+      "x-cds-type": "URIString"
+    },
+    "softwareProducts": {
+      "items": {
+        "$ref": "SoftwareProductMetaData.json"
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "uniqueItems": true
+    },
+    "status": {
+      "description": "Data Recipient Brand status in the CDR Register.",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "REMOVED"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "brandName",
+    "dataRecipientBrandId",
+    "logoUri",
+    "status"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "concessions": {
+          "description": "Array may be empty if no concessions exist.",
+          "items": {
+            "$ref": "EnergyConcession.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "concessions"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
+}

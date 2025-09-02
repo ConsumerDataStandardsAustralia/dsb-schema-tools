@@ -1,0 +1,9 @@
+{
+  "enum": [
+    "banking",
+    "energy",
+    "non-bank-lending",
+    "telco"
+  ],
+  "type": "string"
+}

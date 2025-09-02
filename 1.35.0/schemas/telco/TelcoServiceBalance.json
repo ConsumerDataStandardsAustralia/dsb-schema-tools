@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "balance": {
+      "$ref": "TelcoServiceBalances.json"
+    },
+    "displayName": {
+      "description": "Optional description of the service used for display purposes.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endDate": {
+      "description": "Date when the balance period ends.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateTimeString"
+    },
+    "phoneNumber": {
+      "description": "Required if the service includes a phone number.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceId": {
+      "allOf": [
+        {
+          "$ref": "TelcoServiceId.json"
+        }
+      ],
+      "description": "Unique identifier for the service. A _serviceId_ is an [ID Permanence](#id-permanence) representation of a unique service identifier such as a mobile [MSISDN](https://www.etsi.org/deliver/etsi_gts/03/0303/05.00.00_60/gsmts_0303v050000p.pdf), [FNN](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf) or internet service e.g., [NBN AVC Service ID](https://www.nbnco.com.au/content/dam/nbnco2/documents/sfaa-wba2-dictionary_FTTN-launch.pdf)"
+    },
+    "startDate": {
+      "description": "Date when the balance period started.",
+      "type": "string",
+      "x-cds-type": "DateTimeString"
+    }
+  },
+  "required": [
+    "serviceId",
+    "startDate",
+    "balance"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "phoneNumber"
+  ]
+}

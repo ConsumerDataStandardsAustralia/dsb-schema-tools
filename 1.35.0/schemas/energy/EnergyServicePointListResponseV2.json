@@ -1,0 +1,30 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "servicePoints": {
+          "items": {
+            "$ref": "EnergyServicePointV2.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "servicePoints"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "LinksPaginated.json"
+    },
+    "meta": {
+      "$ref": "MetaPaginated.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

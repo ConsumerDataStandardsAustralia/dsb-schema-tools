@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "data": {
+      "$ref": "BankingProductDetailV7.json"
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
+}

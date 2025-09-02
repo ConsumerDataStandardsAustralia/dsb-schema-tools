@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "invoices": {
+          "description": "Array of invoices sorted by issue date in descending order.",
+          "items": {
+            "$ref": "TelcoInvoice.json"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "invoices"
+      ],
+      "type": "object"
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links",
+    "meta"
+  ],
+  "type": "object"
+}

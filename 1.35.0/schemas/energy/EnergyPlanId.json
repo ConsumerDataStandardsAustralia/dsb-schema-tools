@@ -1,0 +1,5 @@
+{
+  "description": "The unique identifier for the Energy plan.",
+  "type": "string",
+  "x-cds-type": "ASCIIString"
+}

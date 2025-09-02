@@ -1,0 +1,109 @@
+{
+  "allOf": [
+    {
+      "$ref": "BankingTransaction.json"
+    },
+    {
+      "required": [
+        "extendedData"
+      ],
+      "type": "object",
+      "properties": {
+        "extendedData": {
+          "type": "object",
+          "properties": {
+            "payer": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Label of the originating payer. Mandatory for inbound payment."
+            },
+            "payee": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Label of the target PayID. Mandatory for an outbound payment. The name assigned to the BSB/Account Number or PayID (by the owner of the PayID)."
+            },
+            "extensionUType": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional extended data specific to transactions. Currently extended data is supported for NPP service overlays.",
+              "enum": [
+                "nppPayload"
+              ]
+            },
+            "nppPayload": {
+              "type": "object",
+              "description": "Required if the _extensionUType_ value is `nppPayload`.",
+              "required": [
+                "service",
+                "serviceVersion"
+              ],
+              "x-conditional": [
+                "extendedDescription"
+              ],
+              "properties": {
+                "extendedDescription": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "An extended string description. Mandatory if the _extensionUType_ value is `nppPayload`."
+                },
+                "endToEndId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "An end to end ID for the payment created at initiation."
+                },
+                "purposeCode": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "x-cds-type": "ExternalRef",
+                  "description": "Purpose of the payment. Format is defined by the NPP standards for the NPP overlay services including Osko (X2P1)."
+                },
+                "service": {
+                  "$ref": "NppPaymentService.json"
+                },
+                "serviceVersion": {
+                  "type": "string",
+                  "x-cds-type": "ExternalRef",
+                  "description": "Two-digit NPP service overlay version with leading zero.",
+                  "example": "03"
+                }
+              }
+            }
+          },
+          "x-conditional": [
+            "payer",
+            "payee",
+            "nppPayload"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "extensionUType ": {
+                    "const": "nppPayload"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "nppPayload"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

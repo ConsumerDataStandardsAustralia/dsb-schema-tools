@@ -1,0 +1,41 @@
+{
+  "properties": {
+    "data": {
+      "properties": {
+        "customerUType": {
+          "description": "The type of customer object that is present.",
+          "enum": [
+            "organisation",
+            "person"
+          ],
+          "type": "string"
+        },
+        "organisation": {
+          "$ref": "CommonOrganisation.json"
+        },
+        "person": {
+          "$ref": "CommonPerson.json"
+        }
+      },
+      "required": [
+        "customerUType"
+      ],
+      "type": "object",
+      "x-conditional": [
+        "person",
+        "organisation"
+      ]
+    },
+    "links": {
+      "$ref": "Links.json"
+    },
+    "meta": {
+      "$ref": "Meta.json"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object"
+}

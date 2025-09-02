@@ -1,0 +1,55 @@
+{
+  "properties": {
+    "accountId": {
+      "allOf": [
+        {
+          "$ref": "EnergyAccountId.json"
+        }
+      ],
+      "description": "Unique identifier for the account."
+    },
+    "accountNumber": {
+      "description": "Optional identifier of the account as defined by the data holder. This must be the value presented on physical statements (if it exists) and must not be used for the value of _accountId_.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "creationDate": {
+      "description": "The date that the account was created or opened. Mandatory if _openStatus_ is `OPEN`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "displayName": {
+      "description": "An optional display name for the account if one exists or can be derived. The content of this field is at the discretion of the data holder.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openStatus": {
+      "default": "OPEN",
+      "description": "Open or closed status for the account. If not present then `OPEN` is assumed.",
+      "enum": [
+        "CLOSED",
+        "OPEN"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "accountId"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "creationDate"
+  ],
+  "if":   {"properties": {"openStatus": { "const": "OPEN" }}},
+  "then": { "required": ["creationDate"]}
+}

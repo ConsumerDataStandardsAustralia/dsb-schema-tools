@@ -1,0 +1,61 @@
+{
+  "allOf": [
+    {
+      "$ref": "BankingPayeeV2.json"
+    },
+    {
+      "required": [
+        "payeeUType"
+      ],
+      "type": "object",
+      "properties": {
+        "payeeUType": {
+          "type": "string",
+          "description": "Type of object included that describes the payee in detail.",
+          "enum": [
+            "biller",
+            "digitalWallet",
+            "domestic",
+            "international"
+          ]
+        },
+        "biller": {
+          "$ref": "BankingBillerPayee.json"
+        },
+        "domestic": {
+          "$ref": "BankingDomesticPayee.json"
+        },
+        "digitalWallet": {
+          "$ref": "BankingDigitalWalletPayee.json"
+        },
+        "international": {
+          "$ref": "BankingInternationalPayee.json"
+        }
+      },
+      "x-conditional": [
+        "biller",
+        "digitalWallet",
+        "domestic",
+        "international"
+      ],
+      "allOf": [
+        {
+          "if":   {"properties": {"payeeUType": { "const": "biller" }}},
+          "then": { "required": ["biller"]}
+        },
+        {
+          "if":   {"properties": {"payeeUType": { "const": "digitalWallet" }}},
+          "then": { "required": ["digitalWallet"]}
+        },
+        {
+          "if":   {"properties": {"payeeUType": { "const": "domestic" }}},
+          "then": { "required": ["domestic"]}
+        },
+        {
+          "if":   {"properties": {"payeeUType": { "const": "international" }}},
+          "then": { "required": ["international"]}
+        }
+      ]
+    }
+  ]
+}
