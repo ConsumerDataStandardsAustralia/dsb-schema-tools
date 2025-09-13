@@ -5330,6 +5330,42 @@
   ],
   "type": "object",
   "$id": "RequestAccountIdListV1"
+},"ResponseBankingAccountByIdV3" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingAccountDetailV3"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingAccountByIdV3"
+},"ResponseBankingAccountByIdV4" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingAccountDetailV4"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingAccountByIdV4"
 },"ResponseBankingAccountByIdV5" :{
   "properties": {
     "data": {

@@ -11,8 +11,8 @@
 var fs = require('fs');
 var path = require('path');
 
-const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common', 'telco'];
-//const sectors = ['energy'];
+//const sectors = ['banking', 'energy', 'energy_sdh', 'register', 'dcr', 'admin', 'common', 'telco'];
+const sectors = ['banking'];
 const version = '1.35.0';
 
 sectors.forEach(sector => {
