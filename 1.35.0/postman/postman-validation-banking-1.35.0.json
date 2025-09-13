@@ -1541,6 +1541,138 @@
   ],
   "type": "object",
   "$id": "BankingInternationalPayee"
+},"BankingLoanAccountV2" :{
+  "properties": {
+    "loanEndDate": {
+      "description": "Date that the loan is due to be repaid in full.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "maxRedraw": {
+      "description": "Maximum amount of funds that can be redrawn. If not present redraw is not available even if the feature exists for the account.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "maxRedrawCurrency": {
+      "description": "If absent assumes `AUD`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "minInstalmentAmount": {
+      "description": "Minimum amount of next instalment.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "minInstalmentCurrency": {
+      "description": "If absent assumes `AUD`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "minRedraw": {
+      "description": "Minimum redraw amount.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "minRedrawCurrency": {
+      "description": "If absent assumes `AUD`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "nextInstalmentDate": {
+      "description": "Next date that an instalment is required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "offsetAccountEnabled": {
+      "description": "Set to `true` if one or more offset accounts are configured for this loan account.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "x-cds-type": "Boolean"
+    },
+    "offsetAccountIds": {
+      "description": "The _accountId_ values of the configured offset accounts attached to this loan. Only offset accounts that can be accessed under the current authorisation should be included. It is expected behaviour that _offsetAccountEnabled_ is set to `true` but the _offsetAccountIds_ field is absent or empty. This represents a situation where an offset account exists but details can not be accessed under the current authorisation.",
+      "items": {
+        "type": "string",
+        "x-cds-type": "ASCIIString"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "originalLoanAmount": {
+      "description": "Optional original loan value.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "originalLoanCurrency": {
+      "description": "If absent assumes `AUD`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "originalStartDate": {
+      "description": "Optional original start date for the loan.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "DateString"
+    },
+    "repaymentFrequency": {
+      "description": "The expected or required repayment frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "repaymentType": {
+      "default": "PRINCIPAL_AND_INTEREST",
+      "description": "Options in place for repayments. If absent defaults to `PRINCIPAL_AND_INTEREST`.",
+      "enum": [
+        "INTEREST_ONLY",
+        "PRINCIPAL_AND_INTEREST"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$id": "BankingLoanAccountV2"
 },"BankingLoanAccountV3" :{
   "properties": {
     "loanEndDate": {
@@ -2783,6 +2915,76 @@
     "additionalInfo"
   ],
   "$id": "BankingProductEligibilityV2"
+},"BankingProductFeatureV3" :{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the feature. Mandatory if [_featureType_](#tocSproductfeaturetypedoc) is set to `OTHER`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this feature.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_featureType_](#tocSproductfeaturetypedoc) specified. Whether mandatory or not is dependent on the value of the [_featureType_](#tocSproductfeaturetypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "featureType": {
+      "description": "The type of feature described. For further details, refer to [Product Feature Types](#tocSproductfeaturetypedoc).",
+      "enum": [
+        "ADDITIONAL_CARDS",
+        "BALANCE_TRANSFERS",
+        "BILL_PAYMENT",
+        "BONUS_REWARDS",
+        "CARD_ACCESS",
+        "CASHBACK_OFFER",
+        "COMPLEMENTARY_PRODUCT_DISCOUNTS",
+        "DIGITAL_BANKING",
+        "DIGITAL_WALLET",
+        "DONATE_INTEREST",
+        "EXTRA_REPAYMENTS",
+        "FRAUD_PROTECTION",
+        "FREE_TXNS",
+        "FREE_TXNS_ALLOWANCE",
+        "FUNDS_AVAILABLE_AFTER",
+        "GUARANTOR",
+        "INSTALMENT_PLAN",
+        "INSURANCE",
+        "INTEREST_FREE",
+        "INTEREST_FREE_TRANSFERS",
+        "LOYALTY_PROGRAM",
+        "NOTIFICATIONS",
+        "NPP_ENABLED",
+        "NPP_PAYID",
+        "OFFSET",
+        "OTHER",
+        "OVERDRAFT",
+        "REDRAW",
+        "RELATIONSHIP_MANAGEMENT",
+        "UNLIMITED_TXNS"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "featureType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "additionalInfo"
+  ],
+  "$id": "BankingProductFeatureV3"
 },"BankingProductFeatureV4" :{
   "properties": {
     "additionalInfo": {
