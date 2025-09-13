@@ -2847,6 +2847,111 @@
     }
   ],
   "$id": "BankingProductDetailV7"
+},"BankingProductDiscount" :{
+  "properties": {
+    "accruedRate": {
+      "description": "A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "additionalInfo": {
+      "description": "Display text providing more information on the discount.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this discount.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_discountType_](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [_discountType_](#tocSproductdiscounttypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "Dollar value of the discount. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "balanceRate": {
+      "description": "A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "description": {
+      "description": "Description of the discount.",
+      "type": "string"
+    },
+    "discountType": {
+      "description": "The type of discount. For further details, refer to [Product Discount Types](#tocSproductdiscounttypedoc).",
+      "enum": [
+        "BALANCE",
+        "DEPOSITS",
+        "ELIGIBILITY_ONLY",
+        "FEE_CAP",
+        "PAYMENTS"
+      ],
+      "type": "string"
+    },
+    "eligibility": {
+      "description": "Eligibility constraints that apply to this discount. Mandatory if _discountType_ is `ELIGIBILITY_ONLY`.",
+      "items": {
+        "$ref": "BankingProductDiscountEligibility"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "feeRate": {
+      "description": "A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory. Unless noted in _additionalInfo_, assumes the application and calculation frequency are the same as the corresponding fee.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "transactionRate": {
+      "description": "A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of _amount_, _balanceRate_, _transactionRate_, _accruedRate_ and _feeRate_ is mandatory.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    }
+  },
+  "required": [
+    "description",
+    "discountType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "accruedRate",
+    "additionalValue",
+    "amount",
+    "balanceRate",
+    "eligibility",
+    "feeRate",
+    "transactionRate"
+  ],
+  "$id": "BankingProductDiscount"
 },"BankingProductDiscountEligibility" :{
   "properties": {
     "additionalInfo": {
@@ -2988,6 +3093,58 @@
     "eligibility"
   ],
   "$id": "BankingProductDiscountV2"
+},"BankingProductEligibility" :{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the [eligibility](#tocSproducteligibilitytypedoc) criteria. Mandatory if the field is set to `OTHER`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this eligibility criteria.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_eligibilityType_](#tocSproducteligibilitytypedoc) specified. Whether mandatory or not is dependent on the value of [_eligibilityType_](#tocSproducteligibilitytypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "eligibilityType": {
+      "description": "The type of eligibility criteria described. For further details, refer to [Product Eligibility Types](#tocSproducteligibilitytypedoc).",
+      "enum": [
+        "BUSINESS",
+        "EMPLOYMENT_STATUS",
+        "MAX_AGE",
+        "MIN_AGE",
+        "MIN_INCOME",
+        "MIN_TURNOVER",
+        "NATURAL_PERSON",
+        "OTHER",
+        "PENSION_RECIPIENT",
+        "RESIDENCY_STATUS",
+        "STAFF",
+        "STUDENT"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "eligibilityType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "additionalInfo"
+  ],
+  "$id": "BankingProductEligibility"
 },"BankingProductEligibilityV2" :{
   "properties": {
     "additionalInfo": {
@@ -3250,6 +3407,122 @@
     "additionalInfo"
   ],
   "$id": "BankingProductFeatureV4"
+},"BankingProductFee" :{
+  "properties": {
+    "accrualFrequency": {
+      "description": "The indicative frequency with which the fee is calculated on the account. Only applies if _balanceRate_ or _accruedRate_ is also present. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "accruedRate": {
+      "description": "A fee rate calculated based on a proportion of the calculated interest accrued on the account. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "additionalInfo": {
+      "description": "Display text providing more information on the fee.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this fee.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_feeType_](#tocSproductfeetypedoc) specified. Whether mandatory or not is dependent on the value of [_feeType_](#tocSproductfeetypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "amount": {
+      "description": "The amount charged for the fee. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "AmountString"
+    },
+    "balanceRate": {
+      "description": "A fee rate calculated based on a proportion of the balance. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "currency": {
+      "description": "The currency the fee will be charged in. Assumes `AUD` if absent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "CurrencyString"
+    },
+    "discounts": {
+      "description": "An optional list of discounts to this fee that may be available.",
+      "items": {
+        "$ref": "BankingProductDiscount"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "feeType": {
+      "description": "The type of fee. For further details, refer to [Product Fee Types](#tocSproductfeetypedoc).",
+      "enum": [
+        "DEPOSIT",
+        "EVENT",
+        "EXIT",
+        "PAYMENT",
+        "PERIODIC",
+        "PURCHASE",
+        "TRANSACTION",
+        "UPFRONT",
+        "VARIABLE",
+        "WITHDRAWAL"
+      ],
+      "type": "string"
+    },
+    "name": {
+      "description": "Name of the fee.",
+      "type": "string"
+    },
+    "transactionRate": {
+      "description": "A fee rate calculated based on a proportion of a transaction. One of _amount_, _balanceRate_, _transactionRate_ and _accruedRate_ is mandatory unless the _feeType_ `VARIABLE` is supplied.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    }
+  },
+  "required": [
+    "feeType",
+    "name"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue",
+    "amount",
+    "balanceRate",
+    "transactionRate",
+    "accruedRate"
+  ],
+  "$id": "BankingProductFee"
 },"BankingProductFeeV2" :{
   "properties": {
     "additionalInfo": {
@@ -3444,6 +3717,130 @@
   ],
   "type": "object",
   "$id": "BankingProductInstalments"
+},"BankingProductLendingRateV2" :{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the rate.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this rate.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_lendingRateType_](#tocSproductlendingratetypedoc) specified. Whether mandatory or not is dependent on the value of [_lendingRateType_](#tocSproductlendingratetypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicationFrequency": {
+      "description": "The period after which the calculated amount(s) (see _calculationFrequency_) are 'applied' (i.e. debited or credited) to the account. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "calculationFrequency": {
+      "description": "The period after which the rate is applied to the balance to calculate the amount due for the period. Calculation of the amount is often daily (as balances may change) but accumulated until the total amount is 'applied' to the account (see _applicationFrequency_). Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "ExternalRef"
+    },
+    "comparisonRate": {
+      "description": "A comparison rate equivalent for this rate.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "RateString"
+    },
+    "interestPaymentDue": {
+      "description": "When loan payments are due to be paid within each period. The investment benefit of earlier payments affect the rate that can be offered.",
+      "enum": [
+        "IN_ADVANCE",
+        "IN_ARREARS"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lendingRateType": {
+      "description": "The type of rate (`FIXED`, `VARIABLE`, etc.) For further details, refer to [Product Lending Rate Types](#tocSproductlendingratetypedoc).",
+      "enum": [
+        "BUNDLE_DISCOUNT_FIXED",
+        "BUNDLE_DISCOUNT_VARIABLE",
+        "CASH_ADVANCE",
+        "DISCOUNT",
+        "FIXED",
+        "FLOATING",
+        "INTRODUCTORY",
+        "MARKET_LINKED",
+        "PENALTY",
+        "PURCHASE",
+        "VARIABLE"
+      ],
+      "example": "FIXED",
+      "type": "string"
+    },
+    "loanPurpose": {
+      "description": "The reason for taking out the loan. If absent, the lending rate is applicable to all loan purposes.",
+      "enum": [
+        "INVESTMENT",
+        "OWNER_OCCUPIED"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rate": {
+      "description": "The rate to be applied.",
+      "type": "string",
+      "x-cds-type": "RateString"
+    },
+    "repaymentType": {
+      "description": "Options in place for repayments. If absent, the lending rate is applicable to all repayment types.",
+      "enum": [
+        "INTEREST_ONLY",
+        "PRINCIPAL_AND_INTEREST"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tiers": {
+      "description": "Rate tiers applicable for this rate.",
+      "items": {
+        "$ref": "BankingProductRateTierV3"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "lendingRateType",
+    "rate"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue"
+  ],
+  "$id": "BankingProductLendingRateV2"
 },"BankingProductLendingRateV3" :{
   "properties": {
     "additionalInfo": {
@@ -3591,6 +3988,27 @@
     "applicationFrequency"
   ],
   "$id": "BankingProductLendingRateV3"
+},"BankingProductRateCondition" :{
+  "description": "Defines a condition for the applicability of a tiered rate.",
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the condition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this condition.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    }
+  },
+  "type": "object",
+  "$id": "BankingProductRateCondition"
 },"BankingProductRateConditionV2" :{
   "description": "Defines a condition for the applicability of a rate.",
   "properties": {
@@ -3645,6 +4063,73 @@
     "additionalInfo"
   ],
   "$id": "BankingProductRateConditionV2"
+},"BankingProductRateTierV3" :{
+  "description": "Defines the criteria and conditions for which a rate applies.",
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the rate tier.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on this rate tier.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "applicabilityConditions": {
+      "$ref": "BankingProductRateCondition"
+    },
+    "maximumValue": {
+      "description": "The number of _unitOfMeasure_ units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g., 1 month) this must be the same as _minimumValue_. Where this is the same as the _minimumValue_ value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "x-cds-type": "Number"
+    },
+    "minimumValue": {
+      "description": "The number of _unitOfMeasure_ units that form the lower bound of the tier. The tier should be inclusive of this value.",
+      "type": "number",
+      "x-cds-type": "Number"
+    },
+    "name": {
+      "description": "A display name for the tier.",
+      "type": "string"
+    },
+    "rateApplicationMethod": {
+      "description": "The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps').",
+      "enum": [
+        "PER_TIER",
+        "WHOLE_BALANCE"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "unitOfMeasure": {
+      "description": "The unit of measure that applies to the _minimumValue_ and _maximumValue_ values e.g.,<ul><li>`DOLLAR` amount.<li>`PERCENT` (in the case of loan-to-value ratio or LVR).<li>Tier term period representing a discrete number of `MONTH`(s) or `DAY`(s) (in the case of term deposit tiers).</ul>",
+      "enum": [
+        "DAY",
+        "DOLLAR",
+        "MONTH",
+        "PERCENT"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "minimumValue",
+    "name",
+    "unitOfMeasure"
+  ],
+  "type": "object",
+  "$id": "BankingProductRateTierV3"
 },"BankingProductRateTierV4" :{
   "description": "Defines the criteria and conditions for which a rate applies.",
   "properties": {
