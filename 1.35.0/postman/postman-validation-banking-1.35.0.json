@@ -2242,6 +2242,52 @@
   ],
   "type": "string",
   "$id": "BankingProductCategoryV2"
+},"BankingProductConstraintV2" :{
+  "properties": {
+    "additionalInfo": {
+      "description": "Display text providing more information on the constraint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalInfoUri": {
+      "description": "Link to a web page with more information on the constraint.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-cds-type": "URIString"
+    },
+    "additionalValue": {
+      "description": "Generic field containing additional information relevant to the [_constraintType_](#tocSproductconstrainttypedoc) specified. Whether mandatory or not is dependent on the value of [_constraintType_](#tocSproductconstrainttypedoc).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "constraintType": {
+      "description": "The type of constraint described. For further details, refer to [Product Constraint Types](#tocSproductconstrainttypedoc).",
+      "enum": [
+        "MAX_BALANCE",
+        "MAX_LIMIT",
+        "MAX_LVR",
+        "MIN_BALANCE",
+        "MIN_LIMIT",
+        "MIN_LVR",
+        "OPENING_BALANCE"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "constraintType"
+  ],
+  "type": "object",
+  "x-conditional": [
+    "additionalValue"
+  ],
+  "$id": "BankingProductConstraintV2"
 },"BankingProductConstraintV3" :{
   "properties": {
     "additionalInfo": {
