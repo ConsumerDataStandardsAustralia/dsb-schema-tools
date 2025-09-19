@@ -6715,6 +6715,24 @@
   ],
   "type": "object",
   "$id": "ResponseBankingTransactionById"
+},"ResponseBankingTransactionByIdV2" :{
+  "properties": {
+    "data": {
+      "$ref": "BankingTransactionDetailV2"
+    },
+    "links": {
+      "$ref": "Links"
+    },
+    "meta": {
+      "$ref": "Meta"
+    }
+  },
+  "required": [
+    "data",
+    "links"
+  ],
+  "type": "object",
+  "$id": "ResponseBankingTransactionByIdV2"
 },"ResponseBankingTransactionByIdV3" :{
   "properties": {
     "data": {
