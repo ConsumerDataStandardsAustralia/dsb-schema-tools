@@ -5444,22 +5444,6 @@
             "payer",
             "payee",
             "nppPayload"
-          ],
-          "allOf": [
-            {
-              "if": {
-                "properties": {
-                  "extensionUType ": {
-                    "const": "nppPayload"
-                  }
-                }
-              },
-              "then": {
-                "required": [
-                  "nppPayload"
-                ]
-              }
-            }
           ]
         }
       }
@@ -5553,22 +5537,6 @@
             "payer",
             "payee",
             "nppPayload"
-          ],
-          "allOf": [
-            {
-              "if": {
-                "properties": {
-                  "extensionUType ": {
-                    "const": "nppPayload"
-                  }
-                }
-              },
-              "then": {
-                "required": [
-                  "nppPayload"
-                ]
-              }
-            }
           ]
         }
       }
